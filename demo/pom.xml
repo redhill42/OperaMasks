@@ -12,30 +12,27 @@
 
   <dependencies>
     <dependency>
-      <groupId>org.operamasks</groupId>
+      <groupId>${project.groupId}</groupId>
       <artifactId>operamasks-core</artifactId>
       <version>${project.version}</version>
     </dependency>
     <dependency>
-      <groupId>org.operamasks</groupId>
+      <groupId>${project.groupId}</groupId>
       <artifactId>operamasks-extra</artifactId>
       <version>${project.version}</version>
     </dependency>
     <dependency>
-      <groupId>org.operamasks</groupId>
+      <groupId>${project.groupId}</groupId>
       <artifactId>skins</artifactId>
       <version>${project.version}</version>
     </dependency>
     <dependency>
       <groupId>javax.faces</groupId>
       <artifactId>jsf-api</artifactId>
-      <version>1.2_15</version>
     </dependency>
     <dependency>
       <groupId>javax.servlet</groupId>
-      <artifactId>javax.servlet-api</artifactId>
-      <version>3.0.1</version>
-      <scope>provided</scope>
+      <artifactId>servlet-api</artifactId>
     </dependency>
   </dependencies>
 

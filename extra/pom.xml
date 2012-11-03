@@ -12,7 +12,7 @@
 
   <dependencies>
     <dependency>
-      <groupId>org.operamasks</groupId>
+      <groupId>${project.groupId}</groupId>
       <artifactId>operamasks-core</artifactId>
       <version>${project.version}</version>
     </dependency>

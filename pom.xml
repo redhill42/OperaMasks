@@ -58,7 +58,6 @@
             <pushChanges>false</pushChanges>
             <localCheckout>true</localCheckout>
             <autoVersionSubmodules>true</autoVersionSubmodules>
-            <tagNameFormat>v@{project.version}</tagNameFormat>
           </configuration>
         </plugin>
         <plugin>
@@ -73,6 +72,43 @@
       </plugins>
     </pluginManagement>
   </build>
+
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>javax.faces</groupId>
+        <artifactId>jsf-api</artifactId>
+        <version>1.2_15</version>
+      </dependency>
+      <dependency>
+        <groupId>javax.servlet</groupId>
+        <artifactId>servlet-api</artifactId>
+        <version>2.4</version>
+        <scope>provided</scope>
+      </dependency>
+      <dependency>
+        <groupId>javaee</groupId>
+        <artifactId>javaee-api</artifactId>
+        <version>5</version>
+        <scope>provided</scope>
+      </dependency>
+      <dependency>
+        <groupId>elite</groupId>
+        <artifactId>elite</artifactId>
+        <version>0.5.0</version>
+        <exclusions>
+          <exclusion>
+            <groupId>jline</groupId>
+            <artifactId>jline</artifactId>
+          </exclusion>
+          <exclusion>
+            <groupId>org.javolution</groupId>
+            <artifactId>javolution</artifactId>
+          </exclusion>
+        </exclusions>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
 
   <distributionManagement>
     <repository>

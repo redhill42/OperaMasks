@@ -14,13 +14,10 @@
     <dependency>
       <groupId>javax.faces</groupId>
       <artifactId>jsf-api</artifactId>
-      <version>1.2_15</version>
     </dependency>
     <dependency>
       <groupId>javaee</groupId>
       <artifactId>javaee-api</artifactId>
-      <version>5</version>
-      <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>com.sun.facelets</groupId>
@@ -30,7 +27,6 @@
     <dependency>
       <groupId>elite</groupId>
       <artifactId>elite</artifactId>
-      <version>0.5.0</version>
     </dependency>
     <dependency>
       <groupId>commons-logging</groupId>
