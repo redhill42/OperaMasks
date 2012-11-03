@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<f:view xmlns:f="http://java.sun.com/jsf/core"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:w="http://www.apusic.com/jsf/widget"
+        xmlns:ajax="http://www.apusic.com/jsf/ajax"
+        renderKitId="AJAX">
+<w:head>
+<w:stylesheet src="/common/resources/examples.css"/>
+</w:head>
+
+<w:page title="Progress Bar Demo">
+  <div class="examDesc">
+	  <p>使用&lt;ajax:progress&gt;显示任务的进度</p>
+  </div>
+
+<h:form id='myform' prependId="false">
+<w:button accesskey='s' onclick="complexTask.start();" value="start" />
+  <table>
+    <tr><td><w:progressBar id="complexPhaseProgress" minimum="0" maximum="4"/></td></tr>
+    <tr><td><w:progressBar id="complexPercentageProgress"/></td></tr>
+    <tr><td><h:outputText id="complexMessage" value="idle"/></td></tr>
+  </table>
+
+  <ajax:progress
+        id="complexTask"
+        action="#{ProgressBean.complexAction}"
+        onstatechange="updateComplexProgress(this);"/>
+
+<script type="text/javascript">
+function updateComplexProgress(status) {
+    complexPhaseProgress.setValue(status.phase);
+    complexPhaseProgress.setState(status.state);
+    complexPercentageProgress.setValue(status.percentage);
+    complexPercentageProgress.setState(status.state);
+    document.getElementById('complexMessage').innerHTML = status.message;
+}
+</script>
+
+</h:form>
+
+</w:page>
+</f:view>

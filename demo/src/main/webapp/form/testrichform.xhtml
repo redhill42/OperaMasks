@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<f:view xmlns:f="http://java.sun.com/jsf/core"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:w="http://www.apusic.com/jsf/widget"
+        xmlns:a="http://www.apusic.com/jsf/ajax"
+        renderKitId="HTML_BASIC">
+<w:head>
+<style type="text/css">
+body {
+  margin: 0;
+  padding: 10px;
+  font: 9pts/18pts;
+}
+</style>
+</w:head>
+<w:page title="Rich Form Demo" skin="default">  
+  
+  <w:form rich="false">
+    
+    <h:selectBooleanCheckbox id="effect3D" value="true">
+        <a:action event="onclick"/>
+      </h:selectBooleanCheckbox>
+      <h:outputLabel value=" 3D Effect" for="effect3D"/>
+    <h:panelGrid columns="2">
+        <f:verbatim>文本输入框：</f:verbatim>
+        <h:inputText value="#{DemoBean.skin}"/>
+    
+        <f:verbatim>日期文本输入框：</f:verbatim>
+        <h:inputText value="#{MenuBean.date}">
+            <f:convertDateTime pattern="yyyy/M/d"/>
+        </h:inputText>
+    
+        <f:verbatim>数字文本输入框：</f:verbatim>
+        <h:inputText value="#{DemoBean.number}"/>
+    
+        <f:verbatim>下拉列表框：</f:verbatim>
+        <h:selectOneMenu id="combo" value="#{ColorBean.color}">
+          <f:selectItems value="#{ColorBean.colors}"/>
+        </h:selectOneMenu>
+    </h:panelGrid>
+    <h:commandButton value="提交"></h:commandButton><br/><br/>
+    <h:panelGrid columns="2">
+      <h:graphicImage value="images/#{ColorBean.color}.gif" rendered="#{ColorBean.color!=null}"/>&nbsp;
+      <h:outputText value="#{ColorBean.color}" style="color: #{ColorBean.color}"/>
+    </h:panelGrid> 
+       
+  </w:form> 
+  <br/>
+  
+  <a href="../index.html">Back</a>
+</w:page>
+</f:view>

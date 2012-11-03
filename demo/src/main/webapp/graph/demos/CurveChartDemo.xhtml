@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<f:view xmlns:f="http://java.sun.com/jsf/core"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:w="http://www.apusic.com/jsf/widget"
+        xmlns:g="http://www.apusic.com/jsf/graph">
+<g:curveChart title="Curve Chart Demo"
+            xAxisLabel="Category"
+            yAxisLabel="Value"
+            lineWidth="1.5"
+            showLegend="true">
+  <g:dataSeries value="#{CategoryData}" var="x" rows="10">
+    <g:dataLabel value="#{x.label}"/>
+    <g:dataItem legend="First" value="#{x.first}"/>
+    <g:dataItem legend="Second" value="#{x.second}"/>
+    <g:dataItem legend="Third" value="#{x.third}"/>
+  </g:dataSeries>
+</g:curveChart>
+</f:view>

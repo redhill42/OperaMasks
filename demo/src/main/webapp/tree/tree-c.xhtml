@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<f:view xmlns:f="http://java.sun.com/jsf/core"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:w="http://www.apusic.com/jsf/widget"
+        xmlns:ajax="http://www.apusic.com/jsf/ajax"
+        renderKitId="AJAX">
+
+<w:page title="Dynamic Nodes Tree">
+<w:head>
+<script type="text/javascript" src="/_global/script/logging.js"></script>
+<w:stylesheet src="/common/resources/examples.css"/>
+</w:head>
+<div class="examDesc">
+<p>本例展示如何使用带Checkbox的tree组件</p>
+</div> 
+<table>
+<tr>
+<td>
+  <w:tree animate="true" style="width:200px;height:300px;border:1px solid #c3daf9;overflow:auto" lines="true"
+  		binding="#{CheckNodesTree.tree}" asyncData="#{CheckNodesTree.getFilesInFolder}" nodeImage="#{CheckNodesTree.getFileIcon}"
+  			nodeHasChildren="#{CheckNodesTree.isFolder}" nodeText="#{CheckNodesTree.getFileName}" nodeClass="#{CheckNodesTree.nodeClass}"
+  			postCreate="#{CheckNodesTree.restoreCheckStatus}" saveState="true">
+	<w:treeEventListener binding="#{CheckNodesTree}" events="select,expand,collapse,check,checkStateChanged" />
+	<w:checkTreeNode userData="My Documents" async="true" image="images/my_documents.gif" checked="false" checkType="partly_checked" />
+  </w:tree>
+</td>
+<td valign="top">
+<a href="tree-c.jsf">Reload page</a>
+<br/>
+<h:outputText value="#{CheckNodesTree.response}" escape="false"/>
+</td>
+</tr>
+</table>
+</w:page>
+</f:view>

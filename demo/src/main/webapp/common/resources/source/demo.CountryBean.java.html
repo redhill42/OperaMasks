@@ -1,0 +1,369 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head>
+<title></title>
+  <style type="text/css">
+    <!--code { font-family: Courier New, Courier; font-size: 10pt; margin: 0px; }-->
+  </style>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head><body>
+
+
+<!-- ======================================================== -->
+<!-- = Java Sourcecode to HTML automatically converted code = -->
+<!-- =   Java2Html Converter 5.0 [2006-02-26] by Markus Gebhard  markus@jave.de   = -->
+<!-- =     Further information: http://www.java2html.de     = -->
+<div align="left" class="java">
+<table border="0" cellpadding="3" cellspacing="0" bgcolor="#ffffff">
+  <!-- start headline -->
+   <tr>
+    <td colspan="2">
+     <center><font size="+2">
+      <code><b>
+CountryBean.java
+      </b></code>
+     </font></center>
+    </td>
+   </tr>
+  <!-- end headline -->
+   <tr>
+  <!-- start source code -->
+   <td nowrap="nowrap" valign="top" align="left">
+    <code>
+<font color="#3f7f5f">/*</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f7f5f">*&nbsp;$Id:&nbsp;CountryBean.java,v&nbsp;1.2&nbsp;2007/12/11&nbsp;04:14:14&nbsp;jacky&nbsp;Exp&nbsp;$</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f7f5f">*</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f7f5f">*&nbsp;Copyright&nbsp;(C)&nbsp;2006&nbsp;Operamasks&nbsp;Community.</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f7f5f">*&nbsp;Copyright&nbsp;(C)&nbsp;2000-2006&nbsp;Apusic&nbsp;Systems,&nbsp;Inc.</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f7f5f">*</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f7f5f">*&nbsp;This&nbsp;program&nbsp;is&nbsp;free&nbsp;software:&nbsp;you&nbsp;can&nbsp;redistribute&nbsp;it&nbsp;and/or&nbsp;modify</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f7f5f">*&nbsp;it&nbsp;under&nbsp;the&nbsp;terms&nbsp;of&nbsp;the&nbsp;GNU&nbsp;General&nbsp;Public&nbsp;License&nbsp;as&nbsp;published&nbsp;by</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f7f5f">*&nbsp;the&nbsp;Free&nbsp;Software&nbsp;Foundation,&nbsp;either&nbsp;version&nbsp;3&nbsp;of&nbsp;the&nbsp;License,&nbsp;or</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f7f5f">*&nbsp;any&nbsp;later&nbsp;version.</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f7f5f">*</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f7f5f">*&nbsp;This&nbsp;program&nbsp;is&nbsp;distributed&nbsp;in&nbsp;the&nbsp;hope&nbsp;that&nbsp;it&nbsp;will&nbsp;be&nbsp;useful,</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f7f5f">*&nbsp;but&nbsp;WITHOUT&nbsp;ANY&nbsp;WARRANTY;&nbsp;without&nbsp;even&nbsp;the&nbsp;implied&nbsp;warranty&nbsp;of</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f7f5f">*&nbsp;MERCHANTABILITY&nbsp;or&nbsp;FITNESS&nbsp;FOR&nbsp;A&nbsp;PARTICULAR&nbsp;PURPOSE.&nbsp;&nbsp;See&nbsp;the</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f7f5f">*&nbsp;GNU&nbsp;General&nbsp;Public&nbsp;License&nbsp;for&nbsp;more&nbsp;details.</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f7f5f">*</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f7f5f">*&nbsp;You&nbsp;should&nbsp;have&nbsp;received&nbsp;a&nbsp;copy&nbsp;of&nbsp;the&nbsp;GNU&nbsp;General&nbsp;Public&nbsp;License</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f7f5f">*&nbsp;along&nbsp;with&nbsp;this&nbsp;program.&nbsp;If&nbsp;not,&nbsp;see&nbsp;http://www.gnu.org/licenses.</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f7f5f">*/</font><br />
+<font color="#7f0055"><b>package&nbsp;</b></font><font color="#000000">demo;</font><br />
+<font color="#ffffff"></font><br />
+<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">javax.faces.model.SelectItem;</font><br />
+<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">javax.faces.event.ValueChangeEvent;</font><br />
+<font color="#ffffff"></font><br />
+<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">org.operamasks.faces.annotation.ManagedBean;</font><br />
+<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">org.operamasks.faces.annotation.ManagedBeanScope;</font><br />
+<font color="#ffffff"></font><br />
+<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">java.util.List;</font><br />
+<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">java.util.ArrayList;</font><br />
+<font color="#ffffff"></font><br />
+<font color="#646464">@ManagedBean</font><font color="#000000">(</font><font color="#000000">name=</font><font color="#2a00ff">&#34;Country&#34;</font><font color="#000000">,&nbsp;scope=&nbsp;ManagedBeanScope.SESSION</font><font color="#000000">)</font><br />
+<font color="#7f0055"><b>public&nbsp;class&nbsp;</b></font><font color="#000000">CountryBean</font><br />
+<font color="#000000">{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>private&nbsp;</b></font><font color="#000000">String&nbsp;prefix;</font><br />
+<font color="#ffffff"></font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;</b></font><font color="#000000">String&nbsp;getPrefix</font><font color="#000000">()&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>return&nbsp;</b></font><font color="#000000">prefix;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff"></font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;</b></font><font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">setPrefix</font><font color="#000000">(</font><font color="#000000">String&nbsp;prefix</font><font color="#000000">)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>this</b></font><font color="#000000">.prefix&nbsp;=&nbsp;prefix;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff"></font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>private&nbsp;</b></font><font color="#000000">String</font><font color="#000000">[]&nbsp;</font><font color="#000000">ALL_COUNTRIES&nbsp;=&nbsp;</font><font color="#000000">{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;af&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Afghanistan&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;al&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Albania&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;dz&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Algeria&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;as&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;American&nbsp;Samoa&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;ad&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Andorra&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;ao&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Angola&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;ai&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Anguilla&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;aq&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Antartica&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;ag&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Antigua&nbsp;&amp;&nbsp;Barbuda&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;ar&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Argentina&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;am&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Armenia&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;aw&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Aruba&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;ac&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Ascension&nbsp;Island&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;au&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Australia&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;at&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Austria&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;az&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Azerbaijan&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;bs&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Bahamas&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;bh&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Bahrain&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;bd&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Bangladesh&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;bb&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Barbados&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;by&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Belarus&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;be&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Belgium&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;bz&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Belize&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;bj&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Benin&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;bm&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Bermuda&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;bt&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Bhutan&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;bo&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Bolivia&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;ba&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Bosnia&nbsp;and&nbsp;Herzegovina&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;bw&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Botswana&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;bv&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Bouvet&nbsp;Island&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;br&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Brazil&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;io&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;British&nbsp;Indian&nbsp;Ocean&nbsp;Territory&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;bn&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Brunei&nbsp;Darussalam&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;bg&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Bulgaria&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;bf&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Burkina&nbsp;Faso&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;bi&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Burundi&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;kh&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Cambodia&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;cm&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Cameroon&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;ca&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Canada&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;cv&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Cape&nbsp;Verde&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;ky&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Cayman&nbsp;Islands&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;cf&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Central&nbsp;African&nbsp;Republic&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;td&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Chad&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;cl&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Chile&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;cn&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;China&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;cx&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Christmas&nbsp;Island&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;cc&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Cocos&nbsp;(Keeling)&nbsp;Islands&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;co&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Colombia&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;km&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Comoros&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;cd&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Congo,&nbsp;Democratic&nbsp;Republic&nbsp;of&nbsp;the&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;cg&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Congo,&nbsp;Republic&nbsp;of&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;ck&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Cook&nbsp;Islands&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;cr&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Costa&nbsp;Rica&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;ci&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Cote&nbsp;d'Ivoire&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;hr&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Croatia/Hrvatska&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;cy&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Cyprus&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;cz&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Czech&nbsp;Republic&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;dk&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Denmark&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;dj&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Djibouti&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;dm&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Dominica&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;do&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Dominican&nbsp;Republic&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;tp&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;East&nbsp;Timor&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;ec&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Ecuador&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;eg&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Egypt&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;sv&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;El&nbsp;Salvador&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;gq&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Equatorial&nbsp;Guinea&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;er&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Eritrea&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;ee&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Estonia&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;et&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Ethiopia&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;fk&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Falkland&nbsp;Islands&nbsp;(Malvina)&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;fo&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Faroe&nbsp;Islands&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;fj&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Fiji&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;fi&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Finland&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;fr&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;France&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;fx&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;France&nbsp;(Metropolitan)&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;gf&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;French&nbsp;Guiana&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;pf&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;French&nbsp;Polynesia&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;tf&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;French&nbsp;Southern&nbsp;Territories&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;ga&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Gabon&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;gm&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Gambia&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;ge&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Georgia&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;de&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Germany&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;gh&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Ghana&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;gi&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Gibraltar&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;gr&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Greece&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;gl&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Greenland&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;gd&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Grenada&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;gp&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Guadeloupe&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;gu&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Guam&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;gt&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Guatemala&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;gg&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Guernsey&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;gn&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Guinea&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;gw&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Guinea-Bissau&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;gy&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Guyana&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;ht&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Haiti&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;hm&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Heard&nbsp;and&nbsp;McDonald&nbsp;Islands&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;va&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Holy&nbsp;See&nbsp;(City&nbsp;Vatican&nbsp;State)&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;hn&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Honduras&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;hk&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Hong&nbsp;Kong&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;hu&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Hungary&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;is&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Iceland&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;in&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;India&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;id&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Indonesia&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;ie&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Ireland&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;im&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Isle&nbsp;of&nbsp;Man&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;il&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Israel&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;it&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Italy&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;jm&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Jamaica&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;jp&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Japan&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;je&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Jersey&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;jo&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Jordan&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;kz&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Kazakhstan&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;ke&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Kenya&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;ki&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Kiribati&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;kr&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Korea,&nbsp;Republic&nbsp;of&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;kw&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Kuwait&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;kg&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Kyrgyzstan&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;la&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Lao&nbsp;People's&nbsp;Democratic&nbsp;Republic&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;lv&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Latvia&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;lb&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Lebanon&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;ls&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Lesotho&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;lr&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Liberia&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;li&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Liechtenstein&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;lt&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Lithuania&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;lu&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Luxembourg&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;mo&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Macau&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;mk&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Macedonia,&nbsp;Former&nbsp;Yugoslav&nbsp;Republic&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;mg&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Madagascar&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;mw&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Malawi&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;my&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Malaysia&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;mv&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Maldives&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;ml&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Mali&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;mt&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Malta&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;mh&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Marshall&nbsp;Islands&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;mq&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Martinique&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;mr&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Mauritania&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;mu&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Mauritius&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;yt&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Mayotte&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;mx&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Mexico&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;fm&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Micronesia,&nbsp;Federal&nbsp;State&nbsp;of&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;md&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Moldova,&nbsp;Republic&nbsp;of&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;mc&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Monaco&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;mn&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Mongolia&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;ms&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Montserrat&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;ma&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Morocco&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;mz&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Mozambique&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;na&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Namibia&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;nr&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Nauru&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;np&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Nepal&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;nl&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Netherlands&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;an&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Netherlands&nbsp;Antilles&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;nc&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;New&nbsp;Caledonia&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;nz&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;New&nbsp;Zealand&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;ni&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Nicaragua&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;ne&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Niger&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;ng&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Nigeria&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;nu&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Niue&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;nf&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Norfolk&nbsp;Island&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;mp&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Northern&nbsp;Mariana&nbsp;Islands&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;no&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Norway&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;nd&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Not&nbsp;Determined&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;om&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Oman&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;pk&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Pakistan&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;pw&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Palau&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;pa&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Panama&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;pg&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Papua&nbsp;New&nbsp;Guinea&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;py&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Paraguay&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;pe&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Peru&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;ph&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Philippines&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;pn&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Pitcairn&nbsp;Island&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;pl&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Poland&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;pt&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Portugal&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;pr&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Puerto&nbsp;Rico&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;qa&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Qatar&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;re&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Reunion&nbsp;Island&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;ro&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Romania&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;ru&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Russian&nbsp;Federation&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;rw&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Rwanda&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;kn&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Saint&nbsp;Kitts&nbsp;and&nbsp;Nevis&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;lc&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Saint&nbsp;Lucia&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;vc&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Saint&nbsp;Vincent&nbsp;and&nbsp;the&nbsp;Grenadines&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;sm&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;San&nbsp;Marino&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;st&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Sao&nbsp;Tome&nbsp;and&nbsp;Principe&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;sa&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Saudi&nbsp;Arabia&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;sn&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Senegal&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;sc&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Seychelles&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;sl&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Sierra&nbsp;Leone&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;sg&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Singapore&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;sk&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Slovak&nbsp;Republic&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;si&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Slovenia&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;sb&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Solomon&nbsp;Islands&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;so&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Somalia&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;za&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;South&nbsp;Africa&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;gs&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;South&nbsp;Georgia&nbsp;and&nbsp;the&nbsp;South&nbsp;Sandwich&nbsp;Islands&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;es&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Spain&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;lk&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Sri&nbsp;Lanka&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;pm&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;St&nbsp;Pierre&nbsp;and&nbsp;Miquelon&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;sh&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;St.&nbsp;Helena&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;sr&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Suriname&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;sj&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Svalbard&nbsp;and&nbsp;Jan&nbsp;Mayen&nbsp;Islands&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;sz&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Swaziland&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;se&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Sweden&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;ch&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Switzerland&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;tw&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Taiwan&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;tj&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Tajikistan&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;tz&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Tanzania&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;th&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Thailand&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;tg&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Togo&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;tk&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Tokelau&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;to&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Tonga&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;tt&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Trinidad&nbsp;and&nbsp;Tobago&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;tn&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Tunisia&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;tr&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Turkey&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;tm&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Turkmenistan&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;tc&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Turks&nbsp;and&nbsp;Caicos&nbsp;Islands&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;tv&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Tuvalu&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;ug&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Uganda&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;ua&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Ukraine&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;ae&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;United&nbsp;Arab&nbsp;Emirates&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;gb&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;United&nbsp;Kingdom&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;us&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;United&nbsp;States&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;uy&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Uruguay&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;um&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;US&nbsp;Minor&nbsp;Outlying&nbsp;Islands&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;uz&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Uzbekistan&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;vu&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Vanuatu&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;ve&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Venezuela&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;vn&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Vietnam&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;vg&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Virgin&nbsp;Island&nbsp;(British)&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;vi&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Virgin&nbsp;Islands&nbsp;(USA)&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;wf&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Wallis&nbsp;And&nbsp;Futuna&nbsp;Islands&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;eh&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Western&nbsp;Sahara&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;ws&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Western&nbsp;Samoa&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;ye&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Yemen&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;yu&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Yugoslavia&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;zm&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Zambia&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;zw&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Zimbabwe&#34;</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><font color="#000000">;</font><br />
+<font color="#ffffff"></font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;</b></font><font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">prefixChanged</font><font color="#000000">(</font><font color="#000000">ValueChangeEvent&nbsp;event</font><font color="#000000">)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">filteredCountries&nbsp;=&nbsp;buildFilteredCountries</font><font color="#000000">((</font><font color="#000000">String</font><font color="#000000">)</font><font color="#000000">event.getNewValue</font><font color="#000000">())</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff"></font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>private&nbsp;</b></font><font color="#000000">List&lt;SelectItem&gt;&nbsp;filteredCountries;</font><br />
+<font color="#ffffff"></font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>private&nbsp;</b></font><font color="#000000">List&lt;SelectItem&gt;&nbsp;buildFilteredCountries</font><font color="#000000">(</font><font color="#000000">String&nbsp;prefix</font><font color="#000000">)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">List&lt;SelectItem&gt;&nbsp;result&nbsp;=&nbsp;</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">ArrayList&lt;SelectItem&gt;</font><font color="#000000">()</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>if&nbsp;</b></font><font color="#000000">(</font><font color="#000000">prefix&nbsp;!=&nbsp;</font><font color="#7f0055"><b>null</b></font><font color="#000000">)&nbsp;</font><font color="#000000">prefix&nbsp;=&nbsp;prefix.toLowerCase</font><font color="#000000">()</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>for&nbsp;</b></font><font color="#000000">(</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">i&nbsp;=&nbsp;</font><font color="#990000">0</font><font color="#000000">;&nbsp;i&nbsp;&lt;&nbsp;ALL_COUNTRIES.length;&nbsp;i&nbsp;+=&nbsp;</font><font color="#990000">2</font><font color="#000000">)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">String&nbsp;abbr&nbsp;=&nbsp;ALL_COUNTRIES</font><font color="#000000">[</font><font color="#000000">i</font><font color="#000000">]</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">String&nbsp;country&nbsp;=&nbsp;ALL_COUNTRIES</font><font color="#000000">[</font><font color="#000000">i+</font><font color="#990000">1</font><font color="#000000">]</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>if&nbsp;</b></font><font color="#000000">(</font><font color="#000000">prefix&nbsp;==&nbsp;</font><font color="#7f0055"><b>null&nbsp;</b></font><font color="#000000">||&nbsp;prefix.length</font><font color="#000000">()&nbsp;</font><font color="#000000">==&nbsp;</font><font color="#990000">0&nbsp;</font><font color="#000000">||&nbsp;country.toLowerCase</font><font color="#000000">()</font><font color="#000000">.startsWith</font><font color="#000000">(</font><font color="#000000">prefix</font><font color="#000000">))&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">result.add</font><font color="#000000">(</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">SelectItem</font><font color="#000000">(</font><font color="#000000">abbr,&nbsp;country</font><font color="#000000">))</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>return&nbsp;</b></font><font color="#000000">result;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff"></font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;</b></font><font color="#000000">List&lt;SelectItem&gt;&nbsp;getFilteredCountries</font><font color="#000000">()&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>if&nbsp;</b></font><font color="#000000">(</font><font color="#000000">filteredCountries&nbsp;==&nbsp;</font><font color="#7f0055"><b>null</b></font><font color="#000000">)</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">filteredCountries&nbsp;=&nbsp;buildFilteredCountries</font><font color="#000000">(</font><font color="#7f0055"><b>this</b></font><font color="#000000">.prefix</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>return&nbsp;</b></font><font color="#000000">filteredCountries;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff"></font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>private&nbsp;</b></font><font color="#000000">String&nbsp;country;</font><br />
+<font color="#ffffff"></font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;</b></font><font color="#000000">String&nbsp;getCountry</font><font color="#000000">()&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>return&nbsp;</b></font><font color="#000000">country;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff"></font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;</b></font><font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">setCountry</font><font color="#000000">(</font><font color="#000000">String&nbsp;country</font><font color="#000000">)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>this</b></font><font color="#000000">.country&nbsp;=&nbsp;country;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff"></font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>private&nbsp;</b></font><font color="#000000">String</font><font color="#000000">[]&nbsp;</font><font color="#000000">countries;</font><br />
+<font color="#ffffff"></font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;</b></font><font color="#000000">String</font><font color="#000000">[]&nbsp;</font><font color="#000000">getCountries</font><font color="#000000">()&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>return&nbsp;</b></font><font color="#000000">countries;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff"></font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;</b></font><font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">setCountries</font><font color="#000000">(</font><font color="#000000">String</font><font color="#000000">[]&nbsp;</font><font color="#000000">countries</font><font color="#000000">)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>this</b></font><font color="#000000">.countries&nbsp;=&nbsp;countries;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#000000">}</font></code>
+    
+   </td>
+  <!-- end source code -->
+   </tr>
+</table>
+</div>
+<!-- =       END of automatically generated HTML code       = -->
+<!-- ======================================================== -->
+
+
+</body></html>

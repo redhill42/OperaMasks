@@ -1,0 +1,93 @@
+<html>
+<head>
+<style type="text/css">
+html, body {
+      font-size: 10px;
+      margin:0;
+      padding:0;
+      border:0 none;
+      overflow:auto;
+      height:100%;
+  }
+  
+</style>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<script class="javascript" src="../js/highlight.js"></script>
+</head>
+<body>
+<textarea id="code" class="xml" style="display:none;">
+<?xml version="1.0" encoding="UTF-8"?>
+<f:view xmlns:f="http://java.sun.com/jsf/core"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:w="http://www.apusic.com/jsf/widget"
+        xmlns:ajax="http://www.apusic.com/jsf/ajax"
+        renderKitId="AJAX"
+        locale="zh">
+<w:head>
+<style>
+#myform_mypanel .x-box-mc {height:300px;}
+</style>
+<w:stylesheet src="/common/resources/examples.css"/>
+</w:head>
+<w:page title="Image Example" skin="aqua">
+<div class="examDesc">
+<p>drawImage组件可以产生一个动态的图片。</p>
+</div>
+<w:panelBox style="width:394px" border="1" borderColor="silver" borderRadius="8" bgcolor="#FFFFFF">
+
+  <w:panelBox border="1" borderColor="silver" borderRadius="6" bgcolor="#FFFFFF">
+    Welcome to our site.
+  </w:panelBox>
+
+    <h:form id="myform">
+      <w:panelBox id="mypanel" style="margin-top:5px;" 
+                  color="#e0ecff" color2="white" gradientExtent="80"
+                  border="5" borderColor="#c3d9ff" borderRadius="20" bgcolor="#FFFFFF">
+      <h:panelGrid columns="3" cellspacing="5">
+        <h:outputLabel value="姓名"/>
+        <h:inputText value="#{ImageBean.userName}" required="true"/>
+        <f:verbatim/>
+
+        <h:outputLabel value="验证码"/>
+        <h:inputText value="#{ImageBean.authCode}" required="true" validator="#{ImageBean.validateAuthCode}"/>
+        <w:drawImage width="#{ImageBean.width}" height="#{ImageBean.height}" draw="#{ImageBean.draw}"/>
+
+        <f:verbatim/>
+        <w:button value="Submit" action="/image/success.jsp"/>
+      </h:panelGrid>
+      </w:panelBox>
+    </h:form>
+
+</w:panelBox>
+
+<h:messages/>
+
+</w:page>
+</f:view>
+</textarea>
+<script class="javascript">
+var text = document.getElementById('code').value ;
+var html = highlightCode( "xml" , "xml" , true , text ) ;
+window.setTimeout(function() {
+    var css = "<link href='../styles/highlight.css' rel='stylesheet' type='text/css'>" ;
+    document.open('text/html');
+    if(document.implementation && document.implementation.createDocument) {
+        var htmlStr = css + html.xml ;
+        document.write(htmlStr);
+        document.close();
+    }
+    else {
+        var h = window.onerror;
+        window.onerror = function(){return true;}
+        html = css + html ;
+        document.write(html);
+        window.onerror = h;
+        document.close();
+        window.location.reload(false);
+    }
+}, 50);
+
+</script>
+</body>
+</html>

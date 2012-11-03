@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<f:view xmlns:f="http://java.sun.com/jsf/core"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:w="http://www.apusic.com/jsf/widget"
+        xmlns:ajax="http://www.apusic.com/jsf/ajax">
+<w:head>
+<style type="text/css">
+body {padding:5px;}
+
+#frame .x-box-mc {
+  height:5em;
+  border:1px solid #8c8c8c;
+  background:white;
+  margin:15px 0 0 0;
+  padding:5px;
+  overflow:auto;
+}
+#frame .x-box-mc p {
+  margin-bottom:1em;
+}
+
+#sphere {
+  position:relative;
+  width:220px;
+  height:220px;
+}
+#sphere .x-box-ml{
+  position:absolute;
+  width:160px;
+  height:160px;
+  left:30px;
+  top:50px;
+  overflow:hidden;
+  background:transparent;
+  z-index:10;
+}
+#sphere .x-box-mc {
+  font:normal 15px arial,sans-serif;
+  color:black;
+  text-align:center;
+  margin:0;
+  padding:0;
+}
+#sphere em {
+  color:darkblue;
+}
+</style>
+<w:requires package="Utilities"/>
+<link rel="stylesheet" type="text/css" href="/jsfdemo/common/resources/examples.css"/>
+</w:head>
+<w:page title="Boxes">
+  <div class="examDesc">
+  <p>panelBox组件通常被用作为一个有边框的容器，用于装饰的目的。</p>
+  </div>
+  <h3>Default</h3>
+  <h:panelGrid columns="2" cellspacing="20">
+    <w:panelBox style="width:394px" bgcolor="#FFFFFF">
+      <h3>Lorem ipsum</h3>
+      <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Duis ornare ultricies libero. Donec fringilla, eros at dapibus fermentum, tellus tellus auctor erat, vitae porta magna libero sed libero. Mauris sed leo. Aliquam aliquam. Maecenas vestibulum.</p>
+    </w:panelBox>
+    <w:panelBox style="width:394px"  bgcolor="#FFFFFF" styleClass="x-box-blue">
+      <h3>Lorem ipsum</h3>
+      <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Duis ornare ultricies libero. Donec fringilla, eros at dapibus fermentum, tellus tellus auctor erat, vitae porta magna libero sed libero. Mauris sed leo. Aliquam aliquam. Maecenas vestibulum.</p>
+    </w:panelBox>
+  </h:panelGrid>
+
+  <hr/>
+
+  <h3>Custom</h3>
+  <h:panelGrid columns="2" cellspacing="20">
+    <w:panelBox style="width:394px;"
+                color="white" color2="gray" gradientExtent="40"
+                border="1" borderColor="silver" borderRadius="8" bgcolor="#FFFFFF">
+      <h3>Lorem ipsum</h3>
+      <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Duis ornare ultricies libero. Donec fringilla, eros at dapibus fermentum, tellus tellus auctor erat, vitae porta magna libero sed libero. Mauris sed leo. Aliquam aliquam. Maecenas vestibulum.</p>
+    </w:panelBox>
+    <w:panelBox style="width:394px;"
+                color="#e8fcf2" color2="#c1f9d9" color3="#a9f5ca" gradientExtent="18"
+                border="1" borderColor="silver" borderRadius="12" roundedCorners="tl,br" bgcolor="#FFFFFF">
+      <h3>Lorem ipsum</h3>
+      <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Duis ornare ultricies libero. Donec fringilla, eros at dapibus fermentum, tellus tellus auctor erat, vitae porta magna libero sed libero. Mauris sed leo. Aliquam aliquam. Maecenas vestibulum.</p>
+    </w:panelBox>
+  </h:panelGrid>
+
+  <hr/>
+
+  <h3>Advanced</h3>
+  <h:panelGrid columns="2" cellspacing="20">
+    <w:panelBox id="frame" style="width:394px;"
+                border="1" borderColor="#c0c0c0" borderRadius="10" roundedCorners="tl,tr"
+                color="#efefef" color2="#cacaca" gradientExtent="23" bgcolor="#FFFFFF">
+      <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Duis ornare ultricies libero. Donec fringilla, eros at dapibus fermentum, tellus tellus auctor erat, vitae porta magna libero sed libero. Mauris sed leo. Aliquam aliquam. Maecenas vestibulum.</p>
+      <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Duis ornare ultricies libero. Donec fringilla, eros at dapibus fermentum, tellus tellus auctor erat, vitae porta magna libero sed libero. Mauris sed leo. Aliquam aliquam. Maecenas vestibulum.</p>
+      <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Duis ornare ultricies libero. Donec fringilla, eros at dapibus fermentum, tellus tellus auctor erat, vitae porta magna libero sed libero. Mauris sed leo. Aliquam aliquam. Maecenas vestibulum.</p>
+    </w:panelBox>
+    <w:panelBox id="sphere"
+            border="0" borderColor="silver" borderRadius="110"
+            color="white" color2="gray" gradientExtent="110" bgcolor="#FFFFFF">
+      <em>Sphere said</em>: I'm a shpere.<br/>
+      <em>Box service said</em>: No, you're a box.<br/>
+      <em>Sphere</em>: ......!? I don't think so.
+    </w:panelBox>
+  </h:panelGrid>
+
+</w:page>
+</f:view>

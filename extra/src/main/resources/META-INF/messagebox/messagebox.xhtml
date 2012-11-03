@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<f:view xmlns:f="http://java.sun.com/jsf/core"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:w="http://www.apusic.com/jsf/widget"
+        xmlns:layout="http://www.apusic.com/jsf/layout"
+        xmlns:ajax="http://www.apusic.com/jsf/ajax"
+        xmlns:om="http://www.apusic.com/jsf/misc"
+        renderKitId="AJAX">
+<w:head>
+</w:head>
+<w:page title="">
+<om:useBean value="#{binding=org.operamasks.faces.extra.messagebox.MessageBox}"/>
+  <layout:window 
+  height="120" 
+  width="300" 
+  title="#{org.operamasks.faces.extra.messagebox.MessageBox.title}" 
+  binding="#{org.operamasks.faces.extra.messagebox.MessageBox.messageBox}"
+  modal="#{org.operamasks.faces.extra.messagebox.MessageBox.modal}"
+  >
+<table border="0" style="margin:3px" width="100%" height="100%" cellpadding="1" cellspacing="5">
+    <tr>
+        <td valign="top" width="20px">
+			<h:graphicImage url="#{org.operamasks.faces.extra.messagebox.MessageBox.icon}"/>
+        </td>
+        <td valign="top"><h:outputText value="#{org.operamasks.faces.extra.messagebox.MessageBox.text}"/></td>
+    </tr>
+    <tr>
+        <td colspan="2" align="right">
+        <ajax:updater globalAction="true" binding="#{org.operamasks.faces.extra.messagebox.MessageBox.updater}">
+        <layout:panelGrid binding="#{org.operamasks.faces.extra.messagebox.MessageBox.buttonContainer}">
+        </layout:panelGrid>
+        </ajax:updater>
+        </td>
+    </tr>
+</table>
+  </layout:window>
+</w:page>
+</f:view>

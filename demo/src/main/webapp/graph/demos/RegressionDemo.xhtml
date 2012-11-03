@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<f:view xmlns:f="http://java.sun.com/jsf/core"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:g="http://www.apusic.com/jsf/graph">
+  <g:scatterChart title="Regression Demo 2" showLegend="true">
+    <g:xyDataSeries value="#{RegressionData}" var="p">
+      <g:xyDataItem legend="Sample" x="#{p.x}" y="#{p.y}">
+        <g:regressionLine type="Linear" legend="Linear"/>
+        <g:regressionLine type="Power" legend="Power"/>
+        <g:spline type="BSpline" legend="B-Spline" samples="100" degree="3"/>
+        <g:spline type="CubicSpline" legend="Cubic-Spline" samples="100"/>
+      </g:xyDataItem>
+    </g:xyDataSeries>
+  </g:scatterChart>
+</f:view>

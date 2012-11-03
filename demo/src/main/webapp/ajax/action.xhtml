@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<f:view xmlns:f="http://java.sun.com/jsf/core"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:w="http://www.apusic.com/jsf/widget"
+        xmlns:ajax="http://www.apusic.com/jsf/ajax"
+        renderKitId="AJAX">
+<w:head>
+<w:stylesheet src="/common/resources/examples.css"/>
+</w:head>
+<w:page title="Action Demo">
+  <div class="examDesc">
+  <p>使用&lt;ajax:action&gt;标签可以为任意一个UI组件增加行动侦听器，在响应客户端事件时向服务器发送一个行动事件，以执行相应的服务器端逻辑。</p>
+  </div>
+  <h:form>
+    <h:outputText value="#{DemoBean.clickText}" style="text-decoration:underline;cursor:pointer;">
+      <ajax:action event="onclick" action="#{DemoBean.click}"/>
+    </h:outputText>
+  </h:form>
+</w:page>
+</f:view>

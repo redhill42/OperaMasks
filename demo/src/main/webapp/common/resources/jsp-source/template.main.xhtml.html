@@ -1,0 +1,193 @@
+<html>
+<head>
+<style type="text/css">
+html, body {
+      font-size: 10px;
+      margin:0;
+      padding:0;
+      border:0 none;
+      overflow:auto;
+      height:100%;
+  }
+  
+</style>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<script class="javascript" src="../js/highlight.js"></script>
+</head>
+<body>
+<textarea id="code" class="xml" style="display:none;">
+<?xml version="1.0" encoding="UTF-8"?>
+<f:view xmlns:f="http://java.sun.com/jsf/core"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:layout="http://www.apusic.com/jsf/layout"
+        xmlns:w="http://www.apusic.com/jsf/widget"
+        xmlns:ajax="http://www.apusic.com/jsf/ajax">
+<style>
+dt {
+  font-size: 11pt;
+  font-weight: bold;
+}
+
+dd a {
+  font-size: 11pt;
+  color: #4A719A;
+}
+
+dd .date {
+  text-align: right;
+  font-size: 10pt;
+  color: gray;
+}
+
+dd .author {
+  text-align: left;
+  font-size: 10pt;
+  color: gray;
+}
+
+dd span {
+  font-size: 10pt;
+}
+
+dd {
+  margin-top: 10px;
+}
+</style>
+<layout:template src="#{templateBean.templateURL}">
+    <layout:facelet name="left">
+      <dl style="width: 220px;">
+        <dt>新闻</dt>
+        <dd>
+        <a href="#">OperaMasks 1.1M3发布！</a>
+        <br/>
+        <div class="date">2007年10月15日</div>
+        </dd>
+        <dd>
+        <a href="#">OperaMasks 1.1M2发布！</a>
+        <div class="date">2007年8月29日</div>
+        </dd>
+        <dd>
+        <a href="#">OperaMasks 1.1M1发布！</a>
+        <div class="date">2007年8月14日</div>
+        </dd>
+        <dd>
+        <a href="#">OperaMasks 1.0发布！</a>
+        <div class="date">2007年7月17日</div>
+        </dd>
+        <dd style="text-align: right">
+        <a href="#">more..</a>
+        </dd>
+      </dl>
+
+    </layout:facelet>
+    <layout:facelet name="center">
+      <div
+        style="border-left-color: #4A719A; border-left-style: solid; border-left-width: 1px;">
+
+      <dl style="margin-left: 10px;">
+        <dt>文章</dt>
+        <dd>
+        <a
+          href="http://www.operamasks.org/articles/08-validation/html_single">AOM-Tutorials
+        8：数据验证</a>
+        <br/>
+        <div class="author">Post by：roman 2007-10-10</div>
+        <span> 本系列文章是作为 JSF 和 AOM
+        的入门教程。本文是此教程的第八篇，介绍如何在JSF中进行数据验证，包括手工校验、隐式校验、显式校验，以及编写自己的校验方法。 </span>
+        </dd>
+        <dd>
+        <a
+          href="http://www.operamasks.org/articles/07-html-library/html_single">AOM-Tutorials
+        7：The h Library</a>
+        <br/>
+        <div class="author">Post by：yangpeng 2007-10-09</div>
+        <span>本系列文章是作为 JSF 和 AOM
+        的入门教程。本文是此教程的第七篇，介绍如何在JSF中使用最常用的以h打头的 tag library。</span>
+        </dd>
+
+        <dd>
+        <a href="http://www.operamasks.org/articles/06-event/html_single">AOM-Tutorials
+        6：事件处理机制</a>
+        <br/>
+        <div class="author">Post by：evadam 2007-10-08</div>
+        <span>本系列文章是作为 JSF 和 AOM 的入门教程。本文是此教程的第六篇，介绍JSF的事件处理机制，包括
+        ActionListener 与 ValueChangeListener。 </span>
+        </dd>
+
+        <dd>
+        <a href="http://www.operamasks.org/articles/05-messages/html_single">AOM-Tutorials
+        5：国际化</a>
+        <br/>
+        <div class="author">Post by：roman None</div>
+        <span>本系列文章是作为 JSF 和 AOM 的入门教程。本文是此教程的第五篇，介绍如何在AOM中使用国际化。</span>
+        </dd>
+
+        <dd>
+        <a href="http://www.operamasks.org/articles/04-jsf-el/html_single">AOM-Tutorials
+        4：EL表达式</a>
+        <br/>
+        <div class="author">Post by：roger None</div>
+        <span>本系列文章是作为 JSF 和 AOM 的入门教程。本文是此教程的第四篇，介绍如何在AOM中使用JSF EL
+        表达式，以及在 AOM 中的一些扩展。</span>
+        </dd>
+
+        <dd>
+        <a href="http://www.operamasks.org/articles/03-beans/html_single">AOM-Tutorials
+        3：托管 Bean</a>
+        <br/>
+        <div class="author">Post by：Orange 2007-09-19</div>
+        <span>本系列文章是作为 JSF 和 AOM 的入门教程。本文是此教程的第三篇，介绍如何在AOM中使用Managed
+        Bean，既介绍了JSF规范中定义的标准用法，也介绍了AOM是如何对其进行简化与增强的。</span>
+        </dd>
+
+        <dd>
+        <a
+          href="http://www.operamasks.org/articles/02-page-navigation/html_single">AOM-Tutorials
+        2：页面导航</a>
+        <br/>
+        <div class="author">Post by： oliver 2007-09-17</div>
+        <span>本系列文章是作为 JSF 和 AOM
+        的入门教程。本文是此教程的第二篇，主要介绍在JSF中如何进行页面导航，并介绍了AOM的一些增强特性。</span>
+        </dd>
+
+        <dd>
+        <a
+          href="http://www.operamasks.org/articles/01-jsf-intro/html_single">
+        AOM-Tutorials 1：JSF 概要介绍</a>
+        <br/>
+        <div class="author">Post by： Kevin 2007-09-14</div>
+        <span>本系列文章是作为 JSF 和 AOM 的入门教程。本文是此教程的第一篇，主要介绍一些JSF的基础知识，并将其和
+        Struts 等其它 Web 开发解决方案进行一些比较。</span>
+        </dd>
+      </dl>
+      </div>
+
+    </layout:facelet>
+</layout:template>
+</f:view>
+</textarea>
+<script class="javascript">
+var text = document.getElementById('code').value ;
+var html = highlightCode( "xml" , "xml" , true , text ) ;
+window.setTimeout(function() {
+    var css = "<link href='../styles/highlight.css' rel='stylesheet' type='text/css'>" ;
+    document.open('text/html');
+    if(document.implementation && document.implementation.createDocument) {
+        var htmlStr = css + html.xml ;
+        document.write(htmlStr);
+        document.close();
+    }
+    else {
+        var h = window.onerror;
+        window.onerror = function(){return true;}
+        html = css + html ;
+        document.write(html);
+        window.onerror = h;
+        document.close();
+        window.location.reload(false);
+    }
+}, 50);
+
+</script>
+</body>
+</html>

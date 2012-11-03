@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<f:view xmlns:f="http://java.sun.com/jsf/core"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:w="http://www.apusic.com/jsf/widget"
+        xmlns:ajax="http://www.apusic.com/jsf/ajax"
+        renderKitId="AJAX">
+
+<w:page title="Static Nodes Tree">
+<w:head>
+<script type="text/javascript" src="/_global/script/logging.js"></script>
+<!--<script type="text/javascript" src="/operamasks-examples/js/ext-all-debug.js"></script>-->
+<w:stylesheet src="/common/resources/examples.css"/>
+</w:head>
+<div class="examDesc">
+<p>本例展示如何使用Tree组件，节点数据使用TreeNode标签以静态的方式提供</p>
+</div> 
+<h:form>
+<table width="100%">
+<tr>
+<td width="20%">
+  <w:tree>
+    <w:treeEventListener binding="#{StaticNodesTree}" select="true" collapse="true" expand="true"/>
+
+    <w:treeNode userData="Desktop" image="images/desktop.gif" expand="true">
+      <w:treeNode userData="My Documents" image="images/my_documents.gif" expand="true">
+        <w:treeNode userData="My Music" image="images/my_music.gif">
+        	<w:treeNode userData="Song 1" image="images/document_music.gif" />
+        	<w:treeNode userData="Song 2" image="images/document_music.gif" />
+        	<w:treeNode userData="Song 3" image="images/document_music.gif" />
+        </w:treeNode>
+        <w:treeNode userData="My Pictures" image="images/my_pictures.gif">
+	        <w:treeNode userData="Picture 1" image="images/document_gif.gif" />
+        	<w:treeNode userData="Picture 2" image="images/document_jpg.gif" />
+        	<w:treeNode userData="Picture 3" image="images/document_jpg.gif" />
+        </w:treeNode>
+        <w:treeNode userData="Text 1" image="images/document_text.gif" />
+        <w:treeNode userData="Text 2" image="images/document_text.gif" />
+        <w:treeNode userData="Rich Text 1" image="images/document_word.gif" />
+        <w:treeNode userData="Spreadsheet 1" image="images/document_excel.gif" />
+      </w:treeNode>
+      <w:treeNode userData="My Computer" image="images/my_computer.gif" expand="true">
+      	<w:treeNode userData="3.5 Floppy (A:)" image="images/floppy_drive.gif" />
+      	<w:treeNode userData="System (C:)" image="images/hard_drive.gif" />
+      	<w:treeNode userData="Data (D:)" image="images/hard_drive.gif" />
+      	<w:treeNode userData="CD-Drive (E:)" image="images/cd_drive.gif" />
+      	<w:treeNode userData="Control Panel" image="images/control_panel.gif" />
+      </w:treeNode>
+      <w:treeNode userData="My Network Places" image="images/my_network_places.gif">
+      	<w:treeNode userData="Entire Network" image="images/entire_network.gif">
+	      	<w:treeNode userData="Computer 1" image="images/my_computer.gif" />
+	      	<w:treeNode userData="Computer 2" image="images/my_computer.gif" />
+	      	<w:treeNode userData="Computer 3" image="images/my_computer.gif" />
+      	</w:treeNode>
+      </w:treeNode>
+    </w:treeNode>
+  </w:tree>
+</td>
+<td valign="top">
+<h:outputText value="#{StaticNodesTree.response}"/>
+</td>
+</tr>
+</table>
+</h:form>
+</w:page>
+</f:view>

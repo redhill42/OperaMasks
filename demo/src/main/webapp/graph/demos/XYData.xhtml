@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<f:view xmlns:f="http://java.sun.com/jsf/core"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:w="http://www.apusic.com/jsf/widget"
+        xmlns:g="http://www.apusic.com/jsf/graph">
+  <w:dataGrid jsvar="xyDataGrid" value="#{XYData}" var="xy" loadMask="false">
+    <w:outputColumn id="x" header="X" value="#{xy[0].x}" align="right"/>
+    <w:outputColumn id="y1" header="Random 1" value="#{xy[0].y}" align="right"/>
+    <w:outputColumn id="y2" header="Random 2" value="#{xy[1].y}" align="right"/>
+  </w:dataGrid>
+
+</f:view>

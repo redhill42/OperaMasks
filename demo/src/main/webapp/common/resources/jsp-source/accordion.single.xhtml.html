@@ -1,0 +1,93 @@
+<html>
+<head>
+<style type="text/css">
+html, body {
+      font-size: 10px;
+      margin:0;
+      padding:0;
+      border:0 none;
+      overflow:auto;
+      height:100%;
+  }
+  
+</style>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<script class="javascript" src="../js/highlight.js"></script>
+</head>
+<body>
+<textarea id="code" class="xml" style="display:none;">
+<?xml version="1.0" encoding="UTF-8"?>
+<f:view xmlns:f="http://java.sun.com/jsf/core"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:w="http://www.apusic.com/jsf/widget"
+        xmlns:ajax="http://www.apusic.com/jsf/ajax"
+        xmlns:l="http://www.apusic.com/jsf/layout"
+        renderKitId="AJAX">
+
+<w:head>
+<w:stylesheet src="/common/resources/examples.css"/>
+<w:stylesheet src="/accordion/accordion.css"/>
+</w:head>
+<w:page title="Accordiong Layout">
+<l:accordionPanel title="单独的面板" icon="icons/application_edit.png" 
+style="width:300px;position:absolute;top:20px;left:10px;" collapsed="false" draggable="false">
+<div class="examDesc"><p>这是一个单独的面板，里面可以放任何内容。</p></div>
+<div class="text-content">
+<h3>可伸缩面板JSF代码</h3>
+<p>Code:</p>
+<pre class="code">
+&lt;l:accordionPanel title="单独的面板" 
+  icon="icons/application_edit.png" 
+  style="width:300px;
+         position:absolute;
+         top:20px;left:10px;" 
+    collapsed="false" 
+    draggable="true"&gt;
+    ...
+&lt;/l:accordionPanel&gt;
+</pre>
+</div>
+</l:accordionPanel>
+
+<l:accordionPanel title="内容来自于其他文件" collapsed="false" icon="icons/script_lightning.png"
+style="width:300px;position:absolute;top:20px;left:320px;" draggable="true" src="other.xhtml"/>
+
+<l:accordionPanel title="可拖动，可改变大小的面板" collapsed="false" icon="icons/arrow_turn_right.png"
+style="width:300px;position:absolute;top:150px;left:320px;" 
+draggable="true" 
+resizable="true">
+<h3>我可以拖动哦！</h3>
+鼠标放在标题栏，可以把面板拖到其他位置！<br/><br/>
+<h3>还可以改变大小！</h3>
+把鼠标放到面板边界看看，可以改变大小哦！
+</l:accordionPanel>
+
+</w:page>
+</f:view>
+</textarea>
+<script class="javascript">
+var text = document.getElementById('code').value ;
+var html = highlightCode( "xml" , "xml" , true , text ) ;
+window.setTimeout(function() {
+    var css = "<link href='../styles/highlight.css' rel='stylesheet' type='text/css'>" ;
+    document.open('text/html');
+    if(document.implementation && document.implementation.createDocument) {
+        var htmlStr = css + html.xml ;
+        document.write(htmlStr);
+        document.close();
+    }
+    else {
+        var h = window.onerror;
+        window.onerror = function(){return true;}
+        html = css + html ;
+        document.write(html);
+        window.onerror = h;
+        document.close();
+        window.location.reload(false);
+    }
+}, 50);
+
+</script>
+</body>
+</html>

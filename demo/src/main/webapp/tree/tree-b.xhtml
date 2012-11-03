@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<f:view xmlns:f="http://java.sun.com/jsf/core"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:w="http://www.apusic.com/jsf/widget"
+        xmlns:ajax="http://www.apusic.com/jsf/ajax"
+        renderKitId="AJAX">
+
+<w:page title="Dynamic Nodes Tree">
+<w:head>
+<script type="text/javascript" src="/_global/script/logging.js"></script>
+<!--<script type="text/javascript" src="/operamasks-examples/js/ext-all-debug.js"></script>-->
+<w:stylesheet src="/common/resources/examples.css"/>
+</w:head>
+<div class="examDesc">
+<p>本例展示如何使用Tree组件，节点数据由服务器端程序以动态的方式提供</p>
+</div> 
+<h:form>
+<table>
+<tr>
+<td>
+  <w:tree animate="true" style="width:200px;height:300px;border:1px solid #c3daf9;overflow:auto" lines="true"
+  		asyncData="#{DynamicNodesTree.getFilesInFolder}" nodeImage="#{DynamicNodesTree.getFileIcon}"
+  			nodeHasChildren="#{DynamicNodesTree.isFolder}" nodeText="#{DynamicNodesTree.getFileName}"
+  			saveState="true" initAction="#{DynamicNodesTree.initTree}" binding="#{DynamicNodesTree.tree}">
+	<w:treeEventListener binding="#{DynamicNodesTree}" dblClick="true" click="true" collapse="true" expand="true"/>
+	<w:treeNode userData="My Documents" async="true" image="images/my_documents.gif" />
+  </w:tree>
+</td>
+<td valign="top">
+<w:button value="Expand All" action="#{DynamicNodesTree.expandAll}" />
+<br/>
+<w:button value="Collapse All" action="#{DynamicNodesTree.collapseAll}" />
+<br/>
+<a href="tree-b.jsf">Reload page</a>
+<br/>
+<h:outputText value="#{DynamicNodesTree.response}"/>
+</td>
+</tr>
+</table>
+</h:form>
+</w:page>
+</f:view>

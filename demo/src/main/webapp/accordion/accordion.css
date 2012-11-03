@@ -1,0 +1,31 @@
+html, body {
+  font: normal 12px verdana;
+  margin: 0;
+  padding: 0;
+  border: 0 none;
+}
+.x-dock-panel .x-dock-panel-body {    
+    font: normal 12px tahoma,verdana,helvetica;    
+    text-align: left;
+    padding: 4px;
+}
+.x-layout-panel-hd-text{
+    font:normal 12px tahoma, verdana, helvetica;    
+}
+.tab-content h3 {
+    font-size:10pt;
+    margin-bottom:1ex;
+    margin-top:3ex;
+}
+.code {
+    font-size:7pt;
+}
+pre.code {
+    background:#F8F8F8 none repeat scroll 0%;
+    border-color:#E8E8E8;
+    border-style:solid;
+    border-width:1px 1px 1px 5px;
+    font-size:8pt;
+    margin:10px 0px;
+    padding:4px;
+}

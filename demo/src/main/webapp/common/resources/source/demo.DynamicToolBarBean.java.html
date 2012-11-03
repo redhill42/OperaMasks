@@ -1,0 +1,250 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head>
+<title></title>
+  <style type="text/css">
+    <!--code { font-family: Courier New, Courier; font-size: 10pt; margin: 0px; }-->
+  </style>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head><body>
+
+
+<!-- ======================================================== -->
+<!-- = Java Sourcecode to HTML automatically converted code = -->
+<!-- =   Java2Html Converter 5.0 [2006-02-26] by Markus Gebhard  markus@jave.de   = -->
+<!-- =     Further information: http://www.java2html.de     = -->
+<div align="left" class="java">
+<table border="0" cellpadding="3" cellspacing="0" bgcolor="#ffffff">
+  <!-- start headline -->
+   <tr>
+    <td colspan="2">
+     <center><font size="+2">
+      <code><b>
+DynamicToolBarBean.java
+      </b></code>
+     </font></center>
+    </td>
+   </tr>
+  <!-- end headline -->
+   <tr>
+  <!-- start source code -->
+   <td nowrap="nowrap" valign="top" align="left">
+    <code>
+<font color="#7f0055"><b>package&nbsp;</b></font><font color="#000000">demo;</font><br />
+<font color="#ffffff"></font><br />
+<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">javax.faces.component.UICommand;</font><br />
+<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">javax.faces.component.UIComponent;</font><br />
+<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">javax.faces.component.UISelectItems;</font><br />
+<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">javax.faces.component.html.HtmlCommandButton;</font><br />
+<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">javax.faces.context.FacesContext;</font><br />
+<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">javax.faces.event.ValueChangeEvent;</font><br />
+<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">javax.faces.model.SelectItem;</font><br />
+<font color="#ffffff"></font><br />
+<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">org.operamasks.faces.annotation.ManagedBean;</font><br />
+<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">org.operamasks.faces.annotation.ManagedBeanScope;</font><br />
+<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">org.operamasks.faces.component.widget.UICombo;</font><br />
+<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">org.operamasks.faces.component.widget.UISeparator;</font><br />
+<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">org.operamasks.faces.component.widget.UIToolBar;</font><br />
+<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">org.operamasks.faces.component.widget.menu.UICommandMenuItem;</font><br />
+<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">org.operamasks.faces.component.widget.menu.UILinkMenuItem;</font><br />
+<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">org.operamasks.faces.component.widget.menu.UIMenu;</font><br />
+<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">org.operamasks.faces.util.UIComponentFactory;</font><br />
+<font color="#ffffff"></font><br />
+<font color="#646464">@ManagedBean</font><font color="#000000">(</font><font color="#000000">name=</font><font color="#2a00ff">&#34;DynamicToolBar&#34;</font><font color="#000000">,&nbsp;scope=ManagedBeanScope.REQUEST</font><font color="#000000">)</font><br />
+<font color="#7f0055"><b>public&nbsp;class&nbsp;</b></font><font color="#000000">DynamicToolBarBean&nbsp;</font><font color="#000000">{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>private&nbsp;</b></font><font color="#000000">SelectItem</font><font color="#000000">[]&nbsp;</font><font color="#000000">colors&nbsp;=&nbsp;</font><font color="#000000">{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">SelectItem</font><font color="#000000">(</font><font color="#2a00ff">&#34;Red&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Red&nbsp;Color&#34;</font><font color="#000000">)</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">SelectItem</font><font color="#000000">(</font><font color="#2a00ff">&#34;Green&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Green&nbsp;Color&#34;</font><font color="#000000">)</font><font color="#000000">,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">SelectItem</font><font color="#000000">(</font><font color="#2a00ff">&#34;Blue&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Blue&nbsp;Color&#34;</font><font color="#000000">)</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>private&nbsp;</b></font><font color="#000000">UIToolBar&nbsp;toolbar;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>private&nbsp;</b></font><font color="#000000">String&nbsp;response;</font><br />
+<font color="#ffffff"></font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;</b></font><font color="#000000">UIToolBar&nbsp;getToolbar</font><font color="#000000">()&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>return&nbsp;</b></font><font color="#000000">toolbar;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff"></font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;</b></font><font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">setToolbar</font><font color="#000000">(</font><font color="#000000">UIToolBar&nbsp;toolbar</font><font color="#000000">)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>this</b></font><font color="#000000">.toolbar&nbsp;=&nbsp;toolbar;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff"></font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;</b></font><font color="#000000">String&nbsp;getResponse</font><font color="#000000">()&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>return&nbsp;</b></font><font color="#000000">response;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff"></font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;</b></font><font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">setResponse</font><font color="#000000">(</font><font color="#000000">String&nbsp;response</font><font color="#000000">)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>this</b></font><font color="#000000">.response&nbsp;=&nbsp;response;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;</b></font><font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">addMenu</font><font color="#000000">()&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>for&nbsp;</b></font><font color="#000000">(</font><font color="#000000">UIComponent&nbsp;component&nbsp;:&nbsp;toolbar.getChildren</font><font color="#000000">())&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>if&nbsp;</b></font><font color="#000000">(</font><font color="#000000">component&nbsp;</font><font color="#7f0055"><b>instanceof&nbsp;</b></font><font color="#000000">UIMenu</font><font color="#000000">)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">response&nbsp;=&nbsp;</font><font color="#2a00ff">&#34;Menu&nbsp;has&nbsp;already&nbsp;added.&#34;</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>return</b></font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">FacesContext&nbsp;context&nbsp;=&nbsp;FacesContext.getCurrentInstance</font><font color="#000000">()</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">UIComponentFactory&nbsp;factory&nbsp;=&nbsp;</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">UIComponentFactory</font><font color="#000000">()</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">UICommandMenuItem&nbsp;text&nbsp;=&nbsp;createMenuItem</font><font color="#000000">(</font><font color="#000000">context,&nbsp;factory,&nbsp;</font><font color="#2a00ff">&#34;文本文件&#34;</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">UICommandMenuItem&nbsp;xml&nbsp;=&nbsp;createMenuItem</font><font color="#000000">(</font><font color="#000000">context,&nbsp;factory,&nbsp;</font><font color="#2a00ff">&#34;XML文件&#34;</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">UICommandMenuItem&nbsp;java&nbsp;=&nbsp;createMenuItem</font><font color="#000000">(</font><font color="#000000">context,&nbsp;factory,&nbsp;</font><font color="#2a00ff">&#34;Java文件&#34;</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff"></font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">UIMenu&nbsp;_new&nbsp;=&nbsp;createMenu</font><font color="#000000">(</font><font color="#000000">context,&nbsp;factory,&nbsp;</font><font color="#2a00ff">&#34;新建&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;images/new.gif&#34;</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">_new.getChildren</font><font color="#000000">()</font><font color="#000000">.add</font><font color="#000000">(</font><font color="#000000">text</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">_new.getChildren</font><font color="#000000">()</font><font color="#000000">.add</font><font color="#000000">(</font><font color="#000000">xml</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">_new.getChildren</font><font color="#000000">()</font><font color="#000000">.add</font><font color="#000000">(</font><font color="#000000">java</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">UICommandMenuItem&nbsp;open&nbsp;=&nbsp;createCommandMenuItem</font><font color="#000000">(</font><font color="#000000">context,&nbsp;factory,&nbsp;</font><font color="#2a00ff">&#34;打开&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;images/open.gif&#34;</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">UICommandMenuItem&nbsp;save&nbsp;=&nbsp;createCommandMenuItem</font><font color="#000000">(</font><font color="#000000">context,&nbsp;factory,&nbsp;</font><font color="#2a00ff">&#34;保存&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;images/save.gif&#34;</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">UISeparator&nbsp;separator&nbsp;=&nbsp;createSeparator</font><font color="#000000">(</font><font color="#000000">context,&nbsp;factory</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">UILinkMenuItem&nbsp;close&nbsp;=&nbsp;createLinkMenuItem</font><font color="#000000">(</font><font color="#000000">context,&nbsp;factory,&nbsp;</font><font color="#2a00ff">&#34;关闭&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;dynamicToolbar.jsp&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;return&nbsp;confirm('Are&nbsp;you&nbsp;sure?')&#34;</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff"></font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">UIMenu&nbsp;file&nbsp;=&nbsp;createMenu</font><font color="#000000">(</font><font color="#000000">context,&nbsp;factory,&nbsp;</font><font color="#2a00ff">&#34;File&#34;</font><font color="#000000">,&nbsp;null,&nbsp;</font><font color="#2a00ff">&#34;#{DynamicToolBar.menuAction}&#34;</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">file.getChildren</font><font color="#000000">()</font><font color="#000000">.add</font><font color="#000000">(</font><font color="#000000">_new</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">file.getChildren</font><font color="#000000">()</font><font color="#000000">.add</font><font color="#000000">(</font><font color="#000000">open</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">file.getChildren</font><font color="#000000">()</font><font color="#000000">.add</font><font color="#000000">(</font><font color="#000000">save</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">file.getChildren</font><font color="#000000">()</font><font color="#000000">.add</font><font color="#000000">(</font><font color="#000000">separator</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">file.getChildren</font><font color="#000000">()</font><font color="#000000">.add</font><font color="#000000">(</font><font color="#000000">close</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">toolbar.addItem</font><font color="#000000">(</font><font color="#000000">file</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>private&nbsp;</b></font><font color="#000000">UILinkMenuItem&nbsp;createLinkMenuItem</font><font color="#000000">(</font><font color="#000000">FacesContext&nbsp;context,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">UIComponentFactory&nbsp;factory,&nbsp;String&nbsp;label,&nbsp;String&nbsp;value,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">String&nbsp;onclick</font><font color="#000000">)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">factory.clear</font><font color="#000000">()</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">factory.addAttribute</font><font color="#000000">(</font><font color="#2a00ff">&#34;label&#34;</font><font color="#000000">,&nbsp;label</font><font color="#000000">)</font><font color="#000000">.</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">addAttribute</font><font color="#000000">(</font><font color="#2a00ff">&#34;value&#34;</font><font color="#000000">,&nbsp;value</font><font color="#000000">)</font><font color="#000000">.</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">addAttribute</font><font color="#000000">(</font><font color="#2a00ff">&#34;onclick&#34;</font><font color="#000000">,&nbsp;onclick</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff"></font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>return&nbsp;</b></font><font color="#000000">factory.createLinkMenuItem</font><font color="#000000">(</font><font color="#000000">context</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff"></font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>private&nbsp;</b></font><font color="#000000">UISeparator&nbsp;createSeparator</font><font color="#000000">(</font><font color="#000000">FacesContext&nbsp;context,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">UIComponentFactory&nbsp;factory</font><font color="#000000">)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">factory.clear</font><font color="#000000">()</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>return&nbsp;</b></font><font color="#000000">(</font><font color="#000000">UISeparator</font><font color="#000000">)</font><font color="#000000">factory.createComponent</font><font color="#000000">(</font><font color="#000000">context,&nbsp;UISeparator.COMPONENT_TYPE</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff"></font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>private&nbsp;</b></font><font color="#000000">UIMenu&nbsp;createMenu</font><font color="#000000">(</font><font color="#000000">FacesContext&nbsp;context,&nbsp;UIComponentFactory&nbsp;factory,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">String&nbsp;label,&nbsp;String&nbsp;image</font><font color="#000000">)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>return&nbsp;</b></font><font color="#000000">createMenu</font><font color="#000000">(</font><font color="#000000">context,&nbsp;factory,&nbsp;label,&nbsp;image,&nbsp;</font><font color="#7f0055"><b>null</b></font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>private&nbsp;</b></font><font color="#000000">UIMenu&nbsp;createMenu</font><font color="#000000">(</font><font color="#000000">FacesContext&nbsp;context,&nbsp;UIComponentFactory&nbsp;factory,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">String&nbsp;label,&nbsp;String&nbsp;image,&nbsp;String&nbsp;action</font><font color="#000000">)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">factory.clear</font><font color="#000000">()</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">factory.addAttribute</font><font color="#000000">(</font><font color="#2a00ff">&#34;label&#34;</font><font color="#000000">,&nbsp;label</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>if&nbsp;</b></font><font color="#000000">(</font><font color="#000000">image&nbsp;!=&nbsp;</font><font color="#7f0055"><b>null</b></font><font color="#000000">)</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">factory.addAttribute</font><font color="#000000">(</font><font color="#2a00ff">&#34;image&#34;</font><font color="#000000">,&nbsp;image</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>if&nbsp;</b></font><font color="#000000">(</font><font color="#000000">action&nbsp;!=&nbsp;</font><font color="#7f0055"><b>null</b></font><font color="#000000">)</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">factory.addAttribute</font><font color="#000000">(</font><font color="#2a00ff">&#34;action&#34;</font><font color="#000000">,&nbsp;action</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff"></font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>return&nbsp;</b></font><font color="#000000">factory.createMenu</font><font color="#000000">(</font><font color="#000000">context</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff"></font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>private&nbsp;</b></font><font color="#000000">UICommandMenuItem&nbsp;createMenuItem</font><font color="#000000">(</font><font color="#000000">FacesContext&nbsp;context,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">UIComponentFactory&nbsp;factory,&nbsp;String&nbsp;label</font><font color="#000000">)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">factory.clear</font><font color="#000000">()</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">factory.addAttribute</font><font color="#000000">(</font><font color="#2a00ff">&#34;label&#34;</font><font color="#000000">,&nbsp;label</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>return&nbsp;</b></font><font color="#000000">factory.createCommandMenuItem</font><font color="#000000">(</font><font color="#000000">context</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>private&nbsp;</b></font><font color="#000000">UICommandMenuItem&nbsp;createCommandMenuItem</font><font color="#000000">(</font><font color="#000000">FacesContext&nbsp;context,</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">UIComponentFactory&nbsp;factory,&nbsp;String&nbsp;label,&nbsp;String&nbsp;image</font><font color="#000000">)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">factory.clear</font><font color="#000000">()</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">factory.addAttribute</font><font color="#000000">(</font><font color="#2a00ff">&#34;label&#34;</font><font color="#000000">,&nbsp;label</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>if&nbsp;</b></font><font color="#000000">(</font><font color="#000000">image&nbsp;!=&nbsp;</font><font color="#7f0055"><b>null</b></font><font color="#000000">)</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">factory.addAttribute</font><font color="#000000">(</font><font color="#2a00ff">&#34;image&#34;</font><font color="#000000">,&nbsp;image</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>return&nbsp;</b></font><font color="#000000">factory.createCommandMenuItem</font><font color="#000000">(</font><font color="#000000">context</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff"></font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;</b></font><font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">addButton</font><font color="#000000">()&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>for&nbsp;</b></font><font color="#000000">(</font><font color="#000000">UIComponent&nbsp;component&nbsp;:&nbsp;toolbar.getChildren</font><font color="#000000">())&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>if&nbsp;</b></font><font color="#000000">(</font><font color="#000000">component&nbsp;</font><font color="#7f0055"><b>instanceof&nbsp;</b></font><font color="#000000">UICommand&nbsp;&amp;&amp;&nbsp;isNotMenu</font><font color="#000000">(</font><font color="#000000">component</font><font color="#000000">))&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">response&nbsp;=&nbsp;</font><font color="#2a00ff">&#34;Button&nbsp;has&nbsp;already&nbsp;added.&#34;</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>return</b></font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">HtmlCommandButton&nbsp;command&nbsp;=&nbsp;</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">UIComponentFactory</font><font color="#000000">()</font><font color="#000000">.</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">addAttribute</font><font color="#000000">(</font><font color="#2a00ff">&#34;value&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;Click&nbsp;me&#34;</font><font color="#000000">)</font><font color="#000000">.</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">addAttribute</font><font color="#000000">(</font><font color="#2a00ff">&#34;image&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;images/example.gif&#34;</font><font color="#000000">)</font><font color="#000000">.</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">addAttribute</font><font color="#000000">(</font><font color="#2a00ff">&#34;action&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;#{DynamicToolBar.click}&#34;</font><font color="#000000">)</font><font color="#000000">.</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">createButton</font><font color="#000000">(</font><font color="#000000">FacesContext.getCurrentInstance</font><font color="#000000">())</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">toolbar.addItem</font><font color="#000000">(</font><font color="#000000">command</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff"></font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>private&nbsp;</b></font><font color="#7f0055"><b>boolean&nbsp;</b></font><font color="#000000">isNotMenu</font><font color="#000000">(</font><font color="#000000">UIComponent&nbsp;component</font><font color="#000000">)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>return&nbsp;</b></font><font color="#000000">(</font><font color="#000000">!</font><font color="#000000">(</font><font color="#000000">component&nbsp;</font><font color="#7f0055"><b>instanceof&nbsp;</b></font><font color="#000000">UIMenu</font><font color="#000000">)&nbsp;</font><font color="#000000">&amp;&amp;&nbsp;!</font><font color="#000000">(</font><font color="#000000">component&nbsp;</font><font color="#7f0055"><b>instanceof&nbsp;</b></font><font color="#000000">UICommandMenuItem</font><font color="#000000">))</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff"></font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;</b></font><font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">addCombo</font><font color="#000000">()&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>for&nbsp;</b></font><font color="#000000">(</font><font color="#000000">UIComponent&nbsp;component&nbsp;:&nbsp;toolbar.getChildren</font><font color="#000000">())&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>if&nbsp;</b></font><font color="#000000">(</font><font color="#000000">component&nbsp;</font><font color="#7f0055"><b>instanceof&nbsp;</b></font><font color="#000000">UICombo</font><font color="#000000">)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">response&nbsp;=&nbsp;</font><font color="#2a00ff">&#34;Combo&nbsp;has&nbsp;already&nbsp;added.&#34;</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>return</b></font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">UIComponentFactory&nbsp;factory&nbsp;=&nbsp;</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">UIComponentFactory</font><font color="#000000">()</font><font color="#000000">.</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">addAttribute</font><font color="#000000">(</font><font color="#2a00ff">&#34;valueChangeListener&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;#{DynamicToolBar.valueChange}&#34;</font><font color="#000000">)</font><font color="#000000">.</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">addAttribute</font><font color="#000000">(</font><font color="#2a00ff">&#34;emptyText&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;请选择颜色...&#34;</font><font color="#000000">)</font><font color="#000000">.</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">addAttribute</font><font color="#000000">(</font><font color="#2a00ff">&#34;typeAhead&#34;</font><font color="#000000">,&nbsp;</font><font color="#7f0055"><b>true</b></font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">UICombo&nbsp;combo&nbsp;=&nbsp;factory.createCombo</font><font color="#000000">(</font><font color="#000000">FacesContext.getCurrentInstance</font><font color="#000000">())</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">factory.clear</font><font color="#000000">()</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">factory.addAttribute</font><font color="#000000">(</font><font color="#2a00ff">&#34;value&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;#{DynamicToolBar.colors}&#34;</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">UISelectItems&nbsp;selectItems&nbsp;=&nbsp;factory.createUISelectItems</font><font color="#000000">(</font><font color="#000000">FacesContext.getCurrentInstance</font><font color="#000000">())</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">combo.getChildren</font><font color="#000000">()</font><font color="#000000">.add</font><font color="#000000">(</font><font color="#000000">selectItems</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">toolbar.addItem</font><font color="#000000">(</font><font color="#000000">combo</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;</b></font><font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">valueChange</font><font color="#000000">(</font><font color="#000000">ValueChangeEvent&nbsp;event</font><font color="#000000">)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">response&nbsp;=&nbsp;event.getNewValue</font><font color="#000000">()&nbsp;</font><font color="#000000">+&nbsp;</font><font color="#2a00ff">&#34;&nbsp;selected&#34;</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;</b></font><font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">click</font><font color="#000000">()&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">response&nbsp;=&nbsp;</font><font color="#2a00ff">&#34;Click&nbsp;me&#34;</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;</b></font><font color="#000000">String&nbsp;menuAction</font><font color="#000000">(</font><font color="#000000">UIComponent&nbsp;item</font><font color="#000000">)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">String&nbsp;label&nbsp;=&nbsp;</font><font color="#000000">(</font><font color="#000000">String</font><font color="#000000">)</font><font color="#000000">item.getAttributes</font><font color="#000000">()</font><font color="#000000">.get</font><font color="#000000">(</font><font color="#2a00ff">&#34;label&#34;</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">response&nbsp;=&nbsp;item.getId</font><font color="#000000">()&nbsp;</font><font color="#000000">+&nbsp;</font><font color="#2a00ff">&#34;&nbsp;(&#34;&nbsp;</font><font color="#000000">+&nbsp;label&nbsp;+&nbsp;</font><font color="#2a00ff">&#34;)&nbsp;selected&#34;</font><font color="#000000">;</font><br />
+<font color="#ffffff"></font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>return&nbsp;null</b></font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff"></font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;</b></font><font color="#000000">SelectItem</font><font color="#000000">[]&nbsp;</font><font color="#000000">getColors</font><font color="#000000">()&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>return&nbsp;</b></font><font color="#000000">colors;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;</b></font><font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">addSeparator</font><font color="#000000">()&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">toolbar.addItem</font><font color="#000000">(</font><font color="#000000">createSeparator</font><font color="#000000">(</font><font color="#000000">FacesContext.getCurrentInstance</font><font color="#000000">()</font><font color="#000000">,&nbsp;</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">UIComponentFactory</font><font color="#000000">()))</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#000000">}</font></code>
+    
+   </td>
+  <!-- end source code -->
+   </tr>
+</table>
+</div>
+<!-- =       END of automatically generated HTML code       = -->
+<!-- ======================================================== -->
+
+
+</body></html>

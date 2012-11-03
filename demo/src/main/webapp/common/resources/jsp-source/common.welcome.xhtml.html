@@ -1,0 +1,171 @@
+<html>
+<head>
+<style type="text/css">
+html, body {
+      font-size: 10px;
+      margin:0;
+      padding:0;
+      border:0 none;
+      overflow:auto;
+      height:100%;
+  }
+  
+</style>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<script class="javascript" src="../js/highlight.js"></script>
+</head>
+<body>
+<textarea id="code" class="xml" style="display:none;">
+<?xml version="1.0" encoding="UTF-8"?>
+<f:view xmlns:f="http://java.sun.com/jsf/core"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:w="http://www.apusic.com/jsf/widget"
+        xmlns:ajax="http://www.apusic.com/jsf/ajax">
+<w:head>
+<style type="text/css">
+body{	
+	font-family: Tahoma, Verdana, Arial, Helvetica, sans-serif;
+	color: #000000;
+	margin: 0px;
+	font-size:13px;
+	padding-bottom:15px;
+}
+a {
+	color: #083772;
+}
+a:link {
+	color: #083772;
+	text-decoration: none;
+}
+
+a:visited {
+   color: #1e4e8f;
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+	color: #0000CC;
+}
+.col{
+	width:45%;
+	float:left;
+	margin-left:10px;
+}
+.title{
+	color: #083772;
+	font-weight: bold;
+	font-size: 14px;
+	padding: 4px;
+	padding-left: 8px;
+}
+.block-title{
+	color: #083772;
+	font-weight: bold;
+	font-size: 12px;
+	padding: 1px;
+	padding-left: 8px;
+}
+
+.block-body{
+	padding:8px;
+	padding-top:2px;
+}
+.block-body b{
+	color:#333333;
+	font-size:11px;
+}
+.block-body em {
+	display:block;
+	margin-top:5px;
+	font-size:11px;
+   color:gray;
+	text-align:right;
+}
+.list{
+	list-style: square;
+	padding-left:20px;
+	margin-top:5px;
+}
+</style>
+<w:requires package="Utilities"/>
+</w:head>
+<w:page title="Welcome to OperaMasks">
+<table border="0" width="100%" height="100%" cellspacing="0" cellpadding="0">
+<tr>
+<td valign="center" align="center">
+  <div class="title">
+  <h2>欢迎来到OperaMasks在线示例中心</h2>
+  </div>
+    <w:panelBox style="width:60%;"
+                color="#cfe2ff" color2="#b2d0f6" color3="#c3daf9" gradientExtent="18"
+                border="1" borderColor="silver" borderRadius="12" roundedCorners="tl,br" bgcolor="#FFFFFF">
+      <div class="block-title" style="text-align:left">
+      <h3>本示例包含的内容</h3>
+      </div>
+      <div class="block-body" style="text-align:left">
+      <p>本示例包含了OperaMasks JSF组件库的最新组件的功能演示及使用说明</p>
+      <p>针对每个示例，均提供了演示效果、ManagedBean源码、JSP源码三部分内容</p>
+      </div>
+    </w:panelBox>
+  <br/>
+    <w:panelBox style="width:60%;"              
+                color="#cfe2ff" color2="#b2d0f6" color3="#c3daf9" gradientExtent="18"
+                border="1" borderColor="silver" borderRadius="12" roundedCorners="tl,br" bgcolor="#FFFFFF">
+      <div class="block-title" style="text-align:left">
+      <h3>如何使用本示例</h3>
+      </div>
+      <div class="block-body" style="text-align:left">
+      <p>在左边示例导航视图选择示例，即可在本窗口看到示例的运行效果</p>
+      <p>在本窗口底部点击“ManagedBean源码”，可查看示例所对应的ManagedBean的java源代码</p>
+      <p>在本窗口底部点击“JSP源码”，可查看示例所对应的JSP页面的源代码</p>
+      </div>
+    </w:panelBox>
+  <br/>
+    <w:panelBox style="width:60%;"
+                color="#cfe2ff" color2="#b2d0f6" color3="#c3daf9" gradientExtent="18"
+                border="1" borderColor="silver" borderRadius="12" roundedCorners="tl,br" bgcolor="#FFFFFF">
+      <div class="block-title" style="text-align:left">
+      <h3>如何获取本示例</h3>
+      </div>
+      <div class="block-body" style="text-align:left">
+      <p>本示例的完整web应用包（jsfdemo.war）可在<a href="http://www.operamasks.org" target="_new">www.operamasks.org</a>下载</p>
+      <p>本示例所包含的所有页面及源代码均可在<a href="http://www.operamasks.org" target="_new">OperaMasks CVS</a>上checkout</p>
+      <p>OperaMasks的CVS的使用说明可以参考<a href="http://www.operamasks.org" target="_new">OperaMasks CVS使用说明</a></p>
+      </div>
+    </w:panelBox>
+
+</td>
+</tr>
+</table>
+
+</w:page>
+</f:view>
+
+</textarea>
+<script class="javascript">
+var text = document.getElementById('code').value ;
+var html = highlightCode( "xml" , "xml" , true , text ) ;
+window.setTimeout(function() {
+    var css = "<link href='../styles/highlight.css' rel='stylesheet' type='text/css'>" ;
+    document.open('text/html');
+    if(document.implementation && document.implementation.createDocument) {
+        var htmlStr = css + html.xml ;
+        document.write(htmlStr);
+        document.close();
+    }
+    else {
+        var h = window.onerror;
+        window.onerror = function(){return true;}
+        html = css + html ;
+        document.write(html);
+        window.onerror = h;
+        document.close();
+        window.location.reload(false);
+    }
+}, 50);
+
+</script>
+</body>
+</html>

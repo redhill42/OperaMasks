@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<f:view xmlns:f="http://java.sun.com/jsf/core"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:w="http://www.apusic.com/jsf/widget"
+        xmlns:ajax="http://www.apusic.com/jsf/ajax">
+  <w:form rich="true">
+    <h2>Hello, my name is Duke. What is yours?</h2>
+    <h:graphicImage url="/ajax/updater/duke.gif"></h:graphicImage>
+    <h:outputText value="#{demo.helloduke.UserBean.result}" />
+    <br/>
+    <h:inputText value="#{demo.helloduke.UserBean.name}"></h:inputText>
+    <h:commandButton value="sayHello" action="#{demo.helloduke.UserBean.sayHello}" />
+  </w:form>
+</f:view>

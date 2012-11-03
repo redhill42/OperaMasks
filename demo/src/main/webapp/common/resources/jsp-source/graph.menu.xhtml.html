@@ -1,0 +1,115 @@
+<html>
+<head>
+<style type="text/css">
+html, body {
+      font-size: 10px;
+      margin:0;
+      padding:0;
+      border:0 none;
+      overflow:auto;
+      height:100%;
+  }
+  
+</style>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<script class="javascript" src="../js/highlight.js"></script>
+</head>
+<body>
+<textarea id="code" class="xml" style="display:none;">
+<?xml version="1.0" encoding="UTF-8"?>
+<f:view xmlns:f="http://java.sun.com/jsf/core"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:w="http://www.apusic.com/jsf/widget"
+        xmlns:ajax="http://www.apusic.com/jsf/ajax"
+        renderKitId="AJAX">
+<w:tree>
+  <w:treeEventListener binding="#{ChartMenu}" click="true"/>
+  <w:treeNode userData="root" text="JSF Chart Demo" allowsChildren="true" expand="true">
+    <w:treeNode userData="AreaCharts" text="Area Charts">
+      <w:treeNode userData="AreaChartDemo_CategoryData" text="Area Chart Demo"/>
+      <w:treeNode userData="StackedAreaChartDemo_CategoryData" text="Stacked Area Chart Demo"/>
+      <w:treeNode userData="XYAreaChartDemo_XYData" text="XY Area Chart Demo"/>
+      <w:treeNode userData="TimeSeriesAreaChartDemo_TimeSeriesData" text="Time Series Area Chart Demo"/>
+    </w:treeNode>
+    <w:treeNode userData="BarCharts" text="Bar Charts">
+      <w:treeNode userData="BarChartDemo_CategoryData" text="Bar Chart Demo"/>
+      <w:treeNode userData="BarChart3DDemo_CategoryData" text="3D Bar Chart Demo"/>
+      <w:treeNode userData="HorizontalBarChartDemo_CategoryData" text="Horizontal Bar Chart Demo"/>
+      <w:treeNode userData="HorizontalBarChart3DDemo_CategoryData" text="Horizontal 3D Bar Chart Demo"/>
+      <w:treeNode userData="StackedBarChartDemo_CategoryData" text="Stacked Bar Chart Demo"/>
+      <w:treeNode userData="StackedBarChart3DDemo_CategoryData" text="Stacked 3D Bar Chart Demo"/>
+      <w:treeNode userData="HorizontalStackedBarChartDemo_CategoryData" text="Horizontal Stacked Bar Chart Demo"/>
+      <w:treeNode userData="HorizontalStackedBarChart3DDemo_CategoryData" text="Horizontal Stacked 3D Bar Chart Demo"/>
+      <w:treeNode userData="XYBarChartDemo_XYData" text="XY Bar Chart Demo"/>
+      <w:treeNode userData="TimeSeriesBarChartDemo_TimeSeriesData" text="Time Series Bar Chart Demo"/>
+      <w:treeNode userData="HistogramBarChartDemo" text="Histogram Bar Chart Demo"/>
+    </w:treeNode>
+    <w:treeNode userData="LineCharts" text="Line Charts">
+      <w:treeNode userData="LineChartDemo_CategoryData" text="Line Chart Demo"/>
+      <w:treeNode userData="LineChart3DDemo_CategoryData" text="3D Line Chart Demo"/>
+      <w:treeNode userData="XYLineChartDemo_XYData" text="XY Line Chart Demo"/>
+      <w:treeNode userData="TimeSeriesLineChartDemo_TimeSeriesData" text="Time Series Line Chart Demo"/>
+      <w:treeNode userData="GraphDemo" text="Graph Demo"/>
+    </w:treeNode>
+    <w:treeNode userData="CurveCharts" text="Curve Charts">
+      <w:treeNode userData="CurveChartDemo_CategoryData" text="Curve Chart Demo"/>
+      <w:treeNode userData="XYCurveChartDemo_XYData" text="XY Curve Chart Demo"/>
+      <w:treeNode userData="TimeSeriesCurveChartDemo_TimeSeriesData" text="Time Series Curve Chart Demo"/>
+      <w:treeNode userData="CurveAreaChartDemo_CategoryData" text="Curve Area Chart Demo"/>
+      <w:treeNode userData="XYCurveAreaChartDemo_XYData" text="XY Curve Area Chart Demo"/>
+      <w:treeNode userData="TimeSeriesCurveAreaChartDemo_TimeSeriesData" text="Time Series Curve Area Chart Demo"/>
+    </w:treeNode>
+    <w:treeNode userData="ScatterCharts" text="Scatter Charts">
+      <w:treeNode userData="ScatterChartDemo_ScatterData" text="Scatter Chart Demo"/>
+      <w:treeNode userData="RegressionDemo" text="Regression Demo"/>
+      <w:treeNode userData="MovingAverageDemo" text="Moving Average Demo"/>
+    </w:treeNode>
+    <w:treeNode userData="PieCharts" text="Pie Charts">
+      <w:treeNode userData="PieChartDemo_CategoryData" text="Pie Chart Demo"/>
+      <w:treeNode userData="PieChart3DDemo_CategoryData" text="3D Pie Chart Demo"/>
+      <w:treeNode userData="MultiplePieChartDemo_CategoryData" text="Multiple Pie Chart Demo"/>
+      <w:treeNode userData="DoughnutChartDemo_CategoryData" text="Doughnut Chart Demo"/>
+    </w:treeNode>
+    <w:treeNode userData="RadarCharts" text="Radar Charts">
+      <w:treeNode userData="RadarChartDemo_CategoryData" text="Radar Chart Demo"/>
+    </w:treeNode>
+    <w:treeNode userData="CompositeCharts" text="Composite Charts">
+      <w:treeNode userData="CompositeChartDemo_CategoryData" text="Composite Chart Demo"/>
+      <w:treeNode userData="CompositeChart3DDemo_CategoryData" text="3D Composite Chart Demo"/>
+      <w:treeNode userData="XYCompositeChartDemo_CategoryData" text="XY Composite Chart Demo"/>
+    </w:treeNode>
+    <w:treeNode userData="Annotations" text="Annotations">
+      <w:treeNode userData="AnnotationDemo" text="Annotation Demo"/>
+      <w:treeNode userData="XYAnnotationDemo" text="XY Annotation Demo"/>
+      <w:treeNode userData="ItemLabelDemo" text="Item Label Demo"/>
+    </w:treeNode>
+  </w:treeNode>
+</w:tree>
+</f:view>
+</textarea>
+<script class="javascript">
+var text = document.getElementById('code').value ;
+var html = highlightCode( "xml" , "xml" , true , text ) ;
+window.setTimeout(function() {
+    var css = "<link href='../styles/highlight.css' rel='stylesheet' type='text/css'>" ;
+    document.open('text/html');
+    if(document.implementation && document.implementation.createDocument) {
+        var htmlStr = css + html.xml ;
+        document.write(htmlStr);
+        document.close();
+    }
+    else {
+        var h = window.onerror;
+        window.onerror = function(){return true;}
+        html = css + html ;
+        document.write(html);
+        window.onerror = h;
+        document.close();
+        window.location.reload(false);
+    }
+}, 50);
+
+</script>
+</body>
+</html>

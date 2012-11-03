@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<f:view xmlns:f="http://java.sun.com/jsf/core"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:w="http://www.apusic.com/jsf/widget"
+        xmlns:a="http://www.apusic.com/jsf/ajax">
+<h:form>
+  <h:panelGrid cellspacing="10">
+    <h:selectBooleanCheckbox id="effect3D" value="#{ChartMenu.effect3D}">
+      <a:action event="onclick"/>
+    </h:selectBooleanCheckbox>
+    <h:outputLabel value=" 3D Effect" for="effect3D"/>
+
+    <h:selectBooleanCheckbox id="horizontal" value="#{ChartMenu.horizontal}">
+      <a:action event="onclick"/>
+     </h:selectBooleanCheckbox>
+    <h:outputLabel value=" Horizontal" for="horizontal">
+    </h:outputLabel>
+
+    <h:selectBooleanCheckbox id="stacked" value="#{ChartMenu.stacked}" disabled="#{ChartMenu.stackDisabled}">
+      <a:action event="onclick"/>
+    </h:selectBooleanCheckbox>
+    <h:outputLabel value=" Stacked" for="stacked">
+    </h:outputLabel>
+
+    <h:selectBooleanCheckbox id="showLegend" value="#{ChartMenu.showLegend}">
+      <a:action event="onclick"/>
+    </h:selectBooleanCheckbox>
+    <h:outputLabel value=" Legend" for="showLegend">
+    </h:outputLabel>
+
+    <h:selectBooleanCheckbox id="drawItemLabel" value="#{ChartMenu.drawItemLabel}">
+      <a:action event="onclick"/>
+    </h:selectBooleanCheckbox>
+    <h:outputLabel value=" Item Label" for="drawItemLabel">
+    </h:outputLabel>
+
+    <h:selectBooleanCheckbox id="showItemTips" value="#{ChartMenu.showItemTips}">
+      <a:action event="onclick"/>
+    </h:selectBooleanCheckbox>
+    <h:outputLabel value=" Item Tips" for="showItemTips">
+    </h:outputLabel>
+
+    <h:commandButton id="randomData" value="Random Data" action="#{ChartMenu.randomData}"/>
+  </h:panelGrid>
+</h:form>
+
+</f:view>

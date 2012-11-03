@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<f:view xmlns:f="http://java.sun.com/jsf/core"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:g="http://www.apusic.com/jsf/graph">
+<g:compositeChart title="Histogram Bar Chart Demo" showLegend="false">
+  <g:barChart>
+    <g:histogramDataSeries value="#{HistogramData}" var="h">
+      <g:histogramDataItem legend="H1" value="#{h}" bins="100" color="rgb(43,114,219)"/>
+    </g:histogramDataSeries>
+  </g:barChart>
+
+  <g:areaChart>
+    <g:yAxis visible="false"/>
+    <g:functionSeries>
+      <g:functionItem expression="#{HistogramData.normalDistribution}"
+                      start="#{HistogramData.min}"
+                      end="#{HistogramData.max}" 
+                      step="0.1"
+                      color="rgba(43,114,219,128)"/>
+    </g:functionSeries>
+  </g:areaChart>
+</g:compositeChart>
+
+<h:panelGrid cellspacing="5">
+  <h:outputText value="Min:"/>
+  <h:outputText value="#{HistogramData.min}"><f:convertNumber pattern="0.00"/></h:outputText>
+  <h:outputText value="Max:"/>
+  <h:outputText value="#{HistogramData.max}"><f:convertNumber pattern="0.00"/></h:outputText>
+  <h:outputText value="Mean:"/>
+  <h:outputText value="#{HistogramData.mean}"><f:convertNumber pattern="0.00"/></h:outputText>
+  <h:outputText value="STD:"/>
+  <h:outputText value="#{HistogramData.std}"><f:convertNumber pattern="0.00"/></h:outputText>
+</h:panelGrid>
+  
+</f:view>

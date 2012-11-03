@@ -1,0 +1,575 @@
+/*-------------------------------------------------------
+ * HTML elements
+ */
+
+html {
+    border: 0;
+}
+
+body {
+    margin: 0;
+    padding: 10px;
+    background: AppWorkspace;
+    color: black;
+}
+
+.mnemonic {
+    text-decoration: underline;
+}
+
+/*-------------------------------------------------------
+ * UIButton
+ */
+
+.UIButton {
+    position: relative;
+    overflow: hidden;
+    white-space: nowrap;
+    border: 0; padding: 0; margin: 0;
+    background: none;
+}
+
+.UIButton canvas {
+    display: block;
+    position: absolute;
+    width: 100%; height: 100%;
+    left: 0; top: 0; right: 0; bottom: 0;
+}
+
+button.button-face {
+    font: 12px Tahoma, Verdana, Arial, Sans-Serif;
+}
+.UIButton .button-label {
+    display: block;
+    position: absolute;
+    overflow: hidden;
+    white-space: nowrap;
+    border: 0; padding: 0; margin: 0;
+    background: none;
+    color: ButtonText;
+    cursor: default;
+}
+.UIButton[disabled] .button-label {
+    color: GrayText;
+}
+
+/*-------------------------------------------------------
+ * UISlider
+ */
+
+.UISlider {
+	position: relative;
+	overflow: hidden;
+	border: 0;
+	background: ThreeDFace;
+}
+
+.UISlider.slider-horizontal {
+    width: 200px;
+    height: 28px;
+}
+.UISlider.slider-vertical {
+    width: 28px;
+    height: 200px;
+}
+
+.UISlider .slider-track {
+	position: absolute;
+	overflow: hidden;
+	border: 2px inset;
+	background: ThreedDarkShadow;
+
+	-moz-border-right-colors: ThreeDHighlight ThreeDLightShadow;
+	-moz-border-left-colors: ThreeDShadow ThreeDDarkShadow;
+	-moz-border-bottom-colors: ThreeDHighlight ThreeDLightShadow;
+	-moz-border-top-colors: ThreeDShadow ThreeDDarkShadow;
+}
+
+.UISlider.slider-horizontal .slider-track {
+	width: 100%; height: 0;
+	_height: "4px"; /*IE Fix*/
+}
+.UISlider.slider-vertical .slider-track {
+	width: 0; height: 100%;
+	_width: "4px"; /*IE Fix*/
+}
+
+.UISlider .slider-thumb {
+	position: absolute;
+	overflow: hidden;
+	border: 2px outset;
+
+	-moz-border-left-colors: ThreeDLightShadow ThreeDHighlight;
+	-moz-border-right-colors: ThreeDDarkShadow ThreeDShadow;
+	-moz-border-top-colors: ThreeDLightShadow ThreeDHighlight;
+	-moz-border-bottom-colors: ThreeDDarkShadow ThreeDShadow;
+}
+
+.UISlider .slider-thumb {
+	background: ThreeDFace;
+}
+
+.UISlider.slider-horizontal .slider-thumb {
+	width: 7px; height: 18px;
+	_width: "11px"; _height: "22px"; /*IE Fix*/
+}
+.UISlider.slider-vertical .slider-thumb {
+	width: 18px; height: 7px;
+	_width: "11px"; _height: "22px"; /*IE Fix*/
+}
+
+/*-------------------------------------------------------
+ * UIProgressBar
+ */
+
+.UIProgressBar {
+    position: relative;
+    overflow: hidden;
+
+    width: 200px;
+    height: 10px;
+    border: 1px solid;
+    padding: 2px;
+    border-color: ThreeDShadow ThreeDHighlight ThreeDHighlight ThreeDShadow;
+    background-color: ThreeDFace;
+
+    _height: "14px"; /*IE Fix*/
+}
+
+.UIProgressBar .progress-thumb {
+    background: ActiveCaption;
+    overflow: hidden;
+}
+
+/*-------------------------------------------------------
+ * UITabbedPane
+ */
+
+div.UITabbedPane {
+	position: relative;
+	width: 100%;
+}
+
+.UITabbedPane .tab-row {
+	white-space: nowrap;
+	z-index: 1;
+}
+
+.UITabbedPane .tab-row .tab {
+	font: message-box;
+	cursor: default;
+	display: inline;
+	margin: 1px -2px 1px 2px;
+	padding: 2px 15px 1px 5px;
+	float: left;
+	background: ThreeDFace;
+	border-left: 1px solid ThreeDHighlight;
+	border-top: 1px solid ThreeDHighlight;
+	border-right: 2px outset;
+	-moz-border-right-colors: ThreeDDarkShadow ThreeDShadow;
+	border-bottom: 0;
+	z-index: 1;
+	position: relative;
+	top: 0;
+}
+
+.UITabbedPane .tab-row .tab .tab-label {
+    height: 1.32em;
+    overflow: hidden;
+	font: Message-Box;
+	color: WindowText;
+	cursor: default;
+}
+
+.UITabbedPane .tab-row .tab .tab-label img {
+    vertical-align: middle;
+    margin-right: 3px;
+}
+
+.UITabbedPane .tab-row .tab.active-tab {
+	margin: 1px -3px -2px 0px;
+	padding: 2px 16px 3px 7px;
+	background: ThreeDFace;
+	z-index: 3;
+	top: -2px;
+}
+
+.UITabbedPane .tab-page {
+	position: relative;
+	clear: both;
+
+	border-left: 1px solid ThreeDHighlight;
+	border-top: 1px solid ThreedHighlight;
+	border-right: 2px outset;
+	border-bottom: 2px outset;
+	-moz-border-right-colors: ThreeDDarkShadow ThreeDShadow;
+	-moz-border-bottom-colors: ThreeDDarkShadow ThreeDShadow;
+
+	/*border: 1px solid;
+	border-color: ThreeDHighlight ThreeDDarkShadow ThreeDDarkShadow ThreeDHighlight;*/
+
+	top: -2px;
+	padding: 10px;
+	z-index: 2;
+
+	font: Message-Box;
+	color: WindowText;
+	background: ThreeDFace;
+}
+
+/*IE Fix*/
+* html .UITabbedPane .tab-page {
+    width: auto;
+	width: "100%"; /*don't remove quotes, this is an IE hack*/
+	height: 100%;
+}
+
+/*--------------------------------------
+ * UICollapsiblePanel
+ */
+
+.UICollapsiblePanelGroup {
+    background: Window;
+}
+
+div.UICollapsiblePanel {
+    position: relative;
+}
+
+.UICollapsiblePanel .collapsible-header {
+    position: relative;
+    width: auto;
+    white-space: nowrap;
+    overflow: hidden;
+    border: 1px solid ThreeDFace;
+    background: ThreeDFace;
+    color: WindowText;
+    padding: 3px 10px;
+    cursor: pointer;
+}
+
+.UICollapsiblePanel .collapsible-header.active {
+    border: 1px solid ActiveCaption;
+    background: ActiveCaption;
+    color: CaptionText;
+}
+
+.UICollapsiblePanel .collapsible-header .collapsible-icon {
+    margin-right: 5px;
+    vertical-align: middle;
+}
+
+.UICollapsiblePanel .collapsible-header .collapsible-label {
+    font: 12px Tahoma, Verdana, Arial, Sans-Serif;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.UICollapsiblePanel .collapsible-header .collapsible-button {
+    float: right;
+    width: 16px; height: 16px;
+    border: 1px solid;
+    border-color: ThreeDFace;
+    overflow: hidden;
+    vertical-align: middle;
+}
+
+.UICollapsiblePanel .collapsible-header.active .collapsible-button {
+    border-color: ActiveCaption;
+}
+
+.UICollapsiblePanel .collapsible-header.hover .collapsible-button {
+    border-color: ThreeDHighlight ThreeDShadow ThreeDShadow ThreeDHighlight;
+}
+
+.UICollapsiblePanel.expanded .collapsible-header .collapsible-button {
+    background: transparent url("image/collapsible-collapse.gif") center center no-repeat;
+}
+.UICollapsiblePanel.collapsed .collapsible-header .collapsible-button {
+    background: transparent url("image/collapsible-expand.gif") center center no-repeat;
+}
+.UICollapsiblePanel.expanded .collapsible-header.active .collapsible-button {
+    background: transparent url("image/collapsible-collapse.active.gif") center center no-repeat;
+}
+.UICollapsiblePanel.collapsed .collapsible-header.active .collapsible-button {
+    background: transparent url("image/collapsible-expand.active.gif") center center no-repeat;
+}
+
+.UICollapsiblePanel .collapsible-body {
+    position: relative;
+    clear: both;
+    width: auto;
+    overflow: hidden;
+    border: 1px solid ThreeDFace;
+    background: Window;
+    color: WindowText;
+    font: Message-Box;
+    padding: 10px;
+}
+
+.UICollapsiblePanel .collapsible-body td {
+    font: Message-Box;
+}
+
+.UICollapsiblePanel .collapsible-body a, .UICollapsiblePanel .collapsible-body a:visited {
+    color: WindowText;
+    text-decoration: none;
+}
+
+.UICollapsiblePanel .collapsible-body a:hover, .UICollapsiblePanel .collapsible-body a:active {
+    color: WindowText;
+    text-decoration: underline;
+}
+
+/*IE Fix*/
+* html .UICollapsiblePanel .collapsible-header {
+    width: 100%;
+}
+* html .UICollapsiblePanel .collapsible-body {
+    width: 100%;
+}
+
+/*--------------------------------------
+ * UICookMenu
+ */
+
+.UICookMenu .Menu, .UICookMenu .SubMenuTable {
+	padding: 0;
+	white-space: nowrap;
+	cursor: default;
+}
+
+.UICookMenu .Menu, .UICookMenu .SubMenu {
+    background-color: Menu;
+}
+
+.UICookMenu .SubMenu {
+	position: absolute;
+	visibility: hidden;
+	z-index: 100;
+	padding: 1px;
+	overflow: visible;
+
+	border: 2px outset;
+	-moz-border-left-colors: ThreeDLightShadow ThreeDHighlight;
+	-moz-border-right-colors: ThreeDDarkShadow ThreeDShadow;
+	-moz-border-top-colors: ThreeDLightShadow ThreeDHighlight;
+	-moz-border-bottom-colors: ThreeDDarkShadow ThreeDShadow;
+    background-color: ThreeDFace;
+}
+
+.UICookMenu .SubMenuTable {
+	overflow: visible;
+}
+
+.UICookMenu .MainItem,.UICookMenu .MenuItem {
+	font: menu;
+	border: 0;
+	cursor: default;
+	white-space: nowrap;
+}
+
+.UICookMenu .MainItem, .UICookMenu .MenuItem {
+	color: MenuText
+}
+
+.UICookMenu .MainItem.Disabled, .UICookMenu .MenuItem.Disabled {
+	color: rgb(127,127,127);
+}
+
+/* horizontal main menu */
+
+.UICookMenu td.MainItem {
+	padding: 3px 5px;
+	border: 0;
+}
+
+.UICookMenu td.MainItem.Hover, .UICookMenu td.MainItem.Active {
+	padding: 2px 4px;
+	border: 1px solid;
+	border-color: ThreeDHighlight ThreeDShadow ThreeDShadow ThreeDHighlight;
+	background-color: ThreeDFace;
+	color: MenuText;
+}
+
+/* vertical main menu and sub menu*/
+
+.UICookMenu tr.MainItem.Hover,
+.UICookMenu tr.MainItem.Active,
+.UICookMenu tr.MenuItem.Hover,
+.UICookMenu tr.MenuItem.Active
+{
+	background-color: Highlight;
+	color: HighlightText;
+}
+
+.UICookMenu tr.MainItem td.Left,
+.UICookMenu tr.MenuItem td.Left
+{
+	padding: 2px 3px 2px 1px;
+	background-color: inherit;
+	white-space: nowrap;
+}
+
+.UICookMenu tr.MainItem td.Text,
+.UICookMenu tr.MenuItem td.Text
+{
+	padding: 2px 15px 2px 5px;
+	background-color: inherit;
+	white-space: nowrap;
+}
+
+.UICookMenu tr.MainItem td.Right,
+.UICookMenu tr.MenuItem td.Right
+{
+	padding: 2px 0px 2px 0px;
+	background-color: inherit;
+	white-space: nowrap;
+}
+
+/*--------------------------------------
+ * UIWindow
+ */
+
+.UIWindow {
+    position: absolute;
+    overflow: hidden;
+
+    background-color: ThreeDFace;
+    border: 2px outset;
+    -moz-border-left-colors: ThreeDLightShadow ThreeDHighlight;
+    -moz-border-right-colors: ThreeDDarkShadow ThreeDShadow;
+    -moz-border-top-colors: ThreeDLightShadow ThreeDHighlight;
+    -moz-border-bottom-colors: ThreeDDarkShadow ThreeDShadow;
+
+    width: 400px; height: 200px;
+    font: 12px Tahoma, Verdana, Arial, Sans-Serif;
+}
+
+.UIWindow.maximized {
+    border: 0;
+}
+
+.UIWindow .window-caption {
+    position: absolute;
+    overflow: hidden;
+    white-space: nowrap;
+    cursor: default;
+    background-color: InactiveCaption;
+}
+
+.UIWindow.active-window .window-caption {
+    background-color: ActiveCaption;
+}
+
+.UIWindow .window-caption * {
+    cursor: default;
+}
+
+.UIWindow .window-icon {
+    position: absolute;
+    overflow: hidden;
+    width: 16px; height: 16px;
+    left: 2px;
+}
+.UIWindow .default-icon {
+    background: transparent url("image/default.gif") no-repeat;
+}
+
+.UIWindow .window-label {
+    position: absolute;
+    overflow: hidden;
+    white-space: nowrap;
+    font: Caption;
+    font-weight: bold;
+    color: InactiveCaptionText;
+}
+
+.UIWindow.active-window .window-label {
+    color: CaptionText;
+}
+
+.UIWindow .window-button-pane {
+    position: absolute;
+    overflow: hidden;
+    white-space: nowrap;
+    right: 2px;
+}
+
+.UIWindow .window-button {
+    position: relative;
+    overflow: hidden;
+    display: inline;
+    float: left;
+
+    width: 12px; height: 10px;
+    background-color: ButtonFace;
+    background-position: 1px 0px;
+    background-repeat: no-repeat;
+    border: 2px outset;
+    -moz-border-left-colors: ThreeDHighlight ThreeDLightShadow;
+    -moz-border-right-colors: ThreeDDarkShadow ThreeDShadow;
+    -moz-border-top-colors: ThreeDHighlight ThreeDLightShadow;
+    -moz-border-bottom-colors: ThreeDDarkShadow ThreeDShadow;
+}
+
+/*IE Fix*/
+.UIWindow .window-button {
+    width: "16px";
+    height: "14px";
+}
+
+.UIWindow .window-button.pressed {
+    background-position: 2px 1px;
+    border: 2px inset;
+    -moz-border-right-colors: ThreeDHighlight ThreeDLightShadow;
+    -moz-border-left-colors: ThreeDShadow ThreeDDarkShadow;
+    -moz-border-bottom-colors: ThreeDHighlight ThreeDLightShadow;
+    -moz-border-top-colors: ThreeDShadow ThreeDDarkShadow;
+}
+
+.UIWindow .minimize-button {
+    background-image: url("image/minimize.gif");
+}
+.UIWindow.minimized .minimize-button {
+    background-image: url("image/restore.gif");
+}
+.UIWindow .maximize-button {
+    background-image: url("image/maximize.gif");
+}
+.UIWindow.maximized .maximize-button {
+    background-image: url("image/restore.gif");
+}
+.UIWindow .close-button {
+    background-image: url("image/close.gif");
+    margin-left: 2px;
+}
+
+.UIWindow .window-client-pane {
+    position: absolute;
+    overflow: hidden;
+    cursor: default;
+}
+
+.UIWindow .window-content-pane {
+    position: absolute;
+    overflow: auto;
+    left: 0; top: 0; right: 0; bottom: 0;
+    background-color: Window;
+    color: WindowText;
+}
+
+.UIGlassPane {
+    position: absolute;
+    overflow: hidden;
+    cursor: default;
+    left: 0; top: 0; right: 0; bottom: 0;
+    width: 100%; height: 100%;
+    background-image: url("image/blank.gif");
+}
+
+.UIDialog .window-content-pane {
+    overflow: hidden !important;
+    background-color: ThreeDFace !important;
+    color: WindowText !important;
+}

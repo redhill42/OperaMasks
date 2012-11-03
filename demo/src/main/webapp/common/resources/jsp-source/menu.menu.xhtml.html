@@ -1,0 +1,142 @@
+<html>
+<head>
+<style type="text/css">
+html, body {
+      font-size: 10px;
+      margin:0;
+      padding:0;
+      border:0 none;
+      overflow:auto;
+      height:100%;
+  }
+  
+</style>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<script class="javascript" src="../js/highlight.js"></script>
+</head>
+<body>
+<textarea id="code" class="xml" style="display:none;">
+<?xml version="1.0" encoding="UTF-8"?>
+<f:view xmlns:f="http://java.sun.com/jsf/core"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:w="http://www.apusic.com/jsf/widget"
+        xmlns:ajax="http://www.apusic.com/jsf/ajax"
+        renderKitId="AJAX">
+<w:head>
+<w:stylesheet src="/common/resources/examples.css"/>
+</w:head>
+<w:page title="Menu Demo">
+<div class="examDesc">
+<p>本例演示菜单条、弹出菜单、右键菜单等用法。</p>
+</div>
+  MenuBar:
+<w:menuBar id="mymenu" action="#{MenuBean.menuAction}" autoExpand="false">
+  <w:menu label="文件">
+    <w:menu image="images/new.gif" label="新建">
+      <w:commandMenuItem label="文本文件"/>
+      <w:commandMenuItem label="XML文件"/>
+      <w:commandMenuItem label="Java文件"/>
+    </w:menu>
+    <w:commandMenuItem image="images/open.gif" label="打开..."/>
+    <w:commandMenuItem image="images/save.gif" label="保存"/>
+    <w:commandMenuItem label="另存为..." disabled="true"/>
+    <w:separator/>
+    <w:linkMenuItem label="关闭" value="menu.jsf" onclick="return confirm('Are you sure?')"/>
+  </w:menu>
+
+  <w:dateMenu label="Dates" value="#{MenuBean.date}"/>
+
+  <w:menu label="编辑">
+    <w:commandMenuItem image="images/copy.gif" label="复制"/>
+    <w:commandMenuItem image="images/cut.gif" label="剪切"/>
+    <w:commandMenuItem image="images/paste.gif" label="粘贴"/>
+  </w:menu>
+
+  <w:menu id="format" label="格式">
+    <w:checkMenuItem label="粗体" style="font-weight:bold" value="#{MenuBean.bold}" valueChangeListener="#{MenuBean.checkValueChanged}"/>
+    <w:checkMenuItem label="斜体" style="font-style:italic" value="#{MenuBean.italic}" valueChangeListener="#{MenuBean.checkValueChanged}"/>
+    <w:checkMenuItem label="下划线" style="text-decoration:underline" value="#{MenuBean.underline}" valueChangeListener="#{MenuBean.checkValueChanged}"/>
+    <w:separator/>
+    <w:commandMenuItem label="Check All" action="#{MenuBean.checkAll}"/>
+    <w:commandMenuItem label="Uncheck All" action="#{MenuBean.uncheckAll}"/>
+    <w:separator/>
+    <w:radioMenuItem value="#{MenuBean.color}" valueChangeListener="#{MenuBean.radioValueChanged}">
+      <f:selectItems value="#{MenuBean.colors}"/>
+    </w:radioMenuItem>
+  </w:menu>
+
+  <w:menu id="skin" label="主题">
+    <w:chooseSkin/>
+  </w:menu>
+  
+  <w:menu label="链接">
+    <w:linkMenuItem label="Operamasks Community" value="http://www.operamasks.org" target="_new"/>
+    <w:linkMenuItem label="Java Home" value="http://java.sun.com" target="_new"/>
+  </w:menu>
+
+  <w:menu label="Legacy">
+    <h:commandLink value="Command Link"/>
+    <h:outputText value="Output Text"/>
+    <h:outputLink value="http://www.apusic.com">Output Link</h:outputLink>
+    <h:selectBooleanCheckbox label="Check Box"/>
+    <h:selectOneRadio value="#{MenuBean.color}">
+      <f:selectItem itemLabel="Red" itemValue="RED"/>
+      <f:selectItem itemLabel="Green" itemValue="GREEN"/>
+      <f:selectItem itemLabel="Blue" itemValue="BLUE"/>
+      <f:selectItem itemLabel="Bogus" itemValue="BOGUS" itemDisabled="true"/>
+    </h:selectOneRadio>
+  </w:menu>
+</w:menuBar>
+
+<w:menu id="popup" action="#{MenuBean.menuAction}">
+  <w:dateMenu label="Dates" value="#{MenuBean.date}"/>
+  <w:menu label="Themes">
+    <w:chooseSkin/>
+  </w:menu>
+</w:menu>
+
+<br/>
+<h:outputText binding="#{MenuBean.response}" value="No item selected"/>
+<br/><br/>
+<w:button value="Show Popup Menu" onclick="popup.show(this.getEl())"/>
+<br/>
+
+<div id="contextDiv" style="width:400px;height:200px;border:1px solid">
+  Right click here to show context menu.
+</div>
+<w:contextMenu for="contextDiv" action="#{MenuBean.menuAction}">
+  <w:dateMenu label="Dates" value="#{MenuBean.date}"/>
+  <w:menu label="Themes">
+    <w:chooseSkin/>
+  </w:menu>
+</w:contextMenu>
+
+</w:page>
+</f:view>
+</textarea>
+<script class="javascript">
+var text = document.getElementById('code').value ;
+var html = highlightCode( "xml" , "xml" , true , text ) ;
+window.setTimeout(function() {
+    var css = "<link href='../styles/highlight.css' rel='stylesheet' type='text/css'>" ;
+    document.open('text/html');
+    if(document.implementation && document.implementation.createDocument) {
+        var htmlStr = css + html.xml ;
+        document.write(htmlStr);
+        document.close();
+    }
+    else {
+        var h = window.onerror;
+        window.onerror = function(){return true;}
+        html = css + html ;
+        document.write(html);
+        window.onerror = h;
+        document.close();
+        window.location.reload(false);
+    }
+}, 50);
+
+</script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<f:view xmlns:f="http://java.sun.com/jsf/core"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:w="http://www.apusic.com/jsf/widget"
+        xmlns:om="http://www.apusic.com/jsf/misc"
+        xmlns:ajax="http://www.apusic.com/jsf/ajax"
+        renderKitId="AJAX">
+  <w:page title="Dynamic Model Binding">
+    <h:form>
+      <om:useBean value="ModelSelection">
+        <h:commandButton id="selectModel1" value="Model 1" action="model-response.xhtml"/>
+        <h:commandButton id="selectModel2" value="Model 2" action="model-response.xhtml"/>
+      </om:useBean>
+    </h:form>
+  </w:page>
+</f:view>

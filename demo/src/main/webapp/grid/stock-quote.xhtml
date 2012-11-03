@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<f:view xmlns:f="http://java.sun.com/jsf/core"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:w="http://www.apusic.com/jsf/widget"
+        xmlns:ajax="http://www.apusic.com/jsf/ajax"
+        renderKitId="AJAX">
+<w:page title="Stock Quote" skin="aqua">
+<w:head>
+<style type="text/css">
+#grid-example {
+  height:280px;
+  
+}
+#stock-detail {
+  width:400px;
+}
+</style>
+<w:stylesheet src="/common/resources/examples.css"/>
+</w:head>
+<div class="examDesc">
+<p>本例演示了dataGrid组件的使用。</p>
+<p>每次和服务器端交互时，如果时间间隔超过5秒，数据将会自动被刷新，请观察Last Update列。</p>
+</div>
+<w:panelBox style="width:650px">
+  <h3>Stock Quote</h3>
+  <w:dataGrid id="grid-example" binding="#{StockBean.grid}" jsvar="stock" style="height:280px" value="#{StockBean.stockData}" var="data"
+              selectedRow="#{StockBean.row}" selectedRowData="#{StockBean.selectedQuote}"
+              paged="true" rows="10" trackMouseOver="false" autoHeight="true">
+    <ajax:action event="onrowselect"/>
+
+    <w:idColumn id="company" header="Company" width="260" sortable="true"
+                value="#{data.company}" />
+
+    <w:outputColumn id="price" header="Price" width="75" align="right" sortable="true"
+                    value="#{data.price}">
+      <f:convertNumber currencySymbol="$" pattern="$0.00"/>
+    </w:outputColumn>
+
+    <w:outputColumn id="change" header="Change" width="75" sortable="true" align="right"
+                    value="#{data.change}"
+                    style="#{data.change >= 0 ? 'color:green' : 'color:red'}">
+      <f:convertNumber pattern="0.00"/>
+    </w:outputColumn>
+
+    <w:outputColumn id="pct_change" header="% Change" width="90" sortable="true" align="right"
+                    formatter="#{StockBean.formatPctChange}"/>
+
+    <w:outputColumn id="last_updated" header="Last Updated" width="90" align="right" sortable="true"
+                    value="#{data.lastUpdated}">
+      <f:convertDateTime pattern="H:mm:ss"/>
+    </w:outputColumn>
+  </w:dataGrid>
+</w:panelBox>
+
+  <br/>
+  <h:form prependId="false">
+  <w:panelBox id="stock-detail" border="1" borderColor="gray" borderRadius="8"  bgcolor="#FFFFFF">
+    <h3>Stock Details</h3>
+    <h:panelGrid columns="2" style="font-size:12px">
+      <h:outputLabel value="Company: "/>
+      <h:outputText value="#{StockBean.selectedQuote.company}"/>
+
+      <h:outputLabel value="Price: "/>
+      <h:outputText value="#{StockBean.selectedQuote.price}">
+        <f:convertNumber currencySymbol="$" pattern="$0.00"/>
+      </h:outputText>
+
+      <h:outputLabel value="Change: "/>
+      <h:outputText value="#{StockBean.selectedQuote.change}">
+        <f:convertNumber pattern="0.00"/>
+      </h:outputText>
+
+      <h:outputLabel value="% Change:"/>
+      <h:outputText value="#{StockBean.selectedQuote.change / StockBean.selectedQuote.price}">
+        <f:convertNumber pattern="0.00%"/>
+      </h:outputText>
+    </h:panelGrid>
+
+    <fieldset style="margin-top:20px">
+      <legend>Server Action</legend>
+      <h:panelGrid>
+        <w:button value="Next" action="#{StockBean.nextRow}"/>
+        <w:button value="Previous" action="#{StockBean.previousRow}"/>
+        <w:button value="Refresh" action="#{StockBean.refresh}"/>
+        <w:button value="Start Update" onclick="return update(this);"/>
+      </h:panelGrid>
+    </fieldset>
+    <fieldset style="margin-top:10px">
+      <legend>Client Action (preferred)</legend>
+      <h:panelGrid>
+        <w:button value="Next" onclick="stock.getSelectionModel().selectNext();return false;"/>
+        <w:button value="Previous" onclick="stock.getSelectionModel().selectPrevious();return false;"/>
+        <w:button value="Refresh" onclick="stock.getDataSource().load();return false;"/>
+      </h:panelGrid>
+    </fieldset>
+
+  </w:panelBox>
+  </h:form>
+
+  <ajax:timer jsvar="updater" period="5" start="false" action="#{StockBean.refresh}"/>
+  <script type="text/javascript" src="stock-quote.js"></script>
+</w:page>
+</f:view>

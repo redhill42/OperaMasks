@@ -1,0 +1,80 @@
+<html>
+<head>
+<style type="text/css">
+html, body {
+      font-size: 10px;
+      margin:0;
+      padding:0;
+      border:0 none;
+      overflow:auto;
+      height:100%;
+  }
+  
+</style>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<script class="javascript" src="../js/highlight.js"></script>
+</head>
+<body>
+<textarea id="code" class="xml" style="display:none;">
+<?xml version="1.0" encoding="UTF-8"?>
+<f:view xmlns:f="http://java.sun.com/jsf/core"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:w="http://www.apusic.com/jsf/widget"
+        xmlns:ajax="http://www.apusic.com/jsf/ajax"
+        renderKitId="AJAX">
+<w:head>  
+  <w:stylesheet src="/common/resources/examples.css"/>
+</w:head>
+<w:page title="Server Side Tree">
+<div class="examDesc">
+<p>本示例展示如何在服务器端控制Tree组件的行为。用户通过客户端事件操作左边的树时（展开，收缩，选中），
+服务器端程序控制右边的树使其行为总是同左边的树一致。</p>
+</div> 
+<table>
+<tr>
+<td style="vertical-align: top">
+  <w:tree animate="true" style="width:200px;height:300px;border:1px solid #c3daf9;overflow:auto" lines="true"
+  		asyncData="#{ServerSideTree.getFilesInFolder}" nodeImage="#{ServerSideTree.getFileIcon}"
+  			nodeHasChildren="#{ServerSideTree.isFolder}" nodeText="#{ServerSideTree.getFileName}">
+	<w:treeEventListener binding="#{ServerSideTree}" select="true" collapse="true" expand="true"/>
+  </w:tree>
+</td>
+<td style="vertical-align: top">
+  <w:tree animate="true" style="width:200px;height:300px;border:1px solid #c3daf9;overflow:auto" lines="true"
+  		asyncData="#{ServerSideTree.getFilesInFolder}" nodeImage="#{ServerSideTree.getFileIcon}"
+  			nodeHasChildren="#{ServerSideTree.isFolder}" nodeText="#{ServerSideTree.getFileName}"
+  			binding = "#{ServerSideTree.tree}">
+  </w:tree>
+</td>
+</tr>
+</table>
+</w:page>
+</f:view>
+
+</textarea>
+<script class="javascript">
+var text = document.getElementById('code').value ;
+var html = highlightCode( "xml" , "xml" , true , text ) ;
+window.setTimeout(function() {
+    var css = "<link href='../styles/highlight.css' rel='stylesheet' type='text/css'>" ;
+    document.open('text/html');
+    if(document.implementation && document.implementation.createDocument) {
+        var htmlStr = css + html.xml ;
+        document.write(htmlStr);
+        document.close();
+    }
+    else {
+        var h = window.onerror;
+        window.onerror = function(){return true;}
+        html = css + html ;
+        document.write(html);
+        window.onerror = h;
+        document.close();
+        window.location.reload(false);
+    }
+}, 50);
+
+</script>
+</body>
+</html>

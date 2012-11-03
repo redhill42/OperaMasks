@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<f:view xmlns:f="http://java.sun.com/jsf/core"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:w="http://www.apusic.com/jsf/widget"
+        xmlns:ajax="http://www.apusic.com/jsf/ajax"
+        renderKitId="AJAX">
+  <w:page>
+    <w:head>
+      <w:stylesheet src="/common/resources/examples.css" />
+    </w:head>
+    <div class="examDesc">
+    <p>本例演示了simpleDataGrid组件的使用。</p>
+    <p>simpleDataGrid使用方法和dataGrid差不多，不同的是simpleDataGrid采用纯HTML+CSS来实现，而且只提供了常用的显示和选择行的功能，目的在于提供一个快速简洁的表格组件。</p>
+    </div>
+    <w:form>
+      <w:simpleDataGrid id="mygrid" value="#{simpleDataGridBean.stockData}" var="data"
+        selections="#{simpleDataGridBean.selections}" showSelectionColumn="true" selectionColumnIndex="4">
+        <w:idColumn id="company" header="Company" width="260" value="#{data.company}">
+        </w:idColumn>
+        <w:outputColumn id="price" header="Price" width="100" align="center" sortable="true"
+          value="#{data.price}">
+        </w:outputColumn>
+        <w:outputColumn id="change" header="% Change" width="75" align="center" value="#{data.change}">
+        </w:outputColumn>
+        <w:outputColumn id="pct_change" header="Last Updated" width="160" align="center"
+          value="#{data.lastUpdated}">
+          <f:convertDateTime pattern="yyyy-MM-dd hh:mm:ss" />
+        </w:outputColumn>
+      </w:simpleDataGrid>
+      <w:pagingLink for="mygrid" pageSize="5" theme="google"></w:pagingLink>
+      <w:button value="提交" action="#{simpleDataGridBean.button_action}" />
+      <h:outputText value="#{simpleDataGridBean.responseText}" style="color:red;"></h:outputText>
+    </w:form>
+  </w:page>
+</f:view>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<f:view xmlns:f="http://java.sun.com/jsf/core"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:w="http://www.apusic.com/jsf/widget"
+        xmlns:ajax="http://www.apusic.com/jsf/ajax"
+        renderKitId="AJAX">
+<w:head>
+<w:stylesheet src="/common/resources/examples.css"/>
+<style>
+.normal {
+	color: blue;
+}
+
+.error {
+  color: red;
+}
+</style>
+</w:head>
+  <w:page title="Ajax Scripter" skin="default">
+    <div class="examDesc">
+    <p>Scripter组件表示一个javascript脚本执行器，当服务端给script属性附上一段脚本时，就会自动在客户端执行。</p>
+    </div>
+    <ajax:scripter script="#{ScripterBean.script}"></ajax:scripter>
+    <w:form style="margin: 10px">
+      <div>Hello. I'm duke. What's your name?</div>
+      <div>name:<w:textField value="#{ScripterBean.name}"></w:textField>
+      </div>
+      <div>
+      <table>
+        <tr>
+          <td><w:button value="sumbit"
+            action="#{ScripterBean.sumbit_action}" /></td>
+          <td><w:button value="reset"
+            action="#{ScripterBean.reset_action}" /></td>
+        </tr>
+      </table>
+      </div>
+      <span id="mySumbitSpan" style="margin: 10px"></span>
+    </w:form>
+  </w:page>
+</f:view>

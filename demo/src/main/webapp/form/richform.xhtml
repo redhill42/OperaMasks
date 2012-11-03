@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<f:view xmlns:f="http://java.sun.com/jsf/core"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:w="http://www.apusic.com/jsf/widget"
+        xmlns:ajax="http://www.apusic.com/jsf/ajax"
+        renderKitId="HTML_BASIC">
+<w:head>
+<w:stylesheet src="/common/resources/examples.css"/>
+</w:head>
+<w:page title="Rich Form Demo" skin="default">
+  <div class="examDesc">
+  <p>此页面演示一个Form内的标准组件，可以通过form的rich属性，把普通的外观变为更为生动的形式。
+  若想得到更多的功能和更好的控制，当然用户最好直接采用Operamasks提供的组件，本身具有生动的外观和换肤能力，及其他更强的功能。</p>
+  </div>
+  
+  <w:form rich="#{DemoBean.richForm}">
+    <h:panelGrid columns="2">
+        <h:panelGroup>
+		    <h:selectBooleanCheckbox value="#{DemoBean.richForm}"/>
+		    <f:verbatim>Rich Form </f:verbatim>
+	    </h:panelGroup>
+	    <h:commandButton value="提交"></h:commandButton><br/><br/>
+    </h:panelGrid>
+    <h:panelGrid columns="2">
+        <f:verbatim>文本输入框：</f:verbatim>
+        <h:inputText value="#{DemoBean.skin}"/>
+    
+        <f:verbatim>日期文本输入框：</f:verbatim>
+        <h:inputText value="#{MenuBean.date}">
+            <f:convertDateTime pattern="yyyy/M/d"/>
+        </h:inputText>
+    
+        <f:verbatim>数字文本输入框：</f:verbatim>
+        <h:inputText value="#{DemoBean.number}"/>
+    
+        <f:verbatim>下拉列表框：</f:verbatim>
+        <h:selectOneMenu id="combo" value="#{ColorBean.color}">
+          <f:selectItems value="#{ColorBean.colors}"/>
+        </h:selectOneMenu>
+    </h:panelGrid>
+    <h:panelGrid columns="2">
+      <h:graphicImage value="images/#{ColorBean.color}.gif" rendered="#{ColorBean.color!=null}"/>
+      <h:outputText value="#{ColorBean.color}" style="color: #{ColorBean.color}"/>
+    </h:panelGrid>    
+  </w:form> 
+  <br/>
+</w:page>
+</f:view>

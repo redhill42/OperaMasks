@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE facelet-taglib PUBLIC "-//Sun Microsystems, Inc.//DTD Facelet Taglib 1.0//EN" "http://java.sun.com/dtd/facelet-taglib_1_0.dtd">
+<facelet-taglib>
+  <namespace>http://www.apusic.com/jsf/layout</namespace>
+
+  <tag>
+    <tag-name>facelet</tag-name>
+    <component>
+      <component-type>org.operamasks.faces.layout.Facelet</component-type>
+      <handler-class>org.operamasks.faces.facelets.layout.FaceletHandler</handler-class>
+    </component>
+  </tag>
+
+  <tag>
+    <tag-name>template</tag-name>
+    <component>
+      <component-type>org.operamasks.faces.layout.TemplateLayout</component-type>
+      <handler-class>org.operamasks.faces.facelets.layout.TemplateHandler</handler-class>
+    </component>
+  </tag>
+
+  <tag>
+    <tag-name>slot</tag-name>
+    <component>
+      <component-type>org.operamasks.faces.layout.FaceletSlot</component-type>
+    </component>
+  </tag>
+  
+  <tag>
+    <tag-name>gridLayout</tag-name>
+    <component>
+      <component-type>org.operamasks.faces.layout.GridLayout</component-type>
+      <renderer-type>org.operamasks.faces.layout.GridLayout</renderer-type>
+    </component>
+  </tag>
+
+  <tag>
+    <tag-name>panelGrid</tag-name>
+    <component>
+      <component-type>javax.faces.HtmlPanelGrid</component-type>
+      <renderer-type>javax.faces.Grid</renderer-type>
+    </component>
+  </tag>
+
+  <tag>
+    <tag-name>cell</tag-name>
+    <component>
+      <component-type>org.operamasks.faces.HtmlGridCell</component-type>
+    </component>
+  </tag>
+
+  <tag>
+    <tag-name>borderLayout</tag-name>
+    <component>
+      <component-type>org.operamasks.faces.component.layout.impl.UIBorderLayout</component-type>
+    </component>
+  </tag>
+  
+  <tag>
+    <tag-name>accordionLayout</tag-name>
+    <component>
+      <component-type>org.operamasks.faces.component.layout.impl.UIAccordionLayout</component-type>
+    </component>
+  </tag>
+  
+	<tag>
+        <tag-name>absoluteLayout</tag-name>
+        <component>
+            <component-type>org.operamasks.faces.component.layout.impl.UIAbsoluteLayout</component-type>
+        </component>
+    </tag>
+	<tag>
+        <tag-name>cardLayout</tag-name>
+        <component>
+            <component-type>org.operamasks.faces.component.layout.impl.UICardLayout</component-type>
+        </component>
+    </tag>
+	<tag>
+        <tag-name>columnLayout</tag-name>
+        <component>
+            <component-type>org.operamasks.faces.component.layout.impl.UIColumnLayout</component-type>
+        </component>
+    </tag>
+	<tag>
+        <tag-name>formLayout</tag-name>
+        <component>
+            <component-type>org.operamasks.faces.component.layout.impl.UIFormLayout</component-type>
+        </component>
+    </tag>
+	<tag>
+        <tag-name>panel</tag-name>
+        <component>
+            <component-type>org.operamasks.faces.component.layout.impl.UIPanel</component-type>
+        </component>
+    </tag>
+    <tag>
+	    <tag-name>tabLayout</tag-name>
+	    <component>
+	      <component-type>org.operamasks.faces.component.layout.impl.UITabLayout</component-type>
+	    </component>
+	</tag>
+	<tag>
+        <tag-name>tableLayout</tag-name>
+        <component>
+            <component-type>org.operamasks.faces.component.layout.impl.UITableLayout</component-type>
+        </component>
+    </tag>
+	<tag>
+        <tag-name>window</tag-name>
+        <component>
+            <component-type>org.operamasks.faces.component.layout.impl.UIWindow</component-type>
+        </component>
+    </tag>
+</facelet-taglib>

@@ -1,0 +1,113 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head>
+<title></title>
+  <style type="text/css">
+    <!--code { font-family: Courier New, Courier; font-size: 10pt; margin: 0px; }-->
+  </style>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head><body>
+
+
+<!-- ======================================================== -->
+<!-- = Java Sourcecode to HTML automatically converted code = -->
+<!-- =   Java2Html Converter 5.0 [2006-02-26] by Markus Gebhard  markus@jave.de   = -->
+<!-- =     Further information: http://www.java2html.de     = -->
+<div align="left" class="java">
+<table border="0" cellpadding="3" cellspacing="0" bgcolor="#ffffff">
+  <!-- start headline -->
+   <tr>
+    <td colspan="2">
+     <center><font size="+2">
+      <code><b>
+HelloBean.java
+      </b></code>
+     </font></center>
+    </td>
+   </tr>
+  <!-- end headline -->
+   <tr>
+  <!-- start source code -->
+   <td nowrap="nowrap" valign="top" align="left">
+    <code>
+<font color="#3f7f5f">/*</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f7f5f">*&nbsp;$Id:&nbsp;HelloBean.java,v&nbsp;1.2&nbsp;2007/12/11&nbsp;04:14:14&nbsp;jacky&nbsp;Exp&nbsp;$</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f7f5f">*</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f7f5f">*&nbsp;Copyright&nbsp;(C)&nbsp;2006&nbsp;Operamasks&nbsp;Community.</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f7f5f">*&nbsp;Copyright&nbsp;(C)&nbsp;2000-2006&nbsp;Apusic&nbsp;Systems,&nbsp;Inc.</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f7f5f">*</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f7f5f">*&nbsp;This&nbsp;program&nbsp;is&nbsp;free&nbsp;software:&nbsp;you&nbsp;can&nbsp;redistribute&nbsp;it&nbsp;and/or&nbsp;modify</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f7f5f">*&nbsp;it&nbsp;under&nbsp;the&nbsp;terms&nbsp;of&nbsp;the&nbsp;GNU&nbsp;General&nbsp;Public&nbsp;License&nbsp;as&nbsp;published&nbsp;by</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f7f5f">*&nbsp;the&nbsp;Free&nbsp;Software&nbsp;Foundation,&nbsp;either&nbsp;version&nbsp;3&nbsp;of&nbsp;the&nbsp;License,&nbsp;or</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f7f5f">*&nbsp;any&nbsp;later&nbsp;version.</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f7f5f">*</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f7f5f">*&nbsp;This&nbsp;program&nbsp;is&nbsp;distributed&nbsp;in&nbsp;the&nbsp;hope&nbsp;that&nbsp;it&nbsp;will&nbsp;be&nbsp;useful,</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f7f5f">*&nbsp;but&nbsp;WITHOUT&nbsp;ANY&nbsp;WARRANTY;&nbsp;without&nbsp;even&nbsp;the&nbsp;implied&nbsp;warranty&nbsp;of</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f7f5f">*&nbsp;MERCHANTABILITY&nbsp;or&nbsp;FITNESS&nbsp;FOR&nbsp;A&nbsp;PARTICULAR&nbsp;PURPOSE.&nbsp;&nbsp;See&nbsp;the</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f7f5f">*&nbsp;GNU&nbsp;General&nbsp;Public&nbsp;License&nbsp;for&nbsp;more&nbsp;details.</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f7f5f">*</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f7f5f">*&nbsp;You&nbsp;should&nbsp;have&nbsp;received&nbsp;a&nbsp;copy&nbsp;of&nbsp;the&nbsp;GNU&nbsp;General&nbsp;Public&nbsp;License</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f7f5f">*&nbsp;along&nbsp;with&nbsp;this&nbsp;program.&nbsp;If&nbsp;not,&nbsp;see&nbsp;http://www.gnu.org/licenses.</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f7f5f">*/</font><br />
+<font color="#7f0055"><b>package&nbsp;</b></font><font color="#000000">demo.binding;</font><br />
+<font color="#ffffff"></font><br />
+<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">java.util.Date;</font><br />
+<font color="#ffffff"></font><br />
+<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">org.operamasks.faces.annotation.ManagedBean;</font><br />
+<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">org.operamasks.faces.annotation.ManagedBeanScope;</font><br />
+<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">org.operamasks.faces.annotation.Bind;</font><br />
+<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">org.operamasks.faces.annotation.Action;</font><br />
+<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">org.operamasks.faces.annotation.Outject;</font><br />
+<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">org.operamasks.faces.annotation.Required;</font><br />
+<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">org.operamasks.faces.annotation.Pattern;</font><br />
+<font color="#ffffff"></font><br />
+<font color="#3f5fbf">/**</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f5fbf">*&nbsp;这是Hello应用的主模型对象，用于保存视图中的数据。</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f5fbf">*</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f5fbf">*&nbsp;本例仅为说明如何使用OperaMasks的MVC架构，对于这样一个简单的例子将模型对象和动作对象完全</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f5fbf">*&nbsp;分离是不必要的。</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f5fbf">*</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f5fbf">*&nbsp;本例将Managed&nbsp;Bean的活动范围设置为SESSION，因此可以在服务器保持模型状态。</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f5fbf">*/</font><br />
+<font color="#646464">@ManagedBean</font><font color="#000000">(</font><font color="#000000">scope=ManagedBeanScope.SESSION</font><font color="#000000">)</font><br />
+<font color="#7f0055"><b>public&nbsp;class&nbsp;</b></font><font color="#000000">HelloBean</font><br />
+<font color="#000000">{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#646464">@Bind</font><font color="#000000">(</font><font color="#000000">view=</font><font color="#2a00ff">&#34;greeting&#34;</font><font color="#000000">)&nbsp;</font><font color="#646464">@Required</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>private&nbsp;</b></font><font color="#000000">String&nbsp;greeting;</font><br />
+<font color="#ffffff"></font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#646464">@Outject</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#646464">@Bind</font><font color="#000000">(</font><font color="#000000">view=</font><font color="#2a00ff">&#34;response&#34;</font><font color="#000000">)</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>private&nbsp;</b></font><font color="#000000">String&nbsp;response;</font><br />
+<font color="#ffffff"></font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#646464">@Bind</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#646464">@Pattern</font><font color="#000000">(</font><font color="#2a00ff">&#34;yyyy-MM-dd&nbsp;HH:mm:ss&#34;</font><font color="#000000">)</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;</b></font><font color="#000000">Date&nbsp;getCurrentTime</font><font color="#000000">()&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>return&nbsp;new&nbsp;</b></font><font color="#000000">Date</font><font color="#000000">()</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff"></font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;</b></font><font color="#000000">String&nbsp;getGreeting</font><font color="#000000">()&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>return&nbsp;</b></font><font color="#000000">greeting;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff"></font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;</b></font><font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">setGreeting</font><font color="#000000">(</font><font color="#000000">String&nbsp;greeting</font><font color="#000000">)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>this</b></font><font color="#000000">.greeting&nbsp;=&nbsp;greeting;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff"></font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;</b></font><font color="#000000">String&nbsp;getResponse</font><font color="#000000">()&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>return&nbsp;</b></font><font color="#000000">response;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff"></font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;</b></font><font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">setResponse</font><font color="#000000">(</font><font color="#000000">String&nbsp;response</font><font color="#000000">)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>this</b></font><font color="#000000">.response&nbsp;=&nbsp;response;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#000000">}</font></code>
+    
+   </td>
+  <!-- end source code -->
+   </tr>
+</table>
+</div>
+<!-- =       END of automatically generated HTML code       = -->
+<!-- ======================================================== -->
+
+
+</body></html>

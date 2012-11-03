@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<f:view xmlns:f="http://java.sun.com/jsf/core"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:w="http://www.apusic.com/jsf/widget"
+        xmlns:ajax="http://www.apusic.com/jsf/ajax"
+        xmlns:l="http://www.apusic.com/jsf/layout"
+        renderKitId="AJAX">
+<w:page title="Stock Quote">
+<w:head>
+<style type="text/css">
+#grid-example1,#grid-example2 {
+  width: 370px;
+  height:280px;
+  border:1px solid #cbc7b8;
+}
+</style>
+<w:stylesheet src="/common/resources/examples.css"/>
+</w:head>
+<div class="examDesc">
+<p>本例演示了dataGrid组件多行选择的场景。</p>
+<p>按住CTRL键点击左边DataGrid中的数据，确定后点击[add]按钮将选中的记录移动到右边的DataGrid中。</p>
+</div>
+<w:panelBox style="width:830px" >  
+<l:panelGrid columns="3">
+  <f:verbatim><h3>All stocks</h3></f:verbatim>
+  <f:verbatim><h3></h3></f:verbatim>
+  <f:verbatim><h3>My favorites</h3></f:verbatim>
+  
+  
+  <w:dataGrid id="grid-example1" binding="#{MultiSelectionGridBean.sourceGrid}" value="#{MultiSelectionGridBean.sourceStockData}" var="data"
+              selections="#{MultiSelectionGridBean.selections}"
+              paged="true" rows="10" trackMouseOver="false" contextMenu="true">
+    <ajax:action event="onrowselect"/>
+
+    <w:idColumn id="company" header="Company" width="210" sortable="true"
+                value="#{data.company}"/>
+
+    <w:outputColumn id="price" header="Price" width="70" align="right" sortable="true"
+                    value="#{data.price}">
+      <f:convertNumber currencySymbol="$" pattern="$0.00"/>
+    </w:outputColumn>
+
+    <w:outputColumn id="change" header="Change" width="65" sortable="true" align="right"
+                    value="#{data.change}"
+                    style="#{data.change >= 0 ? 'color:green' : 'color:red'}">
+      <f:convertNumber pattern="0.00"/>
+    </w:outputColumn>
+  </w:dataGrid>
+<w:form>
+<w:button value="Add" action="#{MultiSelectionGridBean.trans}"/><br/>
+<w:button value="Reset" action="#{MultiSelectionGridBean.reset}"/>
+</w:form>
+  <w:dataGrid id="grid-example2" binding="#{MultiSelectionGridBean.targetGrid}" jsvar="stock" value="#{MultiSelectionGridBean.targetStockData}" var="data"
+              paged="true" rows="10" trackMouseOver="false">
+    <w:idColumn id="company" header="Company" width="210" sortable="true"
+                value="#{data.company}" />
+
+    <w:outputColumn id="price" header="Price" width="70" align="right" sortable="true"
+                    value="#{data.price}">
+      <f:convertNumber currencySymbol="$" pattern="$0.00"/>
+    </w:outputColumn>
+
+    <w:outputColumn id="change" header="Change" width="65" sortable="true" align="right"
+                    value="#{data.change}"
+                    style="#{data.change >= 0 ? 'color:green' : 'color:red'}">
+      <f:convertNumber pattern="0.00"/>
+    </w:outputColumn>
+
+  </w:dataGrid>
+</l:panelGrid>
+
+</w:panelBox>
+
+</w:page>
+</f:view>
+

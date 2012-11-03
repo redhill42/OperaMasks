@@ -1,0 +1,133 @@
+<html>
+<head>
+<style type="text/css">
+html, body {
+      font-size: 10px;
+      margin:0;
+      padding:0;
+      border:0 none;
+      overflow:auto;
+      height:100%;
+  }
+  
+</style>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<script class="javascript" src="../js/highlight.js"></script>
+</head>
+<body>
+<textarea id="code" class="xml" style="display:none;">
+<?xml version="1.0" encoding="UTF-8"?>
+<f:view xmlns:f="http://java.sun.com/jsf/core"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:layout="http://www.apusic.com/jsf/layout"
+        xmlns:w="http://www.apusic.com/jsf/widget"
+        xmlns:ajax="http://www.apusic.com/jsf/ajax">
+<style>
+.downloadItem {
+  margin-top: 20px;
+}
+
+.downloadItem a {
+  text-decoration: none;
+  color: #4A719A;
+  font-size: 13px;
+}
+
+.downloadItem .title {
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.downloadItem .intro {
+  font-size: 12px;
+}
+</style>
+<layout:template src="#{templateBean.templateURL}">
+  <layout:facelet name="center">
+    <div class="downloadItem">
+    <span class="title">Apusic OperaMasks v1.1M3</span>
+    <br/>
+    <span class="intro">主要修复了自AOM1.1M2以来所出现的BUG，增强产品稳定性，详细信息请阅读产品包内的release_1.1M3.txt文件。</span>
+    <br/>
+    <img src="images/download.gif"/>
+    <a href="#">下载</a>
+    </div>
+
+    <div class="downloadItem">
+    <span class="title">Apusic OperaMasks v1.1M2</span>
+    <br/>
+    <span class="intro">主要新增模型视图绑定的编程模型，并修复了自1.1M1版本以来发现的BUG，具体请阅读产品包内的release_1.1M2.txt文件。</span>
+    <br/>
+    <img src="images/download.gif"/>
+    <a href="#">下载</a>
+    </div>
+
+    <div class="downloadItem">
+    <span class="title">Apusic OperaMasks v1.1M1</span>
+    <br/>
+    <span class="intro">新增了很多大家关注很久的特性，如Facelets的支持，与spring的集成等等，具体请阅读产品包内的release_1.1M1.txt文件。</span>
+    <br/>
+    <img src="images/download.gif"/>
+    <a href="#">下载</a>
+    </div>
+
+    <div class="downloadItem">
+    <span class="title">Apusic OperaMasks v1.0.2</span>
+    <br/>
+    <span class="intro">修复了Apusic OperaMasks
+    1.0.1以来所出现的一些BUG，具体请阅读产品包内的release_1.0.2.txt文件。</span>
+    <br/>
+    <img src="images/download.gif"/>
+    <a href="#">下载</a>
+    </div>
+
+    <div class="downloadItem">
+    <span class="title">Apusic OperaMasks v1.0.1</span>
+    <br/>
+    <span class="intro">修复了Apusic OperaMasks
+    1.0中所出现的一些BUG，具体请阅读产品包内的release_1.0.1.txt文件。</span>
+    <br/>
+    <img src="images/download.gif"/>
+    <a href="#">下载</a>
+    </div>
+
+    <div class="downloadItem">
+    <span class="title">Apusic OperaMasks v1.0</span>
+    <br/>
+    <span class="intro">Apusic OperaMasks V1.0软件包，包括Apusic
+    OperaMasks实现、第三方依赖库、源码、文档等。解压后请仔细阅读readme文件。</span>
+    <br/>
+    <img src="images/download.gif"/>
+    <a href="#">下载</a>
+    </div>
+
+
+  </layout:facelet>
+</layout:template>
+</f:view>
+</textarea>
+<script class="javascript">
+var text = document.getElementById('code').value ;
+var html = highlightCode( "xml" , "xml" , true , text ) ;
+window.setTimeout(function() {
+    var css = "<link href='../styles/highlight.css' rel='stylesheet' type='text/css'>" ;
+    document.open('text/html');
+    if(document.implementation && document.implementation.createDocument) {
+        var htmlStr = css + html.xml ;
+        document.write(htmlStr);
+        document.close();
+    }
+    else {
+        var h = window.onerror;
+        window.onerror = function(){return true;}
+        html = css + html ;
+        document.write(html);
+        window.onerror = h;
+        document.close();
+        window.location.reload(false);
+    }
+}, 50);
+
+</script>
+</body>
+</html>

@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<f:view xmlns:f="http://java.sun.com/jsf/core"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:w="http://www.apusic.com/jsf/widget"
+        xmlns:l="http://www.apusic.com/jsf/layout"
+        xmlns:ajax="http://www.apusic.com/jsf/ajax">
+<w:page title="Nested Layout">
+<w:head>
+<style type="text/css">
+  html, body {
+      font:normal 12px verdana;
+      margin:0;
+      padding:0;
+      border:0 none;
+      overflow:hidden;
+      height:100%;
+  }
+  #header{
+      background: url(images/header-bar.gif) repeat-x bottom;
+      border-bottom: 1px solid #083772;
+      padding:5px 4px;
+  }
+  #footer{
+      background: url(images/header-bar.gif) repeat-x bottom;
+      border-top: 1px solid #083772;
+      padding:2px 4px;
+      color:white;
+      font:normal 8pt arial,helvetica;
+  }
+  #nav {
+  }
+  #nav, #inner1, #inner2 {
+      padding:10px;
+  }
+  #content p {
+      margin:5px;
+  }
+  #nav li {
+      padding:2px;
+      padding-left:10px;
+      background-image:url(images/bullet.gif);
+      background-position: -3px 6px;
+      background-repeat: no-repeat;
+      font-size:8pt;
+      display: block;
+  }
+  .x-layout-panel-north, .x-layout-panel-south, #content .x-layout-panel-center{
+      border:0px none;
+  }
+  #content .x-layout-panel-south{
+      border-top:1px solid #aca899;
+  }
+  #content .x-layout-panel-center{
+      border-bottom:1px solid #aca899;
+  }
+</style>
+</w:head>
+
+<l:borderLayout>
+  <l:regionConfig target="west"
+                  split="true"
+                  initialSize="200"
+                  titlebar="true"
+                  collapsible="true"
+                  minSize="100"
+                  maxSize="400"
+                  />
+  <l:regionConfig target="center"
+                  autoScroll="false"
+                  />
+
+  <l:contentPanel target="west" id="nav" title="Navigation" closable="false" src="nav.txt"/>
+  <l:contentPanel target="center" title="Center" id="content">
+    <l:borderLayout>
+      <l:regionConfig target="south"
+                      split="true"
+                      initialSize="200"
+                      minSize="100"
+                      maxSize="400"
+                      autoScroll="true"
+                      collapsible="true"
+                      titlebar="true"
+                      />
+      <l:regionConfig target="center" autoScroll="true"/>
+      <l:contentPanel target="south" id="inner1" title="More Information" src="content.txt"/>
+      <l:contentPanel target="center" id="inner2">
+    <l:borderLayout>
+      <l:regionConfig target="west"
+                      split="true"
+                      initialSize="200"
+                      minSize="100"
+                      maxSize="400"
+                      autoScroll="true"
+                      collapsible="true"
+                      titlebar="true"
+                      />
+      <l:regionConfig target="center" autoScroll="true"/>
+      <l:contentPanel target="west" id="inner3" title="More Information" src="content.txt"/>
+      <l:contentPanel target="center" id="inner4" src="content.txt"/>
+    </l:borderLayout>
+      </l:contentPanel>
+    </l:borderLayout>
+  </l:contentPanel>
+  <l:contentPanel target="center" title="Another" id="another">
+    <l:borderLayout>
+      <l:regionConfig target="west"
+                      split="true"
+                      initialSize="200"
+                      minSize="100"
+                      maxSize="400"
+                      autoScroll="true"
+                      collapsible="true"
+                      titlebar="true"
+                      />
+      <l:regionConfig target="center" autoScroll="true"/>
+      <l:contentPanel target="west" id="inner5" title="More Information" src="content.txt"/>
+      <l:contentPanel target="center" id="inner6" src="content.txt"/>
+    </l:borderLayout>
+  </l:contentPanel>
+</l:borderLayout>
+</w:page>
+</f:view>

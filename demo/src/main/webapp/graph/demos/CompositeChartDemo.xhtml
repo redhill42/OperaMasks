@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<f:view xmlns:f="http://java.sun.com/jsf/core"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:w="http://www.apusic.com/jsf/widget"
+        xmlns:g="http://www.apusic.com/jsf/graph">
+<g:compositeChart title="Composite Chart Demo" showLegend="true">
+  <g:xAxis labelAngle="-30"/>
+
+  <g:barChart yAxisLabel="First And Second Value">
+    <g:dataSeries value="#{CategoryData}" var="x" rows="8">
+      <g:dataLabel value="#{x.label}"/>
+      <g:dataItem legend="First" value="#{x.first}"/>
+      <g:dataItem legend="Second" value="#{x.second}"/>
+    </g:dataSeries>
+  </g:barChart>
+
+  <g:lineChart yAxisLabel="Third Value" drawMarkers="true">
+    <g:dataSeries value="#{CategoryData}" var="x" rows="8">
+      <g:dataLabel value="#{x.label}"/>
+      <g:dataItem legend="Third" value="#{x.third*10}"/>
+    </g:dataSeries>
+  </g:lineChart>
+</g:compositeChart>
+</f:view>

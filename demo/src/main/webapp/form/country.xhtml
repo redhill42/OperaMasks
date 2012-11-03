@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<f:view xmlns:f="http://java.sun.com/jsf/core"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:w="http://www.apusic.com/jsf/widget"
+        xmlns:ajax="http://www.apusic.com/jsf/ajax"
+        renderKitId="AJAX">
+  <w:head>
+  <w:stylesheet src="/common/resources/examples.css"/>
+  </w:head>
+  <w:page title="Country Selection">
+    <div class="examDesc">
+    <p>本例演示用AJAX方式实现输入部分字母，可以只显示以所输字母为开头的内容列表。</p>
+    </div>
+    <h:form>
+      <fieldset style="width: 25em">
+        <legend>Select Country</legend>
+        <h:panelGrid columns="1" cellspacing="10" >
+          <h:panelGroup>
+            <h:outputLabel for="prefix" value="Country name starts with: "/>
+            <br/>
+            <h:inputText id="prefix" value="#{Country.prefix}" valueChangeListener="#{Country.prefixChanged}">
+              <ajax:action event="onkeyup"/>
+            </h:inputText>
+          </h:panelGroup>
+          <h:panelGroup>
+            <h:selectOneListbox value="#{Country.country}" size="20" style="width: 20em">
+              <f:selectItems value="#{Country.filteredCountries}"/>
+            </h:selectOneListbox>
+          </h:panelGroup>
+        </h:panelGrid>
+      </fieldset>
+    </h:form>
+  </w:page>
+</f:view>

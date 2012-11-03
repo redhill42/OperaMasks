@@ -1,0 +1,233 @@
+<?xml version="1.0"?>
+<!DOCTYPE facelet-taglib PUBLIC
+    "-//Sun Microsystems, Inc.//DTD Facelet Taglib 1.0//EN"
+    "http://java.sun.com/dtd/facelet-taglib_1_0.dtd">
+
+<facelet-taglib>
+  <namespace>http://www.apusic.com/jsf/graph</namespace>
+
+  <tag>
+    <tag-name>areaChart</tag-name>
+    <component>
+      <component-type>org.operamasks.faces.graph.Chart</component-type>
+      <renderer-type>org.operamasks.faces.graph.AreaChart</renderer-type>
+    </component>
+  </tag>
+
+  <tag>
+    <tag-name>axis</tag-name>
+    <component>
+      <component-type>org.operamasks.faces.graph.Axis</component-type>
+    </component>
+  </tag>
+
+  <tag>
+    <tag-name>barChart</tag-name>
+    <component>
+      <component-type>org.operamasks.faces.graph.Chart</component-type>
+      <renderer-type>org.operamasks.faces.graph.BarChart</renderer-type>
+    </component>
+  </tag>
+
+  <tag>
+    <tag-name>chart</tag-name>
+    <component>
+      <component-type>org.operamasks.faces.graph.Chart</component-type>
+    </component>
+  </tag>
+
+  <tag>
+    <tag-name>compositeChart</tag-name>
+    <component>
+      <component-type>org.operamasks.faces.graph.Chart</component-type>
+      <renderer-type>org.operamasks.faces.graph.CompositeChart</renderer-type>
+    </component>
+  </tag>
+
+  <tag>
+    <tag-name>curveAreaChart</tag-name>
+    <component>
+      <component-type>org.operamasks.faces.graph.Chart</component-type>
+      <renderer-type>org.operamasks.faces.graph.CurveAreaChart</renderer-type>
+    </component>
+  </tag>
+
+  <tag>
+    <tag-name>curveChart</tag-name>
+    <component>
+      <component-type>org.operamasks.faces.graph.Chart</component-type>
+      <renderer-type>org.operamasks.faces.graph.CurveChart</renderer-type>
+    </component>
+  </tag>
+
+  <tag>
+    <tag-name>dataItem</tag-name>
+    <component>
+      <component-type>org.operamasks.faces.graph.DataItem</component-type>
+      <handler-class>org.operamasks.faces.facelets.graph.DataItemHandler</handler-class>
+    </component>
+  </tag>
+
+  <tag>
+    <tag-name>dataLabel</tag-name>
+    <component>
+      <component-type>org.operamasks.faces.graph.DataLabel</component-type>
+    </component>
+  </tag>
+
+  <tag>
+    <tag-name>dataSeries</tag-name>
+    <component>
+      <component-type>org.operamasks.faces.graph.DataSeries</component-type>
+    </component>
+  </tag>
+
+  <tag>
+    <tag-name>functionItem</tag-name>
+    <component>
+      <component-type>org.operamasks.faces.graph.FunctionItem</component-type>
+      <handler-class>org.operamasks.faces.facelets.graph.FunctionItemHandler</handler-class>
+    </component>
+  </tag>
+
+  <tag>
+    <tag-name>functionSeries</tag-name>
+    <component>
+      <component-type>org.operamasks.faces.graph.FunctionSeries</component-type>
+    </component>
+  </tag>
+
+  <tag>
+    <tag-name>histogramDataItem</tag-name>
+    <component>
+      <component-type>org.operamasks.faces.graph.HistogramDataItem</component-type>
+      <handler-class>org.operamasks.faces.facelets.graph.DataItemHandler</handler-class>
+    </component>
+  </tag>
+
+  <tag>
+    <tag-name>histogramDataSeries</tag-name>
+    <component>
+      <component-type>org.operamasks.faces.graph.HistogramDataSeries</component-type>
+    </component>
+  </tag>
+
+  <tag>
+    <tag-name>legend</tag-name>
+    <component>
+      <component-type>org.operamasks.faces.graph.Legend</component-type>
+      <handler-class>org.operamasks.faces.facelets.graph.LegendHandler</handler-class>
+    </component>
+  </tag>
+
+  <tag>
+    <tag-name>lineChart</tag-name>
+    <component>
+      <component-type>org.operamasks.faces.graph.Chart</component-type>
+      <renderer-type>org.operamasks.faces.graph.LineChart</renderer-type>
+    </component>
+  </tag>
+
+  <tag>
+    <tag-name>movingAverage</tag-name>
+    <component>
+      <component-type>org.operamasks.faces.graph.AverageLine</component-type>
+    </component>
+  </tag>
+
+  <tag>
+    <tag-name>pieChart</tag-name>
+    <component>
+      <component-type>org.operamasks.faces.graph.Chart</component-type>
+      <renderer-type>org.operamasks.faces.graph.PieChart</renderer-type>
+    </component>
+  </tag>
+
+  <tag>
+    <tag-name>radarChart</tag-name>
+    <component>
+      <component-type>org.operamasks.faces.graph.Chart</component-type>
+      <renderer-type>org.operamasks.faces.graph.RadarChart</renderer-type>
+    </component>
+  </tag>
+
+  <tag>
+    <tag-name>regressionLine</tag-name>
+    <component>
+      <component-type>org.operamasks.faces.graph.RegressionLine</component-type>
+    </component>
+  </tag>
+
+  <tag>
+    <tag-name>scatterChart</tag-name>
+    <component>
+      <component-type>org.operamasks.faces.graph.Chart</component-type>
+      <renderer-type>org.operamasks.faces.graph.ScatterChart</renderer-type>
+    </component>
+  </tag>
+
+  <tag>
+    <tag-name>spline</tag-name>
+    <component>
+      <component-type>org.operamasks.faces.graph.Spline</component-type>
+    </component>
+  </tag>
+
+  <tag>
+    <tag-name>textAnnotation</tag-name>
+    <component>
+      <component-type>org.operamasks.faces.graph.TextAnnotation</component-type>
+    </component>
+  </tag>
+
+  <tag>
+    <tag-name>timeDataItem</tag-name>
+    <component>
+      <component-type>org.operamasks.faces.graph.TimeDataItem</component-type>
+    </component>
+  </tag>
+
+  <tag>
+    <tag-name>timeSeries</tag-name>
+    <component>
+      <component-type>org.operamasks.faces.graph.TimeSeries</component-type>
+    </component>
+  </tag>
+
+  <tag>
+    <tag-name>title</tag-name>
+    <component>
+      <component-type>org.operamasks.faces.graph.Title</component-type>
+      <handler-class>org.operamasks.faces.facelets.graph.TitleHandler</handler-class>
+    </component>
+  </tag>
+
+  <tag>
+    <tag-name>xyDataItem</tag-name>
+    <component>
+      <component-type>org.operamasks.faces.graph.XYDataItem</component-type>
+    </component>
+  </tag>
+
+  <tag>
+    <tag-name>xyDataSeries</tag-name>
+    <component>
+      <component-type>org.operamasks.faces.graph.XYDataSeries</component-type>
+    </component>
+  </tag>
+
+  <!-- FIXME -->
+  <tag>
+    <tag-name>xAxis</tag-name>
+    <component>
+      <component-type>org.operamasks.faces.graph.Axis</component-type>
+    </component>
+  </tag>
+  <tag>
+    <tag-name>yAxis</tag-name>
+    <component>
+      <component-type>org.operamasks.faces.graph.Axis</component-type>
+    </component>
+  </tag>
+
+</facelet-taglib>

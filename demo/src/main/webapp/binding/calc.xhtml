@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<f:view xmlns:f="http://java.sun.com/jsf/core"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:w="http://www.apusic.com/jsf/widget"
+        xmlns:om="http://www.apusic.com/jsf/misc"
+        xmlns:ajax="http://www.apusic.com/jsf/ajax"
+        renderKitId="AJAX">
+  <om:useBean value="CalcBean"/>
+  <w:page title="View Binding Example">
+  <h:form>
+    <h:panelGrid columns="1">
+      <h:inputText id="first"/>
+      <h:inputText id="second"/>
+      <h:outputText id="result"/>
+    </h:panelGrid>
+    <h:commandButton value="+" id="add"/>
+    <h:commandButton value="-" id="subtract"/>
+    <h:commandButton value="*" id="multiply"/>
+    <h:commandButton value="/" id="divide"/>
+  </h:form>
+  <h:messages/>
+  </w:page>
+</f:view>

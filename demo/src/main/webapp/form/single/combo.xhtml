@@ -1,0 +1,25 @@
+<f:view xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:w="http://www.apusic.com/jsf/widget" xmlns:layout="http://www.apusic.com/jsf/layout"
+    xmlns:h="http://java.sun.com/jsf/html"
+    renderKitId="AJAX">
+    <w:head>
+        <w:stylesheet src="/common/resources/examples.css"/>
+    </w:head>
+    <w:page>
+        <div class="examDesc">
+            <p>本例演示了combo组件的联动用法，左边选择省份，右边根据省的不同来显示城市，如果选择的是首都或者大城市，城市则不能选(disabled)</p>
+        </div>
+        <w:form>
+            <layout:panelGrid columns="4">
+                <layout:cell colspan="1" rowspan="1">省份：</layout:cell>
+                <w:combo id="province">
+                    <f:selectItems id="provinces" />
+                </w:combo>
+                <layout:cell colspan="1" rowspan="1">城市：</layout:cell>
+                <w:combo id="city" >
+                    <f:selectItems id="cities" />
+                </w:combo>
+            </layout:panelGrid>
+        </w:form>
+    </w:page>
+</f:view>

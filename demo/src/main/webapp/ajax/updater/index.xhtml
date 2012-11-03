@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<f:view xmlns:f="http://java.sun.com/jsf/core"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:w="http://www.apusic.com/jsf/widget"
+        xmlns:a="http://www.apusic.com/jsf/ajax"
+        renderKitId="AJAX">
+<w:head>
+<link rel="stylesheet" type="text/css" href="updater.css"/>
+</w:head>
+<w:page title="AjaxUpdater Demo">
+  <a:updater styleClass="myUpdater" jsvar="updater" renderId="global" url="/ajax/updater/simple.xhtml"/>  
+  <w:button value="更新" onclick="updater.update(false);"/>   
+</w:page>
+</f:view>

@@ -1,0 +1,8 @@
+1) these files must be updated from "build" directory
+   ToolBar.js
+   PagingToolbar.js
+   menubutton.js
+
+2) Date.formatCodeToRegex be overwrited in DataFormat.js
+
+3) updated all css manually, replace ../images/default to ../image etc.

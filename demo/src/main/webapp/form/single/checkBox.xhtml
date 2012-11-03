@@ -1,0 +1,20 @@
+<f:view xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:w="http://www.apusic.com/jsf/widget" xmlns:layout="http://www.apusic.com/jsf/layout"
+    xmlns:h="http://java.sun.com/jsf/html"
+    renderKitId="AJAX">
+    <w:head>
+        <w:stylesheet src="/common/resources/examples.css"/>
+    </w:head>
+    <w:page>
+        <div class="examDesc">
+            <p>本例演示了checkBox组件的用法，当选中一个框的时候，会触发onclick事件，到后台去计算勾中了那些框，并把结果打印出来</p>
+        </div>
+        <w:form>
+            <w:checkBox id="red" boxLabel="红色"/>
+            <w:checkBox id="blue" boxLabel="蓝色"/>
+            <w:checkBox id="green" boxLabel="绿色"/>
+            <br/>
+            <h:outputText id="response" escape="false"></h:outputText>
+        </w:form>
+    </w:page>
+</f:view>

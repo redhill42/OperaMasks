@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<f:view xmlns:f="http://java.sun.com/jsf/core"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:w="http://www.apusic.com/jsf/widget"
+        xmlns:ajax="http://www.apusic.com/jsf/ajax"
+        renderKitId="AJAX">
+<w:stylesheet>
+.x-tree-node{
+    font: normal 12px arial, tahoma, helvetica, sans-serif;
+}
+</w:stylesheet>
+<script src="common/components.js"></script>
+<w:tree jsvar="examTree" style="width:100%;height:100%">
+  <w:treeNode userData="root" text="OperaMasks Demos" allowsChildren="true" expand="true">
+    <w:treeNode userData="" text="AJAX 特色组件">
+      <w:treeNode id="ajaxAction" userData="ajax.action,demo.DemoBean" text="AJAX Action"/>
+      <w:treeNode id="ajaxStatus" userData="ajax.status,demo.DemoBean" text="AJAX Status"/>
+      <w:treeNode id="ajaxLogger" userData="ajax.logger,demo.ColorBean" text="AJAX Logger"/>
+      <w:treeNode id="ajaxScripter" userData="ajax.scripter,demo.ScripterBean" text="AJAX Scripter"/>
+      <w:treeNode id="clientValidator" userData="ajax.clientValidator,demo.ClientValidatorBean" text="Client Validator"/>
+      <w:treeNode id="ajaxProgress" userData="" text="AJAX Progress">
+        <w:treeNode id="percentageProgress" userData="ajax.progress.progress-a,demo.ProgressBean" text="百分比进度条"/>
+        <w:treeNode id="phaseProgress" userData="ajax.progress.progress-b,demo.ProgressBean" text="阶段进度条"/>
+        <w:treeNode id="complexProgress" userData="ajax.progress.progress-c,demo.ProgressBean" text="更复杂的进度条"/>
+      </w:treeNode>
+      <w:treeNode userData="" text="AJAX Updater">
+        <w:treeNode id="simpleUpdater" userData="ajax.updater.index,demo.UpdaterBean,ajax.updater.index:ajax.updater.simple" text="最简单的Updater"/>
+        <w:treeNode id="complexUpdater" userData="ajax.updater.index2,demo.UpdaterBean,ajax.updater.index2:ajax.updater.simple" text="复杂些的Updater"/>
+        <w:treeNode id="updaterNav" userData="ajax.updater.partialNav,helloduke.UserBean,ajax.updater.partialNav:ajax.updater.greeting:ajax.updater.sameName" text="Updater的独立导航"/>
+      	<w:treeNode id="ajaxUpdater" userData="ajax.updater.ajaxupdater,demo.AjaxUpdaterBean" text="Updater的高级属性"/>
+      </w:treeNode>      
+    </w:treeNode>
+    <w:treeNode userData="" text="布局">
+      <w:treeNode userData="简单布局">
+      		<w:treeNode id="absoluteLayout" userData="layout.single.AbsoluteLayout,,layout.single.AbsoluteLayout" text="绝对定位布局"/>
+      		<w:treeNode id="accordionLayout" userData="layout.single.AccordionLayout,,layout.single.AccordionLayout" text="抽屉式布局"/>
+      		<w:treeNode id="borderLayout" userData="layout.single.BorderLayout,,layout.single.BorderLayout" text="BorderLayout布局"/>
+      		<w:treeNode id="cardLayout" userData="layout.single.CardLayout,demo.layout.CardLayoutBean,layout.single.CardLayout" text="卡片式布局"/>
+      		<w:treeNode id="columnLayout" userData="layout.single.ColumnLayout,,layout.single.ColumnLayout" text="列布局"/>
+      		<w:treeNode id="tabLayout" userData="layout.single.TabLayout,,layout.single.TabLayout" text="标签式布局"/>
+      		<w:treeNode id="tableLayout" userData="layout.single.TableLayout,demo.layout.ComplexBean,layout.single.TableLayout" text="表格布局"/>
+      </w:treeNode>
+      <w:treeNode userData="复杂布局">
+      	<w:treeNode id="complexLayout" userData="layout.complex.complexLayout,,layout.complex.complexLayout" text="多种布局混合嵌套"/>
+      	<w:treeNode userData="" text="模板布局">
+        	<w:treeNode id="teamplateLayoutSimple" userData="template.simple,,template.simple1:template.simple2:template.simpleTemplate" text="简单模板布局"/>
+      		<w:treeNode id="teamplateLayoutComplex" userData="template.index,demo.TemplateBean,template.index:template.download:template.custom:template.templates.operamasksMain:template.templates.operamasksMain2:template.templates.operamasksMain3" text="复杂模板布局"/>
+      	</w:treeNode>
+      </w:treeNode>
+    </w:treeNode>
+    <w:treeNode userData="" text="表单">
+      <w:treeNode userData="单独示例">
+      		<w:treeNode id="textField" text="TextField"/>
+      		<w:treeNode id="textArea" text="TextArea"/>
+      		<w:treeNode id="dateField" text="日期选择框"/>
+      		<w:treeNode id="numberField" text="数字输入框"/>
+      		<w:treeNode id="timeField" text="时间选择框"/>
+      		<w:treeNode id="combo" text="下拉框"/>
+      		<w:treeNode id="checkBox" text="checkBox"/>
+      		<w:treeNode id="checkBoxGroup" text="checkBox组"/>
+      		<w:treeNode id="radioGroup" text="radio组"/>
+      		<w:treeNode id="simpleHtmlEditor" text="html编辑器"/>
+      		<w:treeNode id="datePicker" userData="menu.date-picker,demo.MenuBean" text="Date Picker"/>
+      		<w:treeNode id="calcNumberField" userData="form.calcNumberField,demo.DemoBean" text="Calculator Number Field"/>
+      		<w:treeNode id="dynamicImage" userData="image.test,demo.ImageBean" text="Dynamic Image"/>
+      		<w:treeNode id="filteredList" userData="form.country,demo.CountryBean" text="Filtered List"/>
+        	<w:treeNode id="validate" userData="form.validate,demo.DemoBean" text="Validate"/>
+      </w:treeNode>
+      <w:treeNode userData="复杂表单">
+      	<w:treeNode id="complexForm" text="填写个人详细信息"/>
+      </w:treeNode>
+    </w:treeNode>
+    <w:treeNode userData="" text="模型视图绑定">
+      <w:treeNode id="hello" userData="binding.greeting,demo.binding.HelloBean:demo.binding.HelloAction:demo.binding.HelloValidation" text="示例 1"/>
+      <w:treeNode id="calc" userData="binding.calc,demo.binding.CalcBean" text="示例 2"/>
+      <w:treeNode id="click" userData="binding.click,demo.binding.ClickBean" text="事件绑定"/>
+      <w:treeNode id="dynamicModel" userData="binding.select-model,demo.binding.ModelSelection:demo.binding.AbstractModel:demo.binding.Model1:demo.binding.Model2" text="动态模型绑定"/>
+      <w:treeNode id="UIDataBinding" userData="binding.stock,demo.binding.StockModel:demo.binding.Quote" text="UIData组件绑定"/>
+      <w:treeNode id="comboBinding" userData="binding.combo,demo.binding.SelectItemsBean" text="下拉列表绑定"/>
+    </w:treeNode>
+    <w:treeNode userData="" text="EJB">
+      <w:treeNode id="stateless" userData="ejb.hello,demo.HelloEJB:demo.Hello:demo.DemoBean" text="Stateless Session Bean"/>
+      <w:treeNode id="stateful" userData="ejb.calc,demo.CalcEJB:demo.Calc" text="Stateful Session Bean"/>
+    </w:treeNode>
+    <w:treeNode userData="" text="数据表现">
+      <w:treeNode userData="表格">
+      	<w:treeNode id="simpleDataGrid" userData="grid.simpleDataGrid,demo.grid.SimpleDataGridBean" text="SimpleDataGrid"/>
+	    <w:treeNode id="stockQuote" userData="grid.stock-quote,demo.StockBean" text="DataGrid"/>
+	    <w:treeNode id="mutiSelectionGrid" userData="grid.stock-quote,demo.StockBean" text="多选DataGrid"/>
+	    <w:treeNode id="editGrid" userData="grid.edit-grid,demo.grid.EditGridBean:demo.grid.GridDataModel" text="EditGrid"/>
+	    <w:treeNode id="pagedStockQuote" userData="grid.paged-stock-quote,demo.PagedStockBean" text="服务器端分页"/>
+      </w:treeNode>
+      <w:treeNode userData="树">
+      	<w:treeNode id="staticTree" userData="tree.tree-a,demo.StaticNodesTreeBean" text="静态节点树"/>
+      	<w:treeNode id="dynamicTree" userData="tree.tree-b,demo.DynamicNodesTreeBean:demo.WindowsExplorer:demo.File" text="动态节点树"/>
+       	<w:treeNode id="checkTree" userData="tree.tree-c,demo.CheckNodesTreeBean" text="带Checkbox节点的树"/>
+       	<w:treeNode id="simpleCheckTree" userData="tree.tree-g,demo.SimpleCheckNodesTreeBean" text="带SimpleCheckbox节点的树"/>
+    	<w:treeNode id="treeServerApi1-nonajax" userData="tree.tree-d,demo.ServerSideTreeBean:demo.WindowsExplorer:demo.File" text="服务器端API-1(Non-AJAX)"/>
+    	<w:treeNode id="treeServerApi1-ajax" userData="tree.tree-e,demo.ServerSideTreeBean:demo.WindowsExplorer:demo.File" text="服务器端API-1(AJAX)"/>
+    	<w:treeNode id="treeServerApi2" userData="tree.tree-f,demo.ServerSideTreeBean2" text="服务器端API-2"/>
+      	<w:treeNode id="IoVCTree" userData="binding.checkNodesTree2,demo.binding.CheckNodesTree2Bean" text="IoVC树绑定"/>  
+      </w:treeNode>
+      <w:treeNode userData="自定义数据展现">
+          <w:treeNode id="dataView" userData="view.test" text="DataView"/>
+          <w:treeNode id="foreach" userData="view.foreach" text="ForEach"/>
+      </w:treeNode>
+      <w:treeNode id="paging" userData="view.paging" text="分页器"/>
+      <w:treeNode id="graph" userData="graph.main" text="图表"/>
+      
+    </w:treeNode>
+    <w:treeNode userData="" text="ToolBar和Menu">
+      <w:treeNode id="menu" userData="menu.menu,demo.MenuBean" text="Menu"/>
+      <w:treeNode id="toolbar" userData="menu.toolbar,demo.ToolBarBean" text="ToolBar"/>
+      <w:treeNode id="dynamicMenu" userData="view.dynamicMenu,demo.DynamicMenuBean" text="Dynamic Menu"/>
+      <w:treeNode id="dynamicToolbar" userData="menu.dynamicToolbar,demo.DynamicToolBarBean" text="Dynamic ToolBar"/>
+    </w:treeNode>
+    <w:treeNode userData="" text="其他组件">
+      <w:treeNode userData="对话框">
+          <w:treeNode id="simpleDialog" userData="dialog.dialog,demo.DialogBean" text="简单对话框"/>
+          <w:treeNode id="gridDialog" userData="dialog.grid,demo.DialogEditBean,dialog.grid:dialog.edit" text="数据编辑"/>
+      </w:treeNode>
+      <w:treeNode id="fileUpload" userData="fileupload.fileuploadprogress,demo.FileUploadProgressBean" text="文件上传"/>
+      <w:treeNode id="boxes" userData="box.boxes" text="Boxes"/>
+    </w:treeNode>
+  </w:treeNode>
+</w:tree>
+<ajax:scripter script="#{PageBean.script}"/>
+</f:view>

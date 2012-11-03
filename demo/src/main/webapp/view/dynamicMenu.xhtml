@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<f:view xmlns:f="http://java.sun.com/jsf/core"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:w="http://www.apusic.com/jsf/widget"
+        xmlns:ajax="http://www.apusic.com/jsf/ajax"
+        xmlns:layout="http://www.apusic.com/jsf/layout"
+        renderKitId="AJAX">
+<w:head>
+<w:stylesheet src="/common/resources/examples.css"/>
+<style>
+#myform\:mymenu ,#myform\:mymenu2{
+    width: 350px;
+    border: 1px solid #cbc7b8;
+}
+</style>
+</w:head>
+<w:page title="Dynamic Menus">
+  <div class="examDesc">
+  <p>动态的菜单</p>
+  </div>
+<h:form id="myform">
+<br/>
+<h:outputText binding="#{MenuBean.response}" value="No item selected"/>
+<br/><br/>
+
+<w:menuBar id="mymenu2" binding="#{DynamicMenuBean.menu}" action="#{MenuBean.menuAction}" autoExpand="false">
+  <w:menu label="链接">
+    <w:linkMenuItem label="Operamasks Community" value="http://www.operamasks.org" target="_new"/>
+    <w:linkMenuItem label="Java Home" value="http://java.sun.com" target="_new"/>
+  </w:menu>
+</w:menuBar>
+<br/>
+<br/><br/>
+<layout:panelGrid>
+<w:button value="add menu 1" action="#{DynamicMenuBean.addMenu1}"/>
+<w:button value="add menu 2" action="#{DynamicMenuBean.addMenu2}"/>
+</layout:panelGrid>
+</h:form>
+</w:page>
+</f:view>

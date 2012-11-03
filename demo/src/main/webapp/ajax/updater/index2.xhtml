@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<f:view xmlns:f="http://java.sun.com/jsf/core"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:w="http://www.apusic.com/jsf/widget"
+        xmlns:a="http://www.apusic.com/jsf/ajax"
+        renderKitId="AJAX">
+<w:head>
+<w:stylesheet src="updater.css"/>
+</w:head>
+<w:page title="AjaxUpdater Demo">
+  <h:form>
+  <a:updater styleClass="myUpdater" jsvar="updater" renderId="global" binding="#{UpdaterBean.contentUpdater}">
+  内部内容：<br/><br/>
+  <h:outputText value="#{UpdaterBean.time}"></h:outputText>
+  </a:updater>
+  <h:selectBooleanCheckbox id="loadSel" value="#{UpdaterBean.loadUrl}"/>
+  <h:outputLabel value="装载外部文件" for="loadSel"/>
+  <w:button value="开始自动更新（间隔2秒）" onclick="return update(this);"/>
+  <w:button value="手动更新（服务器端编程）" action="#{UpdaterBean.updateAction}"/>
+  <w:button value="手动更新（客户端编程）" onclick="updater.update(false);return false;"/>
+
+  <a:timer jsvar="atimer" sendForm="true" period="2" start="false" action="#{UpdaterBean.updateAction}"/>
+  </h:form>
+  <script type="text/javascript" src="index2.js"></script>  
+</w:page>
+</f:view>

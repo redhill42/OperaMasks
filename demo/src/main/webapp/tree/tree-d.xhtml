@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<f:view xmlns:f="http://java.sun.com/jsf/core"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:w="http://www.apusic.com/jsf/widget">
+<w:head>  
+  <w:stylesheet src="/common/resources/examples.css"/>
+</w:head>
+<w:page title="Server Side Tree">
+<div class="examDesc">
+<p>本示例展示如何在服务器端控制Tree组件的行为。用户通过客户端事件操作左边的树时（展开，收缩，选中），
+服务器端程序控制右边的树使其行为总是同左边的树一致。</p>
+</div>  
+<h:form> 
+<table>
+<tr>
+<td>
+  <w:tree animate="true" style="width:200px;height:300px;border:1px solid #c3daf9;overflow:auto" lines="true"
+  		asyncData="#{ServerSideTree.getFilesInFolder}" nodeImage="#{ServerSideTree.getFileIcon}"
+  			nodeHasChildren="#{ServerSideTree.isFolder}" nodeText="#{ServerSideTree.getFileName}">
+	<w:treeEventListener binding="#{ServerSideTree}" select="true" collapse="true" expand="true"/>
+  </w:tree>
+</td>
+<td>
+  <w:tree animate="true" style="width:200px;height:300px;border:1px solid #c3daf9;overflow:auto" lines="true"
+  		asyncData="#{ServerSideTree.getFilesInFolder}" nodeImage="#{ServerSideTree.getFileIcon}"
+  			nodeHasChildren="#{ServerSideTree.isFolder}" nodeText="#{ServerSideTree.getFileName}"
+  			binding = "#{ServerSideTree.tree}">
+  </w:tree>
+</td>
+</tr>
+</table>
+</h:form>
+</w:page>
+</f:view>

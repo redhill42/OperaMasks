@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<f:view xmlns:f="http://java.sun.com/jsf/core"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:g="http://www.apusic.com/jsf/graph">
+<g:areaChart title="Time Series Area Chart Demo"
+             xAxisLabel="Time"
+             yAxisLabel="Value" 
+             showLegend="true">
+  <g:xAxis lowerMargin="0" upperMargin="0"/>
+  <g:timeSeries value="#{TimeSeriesData}" var="ts">
+    <g:timeDataItem legend="Random 1" time="#{ts.time}" value="#{ts.value}"/>
+  </g:timeSeries>
+</g:areaChart>
+</f:view>

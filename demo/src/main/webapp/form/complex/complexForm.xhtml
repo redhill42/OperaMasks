@@ -1,0 +1,72 @@
+<f:view xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:w="http://www.apusic.com/jsf/widget" xmlns:layout="http://www.apusic.com/jsf/layout"
+    xmlns:h="http://java.sun.com/jsf/html"
+    renderKitId="AJAX">
+    <w:head>
+        <w:stylesheet src="/common/resources/examples.css"/>
+    </w:head>
+    <w:page>
+        <div class="examDesc">
+            <p>本例子演示的是把多数的表单组件组合在一起，完成一个比较复杂的表单功能</p>
+        </div>
+        <w:form>
+            <h2>个人详细信息：</h2>
+            <layout:panelGrid columns="2" cellspacing="5">
+                <layout:cell colspan="1" rowspan="1">
+                    姓名：<span style="color: red;">(*)</span>
+                </layout:cell>
+                <w:textField id="name" width="330"/>
+
+                <h:outputLabel value="性别："></h:outputLabel>
+                <w:radioGroup id="sex">
+                    <f:selectItem itemLabel="男" itemValue="male" />
+                    <f:selectItem itemLabel="女" itemValue="woman" />
+                </w:radioGroup>
+
+                <h:outputLabel value="年龄："></h:outputLabel>
+                <w:numberField id="age"  width="330"/>
+
+                <h:outputLabel value="生日："></h:outputLabel>
+                <w:dateField id="birthday" format="y-m-d" width="330">
+                    <f:convertDateTime pattern="yy-M-d" timeZone="GMT+8" />
+                </w:dateField>
+
+                <h:outputLabel value="地址："></h:outputLabel>
+                <w:textArea id="address" width="330" height="50"/>
+
+                <h:outputLabel value="目前所在地："></h:outputLabel>
+                <layout:panelGrid columns="2">
+                    <w:combo id="province" width="164">
+                        <f:selectItems id="provinces" />
+                    </w:combo>
+                    <w:combo id="city" width="164">
+                        <f:selectItems id="cities" />
+                    </w:combo>
+                </layout:panelGrid>
+
+                <h:outputLabel value="电子邮箱："></h:outputLabel>
+                <w:textField id="email"  width="330"/>
+
+                <h:outputLabel value="工作时间："></h:outputLabel>
+                <layout:panelGrid columns="3">
+                    <w:timeField id="startTime" increment="30" width="154" format="G点i分"/>
+                    <h:outputLabel value="到"></h:outputLabel>
+                    <w:timeField id="endTime" increment="30" width="154" format="G点i分"/>
+                </layout:panelGrid>
+
+
+                <h:outputLabel value="兴趣："></h:outputLabel>
+                <w:checkBoxGroup>
+                    <f:selectItems id="interests" />
+                </w:checkBoxGroup>
+
+                <h:outputLabel value="签名："></h:outputLabel>
+                <w:simpleHtmlEditor width="330" height="100" id="sign" enableLinks="false"
+                    enableAlignments="false" enableSourceEdit="false" enableLists="false"/>
+            </layout:panelGrid>
+            <w:button id="save" value="保存" width="100"/>
+            <br/>
+            <h:outputText id="response" escape="false"></h:outputText>
+        </w:form>
+    </w:page>
+</f:view>

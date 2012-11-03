@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<f:view xmlns:f="http://java.sun.com/jsf/core"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:w="http://www.apusic.com/jsf/widget"
+        xmlns:ajax="http://www.apusic.com/jsf/ajax"
+        renderKitId="AJAX">
+<w:head>  
+  <w:stylesheet src="/common/resources/examples.css"/>
+</w:head>
+<w:page title="Server Side Tree">
+<div class="examDesc">
+<p>本示例展示如何在服务器端动态维护Tree节点。</p>
+</div> 
+<h:form> 
+<table>
+	<tr>
+	<td style="vertical-align: top">
+		<w:tree animate="true" style="width:200px;height:300px;border:1px solid #c3daf9;overflow:auto" lines="true" binding="#{ServerSideTree2.tree}">
+			<w:treeEventListener binding="#{ServerSideTree2}" select="true" />
+			<w:treeNode userData="rootNode" text="Root Node" image="images/my_documents.gif" />
+		</w:tree>
+	</td>
+	<td style="vertical-align: top">
+		<table width="300" border="0">
+			<tr>
+				<td width="100" align="center">
+					<w:button value="Add" action="#{ServerSideTree2.add}" />
+				</td>
+				<td width="100" align="center">
+					<w:button value="Remove" action="#{ServerSideTree2.remove}" />
+				</td>
+				<td align="center">
+					<w:button value="Update" action="#{ServerSideTree2.update}" />
+				</td>
+			</tr>
+			<tr>
+				<td colspan="3">
+					<font color="red"><h:outputText value="#{ServerSideTree2.response}" /></font>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="3">
+					<table>
+						<tr>
+							<td>Node Text:</td>
+							<td><w:textField value="#{ServerSideTree2.nodeText}" /></td>
+						</tr>
+						<tr>
+							<td>Node Icon:</td>
+							<td>
+								<w:combo id="combo" value="#{ServerSideTree2.nodeImage}" emptyText="Choose an icon..." typeAhead="true">
+									<f:selectItems value="#{ServerSideTree2.allImages}"/>
+								</w:combo> 
+							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+		</table>
+	</td>
+	<td>
+		<table>
+			<tr>
+			</tr>
+		</table>
+	</td>
+	</tr>
+</table>
+</h:form>
+</w:page>
+</f:view>

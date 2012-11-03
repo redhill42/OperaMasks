@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<f:view xmlns:f="http://java.sun.com/jsf/core"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:w="http://www.apusic.com/jsf/widget"
+        xmlns:ajax="http://www.apusic.com/jsf/ajax"
+        renderKitId="AJAX">
+  <w:page title="Stateful Session Bean Example">
+  <h:form>
+    <h:panelGrid columns="1">
+      <h:inputText value="#{calc.first}"/>
+      <h:inputText value="#{calc.second}"/>
+      <h:outputText value="#{calc.result}"/>
+    </h:panelGrid>
+    <h:commandButton value="+" action="#{calc.add}"/>
+    <h:commandButton value="-" action="#{calc.substract}"/>
+    <h:commandButton value="*" action="#{calc.multiply}"/>
+    <h:commandButton value="/" action="#{calc.divide}"/>
+  </h:form>
+  <h:messages/>
+  </w:page>
+</f:view>

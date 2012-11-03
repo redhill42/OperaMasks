@@ -1,0 +1,110 @@
+<html>
+<head>
+<style type="text/css">
+html, body {
+      font-size: 10px;
+      margin:0;
+      padding:0;
+      border:0 none;
+      overflow:auto;
+      height:100%;
+  }
+  
+</style>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<script class="javascript" src="../js/highlight.js"></script>
+</head>
+<body>
+<textarea id="code" class="xml" style="display:none;">
+<?xml version="1.0" encoding="UTF-8"?>
+<f:view xmlns:f="http://java.sun.com/jsf/core"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:w="http://www.apusic.com/jsf/widget"
+        xmlns:ajax="http://www.apusic.com/jsf/ajax"
+        xmlns:om="http://www.apusic.com/jsf/misc"
+        renderKitId="AJAX">
+<script type="text/javascript" src="/rcdemos/_global/resource/json2.js"></script>
+<w:head>
+<w:stylesheet src="/common/resources/examples.css"/>
+<style type="text/css">
+#myform_trainRecord {
+  height:280px;
+  border:1px solid #cbc7b8;
+}
+
+#table td, #table th {
+  padding:5px;
+}
+</style>
+</w:head>
+
+<om:useBean value="EditGridBean,GridDataModel"/>
+  
+<w:page title="Employee">
+<div class="examDesc">
+<p>本例演示可编辑表格的用法，双击单元格可以进行编辑，点保存同步到服务器，后台控制台打印出修改的信息。</p>
+</div>
+<w:form id="myform">
+  <w:panelBox style="width:650px;">
+    <h3>培训记录维护</h3>
+    <w:editDataGrid id="trainRecord" toolBarPosition="top" autoHeight="true">
+      <w:idColumn id="id" header="Id" hidden="true"/>
+      <w:outputColumn id="employeeName" header="职员" width="100" editor="employeeNameEditor"/>
+      <w:outputColumn id="trainItem" header="培训项目" width="130" editor="trainItemEditor"/>
+      <w:outputColumn id="trainHours" header="培训课时" width="70" editor="trainHoursEditor"/>
+      <w:outputColumn id="trainDate" header="培训日期" width="130" editor="trainDateEditor" >
+      	<f:convertDateTime pattern="yyyy-MM-dd"/>
+      </w:outputColumn>
+      <w:textInputColumn id="employeeNameEditor" allowBlank="false" emptyText="must input a value"/>
+      <w:numberInputColumn id="trainHoursEditor" allowBlank="false"/>
+      <w:comboInputColumn id="trainItemEditor" forceSelection="true" allowBlank="false">
+      	<f:selectItems id="trainItems" value="#{GridDataModel.trainItems}"/>
+      </w:comboInputColumn>
+      	<w:dateInputColumn id="trainDateEditor" width="100" format="Y-m-d" allowBlank="false">
+      </w:dateInputColumn>
+      
+      <w:pagingToolbar for="trainRecord" pageSize="2">
+	    <w:separator />
+          <w:menu label="数据维护">
+	    	<w:commandMenuItem label="增加" image="images/new.gif" action="#{EditGridBean.insert}" />
+            <w:commandMenuItem label="删除" image="images/delete.gif" action="#{EditGridBean.remove}" />
+          	<w:commandMenuItem label="保存" image="images/save.gif" action="#{EditGridBean.save}"/>
+	   </w:menu> 
+	    <w:separator />
+          <w:button id="add" value="增加" image="images/new.gif" action="#{EditGridBean.insert}"/>
+          <w:button id="remove" value="删除" image="images/delete.gif" action="#{EditGridBean.remove}"/>
+          <w:button id="save" value="保存" image="images/save.gif" action="#{EditGridBean.save}"/>  
+      </w:pagingToolbar>
+    </w:editDataGrid>
+  </w:panelBox>
+</w:form>  
+</w:page>
+</f:view>
+
+</textarea>
+<script class="javascript">
+var text = document.getElementById('code').value ;
+var html = highlightCode( "xml" , "xml" , true , text ) ;
+window.setTimeout(function() {
+    var css = "<link href='../styles/highlight.css' rel='stylesheet' type='text/css'>" ;
+    document.open('text/html');
+    if(document.implementation && document.implementation.createDocument) {
+        var htmlStr = css + html.xml ;
+        document.write(htmlStr);
+        document.close();
+    }
+    else {
+        var h = window.onerror;
+        window.onerror = function(){return true;}
+        html = css + html ;
+        document.write(html);
+        window.onerror = h;
+        document.close();
+        window.location.reload(false);
+    }
+}, 50);
+
+</script>
+</body>
+</html>

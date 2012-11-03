@@ -1,0 +1,223 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head>
+<title></title>
+  <style type="text/css">
+    <!--code { font-family: Courier New, Courier; font-size: 10pt; margin: 0px; }-->
+  </style>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head><body>
+
+
+<!-- ======================================================== -->
+<!-- = Java Sourcecode to HTML automatically converted code = -->
+<!-- =   Java2Html Converter 5.0 [2006-02-26] by Markus Gebhard  markus@jave.de   = -->
+<!-- =     Further information: http://www.java2html.de     = -->
+<div align="left" class="java">
+<table border="0" cellpadding="3" cellspacing="0" bgcolor="#ffffff">
+  <!-- start headline -->
+   <tr>
+    <td colspan="2">
+     <center><font size="+2">
+      <code><b>
+DynamicMenuBean.java
+      </b></code>
+     </font></center>
+    </td>
+   </tr>
+  <!-- end headline -->
+   <tr>
+  <!-- start source code -->
+   <td nowrap="nowrap" valign="top" align="left">
+    <code>
+<font color="#3f7f5f">/*</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f7f5f">*&nbsp;$Id:&nbsp;DynamicMenuBean.java,v&nbsp;1.2&nbsp;2007/12/11&nbsp;04:14:14&nbsp;jacky&nbsp;Exp&nbsp;$</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f7f5f">*</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f7f5f">*&nbsp;Copyright&nbsp;(C)&nbsp;2006&nbsp;Operamasks&nbsp;Community.</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f7f5f">*&nbsp;Copyright&nbsp;(C)&nbsp;2000-2006&nbsp;Apusic&nbsp;Systems,&nbsp;Inc.</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f7f5f">*</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f7f5f">*&nbsp;This&nbsp;program&nbsp;is&nbsp;free&nbsp;software:&nbsp;you&nbsp;can&nbsp;redistribute&nbsp;it&nbsp;and/or&nbsp;modify</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f7f5f">*&nbsp;it&nbsp;under&nbsp;the&nbsp;terms&nbsp;of&nbsp;the&nbsp;GNU&nbsp;General&nbsp;Public&nbsp;License&nbsp;as&nbsp;published&nbsp;by</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f7f5f">*&nbsp;the&nbsp;Free&nbsp;Software&nbsp;Foundation,&nbsp;either&nbsp;version&nbsp;3&nbsp;of&nbsp;the&nbsp;License,&nbsp;or</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f7f5f">*&nbsp;any&nbsp;later&nbsp;version.</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f7f5f">*</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f7f5f">*&nbsp;This&nbsp;program&nbsp;is&nbsp;distributed&nbsp;in&nbsp;the&nbsp;hope&nbsp;that&nbsp;it&nbsp;will&nbsp;be&nbsp;useful,</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f7f5f">*&nbsp;but&nbsp;WITHOUT&nbsp;ANY&nbsp;WARRANTY;&nbsp;without&nbsp;even&nbsp;the&nbsp;implied&nbsp;warranty&nbsp;of</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f7f5f">*&nbsp;MERCHANTABILITY&nbsp;or&nbsp;FITNESS&nbsp;FOR&nbsp;A&nbsp;PARTICULAR&nbsp;PURPOSE.&nbsp;&nbsp;See&nbsp;the</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f7f5f">*&nbsp;GNU&nbsp;General&nbsp;Public&nbsp;License&nbsp;for&nbsp;more&nbsp;details.</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f7f5f">*</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f7f5f">*&nbsp;You&nbsp;should&nbsp;have&nbsp;received&nbsp;a&nbsp;copy&nbsp;of&nbsp;the&nbsp;GNU&nbsp;General&nbsp;Public&nbsp;License</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f7f5f">*&nbsp;along&nbsp;with&nbsp;this&nbsp;program.&nbsp;If&nbsp;not,&nbsp;see&nbsp;http://www.gnu.org/licenses.</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f7f5f">*/</font><br />
+<font color="#7f0055"><b>package&nbsp;</b></font><font color="#000000">demo;</font><br />
+<font color="#ffffff"></font><br />
+<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">java.util.ArrayList;</font><br />
+<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">java.util.List;</font><br />
+<font color="#ffffff"></font><br />
+<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">javax.faces.application.Application;</font><br />
+<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">javax.faces.component.UIComponent;</font><br />
+<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">javax.faces.context.FacesContext;</font><br />
+<font color="#ffffff"></font><br />
+<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">org.operamasks.faces.annotation.ManagedBean;</font><br />
+<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">org.operamasks.faces.annotation.ManagedBeanScope;</font><br />
+<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">org.operamasks.faces.annotation.ManagedProperty;</font><br />
+<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">org.operamasks.faces.component.widget.UISeparator;</font><br />
+<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">org.operamasks.faces.component.widget.menu.UICommandMenuItem;</font><br />
+<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">org.operamasks.faces.component.widget.menu.UILinkMenuItem;</font><br />
+<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">org.operamasks.faces.component.widget.menu.UIMenu;</font><br />
+<font color="#ffffff"></font><br />
+<font color="#646464">@ManagedBean</font><font color="#000000">(</font><font color="#000000">scope=ManagedBeanScope.SESSION</font><font color="#000000">)</font><br />
+<font color="#7f0055"><b>public&nbsp;class&nbsp;</b></font><font color="#000000">DynamicMenuBean&nbsp;</font><font color="#000000">{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#646464">@ManagedProperty</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>private&nbsp;</b></font><font color="#000000">List&lt;MenuInfo&gt;&nbsp;menus;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#646464">@ManagedProperty&nbsp;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>private&nbsp;</b></font><font color="#000000">UIMenu&nbsp;menu;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;</b></font><font color="#000000">DynamicMenuBean</font><font color="#000000">()&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">initMenu</font><font color="#000000">()</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff"></font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>private&nbsp;</b></font><font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">initMenu</font><font color="#000000">()&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">menus&nbsp;=&nbsp;</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">ArrayList&lt;MenuInfo&gt;</font><font color="#000000">()</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">MenuInfo&nbsp;menu&nbsp;=&nbsp;</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">MenuInfo</font><font color="#000000">(</font><font color="#2a00ff">&#34;文件&#34;</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">menu.items.add</font><font color="#000000">(</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">MenuItemInfo</font><font color="#000000">(</font><font color="#2a00ff">&#34;新建&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;../menu/images/new.gif&#34;</font><font color="#000000">))</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">menu.items.add</font><font color="#000000">(</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">MenuItemInfo</font><font color="#000000">(</font><font color="#2a00ff">&#34;打开&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;../menu/images/open.gif&#34;</font><font color="#000000">))</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">menu.items.add</font><font color="#000000">(</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">MenuItemInfo</font><font color="#000000">(</font><font color="#2a00ff">&#34;保存&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;../menu/images/save.gif&#34;</font><font color="#000000">))</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">menus.add</font><font color="#000000">(</font><font color="#000000">menu</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">menu&nbsp;=&nbsp;</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">MenuInfo</font><font color="#000000">(</font><font color="#2a00ff">&#34;编辑&#34;</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">menu.items.add</font><font color="#000000">(</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">MenuItemInfo</font><font color="#000000">(</font><font color="#2a00ff">&#34;复制&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;../menu/images/copy.gif&#34;</font><font color="#000000">))</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">menu.items.add</font><font color="#000000">(</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">MenuItemInfo</font><font color="#000000">(</font><font color="#2a00ff">&#34;剪切&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;../menu/images/cut.gif&#34;</font><font color="#000000">))</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">menu.items.add</font><font color="#000000">(</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">MenuItemInfo</font><font color="#000000">(</font><font color="#2a00ff">&#34;粘贴&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;../menu/images/paste.gif&#34;</font><font color="#000000">))</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">menus.add</font><font color="#000000">(</font><font color="#000000">menu</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff"></font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>private&nbsp;class&nbsp;</b></font><font color="#000000">MenuInfo&nbsp;</font><font color="#000000">{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#646464">@ManagedProperty</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">List&lt;MenuItemInfo&gt;&nbsp;items;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#646464">@ManagedProperty</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">String&nbsp;label;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">MenuInfo</font><font color="#000000">(</font><font color="#000000">String&nbsp;label</font><font color="#000000">)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>this</b></font><font color="#000000">.label&nbsp;=&nbsp;label;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">items&nbsp;=&nbsp;</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">ArrayList&lt;MenuItemInfo&gt;</font><font color="#000000">()</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>private&nbsp;class&nbsp;</b></font><font color="#000000">MenuItemInfo&nbsp;</font><font color="#000000">{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#646464">@ManagedProperty</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">String&nbsp;label;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#646464">@ManagedProperty</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">String&nbsp;img;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#646464">@ManagedProperty</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">List&lt;MenuItemInfo&gt;&nbsp;items;</font><br />
+<font color="#ffffff"></font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">MenuItemInfo</font><font color="#000000">(</font><font color="#000000">String&nbsp;label,&nbsp;String&nbsp;img</font><font color="#000000">)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>this</b></font><font color="#000000">.label&nbsp;=&nbsp;label;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>this</b></font><font color="#000000">.img&nbsp;=&nbsp;img;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>this</b></font><font color="#000000">.items&nbsp;=&nbsp;</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">ArrayList&lt;MenuItemInfo&gt;</font><font color="#000000">()</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;</b></font><font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">addMenu1</font><font color="#000000">()&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">menu.removeAll</font><font color="#000000">()</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">UIMenu&nbsp;fileMenu&nbsp;=&nbsp;createMenu</font><font color="#000000">(</font><font color="#2a00ff">&#34;文件&#34;</font><font color="#000000">,&nbsp;</font><font color="#7f0055"><b>null</b></font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">UIMenu&nbsp;newMenu&nbsp;=&nbsp;createMenu</font><font color="#000000">(</font><font color="#2a00ff">&#34;新建&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;../menu/images/new.gif&#34;</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">UICommandMenuItem&nbsp;item;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">item&nbsp;=&nbsp;</font><font color="#000000">(</font><font color="#000000">UICommandMenuItem</font><font color="#000000">)&nbsp;</font><font color="#000000">createMenuItem</font><font color="#000000">(</font><font color="#2a00ff">&#34;文本文件&#34;</font><font color="#000000">,&nbsp;null,&nbsp;UICommandMenuItem.COMPONENT_TYPE</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">newMenu.addMenuItem</font><font color="#000000">(</font><font color="#000000">item</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">item&nbsp;=&nbsp;</font><font color="#000000">(</font><font color="#000000">UICommandMenuItem</font><font color="#000000">)&nbsp;</font><font color="#000000">createMenuItem</font><font color="#000000">(</font><font color="#2a00ff">&#34;XML文件&#34;</font><font color="#000000">,&nbsp;null,&nbsp;UICommandMenuItem.COMPONENT_TYPE</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">newMenu.addMenuItem</font><font color="#000000">(</font><font color="#000000">item</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">item&nbsp;=&nbsp;</font><font color="#000000">(</font><font color="#000000">UICommandMenuItem</font><font color="#000000">)&nbsp;</font><font color="#000000">createMenuItem</font><font color="#000000">(</font><font color="#2a00ff">&#34;Java文件&#34;</font><font color="#000000">,&nbsp;null,&nbsp;UICommandMenuItem.COMPONENT_TYPE</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">newMenu.addMenuItem</font><font color="#000000">(</font><font color="#000000">item</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff"></font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">fileMenu.addMenu</font><font color="#000000">(</font><font color="#000000">newMenu</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff"></font><br />
+<font color="#ffffff"></font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">item&nbsp;=&nbsp;</font><font color="#000000">(</font><font color="#000000">UICommandMenuItem</font><font color="#000000">)&nbsp;</font><font color="#000000">createMenuItem</font><font color="#000000">(</font><font color="#2a00ff">&#34;打开&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;../menu/images/open.gif&#34;</font><font color="#000000">,&nbsp;UICommandMenuItem.COMPONENT_TYPE</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">fileMenu.addMenuItem</font><font color="#000000">(</font><font color="#000000">item</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">item&nbsp;=&nbsp;</font><font color="#000000">(</font><font color="#000000">UICommandMenuItem</font><font color="#000000">)&nbsp;</font><font color="#000000">createMenuItem</font><font color="#000000">(</font><font color="#2a00ff">&#34;保存&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;../menu/images/save.gif&#34;</font><font color="#000000">,&nbsp;UICommandMenuItem.COMPONENT_TYPE</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">fileMenu.addMenuItem</font><font color="#000000">(</font><font color="#000000">item</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">item&nbsp;=&nbsp;</font><font color="#000000">(</font><font color="#000000">UICommandMenuItem</font><font color="#000000">)&nbsp;</font><font color="#000000">createMenuItem</font><font color="#000000">(</font><font color="#2a00ff">&#34;另存为&#34;</font><font color="#000000">,&nbsp;null,&nbsp;UICommandMenuItem.COMPONENT_TYPE</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">item.getAttributes</font><font color="#000000">()</font><font color="#000000">.put</font><font color="#000000">(</font><font color="#2a00ff">&#34;disabled&#34;</font><font color="#000000">,&nbsp;Boolean.TRUE</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">fileMenu.addMenuItem</font><font color="#000000">(</font><font color="#000000">item</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">UISeparator&nbsp;separator&nbsp;=&nbsp;</font><font color="#000000">(</font><font color="#000000">UISeparator</font><font color="#000000">)&nbsp;</font><font color="#000000">createComponent</font><font color="#000000">(</font><font color="#000000">UISeparator.COMPONENT_TYPE</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">fileMenu.addMenuItem</font><font color="#000000">(</font><font color="#000000">separator</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">UILinkMenuItem&nbsp;link&nbsp;=&nbsp;</font><font color="#000000">(</font><font color="#000000">UILinkMenuItem</font><font color="#000000">)&nbsp;</font><font color="#000000">createMenuItem</font><font color="#000000">(</font><font color="#2a00ff">&#34;关闭&#34;</font><font color="#000000">,&nbsp;null,&nbsp;UILinkMenuItem.COMPONENT_TYPE</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">link.setValue</font><font color="#000000">(</font><font color="#2a00ff">&#34;dynamicMenu.jsp&#34;</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">link.setOnclick</font><font color="#000000">(</font><font color="#2a00ff">&#34;return&nbsp;confirm('Are&nbsp;you&nbsp;sure?')&#34;</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">fileMenu.addMenuItem</font><font color="#000000">(</font><font color="#000000">link</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff"></font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">menu.addMenu</font><font color="#000000">(</font><font color="#000000">fileMenu</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">UIMenu&nbsp;editMenu&nbsp;=&nbsp;createMenu</font><font color="#000000">(</font><font color="#2a00ff">&#34;编辑&#34;</font><font color="#000000">,&nbsp;</font><font color="#7f0055"><b>null</b></font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">menu.addMenu</font><font color="#000000">(</font><font color="#000000">editMenu</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">item&nbsp;=&nbsp;</font><font color="#000000">(</font><font color="#000000">UICommandMenuItem</font><font color="#000000">)&nbsp;</font><font color="#000000">createMenuItem</font><font color="#000000">(</font><font color="#2a00ff">&#34;复制&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;../menu/images/copy.gif&#34;</font><font color="#000000">,&nbsp;UICommandMenuItem.COMPONENT_TYPE</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">editMenu.addMenuItem</font><font color="#000000">(</font><font color="#000000">item</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">item&nbsp;=&nbsp;</font><font color="#000000">(</font><font color="#000000">UICommandMenuItem</font><font color="#000000">)&nbsp;</font><font color="#000000">createMenuItem</font><font color="#000000">(</font><font color="#2a00ff">&#34;剪切&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;../menu/images/cut.gif&#34;</font><font color="#000000">,&nbsp;UICommandMenuItem.COMPONENT_TYPE</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">editMenu.addMenuItem</font><font color="#000000">(</font><font color="#000000">item</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">item&nbsp;=&nbsp;</font><font color="#000000">(</font><font color="#000000">UICommandMenuItem</font><font color="#000000">)&nbsp;</font><font color="#000000">createMenuItem</font><font color="#000000">(</font><font color="#2a00ff">&#34;粘贴&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;../menu/images/paste.gif&#34;</font><font color="#000000">,&nbsp;UICommandMenuItem.COMPONENT_TYPE</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">editMenu.addMenuItem</font><font color="#000000">(</font><font color="#000000">item</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;</b></font><font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">addMenu2</font><font color="#000000">()&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">menu.removeAll</font><font color="#000000">()</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">UIMenu&nbsp;fileMenu&nbsp;=&nbsp;createMenu</font><font color="#000000">(</font><font color="#2a00ff">&#34;搜索&#34;</font><font color="#000000">,&nbsp;</font><font color="#7f0055"><b>null</b></font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">UICommandMenuItem&nbsp;item;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">item&nbsp;=&nbsp;</font><font color="#000000">(</font><font color="#000000">UICommandMenuItem</font><font color="#000000">)&nbsp;</font><font color="#000000">createMenuItem</font><font color="#000000">(</font><font color="#2a00ff">&#34;上一个&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;../menu/images/open.gif&#34;</font><font color="#000000">,&nbsp;UICommandMenuItem.COMPONENT_TYPE</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">fileMenu.addMenuItem</font><font color="#000000">(</font><font color="#000000">item</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">item&nbsp;=&nbsp;</font><font color="#000000">(</font><font color="#000000">UICommandMenuItem</font><font color="#000000">)&nbsp;</font><font color="#000000">createMenuItem</font><font color="#000000">(</font><font color="#2a00ff">&#34;下一个&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;../menu/images/save.gif&#34;</font><font color="#000000">,&nbsp;UICommandMenuItem.COMPONENT_TYPE</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">fileMenu.addMenuItem</font><font color="#000000">(</font><font color="#000000">item</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">item&nbsp;=&nbsp;</font><font color="#000000">(</font><font color="#000000">UICommandMenuItem</font><font color="#000000">)&nbsp;</font><font color="#000000">createMenuItem</font><font color="#000000">(</font><font color="#2a00ff">&#34;逐字搜索&#34;</font><font color="#000000">,&nbsp;null,&nbsp;UICommandMenuItem.COMPONENT_TYPE</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">item.getAttributes</font><font color="#000000">()</font><font color="#000000">.put</font><font color="#000000">(</font><font color="#2a00ff">&#34;disabled&#34;</font><font color="#000000">,&nbsp;Boolean.TRUE</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">fileMenu.addMenuItem</font><font color="#000000">(</font><font color="#000000">item</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff"></font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">menu.addMenu</font><font color="#000000">(</font><font color="#000000">fileMenu</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">UIMenu&nbsp;editMenu&nbsp;=&nbsp;createMenu</font><font color="#000000">(</font><font color="#2a00ff">&#34;格式&#34;</font><font color="#000000">,&nbsp;</font><font color="#7f0055"><b>null</b></font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">menu.addMenu</font><font color="#000000">(</font><font color="#000000">editMenu</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">item&nbsp;=&nbsp;</font><font color="#000000">(</font><font color="#000000">UICommandMenuItem</font><font color="#000000">)&nbsp;</font><font color="#000000">createMenuItem</font><font color="#000000">(</font><font color="#2a00ff">&#34;转为大写&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;../menu/images/copy.gif&#34;</font><font color="#000000">,&nbsp;UICommandMenuItem.COMPONENT_TYPE</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">editMenu.addMenuItem</font><font color="#000000">(</font><font color="#000000">item</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">item&nbsp;=&nbsp;</font><font color="#000000">(</font><font color="#000000">UICommandMenuItem</font><font color="#000000">)&nbsp;</font><font color="#000000">createMenuItem</font><font color="#000000">(</font><font color="#2a00ff">&#34;转为小写&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;../menu/images/cut.gif&#34;</font><font color="#000000">,&nbsp;UICommandMenuItem.COMPONENT_TYPE</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">editMenu.addMenuItem</font><font color="#000000">(</font><font color="#000000">item</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">item&nbsp;=&nbsp;</font><font color="#000000">(</font><font color="#000000">UICommandMenuItem</font><font color="#000000">)&nbsp;</font><font color="#000000">createMenuItem</font><font color="#000000">(</font><font color="#2a00ff">&#34;去除空格&#34;</font><font color="#000000">,&nbsp;</font><font color="#2a00ff">&#34;../menu/images/paste.gif&#34;</font><font color="#000000">,&nbsp;UICommandMenuItem.COMPONENT_TYPE</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">editMenu.addMenuItem</font><font color="#000000">(</font><font color="#000000">item</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff"></font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>private&nbsp;</b></font><font color="#000000">UIMenu&nbsp;createMenu</font><font color="#000000">(</font><font color="#000000">String&nbsp;label,&nbsp;String&nbsp;img</font><font color="#000000">)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">UIMenu&nbsp;&nbsp;newMenu&nbsp;=&nbsp;</font><font color="#000000">(</font><font color="#000000">UIMenu</font><font color="#000000">)&nbsp;</font><font color="#000000">createComponent</font><font color="#000000">(</font><font color="#000000">UIMenu.COMPONENT_TYPE</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">newMenu.setLabel</font><font color="#000000">(</font><font color="#000000">label</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">newMenu.setImage</font><font color="#000000">(</font><font color="#000000">img</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>return&nbsp;</b></font><font color="#000000">newMenu;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff"></font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>private&nbsp;</b></font><font color="#000000">UIComponent&nbsp;createMenuItem</font><font color="#000000">(</font><font color="#000000">String&nbsp;label,&nbsp;String&nbsp;img,&nbsp;String&nbsp;componentType</font><font color="#000000">)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">UIComponent&nbsp;item&nbsp;=&nbsp;createComponent</font><font color="#000000">(</font><font color="#000000">componentType</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">item.getAttributes</font><font color="#000000">()</font><font color="#000000">.put</font><font color="#000000">(</font><font color="#2a00ff">&#34;label&#34;</font><font color="#000000">,&nbsp;label</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">item.getAttributes</font><font color="#000000">()</font><font color="#000000">.put</font><font color="#000000">(</font><font color="#2a00ff">&#34;image&#34;</font><font color="#000000">,&nbsp;img</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>return&nbsp;</b></font><font color="#000000">item;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>private&nbsp;</b></font><font color="#000000">UIComponent&nbsp;createComponent</font><font color="#000000">(</font><font color="#000000">String&nbsp;componentType</font><font color="#000000">)&nbsp;{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">FacesContext&nbsp;context&nbsp;=&nbsp;FacesContext.getCurrentInstance</font><font color="#000000">()</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">Application&nbsp;app&nbsp;=&nbsp;context.getApplication</font><font color="#000000">()</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">UIComponent&nbsp;component&nbsp;=&nbsp;app.createComponent</font><font color="#000000">(</font><font color="#000000">componentType</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">component.setId</font><font color="#000000">(</font><font color="#000000">context.getViewRoot</font><font color="#000000">()</font><font color="#000000">.createUniqueId</font><font color="#000000">())</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>return&nbsp;</b></font><font color="#000000">component;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#000000">}</font></code>
+    
+   </td>
+  <!-- end source code -->
+   </tr>
+</table>
+</div>
+<!-- =       END of automatically generated HTML code       = -->
+<!-- ======================================================== -->
+
+
+</body></html>

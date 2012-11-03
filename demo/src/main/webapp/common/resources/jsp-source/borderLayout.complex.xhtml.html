@@ -1,0 +1,172 @@
+<html>
+<head>
+<style type="text/css">
+html, body {
+      font-size: 10px;
+      margin:0;
+      padding:0;
+      border:0 none;
+      overflow:auto;
+      height:100%;
+  }
+  
+</style>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<script class="javascript" src="../js/highlight.js"></script>
+</head>
+<body>
+<textarea id="code" class="xml" style="display:none;">
+<?xml version="1.0" encoding="UTF-8"?>
+<f:view xmlns:f="http://java.sun.com/jsf/core"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:w="http://www.apusic.com/jsf/widget"
+        xmlns:l="http://www.apusic.com/jsf/layout"
+        xmlns:ajax="http://www.apusic.com/jsf/ajax"
+        xmlns:jsp="http://java.sun.com/jsf/facelets"
+        renderKitId="AJAX">
+<w:page title="Complex Layout">
+<w:head>
+<style type="text/css">
+html, body {
+  font: normal 12px verdana;
+  margin: 0;
+  padding: 0;
+  border: 0 none;
+  overflow: hidden;
+  height: 100%;
+}
+.x-layout-panel-north {
+  border: 0px none;
+}
+#nav {
+}
+#autoTabs, #center1, #center2, #west {
+  padding: 10px;
+}
+#north, #south {
+  font: normal 8pt arial, helvetica;
+  padding: 4px;
+}
+.x-layout-panel-center p {
+  margin: 5px;
+}
+</style>
+<script type="text/javascript">
+  function toggleWest(link) {
+    var west = layout.find('region','west')[0];
+    if (west.collapsed) {
+      west.expand();
+      link.setText("Hide West Region");
+    } else {
+      west.collapse();
+      link.setText("Show West Region");
+  }
+}
+</script>
+</w:head>
+
+<l:borderLayout container="document.body" jsvar="layout">
+  <l:regionConfig target="north"
+                  split="false"
+                  initialSize="32"
+                  titlebar="false"
+                  />
+  <l:regionConfig target="west"
+                  split="true"
+                  initialSize="200"
+                  minSize="175"
+                  maxSize="400"
+                  titlebar="true"
+                  collapsible="true"
+                  showPin="true"
+                  animate="true"
+                  hidden="true"
+                  />
+  <l:regionConfig target="east"
+                  split="true"
+                  initialSize="202"
+                  minSize="175"
+                  maxSize="400"
+                  titlebar="true"
+                  collapsible="true"
+                  animate="true"
+                  />
+  <l:regionConfig target="south"
+                  split="true"
+                  initialSize="100"
+                  minSize="100"
+                  maxSize="200"
+                  titlebar="true"
+                  collapsible="true"
+                  animate="true"
+                  />
+  <l:regionConfig target="center"
+                  autoScroll="true"
+                  closeOnTab="false"
+                  tabPosition="top"
+                  />
+
+  <l:contentPanel target="west" id="west" title="West">
+    Hi. I'm the west panel.
+  </l:contentPanel>
+
+  <l:contentPanel target="north" id="north" title="North">
+    <div style="position:relative">
+    north - generally for menus, toolbars and/or advertisements
+    <h:form style="position:absolute;top:0;right:0">
+      <h:outputLabel value="Skin: "/><w:chooseSkin cookie="skin"><ajax:action event="onchange"/></w:chooseSkin>
+    </h:form>
+    </div>
+  </l:contentPanel>
+
+  <l:contentPanel target="east" id="autoTabs" title="Auto Tabs" closable="true" fitToFrame="false">
+    The layout manager will automatically create and/or remove the TabPanel component when a region has more than one panel. Close one of my panels and you can see what I mean.
+  </l:contentPanel>
+
+  <l:contentPanel target="center" autoScroll="true" id="center2" title="Center Panel" closable="false">
+    <w:button value="Show West Region" onclick="toggleWest(this);return false;"/>
+    <p>My closable attribute is set to false so you can't close me. The other center panels can be closed.</p>
+    <p>The center panel automatically grows to fit the remaining space in the container that isn't taken up by the border regions.</p>
+    <hr/>
+    <jsp:include page="" src="content.txt" />
+  </l:contentPanel>
+
+  <l:contentPanel target="center" id="center1" title="Close Me" closable="true" autoScroll="false">
+    <p><b>Done reading me? Close me by clicking the X in the top right corner.</b></p>
+    <jsp:include page="" src="content.txt" />
+  </l:contentPanel>
+
+  <l:contentPanel target="south" title="South" closable="true">
+    south - generally for informational stuff, also could be for status bar
+  </l:contentPanel>
+</l:borderLayout>
+
+</w:page>
+</f:view>
+</textarea>
+<script class="javascript">
+var text = document.getElementById('code').value ;
+var html = highlightCode( "xml" , "xml" , true , text ) ;
+window.setTimeout(function() {
+    var css = "<link href='../styles/highlight.css' rel='stylesheet' type='text/css'>" ;
+    document.open('text/html');
+    if(document.implementation && document.implementation.createDocument) {
+        var htmlStr = css + html.xml ;
+        document.write(htmlStr);
+        document.close();
+    }
+    else {
+        var h = window.onerror;
+        window.onerror = function(){return true;}
+        html = css + html ;
+        document.write(html);
+        window.onerror = h;
+        document.close();
+        window.location.reload(false);
+    }
+}, 50);
+
+</script>
+</body>
+</html>

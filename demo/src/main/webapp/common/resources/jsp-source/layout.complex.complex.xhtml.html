@@ -1,0 +1,171 @@
+<html>
+<head>
+<style type="text/css">
+html, body {
+      font-size: 10px;
+      margin:0;
+      padding:0;
+      border:0 none;
+      overflow:auto;
+      height:100%;
+  }
+  
+</style>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<script class="javascript" src="../js/highlight.js"></script>
+</head>
+<body>
+<textarea id="code" class="xml" style="display:none;">
+<f:view xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:w="http://www.apusic.com/jsf/widget" xmlns:layout="http://www.apusic.com/jsf/layout"
+	xmlns:ajax="http://www.apusic.com/jsf/ajax" renderKitId="AJAX"
+	xmlns:h="http://java.sun.com/jsf/html">
+	<w:page>
+		<layout:borderLayout fitToBody="true">
+			<layout:panel region="north" height="100" title="north">
+        north
+      </layout:panel>
+			<layout:accordionLayout region="west" width="200" title="west" split="true" collapsible="true"
+				animate="true" sequence="true">
+				<layout:panel title="我的好友">
+			  	好友1<br />
+			  	好友2<br />
+			  	好友3<br />
+			  	好友4<br />
+			  	好友5<br />
+				</layout:panel>
+				<layout:panel title="陌生人">
+				陌生人1<br />
+				陌生人2<br />
+				陌生人3<br />
+				陌生人4<br />
+				陌生人5<br />
+				</layout:panel>
+				<layout:panel title="黑名单">
+				坏人1<br />
+				坏人2<br />
+				</layout:panel>
+			</layout:accordionLayout>
+			<layout:tabLayout region="center" title="center">
+				<layout:absoluteLayout height="400" border="false" title="tab1"  autoScroll="true">
+					<layout:panel width="150" height="100" x="80" y="20" title="block1">
+						<w:form>
+							<w:button value="点这里弹出对话框" id="show"></w:button>
+						</w:form>
+					</layout:panel>
+					<layout:panel width="150" height="100" x="100" y="200" title="block2">block2</layout:panel>
+					<layout:panel width="150" height="100" x="400" y="50" title="block3">block3</layout:panel>
+				</layout:absoluteLayout>
+				<layout:columnLayout border="false" title="tab2">
+					<layout:panel columnWidth=".15" header="false" height="400">left column</layout:panel>
+					<layout:panel columnWidth=".3" header="false" height="400">center left column</layout:panel>
+					<layout:panel columnWidth=".4" header="false" height="400">center right column</layout:panel>
+					<layout:panel columnWidth=".15" header="false" height="400">right column</layout:panel>
+				</layout:columnLayout>
+			</layout:tabLayout>
+			<layout:panel region="east" width="200" title="east" split="true" collapsible="true">
+        east
+      </layout:panel>
+			<layout:panel region="south" height="100" title="south">
+        south
+      </layout:panel>
+		</layout:borderLayout>
+		<layout:window width="400" height="300" id="demoWindow" title="填写基本信息">
+			<layout:tableLayout columns="1"  header="false" border="false">
+				<layout:cardLayout id="wizard"  border="false" width="400" height="230">
+					<layout:panel header="false">
+						<layout:panelGrid columns="2">
+							<layout:cell colspan="1" rowspan="1">用户名：</layout:cell>
+							<layout:cell colspan="1" rowspan="1">
+								<w:textField></w:textField>
+							</layout:cell>
+							<layout:cell colspan="1" rowspan="1">密码：</layout:cell>
+							<layout:cell colspan="1" rowspan="1">
+								<w:textField></w:textField>
+							</layout:cell>
+							<layout:cell colspan="1" rowspan="1">密码确认：</layout:cell>
+							<layout:cell colspan="1" rowspan="1">
+								<w:textField></w:textField>
+							</layout:cell>
+							<layout:cell colspan="1" rowspan="1">Email：</layout:cell>
+							<layout:cell colspan="1" rowspan="1">
+								<w:textField></w:textField>
+							</layout:cell>
+						</layout:panelGrid>
+					</layout:panel>
+					<layout:panel header="false">
+						<layout:panelGrid columns="2">
+							<layout:cell colspan="1" rowspan="1">国家：</layout:cell>
+							<layout:cell colspan="1" rowspan="1">
+								<w:combo></w:combo>
+							</layout:cell>
+							<layout:cell colspan="1" rowspan="1">生日：</layout:cell>
+							<layout:cell colspan="1" rowspan="1">
+								<w:dateField value="2008-1-1" format="Y-m-d">
+									<f:convertDateTime pattern="yyyy-M-d"></f:convertDateTime>
+								</w:dateField>
+							</layout:cell>
+							<layout:cell colspan="1" rowspan="1">兴趣：</layout:cell>
+							<layout:cell colspan="1" rowspan="1">
+								<w:textField></w:textField>
+							</layout:cell>
+							<layout:cell colspan="1" rowspan="1">爱好：</layout:cell>
+							<layout:cell colspan="1" rowspan="1">
+								<w:textField></w:textField>
+							</layout:cell>
+							<layout:cell colspan="1" rowspan="1">地址：</layout:cell>
+							<layout:cell colspan="1" rowspan="1">
+								<w:textField></w:textField>
+							</layout:cell>
+						</layout:panelGrid>
+					</layout:panel>
+					<layout:panel header="false">
+						恭喜你，注册完成！
+					</layout:panel>
+				</layout:cardLayout>
+					<layout:panel header="false" border="false">
+					<w:form>
+					<layout:panelGrid columns="3">
+						<layout:cell colspan="1" rowspan="1">
+							<w:button value="上一步" id="pre" disabled="true"/>
+						</layout:cell>
+						<layout:cell colspan="1" rowspan="1">
+							<w:button value="下一步" id="next" />
+						</layout:cell>
+						<layout:cell colspan="1" rowspan="1">
+							<w:button value="完成" id="finish" />
+						</layout:cell>
+					</layout:panelGrid>
+					</w:form>
+				</layout:panel>
+			</layout:tableLayout>
+		</layout:window>
+	</w:page>
+</f:view>
+
+</textarea>
+<script class="javascript">
+var text = document.getElementById('code').value ;
+var html = highlightCode( "xml" , "xml" , true , text ) ;
+window.setTimeout(function() {
+    var css = "<link href='../styles/highlight.css' rel='stylesheet' type='text/css'>" ;
+    document.open('text/html');
+    if(document.implementation && document.implementation.createDocument) {
+        var htmlStr = css + html.xml ;
+        document.write(htmlStr);
+        document.close();
+    }
+    else {
+        var h = window.onerror;
+        window.onerror = function(){return true;}
+        html = css + html ;
+        document.write(html);
+        window.onerror = h;
+        document.close();
+        window.location.reload(false);
+    }
+}, 50);
+
+</script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<f:view xmlns:f="http://java.sun.com/jsf/core"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:w="http://www.apusic.com/jsf/widget"
+        xmlns:ajax="http://www.apusic.com/jsf/ajax"
+        renderKitId="AJAX">
+<w:head>
+<w:stylesheet src="/common/resources/examples.css"/>
+</w:head>
+<w:page title="Date Picker">
+  <div class="examDesc">
+  <p>DatePicker是一个日期选取组件，可以放到普通菜单、弹出菜单、日期输入框等各种场合。</p>
+  </div>  
+  <p>Date Menu:</p>
+  <w:menuBar>
+    <w:dateMenu label="Dates" value="#{MenuBean.date}"/>
+    <w:menu label="Themes">
+      <w:chooseSkin/>
+    </w:menu>
+  </w:menuBar>
+  <br/>
+
+  <p>Popup Date Menu:</p>
+  <w:dateMenu jsvar="popupDateMenu" value="#{MenuBean.date}"/>
+  <w:button value="Show Date Menu" onclick="popupDateMenu.show(this.getEl());"/>
+  <br/>
+  
+  <p>Date Picker:</p>
+  <h:form>
+    <w:datePicker value="#{MenuBean.date}"/>
+    <w:button value="Submit"/>
+  </h:form>
+  <br/>
+
+  <p>Date Field:</p>
+  <h:form>
+    <w:dateField value="#{MenuBean.date}" format="Y-m-d">
+      <f:convertDateTime pattern="yyyy-M-d"/>
+    </w:dateField>
+    <w:button value="Submit"/>
+  </h:form>
+  <br/>
+
+</w:page>
+</f:view>

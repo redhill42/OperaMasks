@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<f:view xmlns:f="http://java.sun.com/jsf/core"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:w="http://www.apusic.com/jsf/widget"
+        xmlns:ajax="http://www.apusic.com/jsf/ajax"
+        renderKitId="AJAX">
+	<w:head>
+		<!-- <w:stylesheet src="/common/resources/examples.css"/> -->
+		<style>
+.examDesc {
+	width: 80%;
+	background: #ffffa2;
+	font: normal 12px arial, helvetica, tahoma, sans-serif;
+	padding: 8px;
+	margin-left: 2px;
+	border: 1px solid #800000;
+	margin-bottom: 8px;
+	line-height: normal;
+	border: 1px solid #800000;
+}
+
+.myUpdater {
+	width: 140px;
+	height: 80px;
+	float: left;
+	padding: 3px;
+	border: 1px solid gray;
+	margin: 5px 5px 5px 0px; 
+	line-height: normal;
+	font-size: 13px;
+	line-height: normal;
+	word-break:break-all;
+	word-wrap:break-word;
+	overflow: auto
+}
+
+.inputZoom {
+	width: 180px;
+	height: 80px;
+	float: left;
+	padding: 8px;
+	border: 1px solid gray;
+	margin-bottom: 5px;
+	margin-right: 6px;
+	line-height: normal;
+	font-size: 16px;
+	font-weight: bold
+}
+
+.textFont {
+	font-size: 18px;
+	font-weight: bold
+}
+</style>
+	</w:head>
+	<w:page title="Ajax Scripter" skin="default">
+		<div class="examDesc" style="margin: 2px">
+		<p>AjaxUpdater是一个保持独立刷新的JSF页面容器，它可以包含直接嵌在JSF页面内容，也可以包含指定的资源文件。
+		当AjaxUpdater包含的组件和服务器端产生交互时，AjaxUpdater区域内的内容会被独立渲染和独立导航，而页面其它内容不会受到影响</p>
+		</div>
+		<div style="margin: 2px; width: 650px">
+		<ajax:updater renderId="updater1" globalAction="false">
+			<w:form>
+				<div class="myUpdater">renderId="updater1"<br />
+				<font class="textFont">value:<h:outputText
+					value="#{AjaxUpdaterBean.responeText}"></h:outputText>
+				</font>
+				</div>
+			</w:form>
+		</ajax:updater>
+		<ajax:updater renderId="updater2" globalAction="false">
+			<w:form>
+				<div class="myUpdater">renderId="updater2"<br />
+				<font class="textFont">value:<h:outputText
+					value="#{AjaxUpdaterBean.responeText}" styleClass="textFont"></h:outputText>
+				</font>
+				</div>
+			</w:form>
+		</ajax:updater>
+		<ajax:updater renderId="updater1" globalAction="false">
+			<w:form>
+				<div class="myUpdater">renderId="updater1"<br />
+				<font class="textFont">value:<h:outputText
+					value="#{AjaxUpdaterBean.responeText}"></h:outputText>
+				</font>
+				</div>
+			</w:form>
+		</ajax:updater>
+		<ajax:updater globalAction="true">
+			<w:form>
+				<div class="myUpdater">No renderId but globalAction="true"<br />
+				<font class="textFont">value:<h:outputText
+					value="#{AjaxUpdaterBean.responeText}"></h:outputText>
+				</font>
+				</div>
+			</w:form>
+		</ajax:updater>
+
+		<!-- update -->
+		<ajax:updater renderId="updater1" globalAction="false">
+			<w:form>
+				<div class="inputZoom">renderId="updater1" <w:textField
+					value="#{AjaxUpdaterBean.name}"></w:textField>
+				<w:button value="更新1" action="#{AjaxUpdaterBean.button_action}" />
+				</div>
+			</w:form>
+		</ajax:updater>
+		<ajax:updater renderId="updater2" globalAction="false">
+			<w:form>
+				<div class="inputZoom">renderId="updater2" <w:textField
+					value="#{AjaxUpdaterBean.name}"></w:textField>
+				<w:button value="更新2" action="#{AjaxUpdaterBean.button_action}" />
+				</div>
+			</w:form>
+		</ajax:updater>
+		<ajax:updater globalAction="true">
+			<w:form>
+				<div class="inputZoom">No renderId but globalAction="true" <w:textField
+					value="#{AjaxUpdaterBean.name}"></w:textField>
+				<w:button value="更新3" action="#{AjaxUpdaterBean.button_action}" />
+				</div>
+			</w:form>
+		</ajax:updater>
+		</div>
+	</w:page>
+</f:view>

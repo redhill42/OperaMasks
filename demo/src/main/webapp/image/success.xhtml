@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<f:view xmlns:f="http://java.sun.com/jsf/core"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:w="http://www.apusic.com/jsf/widget"
+        xmlns:ajax="http://www.apusic.com/jsf/ajax"
+        renderKitId="AJAX">
+<w:page skin="aqua">
+  <w:drawImage width="400" height="150" draw="#{ImageBean.drawShape}"/>
+  <br/>
+  <ajax:updater>
+    <w:drawImage width="500" height="375" draw="#{ImageBean.drawChart}"/>
+    <h:form>
+      <w:button value="Update"/>
+    </h:form>
+  </ajax:updater>
+</w:page>
+</f:view>

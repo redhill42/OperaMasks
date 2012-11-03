@@ -1,0 +1,165 @@
+
+/* infopanel/accordion classes */
+/* $Id: accordion.css,v 1.1 2007/06/26 20:24:04 jacky Exp $ */
+
+.x-dock-panel {
+	/* turn IE layout mode on */
+	zoom:1;
+}
+
+.x-dock-panel .x-dock-panel-body {
+	background-color: white;
+	font: normal 10px tahoma,verdana,helvetica;
+	color: black;
+	position:relative;
+	top: 0;
+	text-align: center;
+	/* turn IE layout mode on */
+	zoom:1;
+}
+
+.x-dock-panel .x-dock-panel-body-docked {
+	border-bottom: 1px solid #A9BFD3;
+}
+
+.x-dock-panel .x-dock-panel-body-undocked {
+	border-left: 1px solid #A9BFD3;
+	border-right: 1px solid #A9BFD3;
+	border-bottom: 1px solid #A9BFD3;
+}
+
+.x-dock-panel .x-dock-panel-body-collapsed {
+}
+
+.x-dock-panel .x-dock-panel-body-expanded {
+}
+
+.x-dock-panel .x-dock-panel-title-over {
+	background-position: 0 -5px; 
+}
+.x-dock-panel .x-dock-panel-icon
+, .x-dock-panel-ghost .x-dock-panel-icon {
+	background-position: 3px 50%;
+	background-repeat: no-repeat;
+	padding-left: 23px;
+}
+.x-dock-body, .x-dlg-bd .x-dock-body {
+  border: 1px solid #A9BFD3;
+	background-color: #f7f7fd;
+	position: relative;
+	top: 0;
+	left: 0;
+}
+
+.x-dock-body-dragover, x-dlg-bd .x-dock-body-dragover {
+	background: #f0f0f6;
+}
+.x-dock-panel .x-window-header-text 
+, .x-dlg-proxy .x-window-header-text {
+	cursor: pointer;
+}
+.x-dock-panel .x-dock-panel-title-dragover {
+	background-position: 0 -12px;
+	color: white ! important;
+}
+
+.x-dock-panel .x-dock-panel-title-collapsed {
+}
+
+.x-dock-panel .x-dock-panel-title-expanded {
+}
+
+.x-dock-panel .x-layout-stuck {
+	background-image: url(../images/layout/stuck.gif);
+}
+
+.x-dock-panel .x-layout-panel-hd {
+	position: static;
+}
+
+.x-dock-panel .x-dock-panel-title-pinned {
+	cursor: default;
+}
+
+.x-dock-panel .x-dock-panel-toolbar {
+}
+
+.x-dock-panel .x-dock-panel-toolbar-bottom {
+	position: absolute;
+	bottom: -1px;
+}
+
+.x-dock-panel .x-dock-panel-toolbar .x-toolbar {
+	/* turn IE layout mode on */
+	zoom:1;
+}
+
+/* IE 1px combo arrow tweak */
+.x-dock-panel .x-form-text {
+	vertical-align: top;
+}
+
+.x-dock-panel-ghost {
+    background:#cbddf3;
+	border-top: 0;
+	position: relative;
+	top: 0;
+    opacity:.65;
+    -moz-opacity:.65;
+    filter:alpha(opacity=65);
+}
+
+/********** You do not need styles below this line in your application ***********/
+
+/* accordion example specific styles */
+.x-dock-panel-body .text-content {
+	padding: 4px;
+/*	border-bottom: 1px solid #A9BFD3; */
+}
+.x-dock-panel-body .text-content p {
+	margin-bottom: 4px;
+}
+.x-dock-panel-body .text-content ul {
+/*	list-style-image: inherit; */
+	list-style-position: inside;
+	list-style-type: disc;
+	margin-bottom: 4px;
+}
+
+/* Test of fix of button in FF */
+.x-btn-text-icon .x-btn-center .x-btn-text {
+	padding: 2px 0pt 2px 18px;
+}
+
+
+.x-layout-panel-east {
+	border-left: 0;
+}
+.adsense {
+	padding: 1px;
+	padding-top: 4px;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+}
+
+.x-layout-panel-center {
+	border-right: 0;
+}
+.x-layout-panel-east {
+	border-left: 0;
+}
+.x-tabs-wrap {
+	border-right: 1px solid  #6593cf;
+}
+
+.google-search {
+		padding:10px;
+		background-color: #ffffc8;
+}
+.google-search table {
+		background-color: transparent;
+}
+
+/* end of file */
+

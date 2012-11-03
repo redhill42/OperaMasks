@@ -1,0 +1,578 @@
+<?xml version="1.0"?>
+<!--
+/*
+ * $Id: ext-packages.xml,v 1.35 2008/04/25 01:42:50 lishaochuan Exp $
+ *
+ * Copyright (C) 2006 Operamasks Community.
+ * Copyright (C) 2000-2006 Apusic Systems, Inc.
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see http://www.gnu.org/licenses.
+ */
+-->
+
+<!DOCTYPE packages [
+<!ELEMENT packages (package+)>
+<!ELEMENT package (requires*)>
+<!ATTLIST package name CDATA #REQUIRED>
+<!ATTLIST package file CDATA #IMPLIED>
+<!ELEMENT requires EMPTY>
+<!ATTLIST requires name CDATA #REQUIRED>
+]>
+
+<packages>
+  <!--
+  Everything
+  -->
+  <package name="_all" file="/ext/ext-all.js"/>
+  <package name="_FacesProxy" file="/ext/om/FacesProxy.js"/>
+  <package name="_FacesTreeLoader" file="/ext/om/FacesTreeLoader.js"/>
+  <package name="All">
+    <requires name="_all"/>
+    <requires name="_FacesProxy"/>
+    <requires name="_FacesTreeLoader"/>
+  </package>
+  <package name="Everything">
+    <requires name="All"/>
+  </package>
+  
+  <!--
+  Core - Utilities
+  Files:
+    ClickRepeater.js CSS.js Format.js JSON.js KeyMap.js KeyNav.js
+    MixedCollection.js TaskMgr.js TextMetrics.js
+  -->
+  <package name="Utilities" file="/ext/package/util.js"/>
+
+  <!--
+  Core - Date Parsing and Formatting
+  Files:
+    Date.js
+  -->
+  <package name="Date" file="/ext/package/date.js"/>
+  <package name="OM.Date" file="/ext/om/DateFormat.js"/>
+
+  <!--
+  Core - Layers
+  Files:
+    Component.js Layer.js Shadow.js Container.js Panel.js ViewPort.js
+  -->
+  <package name="Ext.Component" file="/ext/package/widget-core.js">
+    <requires name="Utilities"/>
+  </package>
+  <package name="Ext.Layer">
+    <requires name="Ext.Component"/>
+  </package>
+  <package name="Ext.Shadow">
+    <requires name="Ext.Component"/>
+  </package>
+
+  <!--
+  Core - Drag and Drop
+  Files:
+    DDCore.js StatusProxy.js Registry.js DragSource.js DropTarget.js DragZone.js DropZone.js
+  Dependencies:
+    Layer.js Shadow.js
+  Optional Features/Dependencies:
+    Overflow Scrolling Support - ScrollManager.js
+  -->
+  <package name="Ext.dd.DragDrop" file="/ext/package/dragdrop.js">
+    <requires name="Ext.Layer"/>
+  </package>
+
+  <!--
+  Core - State Management
+  Files:
+    State.js
+  -->
+  <package name="Ext.state.Manager" file="/ext/package/state.js"/>
+
+  <!--
+  Resizable
+  Files:
+    Resizable.js
+  -->
+  <package name="Ext.Resizable" file="/ext/package/resizable.js"/>
+
+  <!--
+  QuickTips - Tooltip Widget
+  Files:
+    QuickTips.js
+  Dependencies:
+    Shadow.js Layer.js
+  -->
+  <package name="Ext.QuickTips" file="/ext/package/qtips.js">
+    <requires name="Ext.Component"/>
+    <requires name="Ext.Layer"/>
+    <requires name="Ext.dd.DragDrop"/>
+  </package>
+
+  <!--
+  AreaTips - Tooltip Widget
+  Files:
+    AreaTips.js
+  Dependencies:
+    Shadow.js Layer.js
+  -->
+  <package name="Ext.om.AreaTips" file="/ext/om/AreaTips.js">
+    <requires name="Ext.Layer"/>
+  </package>
+
+  <!--
+  Button Widget
+  Files:
+    Button.js MenuButton.js
+  Dependencies:
+    TextMetrics.js
+  Optional Features/Dependencies:
+    Button QuickTips: QuickTips.js
+  -->
+  <package name="Ext.Button" file="/ext/package/button.js">
+    <requires name="Ext.Component"/>
+    <requires name="Utilities"/>
+  </package>
+  <package name="Ext.MenuButton" file="/ext/package/menu-button.js">
+    <requires name="Ext.Button"/>
+  </package>
+
+  <!--
+  Tabs Widget
+  Files:
+    TabPanel.js
+  -->
+  <package name="Ext.TabPanel" file="/ext/package/tabs.js">
+  	<requires name="Ext.Component"/>
+  	<requires name="Ext.Layout"/>
+  	<requires name="Ext.ux.TabCloseMenu"/>
+  </package>
+  <package name="Ext.ux.TabCloseMenu" file="/ext/ux/TabCloseMenu.js">
+  	<requires name="Ext.menu.Menu"/>
+  </package>
+
+  <!--
+  SplitBar Widget
+  Files:
+    SplitBar.js
+  Dependencies:
+    DDCore.js
+  -->
+  <package name="Ext.SplitBar" file="/ext/package/splitbar.js">
+    <requires name="Ext.dd.DragDrop"/>
+  </package>
+
+  <!--
+  Date Picker Widget
+  Files:
+    DatePicker.js
+  Dependencies:
+    Date.js Layer.js Shadow.js Component.js KeyNav.js ClickRepeater.js
+  -->
+  <package name="Ext.DatePicker" file="/ext/package/datepicker.js">
+    <requires name="Utilities"/>
+    <requires name="Date"/>
+    <requires name="OM.Date"/>
+    <requires name="Ext.Layer"/>
+    <requires name="Ext.menu.Menu"/>
+    <requires name="Ext.Button"/>
+  </package>
+
+  <!--
+  Calculator Widget
+  Files:
+    Calculator.js
+  Dependencies:
+    Layer.js Shadow.js Component.js KeyMap.js KeyNav.js ClickRepeater.js
+  -->
+  <package name="Ext.om.Calculator" file="/ext/om/Calculator.js">
+    <requires name="Utilities"/>
+    <requires name="Ext.Layer"/>
+    <requires name="Ext.menu.Menu"/>
+    <requires name="Ext.Button"/>
+  </package>
+  
+  <!--
+  Color Palette Widget
+  Files:
+    ColorPalette.js
+  Dependencies:
+    Layer.js Shadow.js Component.js
+  -->
+  <package name="Ext.ColorPalette" file="/ext/package/color-palette.js">
+    <requires name="Ext.Component"/>
+  </package>
+
+  <!--
+  Menu Widget
+  Files:
+    Adapter.js BaseItem.js CheckItem.js Item.js Menu.js MenuMgr.js Separator.js TextItem.js
+  Dependencies:
+    MixedCollection.js Shadow.js Layer.js Component.js KeyNav.js
+  Optional Features/Dependencies:
+    Color Palette Item: ColorPalette.js
+    Date Picker Item: DatePicker.js
+  -->
+  <package name="Ext.menu.Menu" file="/ext/package/menus.js">
+    <requires name="Utilities"/>
+    <requires name="Ext.Component"/>
+    <requires name="MenuItemPlugin"/>
+  </package>
+
+  <package name="Ext.menu.MenuBar" file="/ext/om/menubar.js">
+    <requires name="Ext.menu.Menu"/>
+  </package>
+  
+  <package name="MenuItemPlugin" file="/ext/ux/MenuItemPlugin.js">
+  </package>
+  
+  <!--
+  Date Picker Popup (DateMenu)
+  Files:
+    DateMenu.js DatePicker.js DateItem.js
+  Dependencies:
+    Date.js Layer.js Shadow.js MenuMgr.js Menu.js BaseItem.js Adapter.js Component.js KeyNav.js ClickRepeater.js
+  -->
+  <package name="Ext.menu.DateMenu">
+    <requires name="Ext.menu.Menu"/>
+    <requires name="Ext.DatePicker"/>
+  </package>
+
+  <!--
+  Calculator Popup (CalcMenu)
+  Files:
+    CalcMenu.js Calculator.js CalcItem.js
+  Dependencies:
+    Layer.js Shadow.js MenuMgr.js Menu.js BaseItem.js Adapter.js Component.js KeyMap.js KeyNav.js ClickRepeater.js
+  -->
+  <package name="Ext.om.menu.CalcMenu" file="/ext/om/CalcMenu.js">
+    <requires name="Ext.menu.Menu"/>
+    <requires name="Ext.om.Calculator"/>
+  </package>
+
+  <!--
+  Color Picker Popup (ColorMenu)
+  Files:
+    ColorMenu.js ColorItem.js ColorPalette.js
+  Dependencies:
+    Layer.js Shadow.js MenuMgr.js Menu.js BaseItem.js Adapter.js Component.js
+  -->
+  <package name="Ext.menu.ColorMenu">
+    <requires name="Ext.menu.Menu"/>
+    <requires name="Ext.ColorPalette"/>
+  </package>
+
+  <!--
+  Loading Mask Widget
+  Files:
+    LoadMask.js
+  -->
+  <package name="Ext.LoadMask" file="/ext/package/loadmask.js"/>
+  
+  <!--
+  Border Layout Widget
+  Files:
+    BsicLayoutRegion.js BorderLayout.js BorderLayoutRegions.js ContentPanels.js
+    LayoutManager.js LayoutRegion.js LayoutStateMananger.js SplitLayoutRegion.js
+  Dependencies:
+    MixedCollection.js SplitBar.js DDCore.js TabPanel.js
+  -->
+  <package name="Ext.Layout" file="/ext/package/layout.js">
+  	<requires name="Utilities"/>
+    <requires name="Ext.dd.DragDrop"/>
+  	<requires name="Ext.SplitBar"/>
+  	<requires name="Ext.ux.TabCloseMenu"/>
+  </package>
+  
+  <package name="Ext.BorderLayout" file="/ext/package/layout.js">
+    <requires name="Utilities"/>
+    <requires name="Ext.dd.DragDrop"/>
+    <requires name="Ext.state.Manager"/>
+    <requires name="Ext.SplitBar"/>
+    <requires name="Ext.TabPanel"/>
+  </package>
+
+  <!--
+  Toolbar Widget
+  Files:
+    Toolbar.js
+  Dependencies:
+    MixedCollection.js Button.js TextMetrics.js
+  Optional Features/Dependencies:
+    Menu Buttons: MenuButton.js
+    Paging Toolbar: PagingToolbar.js
+  -->
+  <package name="Ext.Toolbar" file="/ext/package/toolbar.js">
+    <requires name="Utilities"/>
+    <requires name="Ext.MenuButton"/>
+  </package>
+  <package name="Ext.PagingToolbar">
+    <requires name="Ext.Toolbar"/>
+  </package>
+
+  <!--
+  Dialog - Basic Widget
+  Files:
+    BasicDialog.js
+  Dependencies:
+    Shadow.js
+  Optional Features/Dependencies:
+    Dialog Resize Support: Resizable.js
+    Dialog Drag and Drop Support: DDCore.js
+    Tabs Support: TabPanel.js
+  -->
+  <package name="Ext.Dialog" file="/ext/package/dialogs.js">
+    <requires name="Ext.Shadow"/>
+    <requires name="Ext.dd.DragDrop"/>
+    <requires name="Ext.state.Manager"/>
+    <requires name="Ext.Resizable"/>
+    <requires name="Ext.TabPanel"/>
+  </package>
+
+  <!--
+  Dialog - MessageBox
+  Files:
+    MessageBox.js
+  Dependencies:
+    BasicDialog.js Shadow.js
+  -->
+  <package name="Ext.MessageBox">
+    <requires name="Ext.Dialog"/>
+  </package>
+
+  <!--
+  Data
+  Files:
+    Connection.js DataField.js DataProxy.js DataReader.js Record.js SortTypes.js
+    Store.js HttpProxy.js ScriptTagProxy.js MemoryProxy.js JsconReader.js ArrayReader.js
+    XmlReader.js SimpleStore.js
+  Dependencies:
+    JSON.js MixedCollection.js
+  -->
+  <package name="Ext.data.Store" file="/ext/package/data.js">
+    <requires name="Utilities"/>
+  </package>
+
+  <package name="Ext.data.FacesProxy" file="/ext/om/FacesProxy.js">
+    <requires name="Ext.data.Store"/>
+  </package>
+
+  <package name="Ext.om.PagingLink" file="/ext/om/PagingLink.js"/>
+  
+  <!--
+  Views - Data Bound Views
+  Files:
+    DataView.js
+  Optional Features/Dependencies:
+    JSON Support: JSON.js
+  -->
+  <package name="Ext.View" file="/ext/package/view.js">
+    <requires name="Utilities"/>
+    <requires name="Ext.data.Store"/>
+    <requires name="Ext.Layout"/>
+  </package>
+
+  <!--
+  Form - Basic Fields
+  Files:
+    Field.js Checkbox.js NumberField.js Radio.js TextArea.js TextField.js Editor.js
+  Dependencies:
+    Component.js Layer.js Shadow.js
+  Optional Features/Dependencies:
+    Custom Validations: VTypes.js
+  -->
+  <package name="Ext.form" file="/ext/package/form.js">
+    <requires name="Utilities"/>
+    <requires name="Ext.Component"/>
+  </package>
+  <package name="Ext.form.Field">
+    <requires name="Ext.form"/>
+  </package>
+  <package name="Ext.form.Checkbox">
+    <requires name="Ext.form"/>
+  </package>
+  <package name="Ext.form.NumberField">
+    <requires name="Ext.form"/>
+  </package>
+  <package name="Ext.om.form.CalcNumberField" file="/ext/om/CalcNumberField.js">
+    <requires name="Ext.form.Field"/>
+    <requires name="Ext.om.menu.CalcMenu"/>
+  </package>
+  <package name="Ext.form.Radio">
+    <requires name="Ext.form"/>
+  </package>
+  <package name="Ext.form.TextArea">
+    <requires name="Ext.form"/>
+  </package>
+  <package name="Ext.form.TextField">
+    <requires name="Ext.form"/>
+  </package>
+
+  <!--
+  Form - ComboBox Widget
+  Files:
+    Combo.js
+  Dependencies:
+    Component.js Field.js TextField.js TriggerField.js View.js KeyNav.js
+  -->
+  <package name="Ext.form.ComboBox">
+    <requires name="Ext.form.Field"/>
+    <requires name="Ext.View"/>
+  </package>
+
+  <!--
+  Form - Date Field
+  Files:
+    DateField.js
+  Dependencies:
+    TriggerField.js Field.js TextField.js Component.js DateMenu.js DatePicker.js
+    DateItem.js Date.js Layer.js Shadow.js MenuMgr.js Menu.js BasicItem.js Adapter.js
+    KeyNav.js ClickRepeater.js
+  -->
+  <package name="Ext.form.DateField">
+    <requires name="Ext.form.Field"/>
+    <requires name="Ext.menu.DateMenu"/>
+  </package>
+
+  <!--
+  Form - Floating Editor
+  Files:
+    Editor.js
+  Dependencies:
+    Layer.js Shadow.js Component.js
+  -->
+  <package name="Ext.Editor">
+    <requires name="Ext.form.Field"/>
+    <requires name="Ext.Component"/>
+  </package>
+
+  <!--
+  Grid - Core
+  Files:
+    AbstractGridView.js AbstractSelectionModel.js RowSelectionModel.js Grid.js
+    ColumnModel.js GridView.js
+  Dependencies:
+    CSS.js
+  Optional Features/Dependencies:
+    Cell Selection Model: CellSelectionModel.js
+    Drag and Drop Column Reorder: ColumnDD.js
+    Column Resizing: ColumnSplitDD.js
+    Drag Grid Rows: GridDD.js
+    Loading Mask: LoadMask.js
+  -->
+  <package name="Ext.grid.Grid" file="/ext/package/grid.js">
+    <requires name="Ext.data.Store"/>
+    <requires name="Ext.Layout"/>
+    <requires name="Ext.form"/>
+    <requires name="Ext.menu.Menu"/>
+    <requires name="Ext.ux.plugins.XGrid"/>
+  </package>
+  <package name="Ext.ux.plugins.XGrid" file="/ext/ux/XGrid.js"/>
+
+  <!-- SelectionModel extension -->
+  <package name="Ext.grid.SelectionModel2" file="/ext/om/SelectionModel2.js">
+    <requires name="Ext.grid.Grid"/>
+  </package>
+
+  <!--
+  Grid - Editing Support
+  Files:
+    GridEditor.js EditorGrid.js
+  Dependencies:
+    Editor.js Layer.js Shadow.js Component.js
+  -->
+  <package name="Ext.grid.FacesEditorGrid" file="/ext/om/FacesEditorGrid.js">
+    <requires name="Ext.grid.EditorGrid"/>
+  </package>
+
+  <package name="Ext.grid.EditorGrid" file="/ext/package/grid.js">
+    <requires name="Ext.grid.Grid"/>
+    <requires name="Ext.Editor"/>
+    <requires name="JSON"/>
+  </package>
+
+  <package name="JSON" file="/json2.js"/>
+
+  <!--
+  Tree - Core
+  Files:
+    Tree.js TreePanel.js TreeEditor.js TreeSelectionModel.js TreeNode.js TreeNodeUI.js
+  Optional Features/Dependencies:
+    Sorting Support: TreeSorter.js
+    Filtering Support: TreeFilter.js
+    Drag and Drop Support: TreeDragZone.js TreeDropZone.js
+    Ajax Loading Support: AsyncTreeNode.js TreeLoader.js JSON.js
+    Editing Support: Editor.js Shadow.js Layer.js Component.js Field.js TextField.js
+  -->
+  <package name="Ext.tree.TreePanel" file="/ext/package/tree.js">
+    <requires name="Utilities"/>
+    <requires name="Ext.dd.DragDrop"/>
+    <requires name="Ext.Editor"/>
+    <requires name="Ext.tree.Extra"/>
+  </package>
+
+  <package name="Ext.tree.FacesTreeLoader" file="/ext/om/FacesTreeLoader.js">
+    <requires name="Ext.tree.TreePanel"/>
+  </package>
+  
+  <!-- TreePanel extension -->
+  <package name="Ext.tree.TreePanel2" file="/ext/om/TreePanel2.js">
+    <requires name="Ext.tree.TreePanel"/>
+  </package>
+  
+  <!-- SimpleCheckTreeNode -->
+  <package name="Ext.tree.SimpleCheckTreeNode" file="/ext/om/SimpleTreeCheckNode.js">
+  </package>
+  
+  <!-- CheckTreeNode -->
+  <package name="Ext.tree.CheckTreeNode" file="/ext/om/TreeCheckNode.js">
+  </package>
+  
+  <!-- Tree Extra -->
+  <package name="Ext.tree.Extra" file="tree.js">
+  </package>
+
+  <!--
+  Slider Widget
+  Files:
+    Slider.js
+  -->
+  <package name="Ext.om.Slider" file="/ext/om/Slider.js"/>
+
+  <!--
+  Progress Bar Widget
+  Files:
+    Progress.js
+  -->
+  <package name="Ext.om.ProgressBar" file="/ext/om/ProgressBar.js"/>
+
+  <package name="Ext.ux.Accordion" file="/ext/ux/Accordion.js">
+    <requires name="Ext.BorderLayout"/>
+    <requires name="Ext.Resizable"/>
+  </package>
+  <package name="Ext.ux.InfoPanel" file="/ext/ux/InfoPanel.js">
+    <requires name="Ext.BorderLayout"/>
+    <requires name="Ext.Resizable"/>
+  </package>
+
+  <package name="Ext.Dialogs" file="/ext/package/dialogs.js">
+    <requires name="Ext.state.Manager"/>
+    <requires name="Ext.dd.DragDrop"/>
+    <requires name="Ext.Resizable"/>
+  </package>
+  
+  <package name="Ext.Window" file="/ext/package/layout.js">
+  	<requires name="Ext.state.Manager"/>
+    <requires name="Ext.dd.DragDrop"/>
+    <requires name="Ext.Resizable"/>
+    <requires name="Ext.SplitBar"/>
+  </package>
+</packages>

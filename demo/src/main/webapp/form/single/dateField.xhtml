@@ -1,0 +1,31 @@
+<f:view xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:w="http://www.apusic.com/jsf/widget" xmlns:layout="http://www.apusic.com/jsf/layout"
+    xmlns:h="http://java.sun.com/jsf/html"
+    renderKitId="AJAX">
+    <w:head>
+        <w:stylesheet src="/common/resources/examples.css"/>
+    </w:head>
+    <w:page>
+        <div class="examDesc">
+            <p>本例演示了dateField组件的用法，dateField支持绑定3种数据类型：java.util.Date,java.sql.Date,String</p>
+        </div>
+        <w:form>
+            日期选择：
+            <layout:panelGrid columns="2">
+				<h:outputLabel value="默认格式"></h:outputLabel>
+				<w:dateField id="date1"/>
+				<h:outputLabel value="自定义格式"></h:outputLabel>
+                <w:dateField id="date2">
+                    <f:convertDateTime pattern="yyyy年M月d日" timeZone="GMT+8" />
+                </w:dateField>
+                <h:outputLabel value="绑定java.sql.Date"></h:outputLabel>
+                <w:dateField id="date3"/>
+                <h:outputLabel value="绑定String"></h:outputLabel>
+                <w:dateField id="date4"/>
+                <w:button id="click" value="提交" />
+                <h:outputText id="response" escape="false"></h:outputText>
+            </layout:panelGrid>
+			<h:message></h:message>
+		</w:form>
+    </w:page>
+</f:view>

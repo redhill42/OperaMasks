@@ -1,0 +1,21 @@
+<f:view xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:w="http://www.apusic.com/jsf/widget" xmlns:layout="http://www.apusic.com/jsf/layout"
+    xmlns:h="http://java.sun.com/jsf/html"
+    renderKitId="AJAX">
+    <w:head>
+        <w:stylesheet src="/common/resources/examples.css"/>
+    </w:head>
+    <w:page>
+        <div class="examDesc">
+            <p>本例演示了checkBoxGroup组件的用法，checkBoxGroup和checkBox最大的区别在于，checkBoxGroup关注的是用户勾中哪几个选项，而checkBox关注的是勾中选项框的这个动作</p>
+        </div>
+        <w:form>
+            <w:checkBoxGroup direction="v">
+                <f:selectItems id="colors"/>
+            </w:checkBoxGroup>
+            <w:button id="ok" value="OK" />
+            <br/>
+            <h:outputText id="response" escape="false"></h:outputText>
+        </w:form>
+    </w:page>
+</f:view>

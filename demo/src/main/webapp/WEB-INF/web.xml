@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+     version="2.5">
+  <display-name>Default</display-name>
+
+  <context-param>
+    <param-name>javax.faces.STATE_SAVING_METHOD</param-name>
+    <param-value>client</param-value>
+  </context-param>
+
+  <context-param>
+    <param-name>org.operamasks.faces.IMPLICIT_NAVIGATION</param-name>
+    <param-value>true</param-value>
+  </context-param>
+  
+  <context-param>
+    <param-name>org.operamasks.faces.TIMEZONE</param-name>
+    <param-value>GMT+8</param-value>
+  </context-param>
+
+  <servlet>
+    <servlet-name>FacesServlet</servlet-name>
+    <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+  </servlet>
+
+  <context-param>
+    <param-name>org.operamasks.faces.COMPATIBLE_NOT_STRICT</param-name>
+    <param-value>false</param-value>
+  </context-param>
+  <context-param>
+    <param-name>javax.faces.DEFAULT_SUFFIX</param-name>
+    <param-value>.xhtml</param-value>
+  </context-param>
+  <servlet>
+    <servlet-name>Faces Servlet</servlet-name>
+    <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Faces Servlet</servlet-name>
+    <url-pattern>*.jsf</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>ResourceServlet</servlet-name>
+    <servlet-class>org.operamasks.faces.render.resource.ResourceServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>ResourceServlet</servlet-name>
+    <url-pattern>/_global/*</url-pattern>
+  </servlet-mapping>
+
+  <!-- This security constraint illustrates how XHTML pages
+      with JavaServer Faces components can be protected from
+      being accessed without going through the Faces Servlet.
+      The security constraint ensures that the Faces Servlet will
+      be used or the pages will not be processed. -->
+  <security-constraint>
+    <display-name>Restrict access to XHTML pages</display-name>
+    <web-resource-collection>
+      <web-resource-name>Facelet pages</web-resource-name>
+      <url-pattern>*.xhtml</url-pattern>
+    </web-resource-collection>
+    <auth-constraint>
+      <description>With no roles defined, no access granted.</description>
+    </auth-constraint>
+  </security-constraint>
+
+  <env-entry>
+    <env-entry-name>foo</env-entry-name>
+    <env-entry-type>java.lang.String</env-entry-type>
+    <env-entry-value>foo, bar</env-entry-value>
+  </env-entry>
+</web-app>

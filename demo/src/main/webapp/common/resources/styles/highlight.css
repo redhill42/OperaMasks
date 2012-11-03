@@ -1,0 +1,53 @@
+BODY
+{
+      font-size: 12px;
+      margin:0;
+      padding:0;
+      border:0 none;
+      overflow:auto;
+      height:100%;
+      padding: 5px;
+}
+.cpp-pre {
+      padding: 5px;
+}
+
+.cpp
+{
+	font-family : Arial;
+	background-color :#FFFFBB;
+	font-size:12px;
+	border-width : 1px;
+	border-style : solid;
+	border-color : #BBBBBB;
+}
+
+
+.cppblockdoc
+{
+	color: #00FF00;
+	font-family: Arial;
+}
+
+.cpplinedoc
+{
+	color: #2eFF57;
+	font-family: Arial;
+}
+
+.cppcode
+{
+	color:#000000;
+	font-family:Arial;
+}
+
+.cppliteral
+{
+	color: #ff00ff;
+	font-family: Courrier;
+}
+.xml-tag { color:#AA4400 }
+.xml-bracket { color:#0000FF }
+.xml-cdata { color:#AA0088 }
+.xml-attribute-name { color=#FF0000 }
+.xml-attribute-value { color:#0000FF }

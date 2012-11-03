@@ -1,0 +1,101 @@
+<html>
+<head>
+<style type="text/css">
+html, body {
+      font-size: 10px;
+      margin:0;
+      padding:0;
+      border:0 none;
+      overflow:auto;
+      height:100%;
+  }
+  
+</style>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<script class="javascript" src="../js/highlight.js"></script>
+</head>
+<body>
+<textarea id="code" class="xml" style="display:none;">
+<?xml version="1.0" encoding="UTF-8"?>
+<f:view xmlns:f="http://java.sun.com/jsf/core"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:w="http://www.apusic.com/jsf/widget"
+        xmlns:ajax="http://www.apusic.com/jsf/ajax"
+        xmlns:l="http://www.apusic.com/jsf/layout"
+        renderKitId="AJAX">
+<w:page title="论坛用户" skin="aqua">
+<w:head>
+<style type="text/css">
+#myform_grid-example {
+  height:220px;
+  border:1px solid #cbc7b8;
+}
+#stock-detail {
+  width:400px;
+}
+.x-dlg .x-dlg-dlg-body {
+background:#FFFFFF;
+}
+</style>
+<w:stylesheet src="/common/resources/examples.css"/>
+</w:head>
+<div class="examDesc">
+<p>本例演示了在DataGrid中双击一条记录进行编辑的场景。双击表格中的一条记录以查看效果</p>
+</div>
+<w:panelBox style="width:580px">
+  <h3>论坛用户</h3>
+<w:form id="myform">
+  <w:dataGrid id="grid-example" binding="#{DialogEditBean.grid}" value="#{DialogEditBean.employees}" var="data"
+              selectedRow="#{DialogEditBean.row}" paged="true" rows="10" trackMouseOver="false">
+    <ajax:action event="ondblclick" action="#{DialogEditBean.showDialog}"/>
+
+    <w:idColumn id="name" header="姓名" width="150" sortable="true"
+                value="#{data.name}" />
+    <w:outputColumn id="addr" header="地区" width="75" align="right"
+                    value="#{data.addr}"/>
+    <w:outputColumn id="tel" header="电话" width="150" align="right"
+                    value="#{data.tel}"/>
+    <w:outputColumn id="email" header="邮箱" width="150" align="right" 
+                    value="#{data.email}"/>
+  </w:dataGrid>
+</w:form>
+</w:panelBox>
+<l:window 
+    binding="#{DialogEditBean.editDialog}" 
+    width="350"
+    height="200"
+    modal="true"
+    collapsible="false"
+    resizable="false"
+    title="编辑">
+    <ajax:updater globalAction="true" url="/dialog/edit.xhtml"/>
+</l:window>
+</w:page>
+</f:view>
+</textarea>
+<script class="javascript">
+var text = document.getElementById('code').value ;
+var html = highlightCode( "xml" , "xml" , true , text ) ;
+window.setTimeout(function() {
+    var css = "<link href='../styles/highlight.css' rel='stylesheet' type='text/css'>" ;
+    document.open('text/html');
+    if(document.implementation && document.implementation.createDocument) {
+        var htmlStr = css + html.xml ;
+        document.write(htmlStr);
+        document.close();
+    }
+    else {
+        var h = window.onerror;
+        window.onerror = function(){return true;}
+        html = css + html ;
+        document.write(html);
+        window.onerror = h;
+        document.close();
+        window.location.reload(false);
+    }
+}, 50);
+
+</script>
+</body>
+</html>

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<f:view xmlns:f="http://java.sun.com/jsf/core"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:w="http://www.apusic.com/jsf/widget"
+        xmlns:om="http://www.apusic.com/jsf/misc"
+        xmlns:ajax="http://www.apusic.com/jsf/ajax"
+        renderKitId="AJAX">
+<w:head>
+<style type="text/css">
+#grid {
+  height:280px;
+  border:1px solid #cbc7b8;
+}
+#stock-detail {
+  width:400px;
+}
+#table td, #table th {
+  padding:5px;
+}
+</style>
+</w:head>
+
+<om:useBean value="StockModel"/>
+  
+<w:page title="Stock Quote">
+
+  <w:panelBox style="width:650px">
+    <h3>Stock Quote</h3>
+    <w:dataGrid id="grid" jsvar="stock" paged="true" rows="10" trackMouseOver="false">
+      <w:idColumn id="company" header="Company" width="260" sortable="true"/>
+      <w:outputColumn id="price" header="Price" width="75" align="right" sortable="true"/>
+      <w:outputColumn id="change" header="Change" width="75" sortable="true" align="right"/>
+      <w:outputColumn id="pctChange" header="% Change" width="90" sortable="true" align="right"/>
+      <w:outputColumn id="lastUpdated" header="Last Updated" width="90" align="right" sortable="true"/>
+    </w:dataGrid>
+  </w:panelBox>
+
+  <br/>
+  <h:form prependId="false">
+    <w:panelBox id="stock-detail" border="1" borderColor="gray" borderRadius="8" bgcolor="#FFFFFF">
+      <h3>Stock Details</h3>
+
+      <om:useBean id="quote" value="#{view.grid.selectedRowData}">
+        <h:panelGrid columns="2" style="font-size:12px">
+          <h:outputLabel value="Company: "/> <h:outputText id="company"/>
+          <h:outputLabel value="Price: "/> <h:outputText id="price"/>
+          <h:outputLabel value="Change: "/> <h:outputText id="change"/>
+          <h:outputLabel value="% Change: "/> <h:outputText id="pctChange"/>
+        </h:panelGrid>
+      </om:useBean>
+
+      <fieldset style="margin-top:20px">
+        <legend>Server Action</legend>
+        <h:panelGrid>
+          <h:commandButton id="nextRow" value="Next"/>
+          <h:commandButton id="previousRow" value="Previous"/>
+          <h:commandButton id="refresh" value="Refresh"/>
+          <h:commandButton id="quote_increment" value="+1%"/>
+          <h:commandButton id="quote_decrement" value="-1%"/>
+        </h:panelGrid>
+      </fieldset>
+    </w:panelBox>
+  </h:form>
+
+  <br/>
+  <h3>Data Table</h3>
+  <w:pagingToolbar for="table" pageSize="10"/>
+  <h:form prependId="false">
+  <h:dataTable id="table" border="1" cellpadding="0" cellspacing="0" style="border-collapse:collapse;">
+    <h:column>
+      <f:facet name="header"><f:verbatim>Company</f:verbatim></f:facet>
+      <h:outputText id="company"/>
+    </h:column>
+    <h:column>
+      <f:facet name="header"><f:verbatim>Price</f:verbatim></f:facet>
+      <h:outputText id="price"/>
+    </h:column>
+    <h:column>
+      <f:facet name="header"><f:verbatim>Change</f:verbatim></f:facet>
+      <h:outputText id="change"/>
+    </h:column>
+    <h:column>
+      <f:facet name="header"><f:verbatim>% Change</f:verbatim></f:facet>
+      <h:outputText id="pctChange"/>
+    </h:column>
+    <h:column>
+      <f:facet name="header"><f:verbatim>Last Updated</f:verbatim></f:facet>
+      <h:outputText id="lastUpdated"/>
+    </h:column>
+    <h:column>
+      <h:commandLink id="increment" value="+1%"/>
+    </h:column>
+    <h:column>
+      <h:commandLink id="decrement" value="-1%"/>
+    </h:column>
+  </h:dataTable>
+  </h:form>
+  <w:pagingLink for="table" pageSize="10"/>
+  
+</w:page>
+
+</f:view>

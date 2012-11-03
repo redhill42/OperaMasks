@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/*
+ * $Id: ajax-config.xml,v 1.14 2008/03/17 17:32:24 jacky Exp $
+ *
+ * Copyright (C) 2006 Operamasks Community.
+ * Copyright (C) 2000-2006 Apusic Systems, Inc.
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see http://www.gnu.org/licenses.
+ */
+-->
+
+<faces-config xmlns="http://java.sun.com/xml/ns/javaee"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://java.sun.com/xml/ns/javaee/web-facesconfig_1_2.xsd"
+  version="1.2">
+
+  <!-- AJAX components -->
+
+  <component>
+    <component-type>org.operamasks.faces.AjaxStatus</component-type>
+    <component-class>org.operamasks.faces.component.ajax.AjaxStatus</component-class>
+  </component>
+
+  <component>
+    <component-type>org.operamasks.faces.AjaxScripter</component-type>
+    <component-class>org.operamasks.faces.component.ajax.AjaxScripter</component-class>
+  </component>
+
+  <component>
+    <component-type>org.operamasks.faces.AjaxAction</component-type>
+    <component-class>org.operamasks.faces.component.ajax.AjaxAction</component-class>
+  </component>
+
+  <component>
+    <component-type>org.operamasks.faces.AjaxTimer</component-type>
+    <component-class>org.operamasks.faces.component.ajax.AjaxTimer</component-class>
+  </component>
+
+  <component>
+    <component-type>org.operamasks.faces.AjaxUpdater</component-type>
+    <component-class>org.operamasks.faces.component.ajax.AjaxUpdater</component-class>
+  </component>
+
+  <component>
+    <component-type>org.operamasks.faces.AjaxProgress</component-type>
+    <component-class>org.operamasks.faces.component.ajax.AjaxProgress</component-class>
+  </component>
+
+  <component>
+    <component-type>org.operamasks.faces.AjaxLogger</component-type>
+    <component-class>org.operamasks.faces.component.ajax.AjaxLogger</component-class>
+  </component>
+
+  <!-- AJAX Render Kit -->
+
+  <render-kit>
+    <render-kit-id>AJAX</render-kit-id>
+    <render-kit-class>org.operamasks.faces.render.ajax.AjaxRenderKitImpl</render-kit-class>
+
+    <renderer>
+      <component-family>org.operamasks.faces.HtmlDocument</component-family>
+      <renderer-type>org.operamasks.faces.HtmlPage</renderer-type>
+      <renderer-class>org.operamasks.faces.render.ajax.AjaxHtmlPageRenderer</renderer-class>
+    </renderer>
+    
+    <renderer>
+      <component-family>javax.faces.Panel</component-family>
+      <renderer-type>org.operamasks.faces.RenderGroup</renderer-type>
+      <renderer-class>org.operamasks.faces.render.ajax.AjaxRenderGroupRenderer</renderer-class>
+    </renderer>
+
+    <renderer>
+      <component-family>org.operamasks.faces.AjaxStatus</component-family>
+      <renderer-type>org.operamasks.faces.AjaxStatus</renderer-type>
+      <renderer-class>org.operamasks.faces.render.ajax.AjaxStatusRenderer</renderer-class>
+    </renderer>
+
+    <renderer>
+      <component-family>org.operamasks.faces.AjaxScripter</component-family>
+      <renderer-type>org.operamasks.faces.AjaxScripter</renderer-type>
+      <renderer-class>org.operamasks.faces.render.ajax.AjaxScripterRenderer</renderer-class>
+    </renderer>
+
+    <renderer>
+      <component-family>org.operamasks.faces.AjaxProgress</component-family>
+      <renderer-type>org.operamasks.faces.AjaxProgress</renderer-type>
+      <renderer-class>org.operamasks.faces.render.ajax.AjaxProgressRenderer</renderer-class>
+    </renderer>
+    
+    <renderer>
+      <component-family>javax.faces.Form</component-family>
+      <renderer-type>javax.faces.Form</renderer-type>
+      <renderer-class>org.operamasks.faces.render.ajax.AjaxFormRenderer</renderer-class>
+    </renderer>
+
+    <renderer>
+      <component-family>javax.faces.Command</component-family>
+      <renderer-type>javax.faces.Button</renderer-type>
+      <renderer-class>org.operamasks.faces.render.widget.yuiext.AjaxButtonRenderer</renderer-class>
+    </renderer>
+
+    <renderer>
+      <component-family>javax.faces.Command</component-family>
+      <renderer-type>javax.faces.Link</renderer-type>
+      <renderer-class>org.operamasks.faces.render.ajax.AjaxCommandLinkRenderer</renderer-class>
+    </renderer>
+
+    <renderer>
+      <component-family>javax.faces.Command</component-family>
+      <renderer-type>org.operamasks.faces.AjaxTimer</renderer-type>
+      <renderer-class>org.operamasks.faces.render.ajax.AjaxTimerRenderer</renderer-class>
+    </renderer>
+
+    <renderer>
+      <component-family>org.operamasks.faces.AjaxUpdater</component-family>
+      <renderer-type>org.operamasks.faces.AjaxUpdater</renderer-type>
+      <renderer-class>org.operamasks.faces.render.ajax.AjaxUpdaterRenderer</renderer-class>
+    </renderer>
+
+    <renderer>
+      <component-family>javax.faces.SelectMany</component-family>
+      <renderer-type>javax.faces.Checkbox</renderer-type>
+      <renderer-class>org.operamasks.faces.render.ajax.AjaxCheckboxListRenderer</renderer-class>
+    </renderer>
+
+    <renderer>
+      <component-family>javax.faces.SelectOne</component-family>
+      <renderer-type>javax.faces.Radio</renderer-type>
+      <renderer-class>org.operamasks.faces.render.ajax.AjaxRadioRenderer</renderer-class>
+    </renderer>
+
+    <renderer>
+      <component-family>javax.faces.SelectOne</component-family>
+      <renderer-type>javax.faces.Listbox</renderer-type>
+      <renderer-class>org.operamasks.faces.render.ajax.AjaxListboxRenderer</renderer-class>
+    </renderer>
+
+    <renderer>
+      <component-family>javax.faces.SelectMany</component-family>
+      <renderer-type>javax.faces.Listbox</renderer-type>
+      <renderer-class>org.operamasks.faces.render.ajax.AjaxListboxRenderer</renderer-class>
+    </renderer>
+
+    <renderer>
+      <component-family>javax.faces.SelectOne</component-family>
+      <renderer-type>javax.faces.Menu</renderer-type>
+      <renderer-class>org.operamasks.faces.render.ajax.AjaxMenuRenderer</renderer-class>
+    </renderer>
+
+    <renderer>
+      <component-family>javax.faces.SelectMany</component-family>
+      <renderer-type>javax.faces.Menu</renderer-type>
+      <renderer-class>org.operamasks.faces.render.ajax.AjaxMenuRenderer</renderer-class>
+    </renderer>
+
+    <renderer>
+      <component-family>javax.faces.Message</component-family>
+      <renderer-type>javax.faces.Message</renderer-type>
+      <renderer-class>org.operamasks.faces.render.ajax.AjaxMessageRenderer</renderer-class>
+    </renderer>
+
+    <renderer>
+      <component-family>javax.faces.Messages</component-family>
+      <renderer-type>javax.faces.Messages</renderer-type>
+      <renderer-class>org.operamasks.faces.render.ajax.AjaxMessagesRenderer</renderer-class>
+    </renderer>
+
+    <renderer>
+      <component-family>javax.faces.Output</component-family>
+      <renderer-type>javax.faces.Label</renderer-type>
+      <renderer-class>org.operamasks.faces.render.ajax.AjaxLabelRenderer</renderer-class>
+    </renderer>
+
+    <renderer>
+      <component-family>javax.faces.Output</component-family>
+      <renderer-type>javax.faces.Format</renderer-type>
+      <renderer-class>org.operamasks.faces.render.ajax.AjaxFormatRenderer</renderer-class>
+    </renderer>
+    
+    <renderer>
+      <component-family>javax.faces.Data</component-family>
+      <renderer-type>javax.faces.Table</renderer-type>
+      <renderer-class>org.operamasks.faces.render.ajax.AjaxTableRenderer</renderer-class>
+    </renderer>
+
+    <renderer>
+      <component-family>javax.faces.Input</component-family>
+      <renderer-type>javax.faces.Text</renderer-type>
+      <renderer-class>org.operamasks.faces.render.ajax.AjaxTextRenderer</renderer-class>
+    </renderer>
+
+    <renderer>
+      <component-family>javax.faces.Output</component-family>
+      <renderer-type>javax.faces.Text</renderer-type>
+      <renderer-class>org.operamasks.faces.render.ajax.AjaxTextRenderer</renderer-class>
+    </renderer>
+  </render-kit>
+
+  <!-- The logger renderer -->
+  <render-kit>
+    <renderer>
+      <component-family>javax.faces.Panel</component-family>
+      <renderer-type>org.operamasks.faces.AjaxLogger</renderer-type>
+      <renderer-class>org.operamasks.faces.render.ajax.AjaxLoggerRenderer</renderer-class>
+    </renderer>
+  </render-kit>
+
+</faces-config>

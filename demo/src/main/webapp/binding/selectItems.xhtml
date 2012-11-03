@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<f:view xmlns:f="http://java.sun.com/jsf/core"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:w="http://www.apusic.com/jsf/widget"
+        xmlns:om="http://www.apusic.com/jsf/misc"
+        xmlns:ajax="http://www.apusic.com/jsf/ajax"
+        renderKitId="AJAX">
+<w:head>
+<w:stylesheet src="/common/resources/examples.css"/>
+</w:head>
+<w:page title="Combo" skin="default">
+  <om:useBean value="SelectItemsBean"/>
+  <div class="examDesc">
+  <p>本例演示了使用@SelectItems标签对下拉框的数据进行绑定。</p>
+  </div>
+  <h:form>
+    <h:panelGrid columns="4">
+      <f:verbatim>选择城市：</f:verbatim>
+      <w:combo id="city"/>
+      <w:button id="submitCity" value="submit"/>  
+      <w:button id="change" value="改变内容"/>  
+    </h:panelGrid>
+    <h:outputText id="cityText"/>
+    <br/>
+    <br/>
+    <h:panelGrid columns="3">
+      <f:verbatim>选择颜色：</f:verbatim>
+      <w:combo id="color"/>
+      <w:button id="submitColor" value="submit"/>  
+    </h:panelGrid>
+    <h:graphicImage id="colorImg"/>
+    <h:outputText id="colorText"/>
+    <br/>
+  </h:form>
+</w:page>
+</f:view>

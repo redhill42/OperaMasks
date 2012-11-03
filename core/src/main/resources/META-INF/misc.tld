@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/*
+ *
+ * Copyright (C) 2006 Operamasks Community.
+ * Copyright (C) 2000-2006 Apusic Systems, Inc.
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see http://www.gnu.org/licenses.
+ */
+-->
+
+<taglib xmlns="http://java.sun.com/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-jsptaglibrary_2_1.xsd"
+    version="2.1">
+
+  <tlib-version>1.2</tlib-version>
+  <short-name>om</short-name>
+  <uri>http://www.apusic.com/jsf/misc</uri>
+
+  <tag>
+    <name>elite</name>
+    <tag-class>org.operamasks.faces.webapp.misc.ELiteTag</tag-class>
+    <body-content>JSP</body-content>
+
+  </tag>
+
+  <tag>
+    <name>useBean</name>
+    <tag-class>org.operamasks.faces.webapp.misc.UseBeanTag</tag-class>
+    <body-content>JSP</body-content>
+
+    <attribute>
+      <name>id</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>    
+
+    <attribute>
+      <name>value</name>
+      <required>true</required>
+      <deferred-value>
+        <type>java.lang.Object</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>prependId</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
+
+  </tag>
+
+</taglib>

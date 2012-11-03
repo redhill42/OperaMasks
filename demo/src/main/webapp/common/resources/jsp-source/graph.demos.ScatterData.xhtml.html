@@ -1,0 +1,77 @@
+<html>
+<head>
+<style type="text/css">
+html, body {
+      font-size: 10px;
+      margin:0;
+      padding:0;
+      border:0 none;
+      overflow:auto;
+      height:100%;
+  }
+  
+</style>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<script class="javascript" src="../js/highlight.js"></script>
+</head>
+<body>
+<textarea id="code" class="xml" style="display:none;">
+<?xml version="1.0" encoding="UTF-8"?>
+<f:view xmlns:f="http://java.sun.com/jsf/core"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:w="http://www.apusic.com/jsf/widget"
+        xmlns:g="http://www.apusic.com/jsf/graph">
+  <w:dataGrid jsvar="point2DDataGrid" value="#{Point2DData}" var="xy" loadMask="false">
+    <w:outputColumn id="x1" header="X(1)" value="#{xy[0].x}" align="right" width="60">
+      <f:convertNumber pattern="0.00"/>
+    </w:outputColumn>
+    <w:outputColumn id="y1" header="Y(1)" value="#{xy[0].y}" align="right" width="60">
+      <f:convertNumber pattern="0.00"/>
+    </w:outputColumn>
+    <w:outputColumn id="x2" header="X(2)" value="#{xy[1].x}" align="right" width="60">
+      <f:convertNumber pattern="0.00"/>
+    </w:outputColumn>
+    <w:outputColumn id="y2" header="Y(2)" value="#{xy[1].y}" align="right" width="60">
+      <f:convertNumber pattern="0.00"/>
+    </w:outputColumn>
+    <w:outputColumn id="x3" header="X(3)" value="#{xy[2].x}" align="right" width="60">
+      <f:convertNumber pattern="0.00"/>
+    </w:outputColumn>
+    <w:outputColumn id="y3" header="Y(3)" value="#{xy[2].y}" align="right" width="60">
+      <f:convertNumber pattern="0.00"/>
+    </w:outputColumn>
+    <w:outputColumn id="x4" header="X(4)" value="#{xy[3].x}" align="right" width="60">
+      <f:convertNumber pattern="0.00"/>
+    </w:outputColumn>
+    <w:outputColumn id="y4" header="Y(4)" value="#{xy[3].y}" align="right" width="60">
+      <f:convertNumber pattern="0.00"/>
+    </w:outputColumn>
+  </w:dataGrid>
+
+</f:view>
+</textarea>
+<script class="javascript">
+var text = document.getElementById('code').value ;
+var html = highlightCode( "xml" , "xml" , true , text ) ;
+window.setTimeout(function() {
+    var css = "<link href='../styles/highlight.css' rel='stylesheet' type='text/css'>" ;
+    document.open('text/html');
+    if(document.implementation && document.implementation.createDocument) {
+        var htmlStr = css + html.xml ;
+        document.write(htmlStr);
+        document.close();
+    }
+    else {
+        var h = window.onerror;
+        window.onerror = function(){return true;}
+        html = css + html ;
+        document.write(html);
+        window.onerror = h;
+        document.close();
+        window.location.reload(false);
+    }
+}, 50);
+
+</script>
+</body>
+</html>

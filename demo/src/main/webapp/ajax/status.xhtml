@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<f:view xmlns:f="http://java.sun.com/jsf/core"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:w="http://www.apusic.com/jsf/widget"
+        xmlns:ajax="http://www.apusic.com/jsf/ajax"
+        renderKitId="AJAX">
+<w:head>
+<w:stylesheet src="/common/resources/examples.css"/>
+</w:head>
+<w:page title="Status Demo">
+  <div class="examDesc">
+  <p>使用&lt;ajax:status&gt;标签可以在发送和完成AJAX请求时获得回调</p>
+  </div>
+  <h:form>
+    <h:commandButton id="submit" value="submit" action="#{DemoBean.delay}"/>
+    <p/>
+    <ajax:status startStyle="color: red"
+        onstart="document.getElementsByTagName('body').item(0).style.cursor='progress'"
+        onstop="document.getElementsByTagName('body').item(0).style.cursor='auto'">
+      <f:facet name="start"><f:verbatim><img src="images/indicator.gif"/> Loading...</f:verbatim></f:facet>
+    </ajax:status>
+  </h:form>
+</w:page>
+</f:view>

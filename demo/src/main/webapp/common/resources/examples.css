@@ -1,0 +1,17 @@
+div.examDesc {
+	width: 80%;
+    background: #ffffa2;
+    font:normal 12px arial, helvetica,tahoma,sans-serif;    
+    padding: 8px;
+    padding-bottom: 0px;
+    border : 1px solid #800000;
+    margin-bottom: 8px;
+    line-height:normal;
+}
+div.examDesc p {
+    margin: 6px;
+}
+body {
+    margin: 0;
+    padding: 5px; 
+}

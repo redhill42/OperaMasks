@@ -1,0 +1,94 @@
+<html>
+<head>
+<style type="text/css">
+html, body {
+      font-size: 10px;
+      margin:0;
+      padding:0;
+      border:0 none;
+      overflow:auto;
+      height:100%;
+  }
+  
+</style>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<script class="javascript" src="../js/highlight.js"></script>
+</head>
+<body>
+<textarea id="code" class="xml" style="display:none;">
+<?xml version="1.0" encoding="UTF-8"?>
+<f:view xmlns:f="http://java.sun.com/jsf/core"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:w="http://www.apusic.com/jsf/widget"
+        xmlns:ajax="http://www.apusic.com/jsf/ajax"
+        renderKitId="HTML_BASIC">
+<w:head>
+<w:stylesheet src="/common/resources/examples.css"/>
+</w:head>
+<w:page title="Text Area" skin="default">
+  <div class="examDesc">
+  <p>多行文本框。可以作为传统的textarea输入框的代替，并且支持自动改变尺寸。</p>
+  </div>  
+  <h:form>    
+    <h:panelGrid columns="1">
+      <f:verbatim>多行文本框组件：</f:verbatim>
+      <w:textArea value="Multiline text field.  Can be used as a direct replacement for traditional textarea fields, plus adds
+support for auto-sizing." 
+        grow="#{TextAreaBean.grow}"
+        growMin="#{TextAreaBean.growMin}"
+        growMax="#{TextAreaBean.growMax}"
+        preventScrollbars="#{TextAreaBean.preventScrollbars}"
+        width="#{TextAreaBean.width}"/>      
+    </h:panelGrid>
+    
+    <h:panelGrid columns="1">
+	    <h:panelGrid columns="2">
+	      <f:verbatim>组件宽度(width)：</f:verbatim>
+	      <w:textField value="#{TextAreaBean.width}"/>
+	      <f:verbatim>高度增长最小值(growMin)：</f:verbatim>
+          <w:textField value="#{TextAreaBean.growMin}"/>
+          <f:verbatim>高度增长最大值(growMax)：</f:verbatim>
+          <w:textField value="#{TextAreaBean.growMax}"/>
+        </h:panelGrid>
+        <h:panelGrid columns="2">
+          <h:selectBooleanCheckbox id="grow" value="#{TextAreaBean.grow}">	        
+	      </h:selectBooleanCheckbox>
+	      <h:outputLabel value=" 高度自动增长(grow)" for="grow">
+	      </h:outputLabel>
+	      <h:selectBooleanCheckbox id="preventScrollbars" value="#{TextAreaBean.preventScrollbars}">            
+          </h:selectBooleanCheckbox>
+	      <h:outputLabel value=" 阻止滚动条(preventScrollbars)" for="preventScrollbars">
+          </h:outputLabel>
+        </h:panelGrid>
+	    <w:button value="提交"/>
+    </h:panelGrid>
+  </h:form>  
+</w:page>
+</f:view>
+</textarea>
+<script class="javascript">
+var text = document.getElementById('code').value ;
+var html = highlightCode( "xml" , "xml" , true , text ) ;
+window.setTimeout(function() {
+    var css = "<link href='../styles/highlight.css' rel='stylesheet' type='text/css'>" ;
+    document.open('text/html');
+    if(document.implementation && document.implementation.createDocument) {
+        var htmlStr = css + html.xml ;
+        document.write(htmlStr);
+        document.close();
+    }
+    else {
+        var h = window.onerror;
+        window.onerror = function(){return true;}
+        html = css + html ;
+        document.write(html);
+        window.onerror = h;
+        document.close();
+        window.location.reload(false);
+    }
+}, 50);
+
+</script>
+</body>
+</html>

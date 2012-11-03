@@ -1,0 +1,4 @@
+<ul>
+  <li><a href="http://developer.yahoo.com/yui/" target="_blank">Yahoo! UI Library</a></li>
+  <li><a href="http://www.ajaxian.com/" target="_blank">Ajaxian.com</a></li>
+</ul>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<f:view xmlns:f="http://java.sun.com/jsf/core"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:w="http://www.apusic.com/jsf/widget"
+        xmlns:ajax="http://www.apusic.com/jsf/ajax"
+        xmlns:l="http://www.apusic.com/jsf/layout"
+        renderKitId="AJAX">
+  <w:head>
+    <w:stylesheet src="/common/resources/examples.css" />
+  </w:head>
+  <w:page title="Tab Layout">
+    <div class="examDesc">
+    <p>本例演示标签布局的使用，标签的内容既可以指向另外一个页面，也可以是任意的内容。</p>
+    </div>
+    <table height="100%" width="100%">
+      <tr>
+        <td valign="top">
+        <l:tabLayout tabPosition="top" jsvar="layout" style="height:350px">
+          <l:tab id="welcome" title="welcome" tooltip="welcome tooltip">
+            <h1>这个是标签布局！</h1>
+            <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+          </l:tab>
+          <l:tab id="other" title="link other page" tooltip="other tooltip"
+            closable="true" src="/grid/stock-quote.xhtml">
+          </l:tab>
+          <l:tab id="custom" title="custom" tooltip="custom tooltip"
+            closable="true">
+              Hi. I'm the custom panel.<br/>
+              Hi. I'm the custom panel.<br/>
+              Hi. I'm the custom panel.<br/>
+          </l:tab>
+          <l:tab id="new1" title="new1" closable="true">
+            	这是新增页面1!
+          </l:tab>
+          <l:tab id="new2" title="new2" closable="true">
+            	这是新增页面2!
+          </l:tab>
+          <l:tab id="new3" title="new3" closable="true">
+            	这是新增页面3!
+          </l:tab>
+        </l:tabLayout>
+        </td>
+      </tr>
+    </table>
+  </w:page>
+</f:view>

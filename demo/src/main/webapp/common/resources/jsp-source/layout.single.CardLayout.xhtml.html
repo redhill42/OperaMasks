@@ -1,0 +1,76 @@
+<html>
+<head>
+<style type="text/css">
+html, body {
+      font-size: 10px;
+      margin:0;
+      padding:0;
+      border:0 none;
+      overflow:auto;
+      height:100%;
+  }
+  
+</style>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<script class="javascript" src="../js/highlight.js"></script>
+</head>
+<body>
+<textarea id="code" class="xml" style="display:none;">
+<f:view xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://java.sun.com/jsf/core"
+  xmlns:w="http://www.apusic.com/jsf/widget" xmlns:layout="http://www.apusic.com/jsf/layout"
+  renderKitId="AJAX" xmlns:h="http://java.sun.com/jsf/html">
+  <w:page>
+  	<style>
+  		.alignCenter{
+  			margin:0 auto;
+  		}
+  	</style>
+  	<div>
+	    <layout:cardLayout id="demoCardLayout" height="300" width="400" styleClass="alignCenter">
+	      <layout:panel title="第一步">填写基本信息：</layout:panel>
+	      <layout:panel title="第二步">填写详细信息：</layout:panel>
+	      <layout:panel title="完成">恭喜你,注册已经完成!</layout:panel>
+	    </layout:cardLayout>
+	    <w:form>
+	      <layout:panelGrid columns="3" styleClass="alignCenter">
+	        <layout:cell colspan="1" rowspan="1">
+	          <w:button value="上一步" id="pre" />
+	        </layout:cell>
+	        <layout:cell colspan="1" rowspan="1">
+	          <w:button value="下一步" id="next" />
+	        </layout:cell>
+	        <layout:cell colspan="1" rowspan="1">
+	          <w:button value="完成" id="finish" />
+	        </layout:cell>
+	      </layout:panelGrid>
+	    </w:form>
+    </div>
+  </w:page>
+</f:view>
+
+</textarea>
+<script class="javascript">
+var text = document.getElementById('code').value ;
+var html = highlightCode( "xml" , "xml" , true , text ) ;
+window.setTimeout(function() {
+    var css = "<link href='../styles/highlight.css' rel='stylesheet' type='text/css'>" ;
+    document.open('text/html');
+    if(document.implementation && document.implementation.createDocument) {
+        var htmlStr = css + html.xml ;
+        document.write(htmlStr);
+        document.close();
+    }
+    else {
+        var h = window.onerror;
+        window.onerror = function(){return true;}
+        html = css + html ;
+        document.write(html);
+        window.onerror = h;
+        document.close();
+        window.location.reload(false);
+    }
+}, 50);
+
+</script>
+</body>
+</html>

@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--
+/*
+ * $Id: layout-config.xml,v 1.13 2008/03/11 02:47:45 lishaochuan Exp $
+ *
+ * Copyright (C) 2006 Operamasks Community.
+ * Copyright (C) 2000-2006 Apusic Systems, Inc.
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see http://www.gnu.org/licenses.
+ */
+-->
+<faces-config xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.2" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee/web-facesconfig_1_2.xsd">
+
+  <application>
+    <el-resolver>org.operamasks.faces.layout.LayoutImplicitObjectELResolver</el-resolver>
+    <el-resolver>org.operamasks.faces.layout.LayoutScopedAttributeELResolver</el-resolver>
+  </application>
+  
+  <component>
+    <component-type>org.operamasks.faces.layout.Facelet</component-type>
+    <component-class>org.operamasks.faces.component.layout.UIFacelet</component-class>
+  </component>
+
+  <component>
+    <component-type>org.operamasks.faces.layout.FaceletSet</component-type>
+    <component-class>org.operamasks.faces.component.layout.UIFaceletSet</component-class>
+  </component>
+  
+  <component>
+    <component-type>org.operamasks.faces.layout.TemplateLayout</component-type>
+    <component-class>org.operamasks.faces.component.layout.TemplateLayout</component-class>
+  </component>
+
+  <component>
+    <component-type>org.operamasks.faces.layout.TemplateContainer</component-type>
+    <component-class>org.operamasks.faces.component.layout.UITemplateContainer</component-class>
+  </component>
+
+  <component>
+    <component-type>org.operamasks.faces.layout.FaceletSlot</component-type>
+    <component-class>org.operamasks.faces.component.layout.UIFaceletSlot</component-class>
+  </component>
+
+  <component>
+    <component-type>org.operamasks.faces.layout.GridLayout</component-type>
+    <component-class>org.operamasks.faces.component.layout.GridLayout</component-class>
+  </component>
+  
+  <component>
+    <component-type>org.operamasks.faces.layout.BorderLayout</component-type>
+    <component-class>org.operamasks.faces.component.layout.UIBorderLayout</component-class>
+  </component>
+
+  <component>
+    <component-type>org.operamasks.faces.layout.TabLayout</component-type>
+    <component-class>org.operamasks.faces.component.layout.TabLayout</component-class>
+  </component>
+
+  <component>
+    <component-type>org.operamasks.faces.layout.Panel</component-type>
+    <component-class>org.operamasks.faces.component.layout.AccordionPanel</component-class>
+  </component>
+
+  <component>
+    <component-type>org.operamasks.faces.layout.AccordionLayout</component-type>
+    <component-class>org.operamasks.faces.component.layout.AccordionLayout</component-class>
+  </component>
+
+  <component>
+    <component-type>org.operamasks.faces.layout.DynamicPanel</component-type>
+    <component-class>org.operamasks.faces.component.layout.DynamicAccordionPanel</component-class>
+  </component>
+
+  <component>
+    <component-type>org.operamasks.faces.layout.DynamicAccordionLayout</component-type>
+    <component-class>org.operamasks.faces.component.layout.DynamicAccordionLayout</component-class>
+  </component>
+
+  <render-kit>
+    <renderer>
+      <component-family>org.operamasks.faces.layout.LayoutManager</component-family>
+      <renderer-type>org.operamasks.faces.layout.GridLayout</renderer-type>
+      <renderer-class>org.operamasks.faces.render.layout.GridLayoutRenderer</renderer-class>
+    </renderer>
+
+    <renderer>
+      <component-family>org.operamasks.faces.layout.LayoutManager</component-family>
+      <renderer-type>org.operamasks.faces.layout.BorderLayout</renderer-type>
+      <renderer-class>org.operamasks.faces.render.layout.BorderLayoutRenderer</renderer-class>
+    </renderer>
+
+    <renderer>
+      <component-family>org.operamasks.faces.layout.LayoutManager</component-family>
+      <renderer-type>org.operamasks.faces.layout.TabLayout</renderer-type>
+      <renderer-class>org.operamasks.faces.render.layout.TabLayoutRenderer</renderer-class>
+    </renderer>
+
+    <renderer>
+      <component-family>org.operamasks.faces.layout.LayoutManager</component-family>
+      <renderer-type>org.operamasks.faces.layout.AccordionLayout</renderer-type>
+      <renderer-class>org.operamasks.faces.render.layout.AccordionLayoutRenderer</renderer-class>
+    </renderer>
+
+    <renderer>
+      <component-family>org.operamasks.faces.layout.Panel</component-family>
+      <renderer-type>org.operamasks.faces.layout.Panel</renderer-type>
+      <renderer-class>org.operamasks.faces.render.layout.AccordionPanelRenderer</renderer-class>
+    </renderer>
+
+    <renderer>
+      <component-family>org.operamasks.faces.layout.LayoutManager</component-family>
+      <renderer-type>org.operamasks.faces.layout.DynamicAccordionLayout</renderer-type>
+      <renderer-class>org.operamasks.faces.render.layout.DynamicAccordionLayoutRenderer</renderer-class>
+    </renderer>
+
+    <renderer>
+      <component-family>org.operamasks.faces.layout.Panel</component-family>
+      <renderer-type>org.operamasks.faces.layout.DynamicPanel</renderer-type>
+      <renderer-class>org.operamasks.faces.render.layout.DynamicAccordionPanelRenderer</renderer-class>
+    </renderer>
+  </render-kit>
+  
+	<component>
+        <component-type>org.operamasks.faces.component.layout.impl.UIAbsoluteLayout</component-type>
+        <component-class>org.operamasks.faces.component.layout.impl.UIAbsoluteLayout</component-class>
+    </component>
+	<component>
+        <component-type>org.operamasks.faces.component.layout.impl.UIAccordionLayout</component-type>
+        <component-class>org.operamasks.faces.component.layout.impl.UIAccordionLayout</component-class>
+    </component>
+	<component>
+        <component-type>org.operamasks.faces.component.layout.impl.UIBorderLayout</component-type>
+        <component-class>org.operamasks.faces.component.layout.impl.UIBorderLayout</component-class>
+    </component>
+	<component>
+        <component-type>org.operamasks.faces.component.layout.impl.UICardLayout</component-type>
+        <component-class>org.operamasks.faces.component.layout.impl.UICardLayout</component-class>
+    </component>
+	<component>
+        <component-type>org.operamasks.faces.component.layout.impl.UIColumnLayout</component-type>
+        <component-class>org.operamasks.faces.component.layout.impl.UIColumnLayout</component-class>
+    </component>
+	<component>
+        <component-type>org.operamasks.faces.component.layout.impl.UIFormLayout</component-type>
+        <component-class>org.operamasks.faces.component.layout.impl.UIFormLayout</component-class>
+    </component>
+	<component>
+        <component-type>org.operamasks.faces.component.layout.impl.UIPanel</component-type>
+        <component-class>org.operamasks.faces.component.layout.impl.UIPanel</component-class>
+    </component>
+	<component>
+        <component-type>org.operamasks.faces.component.layout.impl.UITabLayout</component-type>
+        <component-class>org.operamasks.faces.component.layout.impl.UITabLayout</component-class>
+    </component>
+	<component>
+        <component-type>org.operamasks.faces.component.layout.impl.UITableLayout</component-type>
+        <component-class>org.operamasks.faces.component.layout.impl.UITableLayout</component-class>
+    </component>
+	<component>
+        <component-type>org.operamasks.faces.component.layout.impl.UIWindow</component-type>
+        <component-class>org.operamasks.faces.component.layout.impl.UIWindow</component-class>
+    </component>
+</faces-config>

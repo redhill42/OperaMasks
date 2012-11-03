@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<f:view xmlns:f="http://java.sun.com/jsf/core"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:w="http://www.apusic.com/jsf/widget"
+        xmlns:om="http://www.apusic.com/jsf/misc"
+        xmlns:ajax="http://www.apusic.com/jsf/ajax"
+        renderKitId="AJAX">
+  <om:useBean value="ClickBean"/>
+  <w:page title="Action Event Listener">
+    <h:form>
+      <h:outputText id="text" style="text-decoration:underline;cursor:pointer;"/>
+      <h:inputHidden id="count"/> <!-- use this field to store state on client -->
+      <br/><br/>
+      <h:commandButton id="reset" value="Reset"/>
+    </h:form>
+  </w:page>
+</f:view>

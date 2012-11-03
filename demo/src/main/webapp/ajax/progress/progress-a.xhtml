@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<f:view xmlns:f="http://java.sun.com/jsf/core"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:w="http://www.apusic.com/jsf/widget"
+        xmlns:ajax="http://www.apusic.com/jsf/ajax"
+        renderKitId="AJAX">
+<w:head>
+<w:stylesheet src="/common/resources/examples.css"/>
+</w:head>
+
+<w:page title="Progress Bar Demo">
+  <div class="examDesc">
+	  <p>使用&lt;ajax:progress&gt;显示任务的进度</p>
+  </div>
+
+<h:form id='myform' prependId="false">
+  <p>
+  <w:button accesskey='s' onclick="percentageTask.start();" value="start" />
+  <w:button accesskey='t' onclick="percentageTask.stop();" value="stop" />
+  <w:button accesskey='p' onclick="percentageTask.pause();" value="pause" />
+  <w:button accesskey='r' onclick="percentageTask.resume();" value="resume" />
+  </p>
+
+  <table>
+    <tr><td><w:progressBar id="percentageProgress"/></td></tr>
+    <tr><td style="text-align:center;font-size:12px"><h:outputText id="percentageMessage" value="idle"/></td></tr>
+  </table>
+
+  <ajax:progress
+        id='percentageTask'
+        for="percentageProgress percentageMessage"
+        action="#{ProgressBean.percentageAction}"
+        onstatechange="window.status=this.state;"/>
+</h:form>
+
+</w:page>
+</f:view>

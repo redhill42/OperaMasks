@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html" xmlns:w="http://www.apusic.com/jsf/widget"
+	xmlns:a="http://www.apusic.com/jsf/ajax" xmlns:l="http://www.apusic.com/jsf/layout"
+	renderKitId="AJAX">
+	<w:head>
+		<w:stylesheet src="/common/resources/examples.css" />
+	</w:head>
+	<w:page title="AjaxUpdater Demo">
+		<div class="examDesc">
+		<p>本示例展示如何使用w:dialog组件来显示一个对话框，对话框的内容可以是一段文字，也可以结合ajax:updater组件来嵌入一个jsp页面。</p>
+		</div>
+		<w:form>
+			<l:panelGrid>
+				<w:button value="默认对话框" action="#{DialogBean.showDialog1}" />
+				<br />
+				<br />
+				<w:button value="关闭" action="#{DialogBean.close1}" />
+				<br />
+				<br />
+			</l:panelGrid>
+		</w:form>
+		<l:window height="110" width="300" id="dialog1" title="Greeting">
+			<w:form>
+				<center>
+				<br />
+				Hello Everybody! <br />
+				<br />
+				<w:button value="OK" style="width:80px" id="close1" />
+				</center>
+			</w:form>
+		</l:window>
+
+		<w:form>
+			<l:panelGrid>
+				<w:button value="模式对话框" id="showDialog2" />
+				<br />
+				<br />
+			</l:panelGrid>
+		</w:form>
+
+		<l:window id="dialog2" width="300" height="120" modal="true" resizable="false" title="Greeting">
+			<w:form>
+				<center>
+				<br />
+				Hello Everybody! <br />
+				这是一个模式对话框！ <br />
+				<br />
+				<w:button value="OK" style="width:80px" id="close2" />
+				</center>
+			</w:form>
+		</l:window>
+
+		<w:form>
+			<l:panelGrid>
+				<w:button value="自定义对话框" id="showDialog3" />
+				<br />
+				<br />
+			</l:panelGrid>
+		</w:form>
+		<l:window id="dialog3" width="300" height="120" modal="true" collapsible="false" closable="false"
+			resizable="false" title="Greeting">
+			<w:form>
+				<center>
+				<br />
+				Hello Everybody! <br />
+				这是自定义的对话框，没有关闭按钮。 <br />
+				<br />
+				<w:button value="OK" style="width:80px" id="close3" />
+				</center>
+			</w:form>
+		</l:window>
+
+		<w:form>
+			<l:panelGrid>
+				<w:button value="内嵌页面的对话框" id="showDialog4" />
+				<br />
+				<br />
+			</l:panelGrid>
+		</w:form>
+		<l:window id="dialog4" width="350" height="210" modal="true" title="Greeting">
+			<a:updater url="/ajax/updater/greeting.xhtml" />
+		</l:window>
+	</w:page>
+</f:view>

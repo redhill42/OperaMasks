@@ -1,0 +1,29 @@
+<f:view xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:w="http://www.apusic.com/jsf/widget" xmlns:layout="http://www.apusic.com/jsf/layout"
+    xmlns:h="http://java.sun.com/jsf/html"
+    renderKitId="AJAX">
+    <w:head>
+        <w:stylesheet src="/common/resources/examples.css"/>
+    </w:head>
+    <w:page>
+        <div class="examDesc">
+            <p>本例子模拟一个常用的场景，例如注册用户，当输入用户名，文本框失去焦点后，就发送ajax请求到后台去验证用户名，判断其合法性</p>
+        </div>
+        <w:form>
+            <layout:panelGrid columns="3">
+                <layout:cell colspan="1" rowspan="1">用户名：</layout:cell>
+                <w:textField id="name"></w:textField>
+                <h:outputText id="nameMsg" style="color:red;"></h:outputText>
+                <layout:cell colspan="1" rowspan="1">密码：</layout:cell>
+                <w:textField id="password" inputType="password" required="true">
+                    <f:validateLength minimum="6"></f:validateLength>
+                </w:textField>
+                <h:message for="password"></h:message>
+                <layout:cell colspan="3">
+                    <w:button id="login" value="登录" />
+                </layout:cell>
+            </layout:panelGrid>
+            <h:outputText id="response" style="color:blue;"></h:outputText>
+        </w:form>
+    </w:page>
+</f:view>

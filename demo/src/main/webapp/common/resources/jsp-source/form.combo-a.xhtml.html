@@ -1,0 +1,71 @@
+<html>
+<head>
+<style type="text/css">
+html, body {
+      font-size: 10px;
+      margin:0;
+      padding:0;
+      border:0 none;
+      overflow:auto;
+      height:100%;
+  }
+  
+</style>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<script class="javascript" src="../js/highlight.js"></script>
+</head>
+<body>
+<textarea id="code" class="xml" style="display:none;">
+<?xml version="1.0" encoding="UTF-8"?>
+<f:view xmlns:f="http://java.sun.com/jsf/core"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:w="http://www.apusic.com/jsf/widget"
+		renderKitId="AJAX">
+<w:head>
+<w:stylesheet src="/common/resources/examples.css"/>
+</w:head>
+<w:page title="Combo" skin="default">
+  <div class="examDesc">
+  <p>本例演示了Apusic JSF对Combo组件（下拉列表框）的AJAX支持。</p>
+  </div>
+  <h:form>
+    <h:panelGrid columns="4">
+      <f:verbatim>单项选择列表框：</f:verbatim>
+      <w:combo id="combo" value="#{ColorBean.color}" emptyText="请选择颜色..." typeAhead="true">
+        <f:selectItems value="#{ColorBean.colors}"/>
+      </w:combo>      
+      <w:button value="submit"/>  
+      <w:button value="改变下拉列表框内容" action="#{ColorBean.changeColors}"/>  
+    </h:panelGrid>    
+  </h:form>
+  <h:graphicImage value="images/#{ColorBean.color}.gif"/>
+  <h:outputText value="#{ColorBean.color}" style="color: #{ColorBean.color}"/>  
+</w:page>
+</f:view>
+</textarea>
+<script class="javascript">
+var text = document.getElementById('code').value ;
+var html = highlightCode( "xml" , "xml" , true , text ) ;
+window.setTimeout(function() {
+    var css = "<link href='../styles/highlight.css' rel='stylesheet' type='text/css'>" ;
+    document.open('text/html');
+    if(document.implementation && document.implementation.createDocument) {
+        var htmlStr = css + html.xml ;
+        document.write(htmlStr);
+        document.close();
+    }
+    else {
+        var h = window.onerror;
+        window.onerror = function(){return true;}
+        html = css + html ;
+        document.write(html);
+        window.onerror = h;
+        document.close();
+        window.location.reload(false);
+    }
+}, 50);
+
+</script>
+</body>
+</html>

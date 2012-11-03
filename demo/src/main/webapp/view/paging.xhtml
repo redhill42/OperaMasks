@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<f:view xmlns:f="http://java.sun.com/jsf/core"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:w="http://www.apusic.com/jsf/widget"
+        xmlns:ajax="http://www.apusic.com/jsf/ajax"
+        renderKitId="AJAX">
+
+<w:head>  
+  <w:stylesheet src="/common/resources/examples.css"/>
+  <w:stylesheet src="paging.css">
+	body {
+	    margin: 0;
+	    padding: 5px; 
+	}
+  </w:stylesheet>  
+</w:head>
+
+<w:page title="Paging Example">
+  <div class="examDesc">
+  <p>分页器组件为其他数据组件（比如DataGrid和DataView）提供翻页的功能。</p>
+  </div>
+  <w:form>
+  <w:dataView id="view-example" jsvar="productView" value="#{products}" var="p">
+    <w:outputColumn id="title" value="#{p.title}"/>
+    <w:outputColumn id="listPrice" value="#{p.listPrice}"/>
+    <w:outputColumn id="yourPrice" value="#{p.yourPrice}"/>
+    <w:outputColumn id="image" value="#{p.image}"/>
+
+    <f:facet name="template">
+      <h:panelGroup layout="block" styleClass="product">
+        <h:panelGrid columns="2">
+          <f:verbatim><img src="{image}" title="{title}" class="image"/></f:verbatim>
+          <h:panelGrid columns="1">
+            <f:verbatim><span class="title">{title}</span></f:verbatim>
+            <f:verbatim><span>List Price: </span><span class="listPrice">{listPrice}</span></f:verbatim>
+            <f:verbatim><span>Your Price: </span><span class="yourPrice">{yourPrice}</span></f:verbatim>
+          </h:panelGrid>
+        </h:panelGrid>
+      </h:panelGroup>
+    </f:facet>
+
+    <f:facet name="empty">
+      <f:verbatim>No data to display.</f:verbatim>
+    </f:facet>
+  </w:dataView>
+
+  <h3>分页组件</h3>
+  <br/>
+
+  <em>缺省风格</em>
+  <w:pagingLink id="pg1" for="view-example" pageSize="1"/>
+  <br/>
+
+  <em>各部分内容可定制</em>
+  <w:pagingLink id="pg2" for="view-example" pageSize="1" shownNumbers="4">
+    <!--
+    total模板参数：
+      {0} 总页数
+      {page} 当前页号
+      {pages} 总页数
+      {start} 本页起始记录号
+      {end} 本页结束记录号
+      {total} 总记录数
+    -->
+    <f:facet name="total"><f:verbatim>共{0}页</f:verbatim></f:facet>
+
+    <!--
+    number模板参数：
+      {0} 当前页号
+      {page} 同上
+      {start} 本页起始记录号
+      {end} 本页结束记录号
+    -->
+    <f:facet name="number"><f:verbatim>[{0}]</f:verbatim></f:facet>
+
+    <f:facet name="first"><f:verbatim>首页</f:verbatim></f:facet>
+    <f:facet name="last"><f:verbatim>末页</f:verbatim></f:facet>
+    <f:facet name="previous"><f:verbatim>上页</f:verbatim></f:facet>
+    <f:facet name="next"><f:verbatim>下页</f:verbatim></f:facet>
+  </w:pagingLink>
+  <w:pagingLink id="pg2-1" for="view-example" pageSize="1" shownNumbers="0">
+    <f:facet name="total"><f:verbatim>{page} of {pages}</f:verbatim></f:facet>
+  </w:pagingLink>
+  <br/>
+  
+  <em>AOM内嵌的样式</em><br/>
+  现代风格：<w:pagingLink for="view-example" pageSize="1" theme="modern"/>
+  <br/>
+  
+  雅虎风格：<w:pagingLink for="view-example" pageSize="1" theme="yahoo"/>
+  <br/>
+  
+  Google风格：<w:pagingLink for="view-example" pageSize="1" theme="google"/>
+  <br/>
+  
+  <em>工具条</em>
+  <w:pagingToolbar for="view-example" pageSize="1"/>
+  <br/>
+</w:form>
+</w:page>
+</f:view>

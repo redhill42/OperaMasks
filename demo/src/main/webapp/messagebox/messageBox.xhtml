@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<f:view xmlns:f="http://java.sun.com/jsf/core"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:w="http://www.apusic.com/jsf/widget"
+        xmlns:ajax="http://www.apusic.com/jsf/ajax"
+        xmlns:extra="http://www.apusic.com/jsf/extra"
+        renderKitId="AJAX">
+<w:head>
+<w:stylesheet src="/common/resources/examples.css"/>
+</w:head>
+<w:page title="Action Demo">
+  <div class="examDesc">
+  <p>本示例演示关于MessageBox的使用。</p>
+  </div>
+  <h:form>
+
+  <extra:messageBox binding="#{MessageBoxBean.messagebox}"/>
+  
+<h1>Ok/Cancel</h1>
+<p>Standard Ok/Cancel dialog.</p>
+<w:button id="okCancel" value="Show"/>
+<h:outputText id="okCancelText"/>
+
+<h1>Yes/No</h1>
+<p>Standard Yes/No dialog.</p>
+<w:button id="yesNo" value="Show"/>
+<h:outputText id="yesNoText"/>
+
+<h1>Prompt</h1>
+<p>Standard prompt dialog.</p> 
+<w:button id="prompt" value="Show"/>
+<h:outputText id="promptText"/>
+
+<h1>Yes/No/Cancel</h1>
+<p>Standard Yes/No/Cancel dialog.</p> 
+<w:button id="yesNoCancel" value="Show"/>
+<h:outputText id="yesNoCancelText"/>
+
+<h1>Wait Dialog</h1>
+<p>Dialog with indefinite progress bar and custom icon (will close after 8 sec).</p> 
+<w:button id="waitting" value="Show"/>
+<h:outputText id="waittingText"/>
+
+<h1>Alert</h1>
+<p>Standard alert message dialog.</p> 
+<w:button id="alert" value="Show" width="175"/>
+<h:outputText id="alertText"/>
+
+  </h:form>
+</w:page>
+</f:view>

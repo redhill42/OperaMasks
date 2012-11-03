@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<f:view xmlns:f="http://java.sun.com/jsf/core"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:g="http://www.apusic.com/jsf/graph">
+<g:compositeChart title="Graph Demo" showLegend="true">
+  <g:xAxis drawBaseLine="true" lowerMargin="0" upperMargin="0"/>
+  <g:yAxis drawBaseLine="true"/>
+  <g:lineChart>
+    <g:functionSeries>
+      <g:functionItem legend="y = cos(x)" start="-10" end="10" step="0.1" expression="#{GraphData.cosine}"/>
+      <g:functionItem legend="y = 2*sin(x)" start="-10" end="10" step="0.1" expression="#{GraphData.sine}"/>
+    </g:functionSeries>
+  </g:lineChart>
+  <g:lineChart>
+    <g:yAxis lowerBound="-10" upperBound="10"/>
+    <g:functionSeries>
+      <g:functionItem legend="y = tan(x)" start="-10" end="10" step="0.1" expression="#{GraphData.tan}"/>
+    </g:functionSeries>
+  </g:lineChart>
+</g:compositeChart>
+</f:view>

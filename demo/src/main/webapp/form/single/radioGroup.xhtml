@@ -1,0 +1,21 @@
+<f:view xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:w="http://www.apusic.com/jsf/widget" xmlns:layout="http://www.apusic.com/jsf/layout"
+    xmlns:h="http://java.sun.com/jsf/html"
+    renderKitId="AJAX">
+    <w:head>
+        <w:stylesheet src="/common/resources/examples.css"/>
+    </w:head>
+    <w:page>
+        <w:form>
+            <div class="examDesc">
+                <p>本例演示了radioGroup组件的用法，radioGroup和checkBoxGroup不同的是，radioGroup是从一组中选出一个关心的值，而checkBoxGroup关心的是哪几个被选中</p>
+            </div>
+            <w:radioGroup direction="v" id="color">
+                <f:selectItems id="colors"/>
+            </w:radioGroup>
+            <w:button id="ok" value="OK" />
+            <br/>
+            <h:outputText id="response" escape="false"></h:outputText>
+        </w:form>
+    </w:page>
+</f:view>

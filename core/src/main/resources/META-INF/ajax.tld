@@ -1,0 +1,732 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/*
+ *
+ * Copyright (C) 2006 Operamasks Community.
+ * Copyright (C) 2000-2006 Apusic Systems, Inc.
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see http://www.gnu.org/licenses.
+ */
+-->
+
+<taglib xmlns="http://java.sun.com/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-jsptaglibrary_2_1.xsd"
+    version="2.1">
+
+  <tlib-version>1.2</tlib-version>
+  <short-name>ajax</short-name>
+  <uri>http://www.apusic.com/jsf/ajax</uri>
+
+  <tag>
+    <name>scripter</name>
+    <tag-class>org.operamasks.faces.webapp.ajax.ScripterTag</tag-class>
+    <body-content>JSP</body-content>
+
+    <attribute>
+      <name>id</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>    
+    <attribute>
+      <name>rendered</name>
+      <required>false</required>
+      <deferred-value>
+        <type>boolean</type>
+      </deferred-value>
+    </attribute>    
+    <attribute>
+      <name>binding</name>
+      <required>false</required>
+      <deferred-value>
+        <type>javax.faces.component.UIComponent</type>
+      </deferred-value>
+    </attribute>    
+
+    <attribute>
+      <name>script</name>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+
+  </tag>
+
+  <tag>
+    <description xml:lang="zh-cn">
+      <![CDATA[使用&lt;ajax:status&gt;标签可以在发送和完成AJAX请求时获得回调]]>
+    </description>
+    <name>status</name>
+    <tag-class>org.operamasks.faces.webapp.ajax.StatusTag</tag-class>
+    <body-content>JSP</body-content>
+
+    <attribute>
+      <name>id</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>    
+    <attribute>
+      <name>rendered</name>
+      <required>false</required>
+      <deferred-value>
+        <type>boolean</type>
+      </deferred-value>
+    </attribute>    
+    <attribute>
+      <name>binding</name>
+      <required>false</required>
+      <deferred-value>
+        <type>javax.faces.component.UIComponent</type>
+      </deferred-value>
+    </attribute>    
+
+    <attribute>
+      <name>layout</name>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <description xml:lang="zh-cn">
+        <![CDATA[组件渲染时应用到组件的CSS风格，对应于元素的style属性。 这个属性的值是默认值，当startStyle或stopStyle没指定时采用。]]>
+      </description>
+      <name>style</name>
+      <required>false</required>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <description xml:lang="zh-cn">
+        <![CDATA[空格分隔的CSS风格类名列表，渲染时作为元素的"class"属性。 这个属性的值是默认值，当startStyleClass或stopStyleClass没指定时采用。]]>
+      </description>
+      <name>styleClass</name>
+      <required>false</required>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <description xml:lang="zh-cn">
+        <![CDATA[“开始”组渲染时应用的CSS风格，对应于元素的style属性。]]>
+      </description>
+      <name>startStyle</name>
+      <required>false</required>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <description xml:lang="zh-cn">
+        <![CDATA[空格分隔的CSS风格类名列表，渲染时作为“开始”组的"class"属性。]]>
+      </description>
+      <name>startStyleClass</name>
+      <required>false</required>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <description xml:lang="zh-cn">
+        <![CDATA[“结束”组渲染时应用的CSS风格，对应于元素的style属性。]]>
+      </description>
+      <name>stopStyle</name>
+      <required>false</required>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <description xml:lang="zh-cn">
+        <![CDATA[空格分隔的CSS风格类名列表，渲染时作为“结束”组的"class"属性。]]>
+      </description>
+      <name>stopStyleClass</name>
+      <required>false</required>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <description xml:lang="zh-cn">
+        <![CDATA[用户提供的一段Javascript脚本，在发送AJAX请求前会被执行。]]>
+      </description>
+      <name>onstart</name>
+      <required>false</required>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <description xml:lang="zh-cn">
+        <![CDATA[用户提供的一段Javascript脚本，在接收到AJAX响应后会被执行。]]>
+      </description>
+      <name>onstop</name>
+      <required>false</required>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+
+  </tag>
+
+  <tag>
+    <name>updater</name>
+    <tag-class>org.operamasks.faces.webapp.ajax.UpdaterTag</tag-class>
+    <body-content>JSP</body-content>
+
+    <attribute>
+      <name>id</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>    
+    <attribute>
+      <name>rendered</name>
+      <required>false</required>
+      <deferred-value>
+        <type>boolean</type>
+      </deferred-value>
+    </attribute>    
+    <attribute>
+      <name>binding</name>
+      <required>false</required>
+      <deferred-value>
+        <type>javax.faces.component.UIComponent</type>
+      </deferred-value>
+    </attribute>    
+
+    <attribute>
+      <name>jsvar</name>
+      <required>false</required>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>renderId</name>
+      <required>false</required>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>url</name>
+      <required>false</required>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>context</name>
+      <required>false</required>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>update</name>
+      <required>false</required>
+      <deferred-value>
+        <type>boolean</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>globalAction</name>
+      <required>false</required>
+      <deferred-value>
+        <type>boolean</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>charEncoding</name>
+      <required>false</required>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>layout</name>
+      <required>false</required>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <description>
+        <![CDATA[CSS style(s) to be applied when this component is rendered.]]>
+      </description>
+      <description xml:lang="zh-cn">
+        <![CDATA[组件渲染时应用到组件的CSS风格，对应于元素的style属性。]]>
+      </description>
+      <name>style</name>
+      <required>false</required>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <description>
+        <![CDATA[Space-separated list of CSS style class(es) to be applied when this element is rendered. This value must be passed through as the "class" attribute on generated markup.]]>
+      </description>
+      <description xml:lang="zh-cn">
+        <![CDATA[空格分隔的CSS风格类名列表，渲染时作为元素的"class"属性]]>
+      </description>
+      <name>styleClass</name>
+      <required>false</required>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+
+  </tag>
+
+  <tag>
+    <name>renderGroup</name>
+    <tag-class>org.operamasks.faces.webapp.ajax.RenderGroupTag</tag-class>
+    <body-content>JSP</body-content>
+
+    <attribute>
+      <name>id</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>    
+    <attribute>
+      <name>rendered</name>
+      <required>false</required>
+      <deferred-value>
+        <type>boolean</type>
+      </deferred-value>
+    </attribute>    
+    <attribute>
+      <name>binding</name>
+      <required>false</required>
+      <deferred-value>
+        <type>javax.faces.component.UIComponent</type>
+      </deferred-value>
+    </attribute>    
+
+    <attribute>
+      <name>layout</name>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <description>
+        <![CDATA[CSS style(s) to be applied when this component is rendered.]]>
+      </description>
+      <description xml:lang="zh-cn">
+        <![CDATA[组件渲染时应用到组件的CSS风格，对应于元素的style属性。]]>
+      </description>
+      <name>style</name>
+      <required>false</required>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <description>
+        <![CDATA[Space-separated list of CSS style class(es) to be applied when this element is rendered. This value must be passed through as the "class" attribute on generated markup.]]>
+      </description>
+      <description xml:lang="zh-cn">
+        <![CDATA[空格分隔的CSS风格类名列表，渲染时作为元素的"class"属性]]>
+      </description>
+      <name>styleClass</name>
+      <required>false</required>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+
+  </tag>
+
+  <tag>
+    <description xml:lang="zh-cn">
+      <![CDATA[JSF提供了标准的数据转换与验证框架，可以满足大部分的表单处理要求， 同时确保数据模型的完整性。由于将数据转换与验证的代码与正常处理逻辑代码有效地分离，使代码的可维护性大为增强。 但JSF的数据转换与验证是在服务器端进行的，对于一些简单的数据校验来说这种方式增大了网络的开销， 因此我们应当想办法使数据校验尽可能在客户端完成。 <p> Operamasks对标准数据转换与验证框架进行了扩充，使大部分转换器与校验器都可以在客户端进行。 这是在render一个页面时生成与服务器端转换与校验器等价的客户端Javascript代码来实现的。 要使用客户端数据校验，可以将h:form标签的clientValidate属性设置为true， 或者在web.xml中将参数org.operamasks.faces.CLIENT_VALIDATE的值设置为true。 前者仅对指定的form有效，后者对整个web应用都将执行客户端校验。 <p> 支持客户端数据校验的标准转换器与校验器包括如下： <blockquote><pre> javax.faces.convert.ByteConverter javax.faces.convert.DoubleConverter javax.faces.convert.FloatConverter javax.faces.convert.IntegerConverter javax.faces.convert.LongConverter javax.faces.convert.ShortConverter javax.faces.validator.DoubleRangeValidator javax.faces.validator.LengthValidator javax.faces.validator.LongRangeValidator </pre></blockquote> <p> 对自定义的转换器和校验器如果想提供客户端校验能力，可以实现org.operamasks.faces.validator.ClientValidator接口， 这个接口包括两个方法： <p><blockquote><pre> String getValidatorScript(FacesContext context, UIComponent component); </pre></blockquote> <p> 生成一个Javascript代码，这段代码将定义一个客户端校验器对象。在ajax.js脚本文件中有关于客户端校验器的完整定义。 <p><blockquote><pre> String getValidatorInstanceScript(FacesContext context, UIComponent component); </pre></blockquote> <p> 生成一个Javascript代码，这段代码将创建一个在上个方法中定义的客户端校验器对象，完成对客户输入数据的校验。 另外，也可以将校验器的定义放在一个单独的脚本文件中，这样getValidationScript方法可以返回null， 而不必每次都包含相同的脚本。 <p> 例如：下面的例子使用一个正则表达式对客户输入数据进行校验，它同时实现Validator和ClientValidator接口完成服务器端和客户端的校验。 注意由于客户端校验很容易被有经验的客户所绕过，因此服务器端的校验无论如何都是要被执行的。 <p><blockquote><pre> public class RegExpValidator implements Validator, ClientValidator { private String pattern; public void setPattern(String patter)｛ this.pattern = pattern; } public void validate(FacesContext context, UIComponent component, Object value) throws ValidationException { // 执行服务器端数据校验 } public String getValidatorScript(FacesContext context, UIComponent component) { return "function RegExpValidator(id,message,pattern) { + "this._id = id;" + "this._message = message;" + "this._pattern = pattern;" + "}" + "RegExpValidator.prototype = new Validator();" + "RegExpValidator.prototype.validate = function(value) {" + "var re = new RegExp(this._pattern);" + "return re.test(value);" + "}"; } public String getValidatorInstanceScript(FacesContext context, UIComponent component) { String id = component.getClientId(context); String message = "Regular expression validation error."; String pattern = this.pattern; return "new RegExpValidator('" + id + "', '" + message + "', '" + pattern + "')"; } } </pre></blockquote> <p> 可见，实现一个客户端校验器并不复杂，只需扩展Validator对象并实现validate方法即可。 一些标准的校验器在ajax.js中都有定义，可以参考他们的实现。 <p> 如果不想写一个单独的校验器，也可以使用ajax:clientValidate标签将Javascript代码直接嵌入JSP页面，这对一些并不具有通用性的数据校验比较方便。例如： <p><blockquote><pre> &lt;h:form clientValidate="true"> &lt;h:inputText value="#{UserBean.phoneNumber}" validator="#{UserBean.validatePhoneNumber}"> &lt;ajax:clientValidator message="Invalid phone number"> var re = new RegExp("/^0\d{1,3}-\d{3}-\d{4}$/"); return re.test(value); &lt;ajax:clientValidator> &lt;/h:inputText> &lt;/h:form> </pre></blockquote> <p> 其中UserBean.validatePhoneNumber在Managed Bean中实现，执行服务器端校验， ajax:clientValidateor标签的内容是一段Javascript脚本，执行客户端校验， 输入值是value，返回值必须是true或false。]]>
+    </description>
+    <name>clientValidator</name>
+    <tag-class>org.operamasks.faces.webapp.ajax.ClientValidatorTag</tag-class>
+    <body-content>JSP</body-content>
+
+    <attribute>
+      <description xml:lang="zh-cn">
+        <![CDATA[验证失败时的错误消息]]>
+      </description>
+      <name>message</name>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+
+  </tag>
+
+  <tag>
+    <description xml:lang="zh-cn">
+      <![CDATA[一个可视的日志，显示在页面中，显示AJAX交互过程中的各种信息。]]>
+    </description>
+    <name>logger</name>
+    <tag-class>org.operamasks.faces.webapp.ajax.LoggerTag</tag-class>
+    <body-content>empty</body-content>
+
+    <attribute>
+      <name>id</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>    
+    <attribute>
+      <name>rendered</name>
+      <required>false</required>
+      <deferred-value>
+        <type>boolean</type>
+      </deferred-value>
+    </attribute>    
+    <attribute>
+      <name>binding</name>
+      <required>false</required>
+      <deferred-value>
+        <type>javax.faces.component.UIComponent</type>
+      </deferred-value>
+    </attribute>    
+
+    <attribute>
+      <description xml:lang="zh-cn">
+        <![CDATA[日志级别，可用值为下面之一： OFF，FATAL，ERROR, WARN, INFO, DEBUG, ALL, 缺省为ALL。]]>
+      </description>
+      <name>level</name>
+      <required>false</required>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <description>
+        <![CDATA[CSS style(s) to be applied when this component is rendered.]]>
+      </description>
+      <description xml:lang="zh-cn">
+        <![CDATA[组件渲染时应用到组件的CSS风格，对应于元素的style属性。]]>
+      </description>
+      <name>style</name>
+      <required>false</required>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>serverLog</name>
+      <required>false</required>
+      <deferred-value>
+        <type>java.lang.Boolean</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <description>
+        <![CDATA[Space-separated list of CSS style class(es) to be applied when this element is rendered. This value must be passed through as the "class" attribute on generated markup.]]>
+      </description>
+      <description xml:lang="zh-cn">
+        <![CDATA[空格分隔的CSS风格类名列表，渲染时作为元素的"class"属性]]>
+      </description>
+      <name>styleClass</name>
+      <required>false</required>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+
+  </tag>
+
+  <tag>
+    <description xml:lang="zh-cn">
+      <![CDATA[可以为任意一个UI组件增加行动侦听器， 在响应客户端事件时向服务器发送一个行动事件，以执行相应的服务器端逻辑。 也就是说，可以在服务器端处理客户端事件。]]>
+    </description>
+    <name>action</name>
+    <tag-class>org.operamasks.faces.webapp.ajax.ActionTag</tag-class>
+    <body-content>JSP</body-content>
+
+    <attribute>
+      <name>id</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>    
+    <attribute>
+      <name>rendered</name>
+      <required>false</required>
+      <deferred-value>
+        <type>boolean</type>
+      </deferred-value>
+    </attribute>    
+    <attribute>
+      <name>binding</name>
+      <required>false</required>
+      <deferred-value>
+        <type>javax.faces.component.UIComponent</type>
+      </deferred-value>
+    </attribute>    
+
+    <attribute>
+      <description xml:lang="zh-cn">
+        <![CDATA[客户端事件名称。]]>
+      </description>
+      <name>event</name>
+      <required>true</required>
+      <rtexprvalue>true</rtexprvalue>
+      <type>java.lang.String</type>            
+    </attribute>
+    <attribute>
+      <description>
+        <![CDATA[MethodBinding representing the application action to invoke when the closest outer component is activated by the user. The expression must evaluate to a public method that takes no parameters, and returns a String (the logical outcome) which is passed to the NavigationHandler for this application.]]>
+      </description>
+      <description xml:lang="zh-cn">
+        <![CDATA[代表应用行动的方法绑定，当外围组件被用户激活时调用。 这个表达式必须对应到一个公有的不带参数的方法，这个方法返回一个字符串（逻辑输出）， 这个字符串用来被传递个这个应用的NavigationHandler。]]>
+      </description>
+      <name>action</name>
+      <required>false</required>
+      <deferred-method>
+        <method-signature>java.lang.Object action()</method-signature>
+      </deferred-method>
+    </attribute>
+    <attribute>
+      <description>
+        <![CDATA[MethodBinding representing an action listener method that will be notified when the closest outer component is activated by the user. The expression must evaluate to a public method that takes an ActionEvent parameter, with a return type of void.]]>
+      </description>
+      <description xml:lang="zh-cn">
+        <![CDATA[代表一个行动侦听器方法的方法绑定，当外围组件被用户激活时，这个方法将会得到通知。 这个表达式必须对应到一个公有方法，带有一个ActionEvent参数，且具有类型为void的返回值。]]>
+      </description>
+      <name>actionListener</name>
+      <required>false</required>
+      <deferred-method>
+        <method-signature>void actionListener(javax.faces.event.ActionEvent)</method-signature>
+      </deferred-method>
+    </attribute>
+    <attribute>
+      <description>
+        <![CDATA[Flag indicating that, if this component is activated by the user, notifications should be delivered to interested listeners and actions immediately (that is, during Apply Request Values phase) rather than waiting until Invoke Application phase.]]>
+      </description>
+      <description xml:lang="zh-cn">
+        <![CDATA[一个标志，指出当该组件被用户激活时，立即向感兴趣的侦听器和行动处理器发出通知 （也就是说在应用请求值阶段），而不是等到调用应用阶段。]]>
+      </description>
+      <name>immediate</name>
+      <required>false</required>
+      <deferred-value>
+        <type>boolean</type>
+      </deferred-value>
+    </attribute>
+
+  </tag>
+
+  <tag>
+    <description xml:lang="zh-cn">
+      <![CDATA[表示一个进度支持组件，不可视，通常与UIProgressBar组件（表示进度） 和HtmlOutputText组件（表示进度消息）连用，为这些组件提供后台逻辑支持。该组件只能用于AJAX RenderKit下。]]>
+    </description>
+    <name>progress</name>
+    <tag-class>org.operamasks.faces.webapp.ajax.ProgressTag</tag-class>
+    <body-content>JSP</body-content>
+
+    <attribute>
+      <name>id</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>    
+    <attribute>
+      <name>rendered</name>
+      <required>false</required>
+      <deferred-value>
+        <type>boolean</type>
+      </deferred-value>
+    </attribute>    
+    <attribute>
+      <name>binding</name>
+      <required>false</required>
+      <deferred-value>
+        <type>javax.faces.component.UIComponent</type>
+      </deferred-value>
+    </attribute>    
+
+    <attribute>
+      <description xml:lang="zh-cn">
+        <![CDATA[客户端脚本使用的javascript变量名，引用脚本中OM.ajax.Progress的对象， 在客户端脚本中可以调用这个变量的start(), stop(), pause(), resume(), poll()方法操纵Progress对象的行为。 可以调用isRunning(), isStopped(), isPause(), isCompleted(), isFailed()方法得到Progress对象的状态。]]>
+      </description>
+      <name>jsvar</name>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <description xml:lang="zh-cn">
+        <![CDATA[空格分隔的组件id列表，每个id所代表的组件或者是UIProgressBar， 或者是HtmlOutputText，这些组件将获得该组件提供的服务。 <p> 具体的，该组件会把自己的状态值传给UIProgressBar类型的组件， 把状态文本传给HtmlOutputText类型的组件作为innerHTML的值。]]>
+      </description>
+      <name>for</name>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <description xml:lang="zh-cn">
+        <![CDATA[客户端脚本中Progress对象自动与服务器端交互的时间间隔，单位为秒。默认为1秒。 如果在间隔指定的时间未到之前，客户主动通过与服务器端交互发出请求以图改变Progress的状态， 则该间隔的剩余计时取消，在处理了服务器端的响应后，如果Progress还处于运行状态，再重新开始计时。]]>
+      </description>
+      <name>interval</name>
+      <deferred-value>
+        <type>int</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <description xml:lang="zh-cn">
+        <![CDATA[如果为true，则在页面的onload事件中自动向服务器发出start的请求； 如果为false，则需要用户自己主动发出start请求。默认值为false。]]>
+      </description>
+      <name>start</name>
+      <deferred-value>
+        <type>boolean</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <description xml:lang="zh-cn">
+        <![CDATA[服务器端执行动作的方法绑定，在服务器端收到客户端发出的请求后会得到调用。 这个表达式必须对应到一个公有方法，带有一个ProgressStatus参数，且具有类型为void的返回值。]]>
+      </description>
+      <name>action</name>
+      <required>false</required>
+      <deferred-method>
+        <method-signature>void action(org.operamasks.faces.component.ajax.ProgressStatus)</method-signature>
+      </deferred-method>
+    </attribute>
+    <attribute>
+      <description xml:lang="zh-cn">
+        <![CDATA[用户提供的一段javascript脚本，在每次接收到服务器端的响应以后会执行]]>
+      </description>
+      <name>onstatechange</name>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+
+  </tag>
+
+  <tag>
+    <description xml:lang="zh-cn">
+      <![CDATA[一个定时器，既可以定时执行客户端脚本，也可以定时执行服务器端动作。 通过定时向服务器端发送AJAX请求，向服务器端传递参数。]]>
+    </description>
+    <name>timer</name>
+    <tag-class>org.operamasks.faces.webapp.ajax.TimerTag</tag-class>
+    <body-content>JSP</body-content>
+
+    <attribute>
+      <name>id</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>    
+    <attribute>
+      <name>rendered</name>
+      <required>false</required>
+      <deferred-value>
+        <type>boolean</type>
+      </deferred-value>
+    </attribute>    
+    <attribute>
+      <name>binding</name>
+      <required>false</required>
+      <deferred-value>
+        <type>javax.faces.component.UIComponent</type>
+      </deferred-value>
+    </attribute>    
+
+    <attribute>
+      <description xml:lang="zh-cn">
+        <![CDATA[客户端脚本使用的javascript变量名，引用脚本中OM.ajax.Timer的对象， 在客户端脚本中可以调用这个变量的如下方法来控制Timer:<p><blockquote><pre> addParameter(name, value) 为Timer的服务器端交互添加请求参数 schedule() 启动Timer cancel() 取消Timer </pre></blockquote>]]>
+      </description>
+      <name>jsvar</name>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <description xml:lang="zh-cn">
+        <![CDATA[从启动开始，经过多少时间，Timer开始第一次动作，单位为秒。]]>
+      </description>
+      <name>delay</name>
+      <required>false</required>
+      <deferred-value>
+        <type>int</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <description xml:lang="zh-cn">
+        <![CDATA[Timer每次动作的时间间隔，单位为秒。]]>
+      </description>
+      <name>period</name>
+      <required>false</required>
+      <deferred-value>
+        <type>int</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <description xml:lang="zh-cn">
+        <![CDATA[Timer是否自动启动。true，自动启动；false，需要客户明确调用schedule()方法启动。]]>
+      </description>
+      <name>start</name>
+      <required>false</required>
+      <deferred-value>
+        <type>boolean</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <description xml:lang="zh-cn">
+        <![CDATA[服务器端执行动作的方法绑定，定时器定时时间到达的时候调用。 这个表达式必须对应到一个公有的不带参数的方法，这个方法返回一个字符串（逻辑输出）， 这个字符串用来被传递个这个应用的NavigationHandler。]]>
+      </description>
+      <name>action</name>
+      <required>false</required>
+      <deferred-method>
+        <method-signature>java.lang.Object action()</method-signature>
+      </deferred-method>
+    </attribute>
+    <attribute>
+      <description xml:lang="zh-cn">
+        <![CDATA[代表一个行动侦听器方法的方法绑定，定时器定时时间到达的时候会得到通知。 这个表达式必须对应到一个公有方法，带有一个ActionEvent参数，且具有类型为void的返回值。]]>
+      </description>
+      <name>actionListener</name>
+      <required>false</required>
+      <deferred-method>
+        <method-signature>void actionListener(javax.faces.event.ActionEvent)</method-signature>
+      </deferred-method>
+    </attribute>
+    <attribute>
+      <description xml:lang="zh-cn">
+        <![CDATA[一个标志，指出当该定时器定时时间到达时，立即向感兴趣的侦听器和行动处理器发出通知 （也就是说在应用请求值阶段），而不是等到调用应用阶段。]]>
+      </description>
+      <name>immediate</name>
+      <required>false</required>
+      <deferred-value>
+        <type>boolean</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <description xml:lang="zh-cn">
+        <![CDATA[一段Javascript脚本（并不是一个完整的function)，定时时间到达时会被调用。 若在脚本的最后返回false，则在脚本执行完后会终止定时器。]]>
+      </description>
+      <name>ontimeout</name>
+      <required>false</required>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <description xml:lang="zh-cn">
+        <![CDATA[一个标志，当为true时，表示: 如果该定时器位于一个UIForm组件内， 则向服务器发送的AJAX请求的参数中包含所有Form内的有效field（指所有非disabled和readonly的field）， 相当于提交form；当为false时，发送的AJAX请求与form无关。]]>
+      </description>
+      <name>sendForm</name>
+      <required>false</required>
+      <deferred-value>
+        <type>boolean</type>
+      </deferred-value>
+    </attribute>
+
+  </tag>
+
+</taglib>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<f:view xmlns:f="http://java.sun.com/jsf/core"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:w="http://www.apusic.com/jsf/widget"
+        xmlns:layout="http://www.apusic.com/jsf/layout"
+        xmlns:ajax="http://www.apusic.com/jsf/ajax">
+  <table width="100%" border="1">
+    <tr>
+      <td>
+        <layout:slot name="header">header</layout:slot>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <layout:slot name="content" >default content</layout:slot>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <layout:slot name="footer" >footer</layout:slot>
+      </td>
+    </tr>
+  </table>
+  <br/>
+  <a href="simple.jsf">返回</a>
+</f:view>

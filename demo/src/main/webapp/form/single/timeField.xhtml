@@ -1,0 +1,20 @@
+<f:view xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:w="http://www.apusic.com/jsf/widget" xmlns:layout="http://www.apusic.com/jsf/layout"
+    xmlns:h="http://java.sun.com/jsf/html"
+    renderKitId="AJAX">
+    <w:head>
+        <w:stylesheet src="/common/resources/examples.css"/>
+    </w:head>
+    <w:page>
+        <div class="examDesc">
+            <p>本例子介绍timeField组件的用法，timeField提供让用户自定义时间范围，时间间隔，时间格式等功能，方便用户选择时间</p>
+        </div>
+        <w:form>
+            时间选择：
+            <layout:panelGrid columns="2">
+                <w:timeField minValue="8:00am" maxValue="21:00am" format="G点i分" id="time" increment="10"/>
+                <h:outputText id="response"></h:outputText>
+            </layout:panelGrid>
+        </w:form>
+    </w:page>
+</f:view>

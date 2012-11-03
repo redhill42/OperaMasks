@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<f:view xmlns:f="http://java.sun.com/jsf/core"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:w="http://www.apusic.com/jsf/widget"
+        xmlns:ajax="http://www.apusic.com/jsf/ajax"
+        xmlns:om="http://www.apusic.com/jsf/misc"
+        renderKitId="HTML_BASIC">
+  <w:page title="Stateless Session Bean Example">
+  <om:useBean value="hello"/>
+  <h:form>
+    <h:outputText value="Input your name: "/>
+    <h:inputText id="name"/>
+    <h:commandButton value="Submit" id="sayHello"/>
+    <h:outputText value="#{DemoBean.greeting}"/>
+  </h:form>
+  <h:messages/>
+  </w:page>
+</f:view>

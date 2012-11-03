@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<f:view xmlns:f="http://java.sun.com/jsf/core"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:g="http://www.apusic.com/jsf/graph">
+<g:barChart title="XY Bar Chart Demo"
+             xAxisLabel="X"
+             yAxisLabel="Y"
+             showLegend="true">
+  <g:xyDataSeries value="#{XYData}" var="xy">
+    <g:xyDataItem legend="Random 1" x="#{xy[0].x}" y="#{xy[0].y}"/>
+    <g:xyDataItem legend="Random 2" x="#{xy[1].x}" y="#{xy[1].y}"/>
+  </g:xyDataSeries>
+</g:barChart>
+</f:view>

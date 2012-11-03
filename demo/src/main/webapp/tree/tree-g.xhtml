@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<f:view xmlns:f="http://java.sun.com/jsf/core"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:w="http://www.apusic.com/jsf/widget"
+        xmlns:ajax="http://www.apusic.com/jsf/ajax"
+        renderKitId="AJAX">
+
+<w:page title="Simple Check Nodes Tree">
+<w:head>
+<script type="text/javascript" src="/_global/script/logging.js"></script>
+<!--<script type="text/javascript" src="/operamasks-examples/js/ext-all-debug.js"></script>-->
+<w:stylesheet src="/common/resources/examples.css"/>
+</w:head>
+<div class="examDesc">
+<p>与UICheckTreeNode不同的是，UISimpleCheckTreeNode并不自动维护父节点和子节点的状态关系</p>
+</div> 
+<table>
+<tr>
+<td>
+<w:form>
+  <w:tree animate="true" style="width:200px;height:300px;border:1px solid #c3daf9;overflow:auto" lines="true"
+  		binding="#{SimpleCheckNodesTree.tree}" asyncData="#{SimpleCheckNodesTree.getFilesInFolder}" nodeImage="#{SimpleCheckNodesTree.getFileIcon}"
+  			nodeHasChildren="#{SimpleCheckNodesTree.isFolder}" nodeText="#{SimpleCheckNodesTree.getFileName}" nodeClass="#{SimpleCheckNodesTree.nodeClass}"
+  			postCreate="#{SimpleCheckNodesTree.restoreCheckStatus}" saveState="true">
+	<w:treeEventListener binding="#{SimpleCheckNodesTree}" events="select,expand,collapse,check" />
+	<w:simpleCheckTreeNode userData="My Documents" async="true" image="images/my_documents.gif" checked="false" checkType="unchecked" />
+  </w:tree>
+</w:form>
+</td>
+<td valign="top">
+<a href="tree-g.jsf">Reload page</a>
+<br/>
+<h:outputText value="#{SimpleCheckNodesTree.response}" escape="false"/>
+</td>
+</tr>
+</table>
+</w:page>
+</f:view>

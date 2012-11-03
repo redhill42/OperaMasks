@@ -1,0 +1,2163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/*
+ *
+ * Copyright (C) 2006 Operamasks Community.
+ * Copyright (C) 2000-2006 Apusic Systems, Inc.
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see http://www.gnu.org/licenses.
+ */
+-->
+
+<taglib xmlns="http://java.sun.com/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-jsptaglibrary_2_1.xsd"
+    version="2.1">
+
+  <tlib-version>1.2</tlib-version>
+  <short-name>layout</short-name>
+  <uri>http://www.apusic.com/jsf/layout</uri>
+
+  <tag>
+    <name>contentPanel</name>
+    <tag-class>org.operamasks.faces.webapp.layout.ContentPanelTag</tag-class>
+    <tei-class>org.operamasks.faces.webapp.layout.ContentPanelTEI</tei-class>
+    <body-content>JSP</body-content>
+
+    <attribute>
+      <name>id</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>    
+    <attribute>
+      <name>rendered</name>
+      <required>false</required>
+      <deferred-value>
+        <type>boolean</type>
+      </deferred-value>
+    </attribute>    
+    <attribute>
+      <name>binding</name>
+      <required>false</required>
+      <deferred-value>
+        <type>javax.faces.component.UIComponent</type>
+      </deferred-value>
+    </attribute>    
+
+    <attribute>
+      <name>target</name>
+      <required>true</required>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>title</name>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>autoScroll</name>
+      <deferred-value>
+        <type>boolean</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>fitToFrame</name>
+      <deferred-value>
+        <type>boolean</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>closable</name>
+      <deferred-value>
+        <type>boolean</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>name</name>
+      <required>false</required>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>constraints</name>
+      <required>false</required>
+      <deferred-value>
+        <type>java.lang.Object</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>src</name>
+      <required>false</required>
+      <deferred-value>
+        <type>java.lang.Object</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>srcClass</name>
+      <required>false</required>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+
+  </tag>
+
+  <tag>
+    <name>tab</name>
+    <tag-class>org.operamasks.faces.webapp.layout.TabTag</tag-class>
+    <body-content>JSP</body-content>
+
+    <attribute>
+      <name>id</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>    
+    <attribute>
+      <name>rendered</name>
+      <required>false</required>
+      <deferred-value>
+        <type>boolean</type>
+      </deferred-value>
+    </attribute>    
+    <attribute>
+      <name>binding</name>
+      <required>false</required>
+      <deferred-value>
+        <type>javax.faces.component.UIComponent</type>
+      </deferred-value>
+    </attribute>    
+
+    <attribute>
+      <name>title</name>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>tooltip</name>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>closable</name>
+      <deferred-value>
+        <type>java.lang.Boolean</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>disabled</name>
+      <deferred-value>
+        <type>java.lang.Boolean</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>onactivate</name>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>ondeactivate</name>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>onclose</name>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>onbeforeclose</name>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>style</name>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>styleClass</name>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>name</name>
+      <required>false</required>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>constraints</name>
+      <required>false</required>
+      <deferred-value>
+        <type>java.lang.Object</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>src</name>
+      <required>false</required>
+      <deferred-value>
+        <type>java.lang.Object</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>srcClass</name>
+      <required>false</required>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+
+  </tag>
+
+  <tag>
+    <description xml:lang="zh-cn">
+      <![CDATA[可伸缩、可移动、可拖拽的面板，可放置任意内容在面板中]]>
+    </description>
+    <name>accordionPanel</name>
+    <tag-class>org.operamasks.faces.webapp.layout.AccordionPanelTag</tag-class>
+    <body-content>JSP</body-content>
+
+    <attribute>
+      <name>id</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>    
+    <attribute>
+      <name>rendered</name>
+      <required>false</required>
+      <deferred-value>
+        <type>boolean</type>
+      </deferred-value>
+    </attribute>    
+    <attribute>
+      <name>binding</name>
+      <required>false</required>
+      <deferred-value>
+        <type>javax.faces.component.UIComponent</type>
+      </deferred-value>
+    </attribute>    
+
+    <attribute>
+      <name>jsvar</name>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>title</name>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>animate</name>
+      <deferred-value>
+        <type>java.lang.Boolean</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>autoScroll</name>
+      <deferred-value>
+        <type>java.lang.Boolean</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>bodyClass</name>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>collapsed</name>
+      <deferred-value>
+        <type>java.lang.Boolean</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>collapseOnUnpin</name>
+      <deferred-value>
+        <type>java.lang.Boolean</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>collapsible</name>
+      <deferred-value>
+        <type>java.lang.Boolean</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>draggable</name>
+      <deferred-value>
+        <type>java.lang.Boolean</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>duration</name>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>easingCollapse</name>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>easingExpand</name>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>icon</name>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>minWidth</name>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>maxWidth</name>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>minHeight</name>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>maxHeight</name>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>panelClass</name>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>pinned</name>
+      <deferred-value>
+        <type>java.lang.Boolean</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>resizable</name>
+      <deferred-value>
+        <type>java.lang.Boolean</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>shadowMode</name>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>showPin</name>
+      <deferred-value>
+        <type>java.lang.Boolean</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>trigger</name>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>useShadow</name>
+      <deferred-value>
+        <type>java.lang.Boolean</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>style</name>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>styleClass</name>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>name</name>
+      <required>false</required>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>constraints</name>
+      <required>false</required>
+      <deferred-value>
+        <type>java.lang.Object</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>src</name>
+      <required>false</required>
+      <deferred-value>
+        <type>java.lang.Object</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>srcClass</name>
+      <required>false</required>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+
+  </tag>
+
+  <tag>
+    <description xml:lang="zh-cn">
+      <![CDATA[可伸缩、可移动、可拖拽的布局]]>
+    </description>
+    <name>dynamicAccordionLayout</name>
+    <tag-class>org.operamasks.faces.webapp.layout.DynamicAccordionLayoutTag</tag-class>
+    <body-content>JSP</body-content>
+
+    <attribute>
+      <name>id</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>    
+    <attribute>
+      <name>rendered</name>
+      <required>false</required>
+      <deferred-value>
+        <type>boolean</type>
+      </deferred-value>
+    </attribute>    
+    <attribute>
+      <name>binding</name>
+      <required>false</required>
+      <deferred-value>
+        <type>javax.faces.component.UIComponent</type>
+      </deferred-value>
+    </attribute>    
+
+    <attribute>
+      <name>var</name>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>indexVar</name>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>value</name>
+      <deferred-value>
+        <type>java.lang.Object</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>jsvar</name>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>container</name>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>draggable</name>
+      <deferred-value>
+        <type>java.lang.Boolean</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>fitHeight</name>
+      <deferred-value>
+        <type>java.lang.Boolean</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>initialHeight</name>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>desktop</name>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>fitToFrame</name>
+      <deferred-value>
+        <type>java.lang.Boolean</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>fitContainer</name>
+      <deferred-value>
+        <type>java.lang.Boolean</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>style</name>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>styleClass</name>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+
+  </tag>
+
+  <tag>
+    <name>defineLayout</name>
+    <tag-class>org.operamasks.faces.webapp.layout.DefineLayoutTag</tag-class>
+    <body-content>JSP</body-content>
+
+    <attribute>
+      <name>id</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>    
+
+  </tag>
+
+  <tag>
+    <description xml:lang="zh-cn">
+      <![CDATA[可伸缩、可移动、可拖拽的布局]]>
+    </description>
+    <name>accordionLayout</name>
+    <tag-class>org.operamasks.faces.webapp.layout.AccordionLayoutTag</tag-class>
+    <body-content>JSP</body-content>
+
+    <attribute>
+      <name>id</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>    
+    <attribute>
+      <name>rendered</name>
+      <required>false</required>
+      <deferred-value>
+        <type>boolean</type>
+      </deferred-value>
+    </attribute>    
+    <attribute>
+      <name>binding</name>
+      <required>false</required>
+      <deferred-value>
+        <type>javax.faces.component.UIComponent</type>
+      </deferred-value>
+    </attribute>    
+
+    <attribute>
+      <name>jsvar</name>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>container</name>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>draggable</name>
+      <deferred-value>
+        <type>java.lang.Boolean</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>fitHeight</name>
+      <deferred-value>
+        <type>java.lang.Boolean</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>initialHeight</name>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>desktop</name>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>fitToFrame</name>
+      <deferred-value>
+        <type>java.lang.Boolean</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>fitContainer</name>
+      <deferred-value>
+        <type>java.lang.Boolean</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>style</name>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>styleClass</name>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+
+  </tag>
+
+  <tag>
+    <description xml:lang="zh-cn">
+      <![CDATA[BorderLayout类似于Swing中的BorderLayout布局, 把界面分成东南西北中五个部分]]>
+    </description>
+    <name>borderLayout</name>
+    <tag-class>org.operamasks.faces.webapp.layout.BorderLayoutTag</tag-class>
+    <body-content>JSP</body-content>
+
+    <attribute>
+      <name>id</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>    
+    <attribute>
+      <name>rendered</name>
+      <required>false</required>
+      <deferred-value>
+        <type>boolean</type>
+      </deferred-value>
+    </attribute>    
+    <attribute>
+      <name>binding</name>
+      <required>false</required>
+      <deferred-value>
+        <type>javax.faces.component.UIComponent</type>
+      </deferred-value>
+    </attribute>    
+
+    <attribute>
+      <description xml:lang="zh-cn">
+        <![CDATA[客户端脚本使用的javascript变量名，引用脚本中BorderLayout对象]]>
+      </description>
+      <name>jsvar</name>
+      <required>false</required>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <description xml:lang="zh-cn">
+        <![CDATA[限制这个layout范围的容器, 值一般是某个HTML元素的ID，或是document.body。 如果不写，会在当前位置就地渲染一个div元素，作为容器，这个div元素以该BorderLayout组件的clientId为ID。 而且style和styleClass属性就渲染为这个div元素的属性。]]>
+      </description>
+      <name>container</name>
+      <required>false</required>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <description>
+        <![CDATA[CSS style(s) to be applied when this component is rendered.]]>
+      </description>
+      <description xml:lang="zh-cn">
+        <![CDATA[组件渲染时应用到组件的CSS风格，对应于元素的style属性。]]>
+      </description>
+      <name>style</name>
+      <required>false</required>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <description>
+        <![CDATA[Space-separated list of CSS style class(es) to be applied when this element is rendered. This value must be passed through as the "class" attribute on generated markup.]]>
+      </description>
+      <description xml:lang="zh-cn">
+        <![CDATA[空格分隔的CSS风格类名列表，渲染时作为元素的"class"属性]]>
+      </description>
+      <name>styleClass</name>
+      <required>false</required>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <description xml:lang="zh-cn">
+        <![CDATA[北部的配置，接受的类型为org.operamasks.faces.component.layout.RegionConfig]]>
+      </description>
+      <name>north</name>
+      <required>false</required>
+      <deferred-value>
+        <type>org.operamasks.faces.component.layout.RegionConfig</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <description xml:lang="zh-cn">
+        <![CDATA[西部的配置，接受的类型为org.operamasks.faces.component.layout.RegionConfig]]>
+      </description>
+      <name>west</name>
+      <required>false</required>
+      <deferred-value>
+        <type>org.operamasks.faces.component.layout.RegionConfig</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <description xml:lang="zh-cn">
+        <![CDATA[东部的配置，接受的类型为org.operamasks.faces.component.layout.RegionConfig]]>
+      </description>
+      <name>east</name>
+      <required>false</required>
+      <deferred-value>
+        <type>org.operamasks.faces.component.layout.RegionConfig</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <description xml:lang="zh-cn">
+        <![CDATA[南部的配置，接受的类型为org.operamasks.faces.component.layout.RegionConfig]]>
+      </description>
+      <name>south</name>
+      <required>false</required>
+      <deferred-value>
+        <type>org.operamasks.faces.component.layout.RegionConfig</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <description xml:lang="zh-cn">
+        <![CDATA[中部的配置，接受的类型为org.operamasks.faces.component.layout.RegionConfig]]>
+      </description>
+      <name>center</name>
+      <required>false</required>
+      <deferred-value>
+        <type>org.operamasks.faces.component.layout.RegionConfig</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <description xml:lang="zh-cn">
+        <![CDATA[布局各个部分，包括东南西北中的配置，接受的类型为org.operamasks.faces.component.layout.RegionConfigSet]]>
+      </description>
+      <name>config</name>
+      <required>false</required>
+      <deferred-value>
+        <type>org.operamasks.faces.component.layout.RegionConfigSet</type>
+      </deferred-value>
+    </attribute>
+
+  </tag>
+
+  <tag>
+    <description xml:lang="zh-cn">
+      <![CDATA[可伸缩、可移动、可拖拽的面板，可放置任意内容在面板中]]>
+    </description>
+    <name>dynamicAccordionPanel</name>
+    <tag-class>org.operamasks.faces.webapp.layout.DynamicAccordionPanelTag</tag-class>
+    <body-content>JSP</body-content>
+
+    <attribute>
+      <name>id</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>    
+    <attribute>
+      <name>rendered</name>
+      <required>false</required>
+      <deferred-value>
+        <type>boolean</type>
+      </deferred-value>
+    </attribute>    
+    <attribute>
+      <name>binding</name>
+      <required>false</required>
+      <deferred-value>
+        <type>javax.faces.component.UIComponent</type>
+      </deferred-value>
+    </attribute>    
+
+    <attribute>
+      <name>jsvar</name>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>title</name>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>animate</name>
+      <deferred-value>
+        <type>java.lang.Boolean</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>autoScroll</name>
+      <deferred-value>
+        <type>java.lang.Boolean</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>bodyClass</name>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>collapsed</name>
+      <deferred-value>
+        <type>java.lang.Boolean</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>collapseOnUnpin</name>
+      <deferred-value>
+        <type>java.lang.Boolean</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>collapsible</name>
+      <deferred-value>
+        <type>java.lang.Boolean</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>draggable</name>
+      <deferred-value>
+        <type>java.lang.Boolean</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>duration</name>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>easingCollapse</name>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>easingExpand</name>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>icon</name>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>minWidth</name>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>maxWidth</name>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>minHeight</name>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>maxHeight</name>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>panelClass</name>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>pinned</name>
+      <deferred-value>
+        <type>java.lang.Boolean</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>resizable</name>
+      <deferred-value>
+        <type>java.lang.Boolean</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>shadowMode</name>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>showPin</name>
+      <deferred-value>
+        <type>java.lang.Boolean</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>trigger</name>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>useShadow</name>
+      <deferred-value>
+        <type>java.lang.Boolean</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>style</name>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>styleClass</name>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>name</name>
+      <required>false</required>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>constraints</name>
+      <required>false</required>
+      <deferred-value>
+        <type>java.lang.Object</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>src</name>
+      <required>false</required>
+      <deferred-value>
+        <type>java.lang.Object</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>srcClass</name>
+      <required>false</required>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+
+  </tag>
+
+  <tag>
+    <name>gridLayout</name>
+    <tag-class>org.operamasks.faces.webapp.layout.GridLayoutTag</tag-class>
+    <body-content>JSP</body-content>
+
+    <attribute>
+      <name>id</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>    
+    <attribute>
+      <name>rendered</name>
+      <required>false</required>
+      <deferred-value>
+        <type>boolean</type>
+      </deferred-value>
+    </attribute>    
+    <attribute>
+      <name>binding</name>
+      <required>false</required>
+      <deferred-value>
+        <type>javax.faces.component.UIComponent</type>
+      </deferred-value>
+    </attribute>    
+
+    <attribute>
+      <name>bgcolor</name>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>border</name>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>captionClass</name>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>captionStyle</name>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>cellpadding</name>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>cellspacing</name>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>columnClasses</name>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>columns</name>
+      <deferred-value>
+        <type>int</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>dir</name>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>footerClass</name>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>frame</name>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>headerClass</name>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>lang</name>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>onclick</name>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>ondblclick</name>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>onkeydown</name>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>onkeypress</name>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>onkeyup</name>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>onmousedown</name>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>onmousemove</name>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>onmouseout</name>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>onmouseover</name>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>onmouseup</name>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>rowClasses</name>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>rules</name>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>style</name>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>styleClass</name>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>summary</name>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>title</name>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>width</name>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+
+  </tag>
+
+  <tag>
+    <name>doLayout</name>
+    <tag-class>org.operamasks.faces.webapp.layout.DoLayoutTag</tag-class>
+    <body-content>JSP</body-content>
+
+    <attribute>
+      <name>id</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>    
+
+  </tag>
+
+  <tag>
+    <name>slot</name>
+    <tag-class>org.operamasks.faces.webapp.layout.SlotTag</tag-class>
+    <body-content>JSP</body-content>
+
+    <attribute>
+      <name>id</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>    
+    <attribute>
+      <name>rendered</name>
+      <required>false</required>
+      <deferred-value>
+        <type>boolean</type>
+      </deferred-value>
+    </attribute>    
+    <attribute>
+      <name>binding</name>
+      <required>false</required>
+      <deferred-value>
+        <type>javax.faces.component.UIComponent</type>
+      </deferred-value>
+    </attribute>    
+
+    <attribute>
+      <name>name</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    <attribute>
+      <name>index</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
+
+  </tag>
+
+  <tag>
+    <name>template</name>
+    <tag-class>org.operamasks.faces.webapp.layout.TemplateTag</tag-class>
+    <body-content>JSP</body-content>
+
+    <attribute>
+      <name>id</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>    
+    <attribute>
+      <name>rendered</name>
+      <required>false</required>
+      <deferred-value>
+        <type>boolean</type>
+      </deferred-value>
+    </attribute>    
+    <attribute>
+      <name>binding</name>
+      <required>false</required>
+      <deferred-value>
+        <type>javax.faces.component.UIComponent</type>
+      </deferred-value>
+    </attribute>    
+
+    <attribute>
+      <name>src</name>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+
+    <dynamic-attributes>true</dynamic-attributes>
+  </tag>
+
+  <tag>
+    <name>facelet</name>
+    <tag-class>org.operamasks.faces.webapp.layout.FaceletTag</tag-class>
+    <body-content>JSP</body-content>
+
+    <attribute>
+      <name>id</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>    
+    <attribute>
+      <name>rendered</name>
+      <required>false</required>
+      <deferred-value>
+        <type>boolean</type>
+      </deferred-value>
+    </attribute>    
+    <attribute>
+      <name>binding</name>
+      <required>false</required>
+      <deferred-value>
+        <type>javax.faces.component.UIComponent</type>
+      </deferred-value>
+    </attribute>    
+
+    <attribute>
+      <name>name</name>
+      <required>false</required>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>constraints</name>
+      <required>false</required>
+      <deferred-value>
+        <type>java.lang.Object</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>src</name>
+      <required>false</required>
+      <deferred-value>
+        <type>java.lang.Object</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>srcClass</name>
+      <required>false</required>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+
+  </tag>
+
+  <tag>
+    <name>faceletSet</name>
+    <tag-class>org.operamasks.faces.webapp.layout.FaceletSetTag</tag-class>
+    <body-content>JSP</body-content>
+
+    <attribute>
+      <name>id</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>    
+    <attribute>
+      <name>rendered</name>
+      <required>false</required>
+      <deferred-value>
+        <type>boolean</type>
+      </deferred-value>
+    </attribute>    
+    <attribute>
+      <name>binding</name>
+      <required>false</required>
+      <deferred-value>
+        <type>javax.faces.component.UIComponent</type>
+      </deferred-value>
+    </attribute>    
+
+    <attribute>
+      <name>ref</name>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>src</name>
+      <deferred-value>
+        <type>java.lang.Object</type>
+      </deferred-value>
+    </attribute>
+
+  </tag>
+
+  <tag>
+    <name>tabLayout</name>
+    <tag-class>org.operamasks.faces.webapp.layout.TabLayoutTag</tag-class>
+    <body-content>JSP</body-content>
+
+    <attribute>
+      <name>id</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>    
+    <attribute>
+      <name>rendered</name>
+      <required>false</required>
+      <deferred-value>
+        <type>boolean</type>
+      </deferred-value>
+    </attribute>    
+    <attribute>
+      <name>binding</name>
+      <required>false</required>
+      <deferred-value>
+        <type>javax.faces.component.UIComponent</type>
+      </deferred-value>
+    </attribute>    
+
+    <attribute>
+      <name>jsvar</name>
+      <required>false</required>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>syncHeight</name>
+      <required>false</required>
+      <deferred-value>
+        <type>java.lang.Object</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>style</name>
+      <required>false</required>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>styleClass</name>
+      <required>false</required>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>bodyStyle</name>
+      <required>false</required>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>bodyStyleClass</name>
+      <required>false</required>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>itemBodyStyle</name>
+      <required>false</required>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>itemBodyStyleClass</name>
+      <required>false</required>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>tabPosition</name>
+      <required>false</required>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>resizeTabs</name>
+      <required>false</required>
+      <deferred-value>
+        <type>boolean</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>monitorResize</name>
+      <required>false</required>
+      <deferred-value>
+        <type>boolean</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>minTabWidth</name>
+      <required>false</required>
+      <deferred-value>
+        <type>int</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>maxTabWidth</name>
+      <required>false</required>
+      <deferred-value>
+        <type>int</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>preferredTabWidth</name>
+      <required>false</required>
+      <deferred-value>
+        <type>int</type>
+      </deferred-value>
+    </attribute>
+
+  </tag>
+
+  <tag>
+    <name>regionConfig</name>
+    <tag-class>org.operamasks.faces.webapp.layout.RegionConfigTag</tag-class>
+    <tei-class>org.operamasks.faces.webapp.layout.RegionConfigTEI</tei-class>
+    <body-content>empty</body-content>
+
+    <attribute>
+      <name>target</name>
+      <required>true</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    <attribute>
+      <name>split</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    <attribute>
+      <name>initialSize</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    <attribute>
+      <name>minSize</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    <attribute>
+      <name>maxSize</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    <attribute>
+      <name>collapsible</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    <attribute>
+      <name>collapsed</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    <attribute>
+      <name>floatable</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    <attribute>
+      <name>margins</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    <attribute>
+      <name>cmargins</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    <attribute>
+      <name>tabPosition</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    <attribute>
+      <name>collapsedTitle</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    <attribute>
+      <name>alwaysShowTabs</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    <attribute>
+      <name>autoScroll</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    <attribute>
+      <name>titlebar</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    <attribute>
+      <name>title</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    <attribute>
+      <name>animate</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    <attribute>
+      <name>autoHide</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    <attribute>
+      <name>preservePanels</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    <attribute>
+      <name>closeOnTab</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    <attribute>
+      <name>hideTabs</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    <attribute>
+      <name>resizeTabs</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    <attribute>
+      <name>minTabWidth</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    <attribute>
+      <name>preferredTabWidth</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    <attribute>
+      <name>showPin</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    <attribute>
+      <name>hidden</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    <attribute>
+      <name>hideWhenEmpty</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    <attribute>
+      <name>disableTabTips</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    <attribute>
+      <name>border</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
+
+  </tag>
+
+      <tag>
+    <description>
+      <![CDATA[Renders an HTML "table" element, conforming to the
+      rules in the HTML 401 specification.  If the "styleClass"
+      attribute is specified, render its value as the value of the
+      "class" attribute.  Render the pass-through attributes in the
+      table below.  Render the "header" facet, if present, inside of
+      "thead", "tr", and "th" elements, nested in that order.  If the
+      "headerClass" attribute is specifed, render its value as the value
+      of the "class" attribute on the "th" element.  Render "colgroup"
+      as the value of the "scope" attribute.  Render the value of the
+      "columns" attribute as the value of the "colspan" attribute on the
+      "th" element.  Render the "footer" facet if present, using similar
+      logic to the rendering of the "header", but replacing "thead" with
+      "tfoot", "th" with "td", and "headerClass" with "footerClass".
+      Render the children of the <code>UIPanel</code> component inside
+      of a "tbody" element.  Render the children based on the value of
+      the "columns" attribute, creating a new row each time a "columns"
+      worth of children have been rendered.  Each child is rendered
+      inside of a "td" element.  If a child has "rendered==false" it is
+      not rendered, and the column counter must not be incremented.]]>
+    </description>
+    <name>panelGrid</name>
+    <tag-class>org.operamasks.faces.webapp.html.PanelGridTag</tag-class>
+    <body-content>JSP</body-content>
+    <attribute>
+      <description>
+        <![CDATA[The component identifier for this component.  This value must be
+        unique within the closest parent component that is a naming
+        container.]]>
+      </description>
+      <name>id</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    <attribute>
+      <description>
+        <![CDATA[Flag indicating whether or not this component should be rendered
+        (during Render Response Phase), or processed on any subsequent
+        form submit.  The default value for this property is true.]]>
+      </description>
+      <name>rendered</name>
+      <required>false</required>
+      <deferred-value>
+        <type>boolean</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <description>
+        <![CDATA[Name or code of the background color for this table.]]>
+      </description>
+      <name>bgcolor</name>
+      <required>false</required>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <description>
+        <![CDATA[Width (in pixels) of the border to be drawn
+        around this table.]]>
+      </description>
+      <name>border</name>
+      <required>false</required>
+      <deferred-value>
+        <type>int</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <description>
+        <![CDATA[Space-separated list of CSS style class(es) that will be
+        applied to any caption generated for this table.]]>
+      </description>
+      <name>captionClass</name>
+      <required>false</required>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <description>
+        <![CDATA[CSS style(s) to be applied when this caption is rendered.]]>
+      </description>
+      <name>captionStyle</name>
+      <required>false</required>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <description>
+        <![CDATA[Definition of how much space the user agent should
+        leave between the border of each cell and its contents.]]>
+      </description>
+      <name>cellpadding</name>
+      <required>false</required>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <description>
+        <![CDATA[Definition of how much space the user agent should
+        leave between the left side of the table and the
+        leftmost column, the top of the table and the top of
+        the top side of the topmost row, and so on for the
+        right and bottom of the table.  It also specifies
+        the amount of space to leave between cells.]]>
+      </description>
+      <name>cellspacing</name>
+      <required>false</required>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <description>
+        <![CDATA[Comma-delimited list of CSS style classes that will be applied
+        to the columns of this table.  A space separated list of
+        classes may also be specified for any individual column.  If
+        the number of elements in this list is less than the number of
+        columns specified in the "columns" attribute, no "class"
+        attribute is output for each column greater than the number of
+        elements in the list.  If the number of elements in the list
+        is greater than the number of columns specified in the
+        "columns" attribute, the elements at the posisiton in the list
+        after the value of the "columns" attribute are ignored.]]>
+      </description>
+      <name>columnClasses</name>
+      <required>false</required>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <description>
+        <![CDATA[The number of columns to render before
+        starting a new row.]]>
+      </description>
+      <name>columns</name>
+      <required>false</required>
+      <deferred-value>
+        <type>int</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <description>
+        <![CDATA[Direction indication for text that does not inherit directionality.
+        Valid values are "LTR" (left-to-right) and "RTL" (right-to-left).]]>
+      </description>
+      <name>dir</name>
+      <required>false</required>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <description>
+        <![CDATA[Space-separated list of CSS style class(es) that will be
+        applied to any footer generated for this table.]]>
+      </description>
+      <name>footerClass</name>
+      <required>false</required>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <description>
+        <![CDATA[Code specifying which sides of the frame surrounding
+        this table will be visible.  Valid values are:
+        none (no sides, default value); above (top side only);
+        below (bottom side only); hsides (top and bottom sides
+        only); vsides (right and left sides only); lhs (left
+        hand side only); rhs (right hand side only); box
+        (all four sides); and border (all four sides).]]>
+      </description>
+      <name>frame</name>
+      <required>false</required>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <description>
+        <![CDATA[Space-separated list of CSS style class(es) that will be
+        applied to any header generated for this table.]]>
+      </description>
+      <name>headerClass</name>
+      <required>false</required>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <description>
+        <![CDATA[Code describing the language used in the generated markup
+        for this component.]]>
+      </description>
+      <name>lang</name>
+      <required>false</required>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <description>
+        <![CDATA[Javascript code executed when a pointer button is
+        clicked over this element.]]>
+      </description>
+      <name>onclick</name>
+      <required>false</required>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <description>
+        <![CDATA[Javascript code executed when a pointer button is
+        double clicked over this element.]]>
+      </description>
+      <name>ondblclick</name>
+      <required>false</required>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <description>
+        <![CDATA[Javascript code executed when a key is
+        pressed down over this element.]]>
+      </description>
+      <name>onkeydown</name>
+      <required>false</required>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <description>
+        <![CDATA[Javascript code executed when a key is
+        pressed and released over this element.]]>
+      </description>
+      <name>onkeypress</name>
+      <required>false</required>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <description>
+        <![CDATA[Javascript code executed when a key is
+        released over this element.]]>
+      </description>
+      <name>onkeyup</name>
+      <required>false</required>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <description>
+        <![CDATA[Javascript code executed when a pointer button is
+        pressed down over this element.]]>
+      </description>
+      <name>onmousedown</name>
+      <required>false</required>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <description>
+        <![CDATA[Javascript code executed when a pointer button is
+        moved within this element.]]>
+      </description>
+      <name>onmousemove</name>
+      <required>false</required>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <description>
+        <![CDATA[Javascript code executed when a pointer button is
+        moved away from this element.]]>
+      </description>
+      <name>onmouseout</name>
+      <required>false</required>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <description>
+        <![CDATA[Javascript code executed when a pointer button is
+        moved onto this element.]]>
+      </description>
+      <name>onmouseover</name>
+      <required>false</required>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <description>
+        <![CDATA[Javascript code executed when a pointer button is
+        released over this element.]]>
+      </description>
+      <name>onmouseup</name>
+      <required>false</required>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <description>
+        <![CDATA[Comma-delimited list of CSS style classes that will be applied
+        to the rows of this table.  A space separated list of classes
+        may also be specified for any individual row.  Thes styles are
+        applied, in turn, to each row in the table.  For example, if
+        the list has two elements, the first style class in the list
+        is applied to the first row, the second to the second row, the
+        first to the third row, the second to the fourth row, etc.  In
+        other words, we keep iterating through the list until we reach
+        the end, and then we start at the beginning again.]]>
+      </description>
+      <name>rowClasses</name>
+      <required>false</required>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <description>
+        <![CDATA[Code specifying which rules will appear between cells
+        within this table.  Valid values are:  none (no rules,
+        default value); groups (between row groups); rows
+        (between rows only); cols (between columns only); and
+        all (between all rows and columns).]]>
+      </description>
+      <name>rules</name>
+      <required>false</required>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <description>
+        <![CDATA[CSS style(s) to be applied when this component is rendered.]]>
+      </description>
+      <name>style</name>
+      <required>false</required>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <description>
+        <![CDATA[Space-separated list of CSS style class(es) to be applied when
+        this element is rendered.  This value must be passed through
+        as the "class" attribute on generated markup.]]>
+      </description>
+      <name>styleClass</name>
+      <required>false</required>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <description>
+        <![CDATA[Summary of this table's purpose and structure, for
+        user agents rendering to non-visual media such as
+        speech and Braille.]]>
+      </description>
+      <name>summary</name>
+      <required>false</required>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <description>
+        <![CDATA[Advisory title information about markup elements generated
+        for this component.]]>
+      </description>
+      <name>title</name>
+      <required>false</required>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <description>
+        <![CDATA[Width of the entire table, for visual user agents.]]>
+      </description>
+      <name>width</name>
+      <required>false</required>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <description>
+        The ValueExpression linking this component to a property in a backing bean
+      </description>
+      <name>binding</name>
+      <required>false</required>
+      <deferred-value>
+        <type>javax.faces.component.UIComponent</type>
+      </deferred-value>
+    </attribute>
+  </tag>
+  <tag>
+    <name>cell</name>
+    <tag-class>org.operamasks.faces.webapp.widget.CellTag</tag-class>
+    <body-content>JSP</body-content>
+
+    <attribute>
+      <name>id</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>    
+    <attribute>
+      <name>rendered</name>
+      <required>false</required>
+      <deferred-value>
+        <type>boolean</type>
+      </deferred-value>
+    </attribute>    
+    <attribute>
+      <name>binding</name>
+      <required>false</required>
+      <deferred-value>
+        <type>javax.faces.component.UIComponent</type>
+      </deferred-value>
+    </attribute>    
+
+    <attribute>
+      <name>style</name>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>styleClass</name>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>rowspan</name>
+      <deferred-value>
+        <type>int</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>colspan</name>
+      <deferred-value>
+        <type>int</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>align</name>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>valign</name>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+
+  </tag>
+
+</taglib>

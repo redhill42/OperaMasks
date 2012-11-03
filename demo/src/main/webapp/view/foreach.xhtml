@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<f:view xmlns:f="http://java.sun.com/jsf/core"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:w="http://www.apusic.com/jsf/widget"
+        xmlns:ajax="http://www.apusic.com/jsf/ajax"
+        renderKitId="AJAX">
+<w:head>
+<w:stylesheet src="/common/resources/examples.css"/>
+<style type="text/css">
+.examDesc {
+    margin-left: 10px;
+    margin-top: 10px;
+}
+body {
+    padding: 0;
+}
+.title {
+  font-size:14px;
+  font-weight:bold;
+  color:#000080
+}
+.listPrice {
+  text-decoration:line-through;
+}
+.yourPrice {
+  font-weight:bold;
+  color:#800000;
+}
+.image {
+  margin-right:20px;
+}
+</style>
+</w:head>
+<w:page title="Data View Example">
+  <div class="examDesc">
+  <p>使用ForEach标签灵活的展现数据</p>
+  </div>
+<table border="2" width="80%" align="center">
+  <w:forEach id="view-example" value="#{products}" indexVar="ind" var="p">
+      <f:verbatim rendered="#{ind%2 == 0}">&lt;tr&gt;</f:verbatim>
+      <f:verbatim>&lt;td width="50%"&gt;</f:verbatim>
+        <h:panelGrid columns="2">
+          <h:graphicImage alt="#{p.title}" url="#{p.image}"/>
+          <h:panelGrid columns="1">
+            <h:outputText value="#{p.title}" styleClass="title"/>
+            <span>List Price: </span>
+            <h:outputText value="#{p.listPrice}" styleClass="listPrice"/>
+            <span>Your Price: </span>
+            <h:outputText value="#{p.yourPrice}" styleClass="yourPrice"/>
+          </h:panelGrid>
+        </h:panelGrid>
+      <f:verbatim>&lt;/td&gt;</f:verbatim>
+      <f:verbatim rendered="#{ind%2 == 1}">&lt;/tr&gt;</f:verbatim>
+  </w:forEach>
+  <tr>
+  <td colspan="2">
+<h:form>
+  <w:pagingLink for="view-example" pageSize="4"/>
+</h:form>  
+  </td>
+  </tr>
+</table>  
+</w:page>
+</f:view>

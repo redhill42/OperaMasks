@@ -1,0 +1,86 @@
+<html>
+<head>
+<style type="text/css">
+html, body {
+      font-size: 10px;
+      margin:0;
+      padding:0;
+      border:0 none;
+      overflow:auto;
+      height:100%;
+  }
+  
+</style>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<script class="javascript" src="../js/highlight.js"></script>
+</head>
+<body>
+<textarea id="code" class="xml" style="display:none;">
+<?xml version="1.0" encoding="UTF-8"?>
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html" xmlns:w="http://www.apusic.com/jsf/widget"
+	xmlns:ajax="http://www.apusic.com/jsf/ajax" renderKitId="AJAX">
+	<w:head>
+		<w:stylesheet src="/common/resources/examples.css" />
+	</w:head>
+	<w:page title="Html Editor">
+		<div class="examDesc">
+		<p>本例演示了Html Editor组件的使用</p>
+		</div>
+		<w:form>
+                                当前内容：
+			<h:outputText value="#{HtmlEditorBean.message}" escape="false"></h:outputText>
+			<br/>
+			<table width="600">
+				<w:dataView binding="#{HtmlEditorBean.view}" jsvar="messages" value="#{HtmlEditorBean.messages}"
+					var="message">
+					<w:outputColumn id="message" value="#{message}" />
+					<f:facet name="template">
+						<f:verbatim>
+							<hr />
+							<tr>
+								<td>{message}</td>
+							</tr>
+						</f:verbatim>
+					</f:facet>
+					<f:facet name="empty">
+						<f:verbatim>暂时无回复信息</f:verbatim>
+					</f:facet>
+				</w:dataView>
+			</table>
+			<hr />
+			<ajax:status startStyle="color: red">
+				<f:facet name="start"><f:verbatim>请稍候...</f:verbatim></f:facet>
+			</ajax:status>
+			<w:simpleHtmlEditor width="600" height="100" value="#{HtmlEditorBean.message}"></w:simpleHtmlEditor>
+			<w:button value="回复" action="#{HtmlEditorBean.action}"></w:button>
+		</w:form>
+	</w:page>
+</f:view>
+
+</textarea>
+<script class="javascript">
+var text = document.getElementById('code').value ;
+var html = highlightCode( "xml" , "xml" , true , text ) ;
+window.setTimeout(function() {
+    var css = "<link href='../styles/highlight.css' rel='stylesheet' type='text/css'>" ;
+    document.open('text/html');
+    if(document.implementation && document.implementation.createDocument) {
+        var htmlStr = css + html.xml ;
+        document.write(htmlStr);
+        document.close();
+    }
+    else {
+        var h = window.onerror;
+        window.onerror = function(){return true;}
+        html = css + html ;
+        document.write(html);
+        window.onerror = h;
+        document.close();
+        window.location.reload(false);
+    }
+}, 50);
+
+</script>
+</body>
+</html>

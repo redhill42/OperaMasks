@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<f:view xmlns:f="http://java.sun.com/jsf/core"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:w="http://www.apusic.com/jsf/widget"
+        xmlns:ajax="http://www.apusic.com/jsf/ajax"
+		xmlns:l="http://www.apusic.com/jsf/layout"
+        renderKitId="AJAX">
+<w:page title="Stock Quote" skin="aqua">
+<w:head>
+<style type="text/css">
+#grid-example {
+  height:280px;
+  border:1px solid #cbc7b8;
+}
+#stock-detail {
+  width:400px;
+}
+</style>
+<w:stylesheet src="/common/resources/examples.css"/>
+</w:head>
+  <w:form prependId="false" styleClass="x-form">
+  <w:panelBox border="1" borderColor="gray" borderRadius="8"  bgcolor="#FFFFFF">
+    <h3>用户详细信息</h3>
+    <h:panelGrid columns="2" style="font-size:12px">
+      <h:outputLabel value="姓名: "/>
+      <w:textField value="#{DialogEditBean.employee.name}" style="width:220px"/>
+
+      <h:outputLabel value="地区: "/>
+      <w:textField value="#{DialogEditBean.employee.addr}" style="width:220px"/>
+
+      <h:outputLabel value="电话: "/>
+      <w:textField value="#{DialogEditBean.employee.tel}" style="width:220px"/>
+
+      <h:outputLabel value="邮箱: "/>
+      <w:textField value="#{DialogEditBean.employee.email}" style="width:220px"/>
+    </h:panelGrid>
+
+      <h:panelGrid>
+        <w:button value="上一条" action="#{DialogEditBean.previousRow}"/>
+        <w:button value="下一条" action="#{DialogEditBean.nextRow}"/>
+        <w:button value="保存" action="#{DialogEditBean.save}"/>
+        <w:button value="关闭" action="#{DialogEditBean.closeDialog}"/>
+      </h:panelGrid>
+  </w:panelBox>
+  </w:form>
+</w:page>
+</f:view>

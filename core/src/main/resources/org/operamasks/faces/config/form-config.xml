@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--
+/*
+ * $Id: form-config.xml,v 1.2 2008/03/11 02:47:45 lishaochuan Exp $
+ *
+ * Copyright (C) 2006 Operamasks Community.
+ * Copyright (C) 2000-2006 Apusic Systems, Inc.
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see http://www.gnu.org/licenses.
+ */
+-->
+<faces-config xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.2" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee/web-facesconfig_1_2.xsd">
+	
+	<component>
+        <component-type>org.operamasks.faces.component.form.impl.UICheckBox</component-type>
+        <component-class>org.operamasks.faces.component.form.impl.UICheckBox</component-class>
+    </component>
+	<component>
+        <component-type>org.operamasks.faces.component.form.impl.UICombo</component-type>
+        <component-class>org.operamasks.faces.component.form.impl.UICombo</component-class>
+    </component>
+	<component>
+        <component-type>org.operamasks.faces.component.form.impl.UIDateField</component-type>
+        <component-class>org.operamasks.faces.component.form.impl.UIDateField</component-class>
+    </component>
+	<component>
+        <component-type>org.operamasks.faces.component.form.impl.UINumberField</component-type>
+        <component-class>org.operamasks.faces.component.form.impl.UINumberField</component-class>
+    </component>
+	<component>
+        <component-type>org.operamasks.faces.component.form.impl.UITextArea</component-type>
+        <component-class>org.operamasks.faces.component.form.impl.UITextArea</component-class>
+    </component>
+	<component>
+        <component-type>org.operamasks.faces.component.form.impl.UITextField</component-type>
+        <component-class>org.operamasks.faces.component.form.impl.UITextField</component-class>
+    </component>
+	<component>
+        <component-type>org.operamasks.faces.component.form.impl.UITimeField</component-type>
+        <component-class>org.operamasks.faces.component.form.impl.UITimeField</component-class>
+    </component>
+	<component>
+        <component-type>org.operamasks.faces.component.form.impl.UICheckBoxGroup</component-type>
+        <component-class>org.operamasks.faces.component.form.impl.UICheckBoxGroup</component-class>
+    </component>
+	<component>
+        <component-type>org.operamasks.faces.component.form.impl.UIRadioGroup</component-type>
+        <component-class>org.operamasks.faces.component.form.impl.UIRadioGroup</component-class>
+    </component>
+	<component>
+        <component-type>org.operamasks.faces.component.form.impl.UISimpleHtmlEditor</component-type>
+        <component-class>org.operamasks.faces.component.form.impl.UISimpleHtmlEditor</component-class>
+    </component>
+</faces-config>

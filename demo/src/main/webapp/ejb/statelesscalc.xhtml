@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<f:view xmlns:f="http://java.sun.com/jsf/core"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:w="http://www.apusic.com/jsf/widget"
+        xmlns:ajax="http://www.apusic.com/jsf/ajax"
+        renderKitId="AJAX">
+  <w:page title="Component attribute transfer example">
+  <h:form id="calcform">
+    <h:panelGrid columns="1">
+      <h:inputText id="first" value="20"/>
+      <h:inputText id="second" value="10"/>
+      <h:outputText id="result"/>
+    </h:panelGrid>
+    <h:commandButton value="+" action="#{statelesscalc.add}"/>
+    <h:commandButton value="-" action="#{statelesscalc.substract}"/>
+    <h:commandButton value="*" action="#{statelesscalc.multiply}"/>
+    <h:commandButton value="/" action="#{statelesscalc.divide}"/>
+  </h:form>
+  <h:messages/>
+  </w:page>
+</f:view>

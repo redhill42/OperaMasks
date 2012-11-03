@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<f:view xmlns:f="http://java.sun.com/jsf/core"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:w="http://www.apusic.com/jsf/widget"
+        xmlns:g="http://www.apusic.com/jsf/graph"
+        renderKitId="AJAX">
+  <w:dataGrid jsvar="categoryDataGrid" value="#{CategoryData}" var="x" autoHeight="true" loadMask="false">
+    <w:outputColumn id="category" header="Category" value="#{x.label}"/>
+    <w:outputColumn id="first" header="First" value="#{x.first}"/>
+    <w:outputColumn id="second" header="Second" value="#{x.second}"/>
+    <w:outputColumn id="third" header="Third" value="#{x.third}"/>
+  </w:dataGrid>
+
+</f:view>

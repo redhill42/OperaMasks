@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<f:view xmlns:f="http://java.sun.com/jsf/core"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:g="http://www.apusic.com/jsf/graph">
+<g:barChart title="3D Bar Chart Demo"
+            xAxisLabel="Category"
+            yAxisLabel="Value"
+            effect3D="true"
+            showLegend="true">
+  <g:dataSeries value="#{CategoryData}" var="x" rows="5">
+    <g:dataLabel value="#{x.label}"/>
+    <g:dataItem legend="First" value="#{x.first}"/>
+    <g:dataItem legend="Second" value="#{x.second}"/>
+    <g:dataItem legend="Third" value="#{x.third}"/>
+  </g:dataSeries>
+</g:barChart>
+</f:view>

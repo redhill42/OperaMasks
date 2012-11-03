@@ -1,0 +1,706 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--
+/*
+ * $Id: widget-config.xml,v 1.52 2008/04/28 01:58:12 lishaochuan Exp $
+ *
+ * Copyright (C) 2006 Operamasks Community.
+ * Copyright (C) 2000-2006 Apusic Systems, Inc.
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see http://www.gnu.org/licenses.
+ */
+-->
+<faces-config xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.2" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee/web-facesconfig_1_2.xsd">
+
+  <lifecycle>
+    <phase-listener>org.operamasks.faces.render.widget.DrawImagePhaseListener</phase-listener>
+  </lifecycle>
+  
+  <lifecycle>
+    <phase-listener>org.operamasks.faces.render.widget.PhaseMonitorListener</phase-listener>
+  </lifecycle>
+  
+  <component>
+    <component-type>org.operamasks.faces.widget.Slider</component-type>
+    <component-class>org.operamasks.faces.component.widget.UISlider</component-class>
+  </component>
+
+  <component>
+    <component-type>org.operamasks.faces.widget.ProgressBar</component-type>
+    <component-class>org.operamasks.faces.component.widget.UIProgressBar</component-class>
+  </component>
+
+  <component>
+    <component-type>org.operamasks.faces.widget.Window</component-type>
+    <component-class>org.operamasks.faces.component.widget.UIWindow</component-class>
+  </component>
+
+  <component>
+    <component-type>org.operamasks.faces.widget.WindowTemplate</component-type>
+    <component-class>org.operamasks.faces.component.widget.UIWindowTemplate</component-class>
+  </component>
+
+  <component>
+    <component-type>org.operamasks.faces.widget.Dialog</component-type>
+    <component-class>org.operamasks.faces.component.widget.dialog.UIDialog</component-class>
+  </component>
+
+  <component>
+    <component-type>org.operamasks.faces.widget.SlideMessage</component-type>
+    <component-class>org.operamasks.faces.component.widget.UISlideMessage</component-class>
+  </component>
+  
+  <component>
+    <component-type>org.operamasks.faces.widget.Tree</component-type>
+    <component-class>org.operamasks.faces.component.widget.UITree</component-class>
+  </component>
+  
+  <component>
+    <component-type>org.operamasks.faces.widget.TreeNode</component-type>
+    <component-class>org.operamasks.faces.component.widget.UITreeNode</component-class>
+  </component>
+  
+  <component>
+    <component-type>org.operamasks.faces.widget.CheckTreeNode</component-type>
+    <component-class>org.operamasks.faces.component.widget.UICheckTreeNode</component-class>
+  </component>
+  
+  <component>
+    <component-type>org.operamasks.faces.widget.SimpleCheckTreeNode</component-type>
+    <component-class>org.operamasks.faces.component.widget.UISimpleCheckTreeNode</component-class>
+  </component>
+  
+  <component>
+    <component-type>org.operamasks.faces.widget.PanelBox</component-type>
+    <component-class>org.operamasks.faces.component.widget.UIPanelBox</component-class>
+  </component>
+
+  <component>
+    <component-type>org.operamasks.faces.widget.Combo</component-type>
+    <component-class>org.operamasks.faces.component.widget.UICombo</component-class>
+  </component>
+  
+  <component>
+    <component-type>org.operamasks.faces.widget.TextField</component-type>
+    <component-class>org.operamasks.faces.component.widget.UITextField</component-class>
+  </component>
+  
+  <component>
+    <component-type>org.operamasks.faces.widget.TextArea</component-type>
+    <component-class>org.operamasks.faces.component.widget.UITextArea</component-class>
+  </component>
+  
+  <component>
+    <component-type>org.operamasks.faces.widget.DateField</component-type>
+    <component-class>org.operamasks.faces.component.widget.UIDateField</component-class>
+  </component>
+
+  <component>
+    <component-type>org.operamasks.faces.widget.CalcNumberField</component-type>
+    <component-class>org.operamasks.faces.component.widget.UICalcNumberField</component-class>
+  </component>
+  
+  <component>
+    <component-type>org.operamasks.faces.widget.DatePicker</component-type>
+    <component-class>org.operamasks.faces.component.widget.UIDatePicker</component-class>
+  </component>
+
+  <component>
+    <component-type>org.operamasks.faces.widget.ChooseSkin</component-type>
+    <component-class>org.operamasks.faces.component.widget.UIChooseSkin</component-class>
+  </component>
+
+  <component>
+    <component-type>org.operamasks.faces.widget.Pager</component-type>
+    <component-class>org.operamasks.faces.component.widget.UIPager</component-class>
+  </component>
+
+  <component>
+    <component-type>org.operamasks.faces.widget.PagingToolbar</component-type>
+    <component-class>org.operamasks.faces.component.widget.UIPagingToolbar</component-class>
+  </component>
+
+  <component>
+    <component-type>org.operamasks.faces.widget.DataGrid</component-type>
+    <component-class>org.operamasks.faces.component.widget.grid.UIDataGrid</component-class>
+  </component>
+
+  <component>
+    <component-type>org.operamasks.faces.widget.DataView</component-type>
+    <component-class>org.operamasks.faces.component.widget.UIDataView</component-class>
+  </component>
+
+  <component>
+    <component-type>org.operamasks.faces.widget.OutputColumn</component-type>
+    <component-class>org.operamasks.faces.component.widget.grid.UIOutputColumn</component-class>
+  </component>
+
+  <component>
+    <component-type>org.operamasks.faces.widget.IdColumn</component-type>
+    <component-class>org.operamasks.faces.component.widget.grid.UIIdColumn</component-class>
+  </component>
+
+  <component>
+    <component-type>org.operamasks.faces.widget.Menu</component-type>
+    <component-class>org.operamasks.faces.component.widget.menu.UIMenu</component-class>
+  </component>
+
+  <component>
+    <component-type>org.operamasks.faces.widget.CommandMenuItem</component-type>
+    <component-class>org.operamasks.faces.component.widget.menu.UICommandMenuItem</component-class>
+  </component>
+
+  <component>
+    <component-type>org.operamasks.faces.widget.LinkMenuItem</component-type>
+    <component-class>org.operamasks.faces.component.widget.menu.UILinkMenuItem</component-class>
+  </component>
+
+  <component>
+    <component-type>org.operamasks.faces.widget.TextMenuItem</component-type>
+    <component-class>org.operamasks.faces.component.widget.menu.UITextMenuItem</component-class>
+  </component>
+
+  <component>
+    <component-type>org.operamasks.faces.widget.CheckMenuItem</component-type>
+    <component-class>org.operamasks.faces.component.widget.menu.UICheckMenuItem</component-class>
+  </component>
+
+  <component>
+    <component-type>org.operamasks.faces.widget.RadioMenuItem</component-type>
+    <component-class>org.operamasks.faces.component.widget.menu.UIRadioMenuItem</component-class>
+  </component>
+
+  <component>
+    <component-type>org.operamasks.faces.widget.Separator</component-type>
+    <component-class>org.operamasks.faces.component.widget.UISeparator</component-class>
+  </component>
+
+  <component>
+    <component-type>org.operamasks.faces.widget.DrawImage</component-type>
+    <component-class>org.operamasks.faces.component.widget.UIDrawImage</component-class>
+  </component>
+  
+  <component>
+    <component-type>org.operamasks.faces.widget.Set</component-type>
+    <component-class>org.operamasks.faces.component.widget.invisible.Set</component-class>
+  </component>
+
+  <component>
+    <component-type>org.operamasks.faces.widget.Remove</component-type>
+    <component-class>org.operamasks.faces.component.widget.invisible.Remove</component-class>
+  </component>
+
+  <component>
+    <component-type>org.operamasks.faces.widget.ForEach</component-type>
+    <component-class>org.operamasks.faces.component.widget.invisible.ForEach</component-class>
+  </component>
+  
+  <component>
+    <component-type>org.operamasks.faces.widget.ToolBar</component-type>
+    <component-class>org.operamasks.faces.component.widget.UIToolBar</component-class>
+  </component>
+  
+  <component>
+    <component-type>org.operamasks.faces.widget.FileUpload</component-type>
+    <component-class>org.operamasks.faces.component.widget.UIFileUpload</component-class>
+  </component>
+  
+  <component>
+    <component-type>org.operamasks.faces.widget.FileUploadProgress</component-type>
+    <component-class>org.operamasks.faces.component.widget.UIFileUploadProgress</component-class>
+  </component>
+
+  <component>
+    <component-type>org.operamasks.faces.widget.EditDataGrid</component-type>
+    <component-class>org.operamasks.faces.component.widget.grid.UIEditDataGrid</component-class>
+  </component>
+
+  <component>
+    <component-type>javax.faces.TextInputColumn</component-type>
+    <component-class>org.operamasks.faces.component.widget.grid.TextInputColumn</component-class>
+  </component>
+
+  <component>
+    <component-type>javax.faces.NumberInputColumn</component-type>
+    <component-class>org.operamasks.faces.component.widget.grid.NumberInputColumn</component-class>
+  </component>
+
+  <component>
+    <component-type>javax.faces.ComboInputColumn</component-type>
+    <component-class>org.operamasks.faces.component.widget.grid.ComboInputColumn</component-class>
+  </component>
+
+  <component>
+    <component-type>javax.faces.DateInputColumn</component-type>
+    <component-class>org.operamasks.faces.component.widget.grid.DateInputColumn</component-class>
+  </component>
+
+  <component>
+    <component-type>javax.faces.CheckBoxInputColumn</component-type>
+    <component-class>org.operamasks.faces.component.widget.grid.CheckBoxInputColumn</component-class>
+  </component>
+  
+  <component>
+    <component-type>org.operamasks.faces.widget.SimpleDataGrid</component-type>
+    <component-class>org.operamasks.faces.component.widget.grid.UISimpleDataGrid</component-class>
+  </component>
+  
+  <component>
+    <component-type>org.operamasks.faces.widget.button</component-type>
+    <component-class>org.operamasks.faces.component.widget.UIButton</component-class>
+  </component>
+  
+  <component>
+    <component-type>org.operamasks.faces.widget.SimpleHtmlEditor</component-type>
+    <component-class>org.operamasks.faces.component.widget.UISimpleHtmlEditor</component-class>
+  </component>
+  
+  <component>
+    <component-type>org.operamasks.faces.component.widget.UIForm</component-type>
+    <component-class>org.operamasks.faces.component.widget.UIForm</component-class>
+  </component>
+  <!-- Non-AJAX render kit -->
+  <render-kit>
+    <renderer>
+      <component-family>javax.faces.Command</component-family>
+      <renderer-type>org.operamasks.faces.widget.Button</renderer-type>
+      <renderer-class>org.operamasks.faces.render.widget.yuiext.ButtonRenderer</renderer-class>
+    </renderer>
+
+    <renderer>
+      <component-family>org.operamasks.faces.HtmlDocument</component-family>
+      <renderer-type>org.operamasks.faces.widget.HtmlPage</renderer-type>
+      <renderer-class>org.operamasks.faces.render.widget.WidgetPageRenderer</renderer-class>
+    </renderer>
+
+    <renderer>
+      <component-family>javax.faces.Input</component-family>
+      <renderer-type>org.operamasks.faces.widget.Slider</renderer-type>
+      <renderer-class>org.operamasks.faces.render.widget.yuiext.SliderRenderer</renderer-class>
+    </renderer>
+
+    <renderer>
+      <component-family>javax.faces.Output</component-family>
+      <renderer-type>org.operamasks.faces.widget.ProgressBar</renderer-type>
+      <renderer-class>org.operamasks.faces.render.widget.yuiext.ProgressBarRenderer</renderer-class>
+    </renderer>
+
+    <renderer>
+      <component-family>org.operamasks.faces.widget.Window</component-family>
+      <renderer-type>org.operamasks.faces.widget.Window</renderer-type>
+      <renderer-class>org.operamasks.faces.render.widget.WindowRenderer</renderer-class>
+    </renderer>
+
+    <renderer>
+      <component-family>org.operamasks.faces.widget.Window</component-family>
+      <renderer-type>org.operamasks.faces.widget.WindowTemplate</renderer-type>
+      <renderer-class>org.operamasks.faces.render.widget.WindowTemplateRenderer</renderer-class>
+    </renderer>
+
+    <renderer>
+      <component-family>org.operamasks.faces.widget.Dialog</component-family>
+      <renderer-type>org.operamasks.faces.widget.Dialog</renderer-type>
+      <renderer-class>org.operamasks.faces.render.widget.yuiext.DialogRenderer</renderer-class>
+    </renderer>
+
+    <renderer>
+      <component-family>javax.faces.SelectOne</component-family>
+      <renderer-type>org.operamasks.faces.widget.Combo</renderer-type>
+      <renderer-class>org.operamasks.faces.render.widget.yuiext.ComboRenderer</renderer-class>
+    </renderer>
+
+    <renderer>
+      <component-family>javax.faces.Input</component-family>
+      <renderer-type>org.operamasks.faces.widget.TextField</renderer-type>
+      <renderer-class>org.operamasks.faces.render.html.TextRenderer</renderer-class>
+    </renderer>
+    
+    <renderer>
+      <component-family>javax.faces.Input</component-family>
+      <renderer-type>org.operamasks.faces.widget.TextArea</renderer-type>
+      <renderer-class>org.operamasks.faces.render.widget.yuiext.TextAreaRenderer</renderer-class>
+    </renderer>
+    
+    <renderer>
+      <component-family>javax.faces.Input</component-family>
+      <renderer-type>org.operamasks.faces.widget.DateField</renderer-type>
+      <renderer-class>org.operamasks.faces.render.widget.yuiext.DateFieldRenderer</renderer-class>
+    </renderer>
+    
+    <renderer>
+      <component-family>javax.faces.Input</component-family>
+      <renderer-type>org.operamasks.faces.widget.CalcNumberField</renderer-type>
+      <renderer-class>org.operamasks.faces.render.widget.yuiext.CalcNumberFieldRenderer</renderer-class>
+    </renderer>
+    
+    <renderer>
+      <component-family>org.operamasks.faces.widget.ChooseSkin</component-family>
+      <renderer-type>javax.faces.Menu</renderer-type>
+      <renderer-class>org.operamasks.faces.render.widget.ChooseSkinRenderer</renderer-class>
+    </renderer>
+
+    <renderer>
+      <component-family>javax.faces.Data</component-family>
+      <renderer-type>org.operamasks.faces.widget.Grid</renderer-type>
+      <renderer-class>org.operamasks.faces.render.widget.yuiext.DataGridRenderer</renderer-class>
+    </renderer>
+
+    <renderer>
+      <component-family>javax.faces.Data</component-family>
+      <renderer-type>org.operamasks.faces.widget.View</renderer-type>
+      <renderer-class>org.operamasks.faces.render.widget.yuiext.DataViewRenderer</renderer-class>
+    </renderer>
+
+    <renderer>
+      <component-family>org.operamasks.faces.widget.Pager</component-family>
+      <renderer-type>org.operamasks.faces.widget.Toolbar</renderer-type>
+      <renderer-class>org.operamasks.faces.render.widget.yuiext.PagingToolbarRenderer</renderer-class>
+    </renderer>
+
+    <renderer>
+      <component-family>org.operamasks.faces.widget.Pager</component-family>
+      <renderer-type>javax.faces.Link</renderer-type>
+      <renderer-class>org.operamasks.faces.render.widget.yuiext.PagingLinkRenderer</renderer-class>
+    </renderer>
+
+    <renderer>
+      <component-family>org.operamasks.faces.widget.Menu</component-family>
+      <renderer-type>org.operamasks.faces.widget.Menu</renderer-type>
+      <renderer-class>org.operamasks.faces.render.widget.yuiext.MenuRenderer</renderer-class>
+    </renderer>
+
+    <renderer>
+      <component-family>org.operamasks.faces.widget.Menu</component-family>
+      <renderer-type>org.operamasks.faces.widget.MenuBar</renderer-type>
+      <renderer-class>org.operamasks.faces.render.widget.yuiext.MenuBarRenderer</renderer-class>
+    </renderer>
+
+    <renderer>
+      <component-family>org.operamasks.faces.widget.Menu</component-family>
+      <renderer-type>org.operamasks.faces.widget.ContextMenu</renderer-type>
+      <renderer-class>org.operamasks.faces.render.widget.yuiext.ContextMenuRenderer</renderer-class>
+    </renderer>
+
+    <renderer>
+      <component-family>javax.faces.Command</component-family>
+      <renderer-type>org.operamasks.faces.widget.LinkMenuItem</renderer-type>
+      <renderer-class>org.operamasks.faces.render.widget.yuiext.CommandMenuItemRenderer</renderer-class>
+    </renderer>
+
+    <renderer>
+      <component-family>javax.faces.Output</component-family>
+      <renderer-type>org.operamasks.faces.widget.LinkMenuItem</renderer-type>
+      <renderer-class>org.operamasks.faces.render.widget.yuiext.LinkMenuItemRenderer</renderer-class>
+    </renderer>
+
+    <renderer>
+      <component-family>javax.faces.Output</component-family>
+      <renderer-type>org.operamasks.faces.widget.TextMenuItem</renderer-type>
+      <renderer-class>org.operamasks.faces.render.widget.yuiext.TextMenuItemRenderer</renderer-class>
+    </renderer>
+
+    <renderer>
+      <component-family>javax.faces.SelectBoolean</component-family>
+      <renderer-type>org.operamasks.faces.widget.CheckMenuItem</renderer-type>
+      <renderer-class>org.operamasks.faces.render.widget.yuiext.CheckMenuItemRenderer</renderer-class>
+    </renderer>
+
+    <renderer>
+      <component-family>javax.faces.SelectOne</component-family>
+      <renderer-type>org.operamasks.faces.widget.RadioMenuItem</renderer-type>
+      <renderer-class>org.operamasks.faces.render.widget.yuiext.RadioMenuItemRenderer</renderer-class>
+    </renderer>
+
+    <renderer>
+      <component-family>org.operamasks.faces.widget.ChooseSkin</component-family>
+      <renderer-type>org.operamasks.faces.widget.RadioMenuItem</renderer-type>
+      <renderer-class>org.operamasks.faces.render.widget.yuiext.ChooseSkinMenuItemRenderer</renderer-class>
+    </renderer>
+
+    <renderer>
+      <component-family>org.operamasks.faces.widget.DatePicker</component-family>
+      <renderer-type>org.operamasks.faces.widget.DatePicker</renderer-type>
+      <renderer-class>org.operamasks.faces.render.widget.yuiext.DatePickerRenderer</renderer-class>
+    </renderer>
+
+    <renderer>
+      <component-family>org.operamasks.faces.widget.DatePicker</component-family>
+      <renderer-type>org.operamasks.faces.widget.Menu</renderer-type>
+      <renderer-class>org.operamasks.faces.render.widget.yuiext.DateMenuRenderer</renderer-class>
+    </renderer>
+
+    <renderer>
+      <component-family>org.operamasks.faces.widget.Separator</component-family>
+      <renderer-type>org.operamasks.faces.widget.Separator</renderer-type>
+      <renderer-class>org.operamasks.faces.render.widget.SeparatorRenderer</renderer-class>
+    </renderer>
+    
+    <renderer>
+      <component-family>org.operamasks.faces.widget.Separator</component-family>
+      <renderer-type>org.operamasks.faces.widget.MenuSeparator</renderer-type>
+      <renderer-class>org.operamasks.faces.render.widget.yuiext.MenuSeparatorRenderer</renderer-class>
+    </renderer>
+
+    <renderer>
+      <component-family>javax.faces.Graphic</component-family>
+      <renderer-type>org.operamasks.faces.widget.DrawImage</renderer-type>
+      <renderer-class>org.operamasks.faces.render.widget.DrawImageRenderer</renderer-class>
+    </renderer>
+
+    <renderer>
+      <component-family>javax.faces.Panel</component-family>
+      <renderer-type>org.operamasks.faces.widget.Box</renderer-type>
+      <renderer-class>org.operamasks.faces.render.widget.PanelBoxRenderer</renderer-class>
+    </renderer>
+
+    <renderer>
+      <component-family>org.operamasks.faces.widget.Invisible</component-family>
+      <renderer-type>org.operamasks.faces.widget.ForEach</renderer-type>
+      <renderer-class>org.operamasks.faces.render.widget.ForEachRenderer</renderer-class>
+    </renderer>
+    
+    <renderer>
+      <component-family>org.operamasks.faces.widget.Tree</component-family>
+      <renderer-type>org.operamasks.faces.widget.Tree</renderer-type>
+      <renderer-class>org.operamasks.faces.render.widget.yuiext.TreeRenderer</renderer-class>
+    </renderer>
+	
+    <renderer>
+      <component-family>org.operamasks.faces.widget.TreeNode</component-family>
+      <renderer-type>org.operamasks.faces.widget.TreeNode</renderer-type>
+      <renderer-class>org.operamasks.faces.render.widget.yuiext.TreeNodeRenderer</renderer-class>
+    </renderer>
+	
+    <renderer>
+      <component-family>org.operamasks.faces.widget.TreeNode</component-family>
+      <renderer-type>org.operamasks.faces.widget.CheckTreeNode</renderer-type>
+      <renderer-class>org.operamasks.faces.render.widget.yuiext.TreeNodeRenderer</renderer-class>
+    </renderer>
+    
+    <renderer>
+      <component-family>org.operamasks.faces.widget.TreeNode</component-family>
+      <renderer-type>org.operamasks.faces.widget.SimpleCheckTreeNode</renderer-type>
+      <renderer-class>org.operamasks.faces.render.widget.yuiext.TreeNodeRenderer</renderer-class>
+    </renderer>
+    
+    <renderer>
+      <component-family>org.operamasks.faces.widget.ToolBar</component-family>
+      <renderer-type>org.operamasks.faces.widget.ToolBar</renderer-type>
+      <renderer-class>org.operamasks.faces.render.widget.yuiext.ToolBarRenderer</renderer-class>
+    </renderer>
+   
+    <renderer>
+      <component-family>org.operamasks.faces.widget.Menu</component-family>
+      <renderer-type>org.operamasks.faces.widget.ToolBarMenu</renderer-type>
+      <renderer-class>org.operamasks.faces.render.widget.yuiext.ToolBarMenuRenderer</renderer-class>
+    </renderer>
+    
+    <renderer>
+      <component-family>javax.faces.Command</component-family>
+      <renderer-type>org.operamasks.faces.widget.ToolBarButton</renderer-type>
+      <renderer-class>org.operamasks.faces.render.widget.yuiext.ToolBarButtonRenderer</renderer-class>
+    </renderer>
+    
+    <renderer>
+      <component-family>org.operamasks.faces.widget.Separator</component-family>
+      <renderer-type>org.operamasks.faces.widget.ToolBarSeparator</renderer-type>
+      <renderer-class>org.operamasks.faces.render.widget.yuiext.ToolBarSeparatorRenderer</renderer-class>
+    </renderer>
+    
+    <renderer>
+      <component-family>javax.faces.Data</component-family>
+      <renderer-type>org.operamasks.faces.widget.SimpleDataGrid</renderer-type>
+      <renderer-class>org.operamasks.faces.render.widget.yuiext.SimpleDataGridRenderer</renderer-class>
+    </renderer>
+    
+    <renderer>
+      <component-family>javax.faces.Input</component-family>
+      <renderer-type>org.operamasks.faces.widget.SimpleHtmlEditor</renderer-type>
+      <renderer-class>org.operamasks.faces.render.ext.SimpleHtmlEditorRenderer</renderer-class>
+    </renderer>
+
+  </render-kit>
+
+  <!-- AJAX render kit -->
+  <render-kit>
+    <render-kit-id>AJAX</render-kit-id>
+
+    <renderer>
+      <component-family>javax.faces.Command</component-family>
+      <renderer-type>org.operamasks.faces.widget.Button</renderer-type>
+      <renderer-class>org.operamasks.faces.render.widget.yuiext.AjaxButtonRenderer</renderer-class>
+    </renderer>
+
+    <renderer>
+      <component-family>org.operamasks.faces.HtmlDocument</component-family>
+      <renderer-type>org.operamasks.faces.widget.HtmlPage</renderer-type>
+      <renderer-class>org.operamasks.faces.render.widget.AjaxWidgetPageRenderer</renderer-class>
+    </renderer>
+
+    <renderer>
+      <component-family>org.operamasks.faces.widget.SlideMessage</component-family>
+      <renderer-type>org.operamasks.faces.widget.SlideMessage</renderer-type>
+      <renderer-class>org.operamasks.faces.render.widget.yuiext.AjaxSlideMessageRenderer</renderer-class>
+    </renderer>
+
+    <renderer>
+      <component-family>org.operamasks.faces.AjaxStatus</component-family>
+      <renderer-type>org.operamasks.faces.widget.AjaxIndicator</renderer-type>
+      <renderer-class>org.operamasks.faces.render.widget.AjaxIndicatorRenderer</renderer-class>
+    </renderer>
+    
+    <renderer>
+      <component-family>javax.faces.Input</component-family>
+      <renderer-type>org.operamasks.faces.widget.TextField</renderer-type>
+      <renderer-class>org.operamasks.faces.render.widget.yuiext.TextFieldRenderer</renderer-class>
+    </renderer>
+	
+    <renderer>
+      <component-family>org.operamasks.faces.widget.Tree</component-family>
+      <renderer-type>org.operamasks.faces.widget.Tree</renderer-type>
+      <renderer-class>org.operamasks.faces.render.widget.yuiext.AjaxTreeRenderer</renderer-class>
+    </renderer>
+	
+    <renderer>
+      <component-family>org.operamasks.faces.widget.TreeNode</component-family>
+      <renderer-type>org.operamasks.faces.widget.TreeNode</renderer-type>
+      <renderer-class>org.operamasks.faces.render.widget.yuiext.AjaxTreeNodeRenderer</renderer-class>
+    </renderer>
+	
+    <renderer>
+      <component-family>org.operamasks.faces.widget.TreeNode</component-family>
+      <renderer-type>org.operamasks.faces.widget.CheckTreeNode</renderer-type>
+      <renderer-class>org.operamasks.faces.render.widget.yuiext.AjaxTreeNodeRenderer</renderer-class>
+    </renderer>
+    
+    <renderer>
+      <component-family>org.operamasks.faces.widget.TreeNode</component-family>
+      <renderer-type>org.operamasks.faces.widget.SimpleCheckTreeNode</renderer-type>
+      <renderer-class>org.operamasks.faces.render.widget.yuiext.AjaxTreeNodeRenderer</renderer-class>
+    </renderer>
+
+    <renderer>
+      <component-family>org.operamasks.faces.widget.ChooseSkin</component-family>
+      <renderer-type>javax.faces.Menu</renderer-type>
+      <renderer-class>org.operamasks.faces.render.widget.AjaxChooseSkinRenderer</renderer-class>
+    </renderer>
+
+    <renderer>
+      <component-family>javax.faces.SelectOne</component-family>
+      <renderer-type>org.operamasks.faces.widget.Combo</renderer-type>
+      <renderer-class>org.operamasks.faces.render.widget.yuiext.AjaxComboRenderer</renderer-class>
+    </renderer>
+
+    <renderer>
+      <component-family>org.operamasks.faces.widget.Pager</component-family>
+      <renderer-type>javax.faces.Link</renderer-type>
+      <renderer-class>org.operamasks.faces.render.widget.yuiext.AjaxPagingLinkRenderer</renderer-class>
+    </renderer>
+
+    <renderer>
+      <component-family>javax.faces.Data</component-family>
+      <renderer-type>org.operamasks.faces.widget.Grid</renderer-type>
+      <renderer-class>org.operamasks.faces.render.widget.yuiext.AjaxDataGridRenderer</renderer-class>
+    </renderer>
+    
+    <renderer>
+      <component-family>javax.faces.Data</component-family>
+      <renderer-type>org.operamasks.faces.widget.View</renderer-type>
+      <renderer-class>org.operamasks.faces.render.widget.yuiext.AjaxDataViewRenderer</renderer-class>
+    </renderer>
+
+    <renderer>
+      <component-family>javax.faces.Command</component-family>
+      <renderer-type>org.operamasks.faces.widget.LinkMenuItem</renderer-type>
+      <renderer-class>org.operamasks.faces.render.widget.yuiext.AjaxCommandMenuItemRenderer</renderer-class>
+    </renderer>
+
+    <renderer>
+      <component-family>javax.faces.SelectBoolean</component-family>
+      <renderer-type>org.operamasks.faces.widget.CheckMenuItem</renderer-type>
+      <renderer-class>org.operamasks.faces.render.widget.yuiext.AjaxCheckMenuItemRenderer</renderer-class>
+    </renderer>
+
+    <renderer>
+      <component-family>javax.faces.SelectOne</component-family>
+      <renderer-type>org.operamasks.faces.widget.RadioMenuItem</renderer-type>
+      <renderer-class>org.operamasks.faces.render.widget.yuiext.AjaxRadioMenuItemRenderer</renderer-class>
+    </renderer>
+
+    <renderer>
+      <component-family>org.operamasks.faces.widget.ChooseSkin</component-family>
+      <renderer-type>org.operamasks.faces.widget.RadioMenuItem</renderer-type>
+      <renderer-class>org.operamasks.faces.render.widget.yuiext.AjaxChooseSkinMenuItemRenderer</renderer-class>
+    </renderer>
+
+    <renderer>
+      <component-family>org.operamasks.faces.widget.DatePicker</component-family>
+      <renderer-type>org.operamasks.faces.widget.Menu</renderer-type>
+      <renderer-class>org.operamasks.faces.render.widget.yuiext.AjaxDateMenuRenderer</renderer-class>
+    </renderer>
+	
+	<renderer>
+      <component-family>org.operamasks.faces.widget.FileUpload</component-family>
+      <renderer-type>org.operamasks.faces.widget.FileUpload</renderer-type>
+      <renderer-class>org.operamasks.faces.render.widget.AjaxFileUploadRenderer</renderer-class>
+    </renderer>
+    
+	<renderer>
+      <component-family>org.operamasks.faces.widget.FileUploadProgress</component-family>
+      <renderer-type>org.operamasks.faces.widget.FileUploadProgress</renderer-type>
+      <renderer-class>org.operamasks.faces.render.widget.AjaxFileUploadProgressRenderer</renderer-class>
+    </renderer>
+
+    <renderer>
+      <component-family>javax.faces.Data</component-family>
+      <renderer-type>org.operamasks.faces.widget.EditGrid</renderer-type>
+      <renderer-class>org.operamasks.faces.render.widget.yuiext.AjaxEditDataGridRenderer</renderer-class>
+    </renderer>
+    
+    <renderer>
+      <component-family>javax.faces.Command</component-family>
+      <renderer-type>org.operamasks.faces.widget.ToolBarButton</renderer-type>
+      <renderer-class>org.operamasks.faces.render.widget.yuiext.AjaxToolBarButtonRenderer</renderer-class>
+    </renderer>
+
+    <renderer>
+      <component-family>org.operamasks.faces.widget.ToolBar</component-family>
+      <renderer-type>org.operamasks.faces.widget.ToolBar</renderer-type>
+      <renderer-class>org.operamasks.faces.render.widget.yuiext.AjaxToolBarRenderer</renderer-class>
+    </renderer>
+	
+    <renderer>
+      <component-family>org.operamasks.faces.widget.Pager</component-family>
+      <renderer-type>org.operamasks.faces.widget.Toolbar</renderer-type>
+      <renderer-class>org.operamasks.faces.render.widget.yuiext.AjaxPagingToolbarRenderer</renderer-class>
+    </renderer>
+    
+     <renderer>
+      <component-family>javax.faces.Input</component-family>
+      <renderer-type>org.operamasks.faces.widget.SimpleHtmlEditor</renderer-type>
+      <renderer-class>org.operamasks.faces.render.ext.AjaxSimpleHtmlEditorRenderer</renderer-class>
+    </renderer>
+  </render-kit>
+	<component>
+        <component-type>org.operamasks.faces.component.tree.impl.UITree</component-type>
+        <component-class>org.operamasks.faces.component.tree.impl.UITree</component-class>
+    </component>
+	<component>
+        <component-type>org.operamasks.faces.component.tree.impl.UITreeNode</component-type>
+        <component-class>org.operamasks.faces.component.tree.impl.UITreeNode</component-class>
+    </component>
+	<component>
+        <component-type>org.operamasks.faces.component.html.impl.UIIFrame</component-type>
+        <component-class>org.operamasks.faces.component.html.impl.UIIFrame</component-class>
+    </component>
+</faces-config>

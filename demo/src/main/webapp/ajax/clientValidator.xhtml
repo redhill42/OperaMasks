@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<f:view xmlns:f="http://java.sun.com/jsf/core"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:w="http://www.apusic.com/jsf/widget"
+        xmlns:ajax="http://www.apusic.com/jsf/ajax"
+        xmlns:layout="http://www.apusic.com/jsf/layout"
+        renderKitId="AJAX">
+<w:head>
+<w:stylesheet src="/common/resources/examples.css"/>
+</w:head>
+<w:page title="Client Validator Demo">
+  <div class="examDesc">
+  <p>使用&lt;ajax:clientValidator&gt;标签可以为form元素提供客户端校验功能</p>
+  </div>
+  <w:form clientValidate="true">
+			<layout:panelGrid columns="2">
+				<layout:cell colspan="1" rowspan="1">
+					Phone(0xxx-xxx-xxxx):
+				</layout:cell>
+				<layout:cell colspan="1" rowspan="1">
+					<w:textField id="phoneNumber" value="#{ClientValidatorBean.phone}"
+	  							validator="#{ClientValidatorBean.validatePhone}" label="Phone">
+  						<ajax:clientValidator message="Client validation: Illegal phone number format">
+	  						var re = new RegExp("^0\\d{1,3}-\\d{3}-\\d{4}$");
+	  						return re.test(value);
+  						</ajax:clientValidator>
+  					</w:textField>
+				</layout:cell>
+				<layout:cell colspan="1" rowspan="1">
+					Color:
+				</layout:cell>
+				<layout:cell colspan="1" rowspan="1">
+					<w:combo emptyText="Please choose a color..." typeAhead="true" label="Color" value="#{ClientValidatorBean.color}"
+								required="true" requiredMessage="Color: You must choose a color">
+						<f:selectItems value="#{ClientValidatorBean.colors}"/>
+					</w:combo>				
+				</layout:cell>
+				<layout:cell colspan="1" rowspan="1">
+					Number:
+				</layout:cell>
+				<layout:cell colspan="1" rowspan="1">
+					<w:calcNumberField value="#{ClientValidatorBean.number}" required="true" label="Number">
+						<f:validateLongRange minimum="1"></f:validateLongRange>
+					</w:calcNumberField>
+				</layout:cell>
+				<layout:cell colspan="1" rowspan="1">
+					Date:
+				</layout:cell>
+				<layout:cell colspan="1" rowspan="1">
+					<w:dateField required="true" label="Date" value="#{ClientValidatorBean.date}"></w:dateField>
+				</layout:cell>
+				
+				<layout:cell colspan="1" rowspan="1">
+					Text:
+				</layout:cell>
+				<layout:cell colspan="1" rowspan="1">
+					<w:textArea value="#{ClientValidatorBean.text}" label="Text" required="true">
+						<f:validateLength minimum="10"></f:validateLength>
+					</w:textArea>
+				</layout:cell>
+			</layout:panelGrid>
+
+    <h:commandButton id="submit" value="submit" action="#{ClientValidatorBean.submit}"/>
+	<br />
+    <h:outputText value="#{ClientValidatorBean.response}"></h:outputText>
+  </w:form>
+</w:page>
+</f:view>

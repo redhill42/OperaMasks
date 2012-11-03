@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:w="http://www.apusic.com/jsf/widget" xmlns:a="http://www.apusic.com/jsf/ajax"
+	xmlns:layout="http://www.apusic.com/jsf/layout" xmlns:ajax="http://www.apusic.com/jsf/ajax"
+	renderKitId="AJAX">
+	<w:head>
+		<style type="text/css">
+html,body {
+	font: normal 12px verdana;
+	margin: 0;
+	padding: 0;
+	border: 0 none;
+	overflow: hidden;
+	height: 100%;
+}
+</style>
+	</w:head>
+
+	<w:page title="JSF Chart Demo">
+		<layout:borderLayout fitToBody="true">
+			<layout:panel region="west" width="240" split="true" autoScroll="true" title="Demos">
+				<ajax:updater url="menu.xhtml" />
+			</layout:panel>
+			<layout:borderLayout region="center" title="Chart">
+				<layout:panel region="center" autoScroll="true" header="false">
+					<a:updater renderId="global" binding="#{ChartMenu.chartUpdater}">
+						<strong>No demo selected</strong>
+					</a:updater>
+					<a:updater renderId="global" binding="#{ChartMenu.optionsUpdater}" />
+				</layout:panel>
+				<layout:panel region="south" id="info" title="Data" height="150">
+					<a:updater renderId="global" binding="#{ChartMenu.gridUpdater}" />
+				</layout:panel>
+			</layout:borderLayout>
+		</layout:borderLayout>
+	</w:page>
+</f:view>

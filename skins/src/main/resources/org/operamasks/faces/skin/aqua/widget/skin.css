@@ -1,0 +1,665 @@
+/*-------------------------------------------------------
+ * HTML elements
+ */
+
+html {
+    border: 0;
+}
+
+body {
+    margin: 0;
+    padding: 10px;
+    background-color: rgb(81,147,197);
+    color: black;
+}
+
+.mnemonic {
+    text-decoration: underline;
+}
+
+/*-------------------------------------------------------
+ * UIButton
+ */
+
+.UIButton {
+    position: relative;
+    overflow: hidden;
+    white-space: nowrap;
+    border: 0; padding: 0; margin: 0;
+    background: none;
+}
+
+.UIButton canvas {
+    display: block;
+    position: absolute;
+    width: 100%; height: 100%;
+    left: 0; top: 0; right: 0; bottom: 0;
+}
+
+button.button-face {
+    font: 12px Tahoma, Verdana, Arial, Sans-Serif;
+}
+.UIButton .button-label {
+    display: block;
+    position: absolute;
+    overflow: hidden;
+    white-space: nowrap;
+    border: 0; padding: 0; margin: 0;
+    background: none;
+    color: black;
+    cursor: default;
+}
+.UIButton[disabled] .button-label {
+    color: rgb(127,127,127);
+}
+
+/*-------------------------------------------------------
+ * UISlider
+ */
+
+.UISlider {
+    position: relative;
+    overflow: hidden;
+    border: 0;
+    background: transparent;
+}
+
+.UISlider.slider-horizontal {
+    width: 200px;
+    height: 28px;
+}
+.UISlider.slider-vertical {
+    width: 28px;
+    height: 200px;
+}
+
+.UISlider .slider-track {
+    position: absolute;
+	overflow: hidden;
+}
+
+.UISlider.slider-horizontal .slider-track {
+    width: 100%;
+    height: 4px;
+    background: transparent url("image/slider-horiz-track.gif") repeat-x;
+}
+.UISlider.slider-vertical .slider-track {
+    width: 4px;
+    height: 100%;
+    background: transparent url("image/slider-vert-track.gif") repeat-y;
+}
+
+.UISlider .slider-thumb {
+    position: absolute;
+    overflow: hidden;
+}
+
+.UISlider.slider-horizontal .slider-thumb {
+    width: 11px; height: 22px;
+    background: transparent url("image/slider-horiz-thumb.gif") 0 0 no-repeat;
+}
+
+.UISlider.slider-vertical .slider-thumb {
+    width: 20px; height: 10px;
+    background: transparent url("image/slider-vert-thumb.gif") 5px 0 no-repeat;
+}
+
+.UISlider.slider-horizontal .slider-thumb.slider-active,
+.UISlider.slider-horizontal .slider-thumb.slider-hover {
+    background-position: -11px 0 !important;
+}
+
+.UISlider.slider-vertical .slider-thumb.slider-active,
+.UISlider.slider-vertical .slider-thumb.slider-hover {
+    background-position: 5px -10px !important;
+}
+
+/*-------------------------------------------------------
+ * UIProgressBar
+ */
+
+.UIProgressBar {
+    position: relative;
+    overflow: hidden;
+
+    width: 200px;
+    height: 14px;
+    padding: 0;
+    border: 1px solid #686868;
+    background: white url("image/bg-progressbar.gif") repeat;
+
+    _height: "16px"; /*IE Fix*/
+    -moz-border-radius: 4px;
+}
+
+.UIProgressBar .progress-thumb {
+    overflow: hidden;
+    background: white url("image/progress-chunk.gif") right top repeat-x;
+}
+.UIProgressBar .progress-thumb.running {
+    background-image: url("image/progress-chunk-running.gif");
+}
+
+/*-------------------------------------------------------
+ * UITabbedPane
+ */
+
+div.UITabbedPane {
+	position: relative;
+	overflow: visible;
+	width: 100%;
+}
+
+.UITabbedPane .tab-row {
+    position: absolute;
+    width: 100%;
+    height: 22px !important;
+    line-height: 22px !important;
+    top: 0px; left: 11px;
+
+    float: left;
+    overflow: hidden;
+	white-space: nowrap;
+	z-index: 2;
+}
+
+.UITabbedPane .tab-row .tab {
+	display: block;
+	position: relative;
+	float: left;
+	overflow: hidden;
+	white-space: nowrap;
+	vertical-align: middle;
+    padding: 0;
+
+	cursor: default;
+	font: 12px Tahoma, Verdana, Arial, Sans-Serif;
+	color: Black;
+}
+
+.UITabbedPane .tab-row .first-tab {
+    padding: 0 0 0 8px;
+	background: url("image/tab-left.gif") left top no-repeat;
+}
+
+.UITabbedPane .tab-row .first-tab.hover-tab,
+.UITabbedPane .tab-row .first-tab.active-tab {
+    background-position: left -22px;
+}
+
+.UITabbedPane .tab-row .tab .tab-label {
+    display: block;
+    float: left;
+    overflow: hidden;
+	height: 20px !important;
+	line-height: 20px !important;
+	padding: 1px 16px 1px 8px;
+	vertical-align: middle;
+	background: url("image/tab-middle.gif") right top no-repeat;
+
+	_height: "22px"; /*IE Fix*/
+}
+
+.UITabbedPane .tab-row .last-tab .tab-label {
+    background: url("image/tab-right.gif") right top no-repeat;
+}
+
+.UITabbedPane .tab-row .tab.hover-tab .tab-label,
+.UITabbedPane .tab-row .tab.active-tab .tab-label {
+    background-position: right -22px;
+}
+
+.UITabbedPane .tab-row .tab .tab-label img {
+    width: 16px; height: 16px;
+    overflow: hidden;
+    vertical-align: middle;
+    margin-right: 3px;
+}
+
+.UITabbedPane .tab-page {
+    position: relative;
+	clear: both;
+	margin: 0;
+	padding: 20px 10px 10px 10px;
+	top: 10px;
+	margin-bottom: 10px;
+    z-index: 1;
+
+	font: Message-Box;
+	color: black;
+	background: #f0f0f0 url("image/bg.gif") repeat;
+
+	border: 2px solid;
+	border-top-color: #949494;
+	border-right-color: #fbfbfb;
+	border-bottom-color: #fbfbfb;
+	border-left-color: #949494;
+
+	-moz-border-top-colors: #949494 #666;
+	-moz-border-right-colors: #fbfbfb #666;
+	-moz-border-bottom-colors: #fbfbfb #666;
+	-moz-border-left-colors: #949494 #666;
+}
+
+/*IE Fix*/
+* html .UITabbedPane .tab-page {
+    width: auto;
+	width: "100%"; /*don't remove quotes, this is an IE hack*/
+	height: 100%;
+}
+
+/*--------------------------------------
+ * UICollapsiblePanel
+ */
+
+.UICollapsiblePanelGroup {
+    background: #f0f0f0;
+}
+
+.UICollapsiblePanel {
+    position: relative;
+}
+
+.UICollapsiblePanel .collapsible-header {
+    position: relative;
+    width: auto;
+    overflow: hidden;
+    border: 1px solid #c1c1c1;
+    background: #ccc url('image/bg-active-caption.gif') repeat-x;
+    color: #3f3d3d;
+    padding: 3px 5px 2px 10px;
+    cursor: pointer;
+}
+
+.UICollapsiblePanel .collapsible-header .collapsible-icon {
+    margin-right: 5px;
+    vertical-align: middle;
+}
+
+.UICollapsiblePanel .collapsible-header .collapsible-label {
+    font: 12px Tahoma, Verdana, Arial, Sans-Serif;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.UICollapsiblePanel .collapsible-header .collapsible-button {
+    display: block;
+    float: right;
+    width: 20px;
+    height: 11px;
+    overflow: hidden;
+    vertical-align: middle;
+    _margin-top: 2px;
+    background: transparent url("image/collapsible.gif") no-repeat;
+}
+
+.UICollapsiblePanel .collapsible-header.hover .collapsible-button {
+    background-position: -20px 0;
+}
+.UICollapsiblePanel .collapsible-header.hover {
+    color: #7e7c7c;
+}
+
+.UICollapsiblePanel .collapsible-body {
+    position: relative;
+    clear: both;
+    width: auto;
+    overflow: hidden;
+    border: 1px solid #c1c1c1;
+    border-top: 0;
+    color: black;
+    background: #f5f5f5 url("image/bg.gif") repeat;
+    font: 12px Tahoma, Verdana, Arial, Sans-Serif;
+    padding: 10px;
+}
+
+.UICollapsiblePanel .collapsible-header {
+    -moz-border-radius-topleft: 7px;
+    -moz-border-radius-topright: 7px;
+}
+.UICollapsiblePanel .collapsible-body {
+    -moz-border-radius-bottomleft: 7px;
+    -moz-border-radius-bottomright: 7px;
+}
+
+.UICollapsiblePanel .collapsible-body * {
+    font-family: Tahoma, Verdana, Arial, Sans-Serif;
+    font-size: 12px;
+}
+
+.UICollapsiblePanel .collapsible-body a, .UICollapsiblePanel .collapsible-body a:visited {
+    color: #3f3d3d;
+    text-decoration: none;
+}
+
+.UICollapsiblePanel .collapsible-body a:hover, .UICollapsiblePanel .collapsible-body a:active {
+    color: #7e7c7c;
+    text-decoration: underline;
+}
+
+/*IE Fix*/
+* html .UICollapsiblePanel .collapsible-header {
+    width: 100%;
+}
+* html .UICollapsiblePanel .collapsible-body {
+    width: 100%;
+}
+
+/*--------------------------------------
+ * UICookMenu
+ */
+
+.UICookMenu .Menu
+.UICookMenu .SubMenuTable
+{
+	padding: 0;
+	white-space: nowrap;
+	cursor: default;
+}
+
+.UICookMenu .Menu, .UICookMenu .SubMenu {
+	background: #f0f0f0 url("image/bg-menu.gif") repeat;
+}
+
+.UICookMenu .SubMenu
+{
+	position: absolute;
+	visibility: hidden;
+	z-index: 100;
+	padding: 1px;
+	overflow: visible;
+
+	border: 1px solid #aaa;
+	filter: progid:DXImageTransform.Microsoft.Shadow(color=#ff909090, Direction=135, Strength=4)
+	        progid:DXImageTransform.Microsoft.Alpha(Opacity=92);
+    -moz-opacity: 0.92;
+}
+
+.UICookMenu .SubMenuTable
+{
+	overflow: visible;
+}
+
+.UICookMenu .MainItem,
+.UICookMenu .MenuItem
+{
+	font: 12px Tohama, Verdana, Arial, sans-serif;
+	border: 0;
+	color: black;
+	cursor: default;
+	white-space: nowrap;
+}
+
+.UICookMenu .MainItem.Disabled,
+.UICookMenu .MenuItem.Disabled
+{
+	color: #939393;
+}
+
+/* horizontal main menu */
+
+.UICookMenu td.MainItem
+{
+	padding: 3px 5px;
+	border: 0;
+}
+
+.UICookMenu td.MainItem.Hover,
+.UICookMenu td.MainItem.Active
+{
+	background-color: rgb(49,104,184);
+	color: white;
+}
+
+/* vertical main menu and sub menu*/
+
+.UICookMenu tr.MainItem.Hover,
+.UICookMenu tr.MainItem.Active,
+.UICookMenu tr.MenuItem.Hover,
+.UICookMenu tr.MenuItem.Active
+{
+	background-color: rgb(49,104,184);
+	color: white;
+}
+
+.UICookMenu tr.MainItem td.Left,
+.UICookMenu tr.MenuItem td.Left
+{
+	padding: 2px 3px 2px 1px;
+	background-color: inherit;
+	white-space: nowrap;
+}
+
+.UICookMenu tr.MainItem td.Text,
+.UICookMenu tr.MenuItem td.Text
+{
+	padding: 2px 15px 2px 5px;
+	background-color: inherit;
+	white-space: nowrap;
+}
+
+.UICookMenu tr.MainItem td.Right,
+.UICookMenu tr.MenuItem td.Right
+{
+	padding: 2px 0px 2px 0px;
+	background-color: inherit;
+	white-space: nowrap;
+}
+
+.UICookMenu .MenuSplit
+{
+    margin: 2px;
+    height: 0px;
+    overflow: hidden;
+    background-color: inherit;
+    border-top: 1px solid #dcdcdc;
+    border-bottom: 1px solid #f7f7f7;
+}
+
+/*--------------------------------------
+ * UIWindow
+ */
+
+.UIWindow {
+    position: absolute;
+    overflow: visible;
+    width: 400px; height: 200px;
+    font: 12px Tahoma, Verdana, Arial, Sans-Serif;
+}
+
+.UIWindow .window-caption {
+    position: absolute;
+    overflow: hidden;
+    white-space: nowrap;
+    cursor: default;
+    background-image: url("image/blank.gif");
+}
+
+.UIWindow .window-caption * {
+    cursor: default;
+}
+
+.UIWindow .window-icon {
+    position: absolute;
+    overflow: hidden;
+    width: 16px; height: 16px;
+    right: 6px;
+}
+.UIWindow .default-icon {
+    background: transparent url("image/default.gif") no-repeat;
+}
+
+.UIWindow .window-label {
+    position: absolute;
+    overflow: hidden;
+    white-space: nowrap;
+    font: 12px Tahoma, Verdana, Arial, Sans-Serif;
+    color: #787878;
+    text-align: center;
+}
+
+.UIWindow.active-window .window-label {
+    color: black;
+}
+
+.UIWindow .window-button-pane {
+    position: absolute;
+    overflow: hidden;
+    white-space: nowrap;
+    left: 6px;
+}
+
+.UIWindow .window-button {
+    position: relative;
+    display: inline;
+    float: left;
+    margin-right: 7px;
+    width: 14px; height: 15px;
+    background-color: transparent;
+    background-position: 0 0;
+    background-repeat: no-repeat;
+}
+
+.UIWindow.active-window .window-button {
+    background-position: 0 -15px;
+}
+.UIWindow .window-button.hover {
+    background-position: 0 -30px;
+}
+.UIWindow .window-button.pressed {
+    background-position: 0 -45px;
+}
+
+.UIWindow .window-caption .minimize-button {
+    background-image: url("image/minimize.gif");
+}
+.UIWindow .window-caption .maximize-button {
+    background-image: url("image/maximize.gif");
+}
+.UIWindow .window-caption .close-button {
+    background-image: url("image/close.gif");
+}
+
+.UIWindow .window-client-pane {
+    position: absolute;
+    overflow: hidden;
+    cursor: default;
+}
+
+.UIWindow .window-content-pane {
+    position: absolute;
+    overflow: auto;
+    left: 0; top: 0; right: 0; bottom: 0;
+    background-color: white;
+    color: black;
+}
+
+.UIWindow .window-shadow {
+    position: absolute;
+    left: -15px; top: -7px; right: -15px; bottom: -23px;
+    background: transparent;
+}
+
+.UIWindow .window-shadow .window-shadow-tl {
+    position: absolute;
+    font-size: 0;
+    left: 0;
+    top: 0;
+    width: 24px;
+    height: 30px;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='image/shadow-tl.png', sizingMethod='scale');
+    background-image: url('image/shadow-tl.png');
+}
+
+.UIWindow .window-shadow .window-shadow-tc {
+    position: absolute;
+    font-size: 0;
+    left: 24px;
+    top: 0;
+    right: 24px;
+    height: 30px;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='image/shadow-tc.png', sizingMethod='scale');
+    background-image: url('image/shadow-tc.png');
+}
+
+.UIWindow .window-shadow .window-shadow-tr {
+    position: absolute;
+    font-size: 0;
+    right: 0;
+    top: 0;
+    width: 24px;
+    height: 30px;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='image/shadow-tr.png', sizingMethod='scale');
+    background-image: url('image/shadow-tr.png');
+}
+
+.UIWindow .window-shadow .window-shadow-cl {
+    position: absolute;
+    font-size: 0;
+    left: 0px;
+    top: 30px;
+    bottom: 39px;
+    width: 16px;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='image/shadow-cl.png', sizingMethod='scale');
+    background-image: url('image/shadow-cl.png');
+}
+
+.UIWindow .window-shadow .window-shadow-cr {
+    position: absolute;
+    font-size: 0;
+    right: 0;
+    top: 30px;
+    bottom: 39px;
+    width: 16px;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='image/shadow-cr.png', sizingMethod='scale');
+    background-image: url('image/shadow-cr.png');
+}
+
+.UIWindow .window-shadow .window-shadow-bl {
+    position: absolute;
+    font-size: 0;
+    left: 0;
+    bottom: 0;
+    width: 30px;
+    height: 39px;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='image/shadow-bl.png', sizingMethod='scale');
+    background-image: url('image/shadow-bl.png');
+}
+
+.UIWindow .window-shadow .window-shadow-bc {
+    position: absolute;
+    font-size: 0;
+    left: 30px;
+    bottom: 0;
+    right: 30px;
+    height: 39px;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='image/shadow-bc.png', sizingMethod='scale');
+    background-image: url('image/shadow-bc.png');
+}
+
+.UIWindow .window-shadow .window-shadow-br {
+    position: absolute;
+    font-size: 0;
+    right: 0;
+    bottom: 0;
+    width: 30px;
+    height: 39px;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='image/shadow-br.png', sizingMethod='scale');
+    background-image: url('image/shadow-br.png');
+}
+
+.UIGlassPane {
+    position: absolute;
+    overflow: hidden;
+    cursor: default;
+    left: 0; top: 0; right: 0; bottom: 0;
+    width: 100%; height: 100%;
+    background-image: url("image/blank.gif");
+}
+
+/* Dialog styles */
+.UIDialog .window-content-pane {
+    overflow: hidden !important;
+    background: #bebebe url("image/bg-dialog.gif") repeat !important;
+    color: black !important;
+}

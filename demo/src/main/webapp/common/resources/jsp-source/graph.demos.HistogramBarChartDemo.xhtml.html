@@ -1,0 +1,81 @@
+<html>
+<head>
+<style type="text/css">
+html, body {
+      font-size: 10px;
+      margin:0;
+      padding:0;
+      border:0 none;
+      overflow:auto;
+      height:100%;
+  }
+  
+</style>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<script class="javascript" src="../js/highlight.js"></script>
+</head>
+<body>
+<textarea id="code" class="xml" style="display:none;">
+<?xml version="1.0" encoding="UTF-8"?>
+<f:view xmlns:f="http://java.sun.com/jsf/core"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:g="http://www.apusic.com/jsf/graph">
+<g:compositeChart title="Histogram Bar Chart Demo" showLegend="false">
+  <g:barChart>
+    <g:histogramDataSeries value="#{HistogramData}" var="h">
+      <g:histogramDataItem legend="H1" value="#{h}" bins="100" color="rgb(43,114,219)"/>
+    </g:histogramDataSeries>
+  </g:barChart>
+
+  <g:areaChart>
+    <g:yAxis visible="false"/>
+    <g:functionSeries>
+      <g:functionItem expression="#{HistogramData.normalDistribution}"
+                      start="#{HistogramData.min}"
+                      end="#{HistogramData.max}" 
+                      step="0.1"
+                      color="rgba(43,114,219,128)"/>
+    </g:functionSeries>
+  </g:areaChart>
+</g:compositeChart>
+
+<h:panelGrid cellspacing="5">
+  <h:outputText value="Min:"/>
+  <h:outputText value="#{HistogramData.min}"><f:convertNumber pattern="0.00"/></h:outputText>
+  <h:outputText value="Max:"/>
+  <h:outputText value="#{HistogramData.max}"><f:convertNumber pattern="0.00"/></h:outputText>
+  <h:outputText value="Mean:"/>
+  <h:outputText value="#{HistogramData.mean}"><f:convertNumber pattern="0.00"/></h:outputText>
+  <h:outputText value="STD:"/>
+  <h:outputText value="#{HistogramData.std}"><f:convertNumber pattern="0.00"/></h:outputText>
+</h:panelGrid>
+  
+</f:view>
+
+</textarea>
+<script class="javascript">
+var text = document.getElementById('code').value ;
+var html = highlightCode( "xml" , "xml" , true , text ) ;
+window.setTimeout(function() {
+    var css = "<link href='../styles/highlight.css' rel='stylesheet' type='text/css'>" ;
+    document.open('text/html');
+    if(document.implementation && document.implementation.createDocument) {
+        var htmlStr = css + html.xml ;
+        document.write(htmlStr);
+        document.close();
+    }
+    else {
+        var h = window.onerror;
+        window.onerror = function(){return true;}
+        html = css + html ;
+        document.write(html);
+        window.onerror = h;
+        document.close();
+        window.location.reload(false);
+    }
+}, 50);
+
+</script>
+</body>
+</html>

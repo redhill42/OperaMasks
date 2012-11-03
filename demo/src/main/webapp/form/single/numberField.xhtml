@@ -1,0 +1,20 @@
+<f:view xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:w="http://www.apusic.com/jsf/widget" xmlns:layout="http://www.apusic.com/jsf/layout"
+    xmlns:h="http://java.sun.com/jsf/html"
+    renderKitId="AJAX">
+    <w:head>
+        <w:stylesheet src="/common/resources/examples.css"/>
+    </w:head>
+    <w:page>
+        <div class="examDesc">
+            <p>本例演示了numberField组件的用法，和textField不同的是输入的值只能是数字，如果输入其他值，输入域会自动过滤掉</p>
+        </div>
+        <w:form>
+            <layout:panelGrid columns="2">
+                <h:outputLabel value="请输入一个数字："></h:outputLabel>
+                <w:numberField id="number"/>
+            </layout:panelGrid>
+            <h:outputText id="response"></h:outputText>
+        </w:form>
+    </w:page>
+</f:view>

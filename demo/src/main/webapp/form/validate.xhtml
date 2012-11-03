@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<f:view xmlns:f="http://java.sun.com/jsf/core"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:w="http://www.apusic.com/jsf/widget"
+        xmlns:ajax="http://www.apusic.com/jsf/ajax"
+        renderKitId="AJAX">
+<w:head>
+<w:stylesheet src="/common/resources/examples.css"/>
+</w:head>
+<w:page title="Validate Demo">
+  <div class="examDesc">
+  <p>对输入数据的校验可以在页面内进行，通过AJAX在服务器获得校验后在浏览器显示校验结果，而不必重新刷新整个页面。</p>
+  </div>
+  <h:form>
+    <f:verbatim>请输入一个1到10之间的数字：</f:verbatim>
+    <h:inputText id="num" value="#{DemoBean.number}" required="true" label="Input Number">
+      <f:validateLongRange minimum="1" maximum="10"/>
+    </h:inputText>
+    <h:commandButton value="submit"/>
+    <p><h:message style="color: red" for="num"/></p>
+  </h:form>
+</w:page>
+</f:view>

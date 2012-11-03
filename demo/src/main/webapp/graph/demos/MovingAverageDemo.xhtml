@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<f:view xmlns:f="http://java.sun.com/jsf/core"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:g="http://www.apusic.com/jsf/graph">
+  <g:lineChart title="Moving Average Demo 2" showLegend="true">
+    <g:timeSeries value="#{TimeSeriesData}" var="ts">
+      <g:timeDataItem legend="Sample" time="#{ts.time}" value="#{ts.value}">
+        <g:movingAverage legend="5 day PMA" period="5"/>
+        <g:movingAverage legend="10 day PMA" period="10"/>
+        <g:movingAverage legend="30 day PMA" period="30"/>
+      </g:timeDataItem>
+    </g:timeSeries>
+  </g:lineChart>
+</f:view>

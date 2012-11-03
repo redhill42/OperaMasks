@@ -1,0 +1,120 @@
+<html>
+<head>
+<style type="text/css">
+html, body {
+      font-size: 10px;
+      margin:0;
+      padding:0;
+      border:0 none;
+      overflow:auto;
+      height:100%;
+  }
+  
+</style>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<script class="javascript" src="../js/highlight.js"></script>
+</head>
+<body>
+<textarea id="code" class="xml" style="display:none;">
+<?xml version="1.0" encoding="UTF-8"?>
+<f:view xmlns:f="http://java.sun.com/jsf/core"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:w="http://www.apusic.com/jsf/widget"
+        xmlns:ajax="http://www.apusic.com/jsf/ajax"
+        renderKitId="AJAX">
+<w:head>
+<w:stylesheet src="/common/resources/examples.css"/>
+<style type="text/css">
+.examDesc {
+    margin-left: 10px;
+    margin-top: 10px;
+}
+body {
+    padding: 0;
+}
+.product {
+  width:80%;
+  padding:10px;
+  margin-left:20px;
+  border-bottom:1px dashed black;
+}
+.product, .title {
+  font:normal 12px Arial,sans-serif;
+}
+.title {
+  font-size:14px;
+  font-weight:bold;
+  color:#000080
+}
+.listPrice {
+  text-decoration:line-through;
+}
+.yourPrice {
+  font-weight:bold;
+  color:#800000;
+}
+.image {
+  margin-right:20px;
+}
+</style>
+</w:head>
+<w:page title="Data View Example">
+  <div class="examDesc">
+  <p>DataView可以用任何你能想到的方式展现你的数据</p>
+  </div>
+  <w:pagingToolbar for="view-example" pageSize="3"/>
+
+  <h:form prependId="false">
+  <w:dataView id="view-example" jsvar="productView" value="#{products}" var="p">
+    <w:outputColumn id="title" value="#{p.title}"/>
+    <w:outputColumn id="listPrice" value="#{p.listPrice}"/>
+    <w:outputColumn id="yourPrice" value="#{p.yourPrice}"/>
+    <w:outputColumn id="image" value="#{p.image}"/>
+
+    <f:facet name="template">
+      <h:panelGroup layout="block" styleClass="product">
+        <h:panelGrid columns="2">
+          <f:verbatim><img src="{image}" title="{title}" class="image"/></f:verbatim>
+          <h:panelGrid columns="1">
+            <f:verbatim><span class="title">{title}</span></f:verbatim>
+            <f:verbatim><span>List Price: </span><span class="listPrice">{listPrice}</span></f:verbatim>
+            <f:verbatim><span>Your Price: </span><span class="yourPrice">{yourPrice}</span></f:verbatim>
+          </h:panelGrid>
+        </h:panelGrid>
+      </h:panelGroup>
+    </f:facet>
+
+    <f:facet name="empty">
+      <f:verbatim>No data to display.</f:verbatim>
+    </f:facet>
+  </w:dataView>
+  </h:form>
+</w:page>
+</f:view>
+</textarea>
+<script class="javascript">
+var text = document.getElementById('code').value ;
+var html = highlightCode( "xml" , "xml" , true , text ) ;
+window.setTimeout(function() {
+    var css = "<link href='../styles/highlight.css' rel='stylesheet' type='text/css'>" ;
+    document.open('text/html');
+    if(document.implementation && document.implementation.createDocument) {
+        var htmlStr = css + html.xml ;
+        document.write(htmlStr);
+        document.close();
+    }
+    else {
+        var h = window.onerror;
+        window.onerror = function(){return true;}
+        html = css + html ;
+        document.write(html);
+        window.onerror = h;
+        document.close();
+        window.location.reload(false);
+    }
+}, 50);
+
+</script>
+</body>
+</html>

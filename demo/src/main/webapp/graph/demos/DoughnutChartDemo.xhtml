@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<f:view xmlns:f="http://java.sun.com/jsf/core"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:g="http://www.apusic.com/jsf/graph">
+<g:pieChart title="Doughnut Chart Demo" ring="true" showLegend="true">
+  <g:dataSeries value="#{CategoryData}" var="x" rows="5">
+    <g:dataLabel value="#{x.label}"/>
+    <g:dataItem legend="First" value="#{x.first}"/>
+  </g:dataSeries>
+</g:pieChart>
+</f:view>

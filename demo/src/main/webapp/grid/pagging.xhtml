@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<f:view xmlns:f="http://java.sun.com/jsf/core"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:w="http://www.apusic.com/jsf/widget"
+        xmlns:ajax="http://www.apusic.com/jsf/ajax"
+		xmlns:om="http://www.apusic.com/jsf/misc"
+        renderKitId="AJAX">
+<w:page title="Grid" skin="default" style="padding:25px;" styleClass="ytheme-vista" >
+<w:head>
+<style type="text/css">
+
+</style>
+</w:head>
+Pagging grid
+<hr/>
+<p>this is a pagging grid, load data from server data provider.</p>
+ <p></p>
+ <p></p>
+ <p></p>
+ <br/>
+  <w:panelBox>
+    <w:dataGrid jsvar="myGrid" id="target-grid" value="#{UserBean.userList}" var="user"
+                paged="true" toolBarPosition="both" rows="25" loadMask="true" style="border:1px solid #99bbe8;height:300px;overflow:hidden">
+      <w:outputColumn id="id" header="Id" align="center" value="#{user.id}" width="200" hidden="true"/>
+      <w:outputColumn id="name" header="Name" value="#{user.name}" width="50" />
+      <w:outputColumn id="email" header="Email" value="#{user.email}" width="200" />
+      <w:outputColumn id="tel" header="Telphone" value="#{user.tel}" width="100" align="center" />
+      <w:outputColumn id="addr" header="Address" value="#{user.addr}" width="200" />
+    </w:dataGrid>
+  </w:panelBox>
+</w:page>
+</f:view>
+<script>
+Ext.onReady(function(){
+
+     myGrid.on("dblclick",function(target, row, e){
+
+     alert('dblclick.....');
+     });
+});
+</script>

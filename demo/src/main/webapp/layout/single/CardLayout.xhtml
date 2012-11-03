@@ -1,0 +1,32 @@
+<f:view xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:w="http://www.apusic.com/jsf/widget" xmlns:layout="http://www.apusic.com/jsf/layout"
+	renderKitId="AJAX" xmlns:h="http://java.sun.com/jsf/html">
+	<w:page>
+		<style>
+		.alignCenter {
+			margin: 0 auto;
+			width: 400px;
+		}
+		</style>
+		<div class="alignCenter">
+		<layout:cardLayout id="demoCardLayout" height="300" width="400">
+			<layout:panel title="第一步">填写基本信息：</layout:panel>
+			<layout:panel title="第二步">填写详细信息：</layout:panel>
+			<layout:panel title="完成">恭喜你,注册已经完成!</layout:panel>
+		</layout:cardLayout>
+		<w:form>
+			<layout:panelGrid columns="3">
+				<layout:cell colspan="1" rowspan="1">
+					<w:button value="上一步" id="pre" />
+				</layout:cell>
+				<layout:cell colspan="1" rowspan="1">
+					<w:button value="下一步" id="next" />
+				</layout:cell>
+				<layout:cell colspan="1" rowspan="1">
+					<w:button value="完成" id="finish" />
+				</layout:cell>
+			</layout:panelGrid>
+		</w:form>
+		</div>
+	</w:page>
+</f:view>

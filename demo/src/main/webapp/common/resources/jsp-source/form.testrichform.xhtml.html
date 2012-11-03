@@ -1,0 +1,97 @@
+<html>
+<head>
+<style type="text/css">
+html, body {
+      font-size: 10px;
+      margin:0;
+      padding:0;
+      border:0 none;
+      overflow:auto;
+      height:100%;
+  }
+  
+</style>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<script class="javascript" src="../js/highlight.js"></script>
+</head>
+<body>
+<textarea id="code" class="xml" style="display:none;">
+<?xml version="1.0" encoding="UTF-8"?>
+<f:view xmlns:f="http://java.sun.com/jsf/core"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:w="http://www.apusic.com/jsf/widget"
+        xmlns:a="http://www.apusic.com/jsf/ajax"
+        renderKitId="HTML_BASIC">
+<w:head>
+<style type="text/css">
+body {
+  margin: 0;
+  padding: 10px;
+  font: 9pts/18pts;
+}
+</style>
+</w:head>
+<w:page title="Rich Form Demo" skin="default">  
+  
+  <w:form rich="false">
+    
+    <h:selectBooleanCheckbox id="effect3D" value="true">
+        <a:action event="onclick"/>
+      </h:selectBooleanCheckbox>
+      <h:outputLabel value=" 3D Effect" for="effect3D"/>
+    <h:panelGrid columns="2">
+        <f:verbatim>文本输入框：</f:verbatim>
+        <h:inputText value="#{DemoBean.skin}"/>
+    
+        <f:verbatim>日期文本输入框：</f:verbatim>
+        <h:inputText value="#{MenuBean.date}">
+            <f:convertDateTime pattern="yyyy/M/d"/>
+        </h:inputText>
+    
+        <f:verbatim>数字文本输入框：</f:verbatim>
+        <h:inputText value="#{DemoBean.number}"/>
+    
+        <f:verbatim>下拉列表框：</f:verbatim>
+        <h:selectOneMenu id="combo" value="#{ColorBean.color}">
+          <f:selectItems value="#{ColorBean.colors}"/>
+        </h:selectOneMenu>
+    </h:panelGrid>
+    <h:commandButton value="提交"></h:commandButton><br/><br/>
+    <h:panelGrid columns="2">
+      <h:graphicImage value="images/#{ColorBean.color}.gif" rendered="#{ColorBean.color!=null}"/>&nbsp;
+      <h:outputText value="#{ColorBean.color}" style="color: #{ColorBean.color}"/>
+    </h:panelGrid> 
+       
+  </w:form> 
+  <br/>
+  
+  <a href="../index.html">Back</a>
+</w:page>
+</f:view>
+</textarea>
+<script class="javascript">
+var text = document.getElementById('code').value ;
+var html = highlightCode( "xml" , "xml" , true , text ) ;
+window.setTimeout(function() {
+    var css = "<link href='../styles/highlight.css' rel='stylesheet' type='text/css'>" ;
+    document.open('text/html');
+    if(document.implementation && document.implementation.createDocument) {
+        var htmlStr = css + html.xml ;
+        document.write(htmlStr);
+        document.close();
+    }
+    else {
+        var h = window.onerror;
+        window.onerror = function(){return true;}
+        html = css + html ;
+        document.write(html);
+        window.onerror = h;
+        document.close();
+        window.location.reload(false);
+    }
+}, 50);
+
+</script>
+</body>
+</html>

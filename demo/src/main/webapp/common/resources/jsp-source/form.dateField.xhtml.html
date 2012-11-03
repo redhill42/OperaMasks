@@ -1,0 +1,87 @@
+<html>
+<head>
+<style type="text/css">
+html, body {
+      font-size: 10px;
+      margin:0;
+      padding:0;
+      border:0 none;
+      overflow:auto;
+      height:100%;
+  }
+  
+</style>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<script class="javascript" src="../js/highlight.js"></script>
+</head>
+<body>
+<textarea id="code" class="xml" style="display:none;">
+<?xml version="1.0" encoding="UTF-8"?>
+<f:view xmlns:f="http://java.sun.com/jsf/core"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:w="http://www.apusic.com/jsf/widget"
+        xmlns:ajax="http://www.apusic.com/jsf/ajax"
+        renderKitId="HTML_BASIC">
+<w:head>
+<w:stylesheet src="/common/resources/examples.css"/>
+</w:head>
+<w:page title="Date Field" skin="default">
+  <div class="examDesc">
+  <p>本例演示DateField组件和TextField组件的用法。</p>
+  <p>此页面不支持AJAX，对输入数据的更新必须提交到服务器并重新刷新整个页面。</p>
+  </div>
+  <h:form>
+      <f:verbatim>日期选取组件：</f:verbatim>
+      <h:panelGrid columns="2">
+        <w:dateField id="df" width="#{DemoBean.width}" value="#{DemoBean.date}" format="#{DemoBean.format}" disabledDays="[0, 6]" disabledDaysText="星期六和星期天不能选">        
+        </w:dateField>
+      <w:button value="submit" action="#{DemoBean.dateToString}" />    
+    </h:panelGrid>       
+  </h:form>
+  <br/>
+  <h:form>
+    <f:verbatim>单行输入框组件：</f:verbatim>
+    <h:panelGrid columns="2">
+      <w:textField value="#{DemoBean.dateString}" width="#{DemoBean.width}"/>
+      <w:button value="submit" action="#{DemoBean.stringToDate}" />
+    </h:panelGrid>
+  </h:form>  
+  <br/>
+  <h:form>
+    <f:verbatim>组件宽度：</f:verbatim>
+    <h:panelGrid columns="2">
+      <w:textField value="#{DemoBean.width}" width="#{DemoBean.width}"/>
+      <w:button value="submit"/>
+    </h:panelGrid>
+  </h:form>  
+  <br/>
+</w:page>
+</f:view>
+
+</textarea>
+<script class="javascript">
+var text = document.getElementById('code').value ;
+var html = highlightCode( "xml" , "xml" , true , text ) ;
+window.setTimeout(function() {
+    var css = "<link href='../styles/highlight.css' rel='stylesheet' type='text/css'>" ;
+    document.open('text/html');
+    if(document.implementation && document.implementation.createDocument) {
+        var htmlStr = css + html.xml ;
+        document.write(htmlStr);
+        document.close();
+    }
+    else {
+        var h = window.onerror;
+        window.onerror = function(){return true;}
+        html = css + html ;
+        document.write(html);
+        window.onerror = h;
+        document.close();
+        window.location.reload(false);
+    }
+}, 50);
+
+</script>
+</body>
+</html>

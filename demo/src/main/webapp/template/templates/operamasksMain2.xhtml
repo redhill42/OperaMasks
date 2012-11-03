@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<f:view xmlns:f="http://java.sun.com/jsf/core"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:w="http://www.apusic.com/jsf/widget"
+        xmlns:layout="http://www.apusic.com/jsf/layout"
+        xmlns:om="http://www.apusic.com/jsf/misc"
+        xmlns:ajax="http://www.apusic.com/jsf/ajax">
+<om:useBean value="templateBean"/>
+<style>
+.titleBar td {
+  background-color: #D2E3F8;
+  font-size: 14px;
+  width: 60px;
+  text-align: center;
+}
+
+.titleBar tr td a {
+  text-decoration: none
+}
+</style>
+<table style="width: 100%;">
+  <tr>
+    <td>
+    <h:graphicImage value="/template/images/logo.gif"></h:graphicImage>
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+    <table>
+    <tr>
+      <td style="vertical-align: top">
+      <table class="titleBar"  cellspacing="5">
+        <tr>
+          <td>
+          <a href="main.jsf">首页</a>
+          </td>
+        </tr>
+        <tr>
+          <td>项目</td>
+        </tr>
+        <tr>
+          <td>新闻</td>
+        </tr>
+        <tr>
+          <td>文章</td>
+        </tr>
+        <tr>
+          <td>在线示例</td>
+        </tr>
+        <tr>
+          <td>
+          <a href="download.jsf">下载</a>
+          </td>
+        </tr>
+        <tr>
+          <td>问题跟踪</td>
+        </tr>
+        <tr>
+          <td>论坛</td>
+        </tr>
+        <tr>
+          <td>关于我们</td>
+        </tr>
+        <tr>
+          <td>
+          <a href="custom.jsf">自定义</a>
+          </td>
+        </tr>
+        <tr>
+          <td>
+          <w:form>
+             <w:button value="切换布局" id="changeLayout" />
+          </w:form>
+
+          </td>
+        </tr>
+      </table>
+      </td>
+      <td style="vertical-align: top">
+      <layout:slot name="left"></layout:slot>
+      </td>
+      <td style="vertical-align: top">
+      <layout:slot name="center"></layout:slot>
+      </td>
+      <td style="vertical-align: top">
+      <layout:slot name="right"></layout:slot>
+      </td>
+    </tr>
+    </table>
+    </td>
+  </tr>
+  <tr>
+
+  </tr>
+</table>
+</f:view>

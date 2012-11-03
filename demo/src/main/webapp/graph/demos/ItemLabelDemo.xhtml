@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<f:view xmlns:f="http://java.sun.com/jsf/core"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:g="http://www.apusic.com/jsf/graph">
+<g:lineChart title="Java Standard Class Library"
+             xAxisLabel="Release"
+             yAxisLabel="Class Count"
+             drawMarkers="true"
+             showLegend="false">
+
+  <g:title value="Number of Classes By Release"/>
+  <g:title value="Source: Java In a Nutshell (4th Edition) by David Flanagan (O'Reilly)"
+           font="SansSerif,normal,10" position="BottomRight"/>
+
+  <g:yAxis upperMargin="0.15"/>
+
+  <g:dataSeries value="#{JDKData}" var="x" rows="10">
+    <g:dataLabel value="#{x.releaseVersion}"/>
+    <g:dataItem legend="Classes" value="#{x.classCount}" color="rgb(81,121,214)"
+                 drawItemLabel="true" itemLabelColor="rgb(239,47,65)"/>
+  </g:dataSeries>
+</g:lineChart>
+</f:view>

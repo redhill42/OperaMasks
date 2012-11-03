@@ -1,0 +1,6 @@
+<operamasks-config>
+  <view-mapping>
+    <url-pattern>*</url-pattern>
+    <model-bean>#{View}Bean</model-bean>
+  </view-mapping>
+</operamasks-config>

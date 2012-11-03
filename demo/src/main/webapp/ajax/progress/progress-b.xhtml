@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<f:view xmlns:f="http://java.sun.com/jsf/core"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:w="http://www.apusic.com/jsf/widget"
+        xmlns:ajax="http://www.apusic.com/jsf/ajax"
+        renderKitId="AJAX">
+<w:head>
+<w:stylesheet src="/common/resources/examples.css"/>
+</w:head>
+
+<w:page title="Progress Bar Demo">
+  <div class="examDesc">
+	  <p>使用&lt;ajax:progress&gt;显示任务的进度</p>
+  </div>
+
+<h:form id='myform' prependId="false">
+<w:button accesskey='s' onclick="phaseTask.start();" value="start" />
+  <table>
+    <tr><td><w:progressBar id="phaseProgress"/></td></tr>
+    <tr><td><h:outputText id="phaseMessage" value="idle"/></td></tr>
+  </table>
+
+  <ajax:progress
+        id="phaseTask"
+        for="phaseProgress phaseMessage"
+        action="#{ProgressBean.phaseAction}"
+        onstatechange="window.status=this.message;"/>
+</h:form>
+
+</w:page>
+</f:view>

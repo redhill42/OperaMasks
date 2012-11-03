@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<f:view xmlns:f="http://java.sun.com/jsf/core"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:w="http://www.apusic.com/jsf/widget"
+        renderKitId="HTML_BASIC">
+<w:head>
+<w:stylesheet src="/common/resources/examples.css"/>
+</w:head>
+<w:page title="Calculator Number Field" skin="default">
+  <div class="examDesc">
+  <p>本例演示了calcNumberField组件的用法，这是一个带有辅助按钮的数字输入框，单击按钮会弹出计算器。</p>
+  </div>
+  <h:form>
+      <f:verbatim>计算器数字输入框组件：</f:verbatim>
+      <h:panelGrid columns="2">
+        <w:calcNumberField id="df" width="#{DemoBean.width}" value="#{DemoBean.number}">        
+        </w:calcNumberField>
+      <w:button value="submit"/>    
+    </h:panelGrid>       
+  </h:form>
+  <br/>
+  
+  <h:form>
+    <f:verbatim>组件宽度：</f:verbatim>
+    <h:panelGrid columns="2">
+      <w:textField value="#{DemoBean.width}" width="#{DemoBean.width}"/>
+      <w:button value="submit"/>
+    </h:panelGrid>
+  </h:form>  
+  <br/>
+</w:page>
+</f:view>

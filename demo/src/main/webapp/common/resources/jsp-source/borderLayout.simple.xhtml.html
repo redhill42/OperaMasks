@@ -1,0 +1,115 @@
+<html>
+<head>
+<style type="text/css">
+html, body {
+      font-size: 10px;
+      margin:0;
+      padding:0;
+      border:0 none;
+      overflow:auto;
+      height:100%;
+  }
+  
+</style>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<script class="javascript" src="../js/highlight.js"></script>
+</head>
+<body>
+<textarea id="code" class="xml" style="display:none;">
+<?xml version="1.0" encoding="UTF-8"?>
+<f:view xmlns:f="http://java.sun.com/jsf/core"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:w="http://www.apusic.com/jsf/widget"
+        xmlns:l="http://www.apusic.com/jsf/layout"
+        xmlns:ajax="http://www.apusic.com/jsf/ajax">
+<w:page title="Simple Layout">
+<w:head>
+<style type="text/css">
+html, body {
+  font: normal 12px verdana;
+  margin: 0;
+  padding: 0;
+  border: 0 none;
+  overflow: hidden;
+  height: 100%;
+}
+#header {
+  background: url(images/header-bar.gif) repeat-x bottom;
+  border-bottom: 1px solid #083772;
+  padding: 5px 4px;
+}
+#footer {
+  background: url(images/header-bar.gif) repeat-x bottom;
+  border-top: 1px solid #083772;
+  padding: 2px 4px;
+  color: white;
+  font: normal 8pt arial, helvetica;
+}
+#nav {
+  background-color: #c3daf9;
+}
+#nav, #content {
+  padding: 10px;
+}
+#content p {
+  margin: 5px;
+}
+#nav li {
+  padding: 2px;
+  padding-left: 10px;
+  background-image: url(images/bullet.gif);
+  background-position: -3px 6px;
+  background-repeat: no-repeat;
+  font-size: 8pt;
+  display: block;
+}
+.x-layout-panel {
+  border: 0px none;
+}
+</style>
+</w:head>
+
+<l:borderLayout>
+  <l:regionConfig target="north" split="false" initialSize="35"/>
+  <l:regionConfig target="south" split="false" initialSize="20"/>
+  <l:regionConfig target="west" split="false" initialSize="200" collapsible="false"/>
+  <l:regionConfig target="center" autoScroll="true"/>
+
+  <l:contentPanel target="north" id="header">
+    <img src="images/jacks-blog.gif" width="160" height="27" alt="Jack Slocum's Blog" border="0"/>
+  </l:contentPanel>
+  <l:contentPanel target="west" id="nav" src="nav.txt"/>
+  <l:contentPanel target="center" id="content" src="content.txt"/>
+  <l:contentPanel target="south" id="footer">
+    Copyright 2006 Jack Slocum
+  </l:contentPanel>
+</l:borderLayout>
+</w:page>
+</f:view>
+</textarea>
+<script class="javascript">
+var text = document.getElementById('code').value ;
+var html = highlightCode( "xml" , "xml" , true , text ) ;
+window.setTimeout(function() {
+    var css = "<link href='../styles/highlight.css' rel='stylesheet' type='text/css'>" ;
+    document.open('text/html');
+    if(document.implementation && document.implementation.createDocument) {
+        var htmlStr = css + html.xml ;
+        document.write(htmlStr);
+        document.close();
+    }
+    else {
+        var h = window.onerror;
+        window.onerror = function(){return true;}
+        html = css + html ;
+        document.write(html);
+        window.onerror = h;
+        document.close();
+        window.location.reload(false);
+    }
+}, 50);
+
+</script>
+</body>
+</html>

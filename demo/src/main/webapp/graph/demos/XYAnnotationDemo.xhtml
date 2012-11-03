@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<f:view xmlns:f="http://java.sun.com/jsf/core"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:g="http://www.apusic.com/jsf/graph">
+<g:scatterChart title="XY Annotation Demo">
+
+  <g:timeSeries value="#{SupplierData}" var="bids" timePeriod="Minute">
+    <g:timeDataItem legend="Supplier 1" time="#{bids[0].time}" value="#{bids[0].value}"/>
+    <g:timeDataItem legend="Supplier 2" time="#{bids[1].time}" value="#{bids[1].value}"/>
+  </g:timeSeries>
+
+  <g:legend position="Right" rightMargin="5" backgroundColor="white" borderColor="gray"/>
+  
+  <g:xAxis label="Time" upperMargin="0.5"/>
+  <g:yAxis label="Bids" lowerMargin="0.5" upperMargin="0.3"/>
+
+  <g:textAnnotation xValue="2007-05-22T02:10:00Z" yValue="163" text="Best Bid"
+                    anchor="TopRight" drawArrow="true" arrowAngle="135"/>
+
+</g:scatterChart>
+</f:view>

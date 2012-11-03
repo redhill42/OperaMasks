@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<f:view xmlns:f="http://java.sun.com/jsf/core"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:w="http://www.apusic.com/jsf/widget"
+        xmlns:ajax="http://www.apusic.com/jsf/ajax"
+        renderKitId="AJAX">
+<w:head>
+<w:stylesheet src="/common/resources/examples.css"/>
+</w:head>
+<w:page title="File Upload" skin="default">
+  <div class="examDesc">
+  <p>本例展示如何使用FileUpload组件</p>
+  </div>
+  <w:form id="myForm" enctype="multipart/form-data">
+  <!-- fileUpload1和fileUpload2两个file输入框，选择直接处理数据流，这里通过设置uploadListener参数为一个el表达式，把处理方法绑定到服务器端一个mb的方法上。
+为何要自己处理文件数据流呢？是因为在很多场合下，上传的文件不一定是简单当作一个文件另存在服务器上，用户可能会选择把文件保存到数据库当中，或自己决定如何去处理这个数据。-->
+	  <w:fileUpload id="fileUpload1" uploadListener="#{FileUploadBean.processUpload}" binding="#{FileUploadBean.fileUpload1}" rich="true" maxSize="100k" required="true" />
+	<br />
+	  <w:fileUpload id="fileUpload2" uploadListener="#{FileUploadBean.processUpload}" rich="false" maxSize="100k" />
+	  <br />
+	  <!-- fileUpload3选择了一种简单的处理方式，直接把上传的文件当作另存为服务器上的一个文件，writeTo属性指定了服务器端另存为的文件名。 -->
+	  <w:fileUpload id="fileUpload3" writeTo="#{FileUploadBean.fileUpload3WriteTo}" rich="true" browseIcon="images/select.gif" maxSize="100k" />
+	  <br />
+	  
+	  <!-- 启动上传的progress的监控，关于如何使用progress，请参考文档和rcdemos里的例子 -->
+	  <w:button action="#{FileUploadBean.action}" value="Upload" onclick="percentageTask.start();" />
+  </w:form>
+  <br />
+  
+  <!-- 关于如何使用progress，请参考文档和rcdemos里的例子 -->
+  <ajax:progress
+        id='percentageTask'
+        for="percentageProgress percentageMessage"
+        action="#{FileUploadBean.progressAction}" />
+        
+  <table>
+    <tr><td><w:progressBar id="percentageProgress"/></td></tr>
+    <tr><td style="text-align:center;font-size:12px"><h:outputText id="percentageMessage" value="idle"/></td></tr>
+  </table>
+</w:page>
+</script>
+</f:view>

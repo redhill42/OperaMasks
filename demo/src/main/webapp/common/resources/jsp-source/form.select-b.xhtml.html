@@ -1,0 +1,108 @@
+<html>
+<head>
+<style type="text/css">
+html, body {
+      font-size: 10px;
+      margin:0;
+      padding:0;
+      border:0 none;
+      overflow:auto;
+      height:100%;
+  }
+  
+</style>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<script class="javascript" src="../js/highlight.js"></script>
+</head>
+<body>
+<textarea id="code" class="xml" style="display:none;">
+<?xml version="1.0" encoding="UTF-8"?>
+<f:view xmlns:f="http://java.sun.com/jsf/core"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:w="http://www.apusic.com/jsf/widget"
+        xmlns:ajax="http://www.apusic.com/jsf/ajax"
+        renderKitId="HTML_BASIC">
+<w:head>
+<w:stylesheet src="/common/resources/examples.css"/>
+</w:head>
+<w:page title="UISelectOne and UISelectMany Demo">
+  <div class="examDesc">
+  <p>在本例中具有多种UISelectOne和UISelectMany组件，它们都绑定到同一个JavaBean，这样一个选择框选项的改变将同步更新其他的选择框。</p>  
+  <p>此页面不支持AJAX，对输入数据的更新必须提交到服务器并重新刷新整个页面。</p>
+  </div>
+  
+  <h:form>
+    <h:panelGrid columns="3">
+      <f:verbatim>单项选择按钮：</f:verbatim>
+      <h:selectOneRadio value="#{ColorBean.color}">
+        <f:selectItems value="#{ColorBean.colors}"/>
+      </h:selectOneRadio>
+      <h:commandButton value="submit"/>
+    </h:panelGrid>
+  </h:form>
+
+  <h:form>
+    <h:panelGrid columns="3">
+      <f:verbatim>单项选择列表框：</f:verbatim>
+      <h:selectOneMenu value="#{ColorBean.color}">
+        <f:selectItems value="#{ColorBean.colors}"/>
+      </h:selectOneMenu>
+      <h:commandButton value="submit"/>
+      </h:panelGrid>
+  </h:form>
+
+  <h:graphicImage value="images/#{ColorBean.color}.gif"/>
+  <h:outputText value="#{ColorBean.color}" style="color: #{ColorBean.color}"/>
+
+  <hr/>
+  <h:form>
+    <h:panelGrid columns="3">
+      <f:verbatim>多项选择检查框：</f:verbatim>
+      <h:selectManyCheckbox value="#{ColorBean.multiColors}">
+        <f:selectItems value="#{ColorBean.colors}"/>
+      </h:selectManyCheckbox>
+      <h:commandButton value="submit"/>
+    </h:panelGrid>
+  </h:form>
+
+  <h:form>
+    <h:panelGrid columns="3">
+      <f:verbatim>多项选择列表框：</f:verbatim>
+      <h:selectManyListbox value="#{ColorBean.multiColors}">
+        <f:selectItems value="#{ColorBean.colors}"/>
+      </h:selectManyListbox>
+      <h:commandButton value="submit"/>
+    </h:panelGrid>
+
+    <h:outputText value="Result Color" style="color: #{ColorBean.color}; background-color: #{ColorBean.colorCombination};"/>
+  </h:form>
+</w:page>
+</f:view>
+
+</textarea>
+<script class="javascript">
+var text = document.getElementById('code').value ;
+var html = highlightCode( "xml" , "xml" , true , text ) ;
+window.setTimeout(function() {
+    var css = "<link href='../styles/highlight.css' rel='stylesheet' type='text/css'>" ;
+    document.open('text/html');
+    if(document.implementation && document.implementation.createDocument) {
+        var htmlStr = css + html.xml ;
+        document.write(htmlStr);
+        document.close();
+    }
+    else {
+        var h = window.onerror;
+        window.onerror = function(){return true;}
+        html = css + html ;
+        document.write(html);
+        window.onerror = h;
+        document.close();
+        window.location.reload(false);
+    }
+}, 50);
+
+</script>
+</body>
+</html>

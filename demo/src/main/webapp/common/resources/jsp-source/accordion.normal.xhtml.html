@@ -1,0 +1,132 @@
+<html>
+<head>
+<style type="text/css">
+html, body {
+      font-size: 10px;
+      margin:0;
+      padding:0;
+      border:0 none;
+      overflow:auto;
+      height:100%;
+  }
+  
+</style>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<script class="javascript" src="../js/highlight.js"></script>
+</head>
+<body>
+<textarea id="code" class="xml" style="display:none;">
+<?xml version="1.0" encoding="UTF-8"?>
+<f:view xmlns:f="http://java.sun.com/jsf/core"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:w="http://www.apusic.com/jsf/widget"
+        xmlns:l="http://www.apusic.com/jsf/layout"
+        xmlns:ajax="http://www.apusic.com/jsf/ajax">
+<w:head>
+<w:stylesheet src="/common/resources/examples.css"/>
+<w:stylesheet src="/accordion/accordion.css">
+#container {
+	width:320px;
+	height:300px;
+	position: absolute;
+	top:12px;
+	left:12px;
+	overflow:auto;
+}
+
+</w:stylesheet>
+</w:head>
+<w:page title="Accordiong Layout">
+<l:accordionLayout id="container" style="height:330px;">
+	<l:accordionPanel title="代码" icon="icons/script_code_red.png">
+	  <h3>AccordionLayout的JSF代码</h3>
+      <pre class="code">&lt;l:accordionLayout id="container" 
+          style="height:300px;"&gt;
+  &lt;l:accordionPanel title="代码" 
+          showPin="true"&gt;
+    &lt;h3&gt;AccordionLayout的JSF代码&lt;/h3&gt;
+    ... ...
+  &lt;/l:accordionPanel&gt;
+  ... ...
+&lt;/l:accordionLayout&gt;
+        </pre>
+	</l:accordionPanel>
+	<l:accordionPanel title="可被钉住的面板" icon="icons/rosette.png" showPin="true" autoScroll="true">
+		    <h3>我可以钉住哦！</h3><br/>
+		    用鼠标点击面板右上角的图标，点到图标变为向下的大头针为止，可以钉住面板，
+		    钉住的面板会一直保持打开的状态，现在就试一下！
+	</l:accordionPanel>
+	<l:accordionPanel title="能拖动吗？" icon="icons/car.png" easingCollapse="false">
+		    <h3>我可以拖动！</h3><br/>
+		    把鼠标指针放到面板的标题栏，面板可以在容器内拖动，也可以拖到容器外，或者拖回来哦！
+	</l:accordionPanel>
+	<l:accordionPanel title="内容来自于其他文件" icon="icons/script_lightning.png" src="other.xhtml"/>
+    <l:facelet constraints="title='Facelet'">
+      <h2>我是一个Facelet定义的</h2><br/>
+      其实，AccordionPanel也是Facelet的一个实现。你可以到OperaMasks的文档中心，了解一下有关Facelet的内容。
+    </l:facelet>
+</l:accordionLayout>
+
+<w:panelBox style="width:220px;position:absolute;top:12px;left:372px;">
+<l:accordionLayout style="height:300px;">
+	<l:accordionPanel title="Panel 1">
+	    <h3>登鹳雀楼</h3><br/>
+		白日依山尽，黄河入海流。
+		欲穷千里目，更上一层楼。
+	</l:accordionPanel>
+	<l:accordionPanel title="Panel 2">
+	    <h3>登鹳雀楼</h3><br/>
+         白日依山尽，黄河入海流。
+         欲穷千里目，更上一层楼。
+	</l:accordionPanel>
+	<l:accordionPanel title="Panel 3">
+	    <h3>登鹳雀楼</h3><br/>
+         白日依山尽，黄河入海流。
+         欲穷千里目，更上一层楼。
+	</l:accordionPanel>
+	<l:accordionPanel title="Panel 4">
+		<h3>登鹳雀楼</h3><br/>
+		白日依山尽，黄河入海流。
+		欲穷千里目，更上一层楼。
+	</l:accordionPanel>
+	<l:accordionPanel title="Panel 5">
+	    <h3>登鹳雀楼</h3><br/>
+		白日依山尽，黄河入海流。
+		欲穷千里目，更上一层楼。
+	</l:accordionPanel>
+    <l:facelet constraints="title='Panel 6'">
+       <h3>登鹳雀楼</h3><br/>
+        白日依山尽，黄河入海流。
+        欲穷千里目，更上一层楼。
+    </l:facelet>
+</l:accordionLayout>
+</w:panelBox>
+</w:page>
+</f:view>
+</textarea>
+<script class="javascript">
+var text = document.getElementById('code').value ;
+var html = highlightCode( "xml" , "xml" , true , text ) ;
+window.setTimeout(function() {
+    var css = "<link href='../styles/highlight.css' rel='stylesheet' type='text/css'>" ;
+    document.open('text/html');
+    if(document.implementation && document.implementation.createDocument) {
+        var htmlStr = css + html.xml ;
+        document.write(htmlStr);
+        document.close();
+    }
+    else {
+        var h = window.onerror;
+        window.onerror = function(){return true;}
+        html = css + html ;
+        document.write(html);
+        window.onerror = h;
+        document.close();
+        window.location.reload(false);
+    }
+}, 50);
+
+</script>
+</body>
+</html>

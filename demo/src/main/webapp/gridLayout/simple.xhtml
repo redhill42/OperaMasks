@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<f:view xmlns:f="http://java.sun.com/jsf/core"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:w="http://www.apusic.com/jsf/widget"
+        xmlns:layout="http://www.apusic.com/jsf/layout"
+        xmlns:ajax="http://www.apusic.com/jsf/ajax">
+  <w:head>
+    <style type="text/css">
+      .title {
+        background-color: silver;
+        color: #800000;
+        font: bold 10pt arial, helvetica;
+        border-bottom: solid 1px black;
+      }
+
+      .label {
+        background-color: silver;
+        color: black;
+        font: bold 8pt arial, helvetica;
+      }
+    </style>
+  </w:head>
+
+  <w:page title="Grid Layout Demo">
+
+    <layout:panelGrid columns="4" style="border:1px solid black" columnClasses="label,normal">
+      <layout:cell colspan="4" styleClass="title">Layout Using Panel Grid</layout:cell>
+
+      <h:outputLabel value="First Name" for="firstName"/>
+      <h:inputText id="firstName"/>
+
+      <h:outputLabel value="Last Name" for="lastName"/>
+      <h:inputText id="lastName"/>
+
+      <h:outputLabel value="City" for="city"/>
+      <h:inputText id="city"/>
+
+      <h:outputLabel value="ZIP" for="zip"/>
+      <h:inputText id="zip"/>
+
+      <h:outputLabel value="Street" for="street"/>
+      <layout:cell colspan="3">
+        <h:inputText id="street" style="width:100%"/>
+      </layout:cell>
+
+      <layout:cell valign="top">
+        <h:outputLabel value="Note" for="note"/>
+      </layout:cell>
+      <layout:cell colspan="3">
+        <h:inputTextarea id="note" rows="5" style="width:100%"/>
+      </layout:cell>
+
+    </layout:panelGrid>
+
+    <br/>
+    
+    <table style="border:1px solid black">
+    <tbody>
+    <tr>
+      <td class="title" colspan="4">Equivalent Table Layout</td>
+    </tr>
+
+    <tr>
+      <td class="label"><h:outputLabel for="firstName-x" value="First Name"/></td>
+      <td class="normal"><h:inputText id="firstName-x"/></td>
+      <td class="label"><h:outputLabel for="lastName-x" value="Last Name"/></td>
+      <td class="normal"><h:inputText id="lastName-x"/></td>
+    </tr>
+
+    <tr>
+      <td class="label"><h:outputLabel for="city-x" value="City"/></td>
+      <td class="normal"><h:inputText id="city-x"/></td>
+      <td class="label"><h:outputLabel for="zip-x" value="ZIP"/></td>
+      <td class="normal"><h:inputText id="zip-x"/></td>
+    </tr>
+
+    <tr>
+      <td class="label"><h:outputLabel for="street-x" value="Street"/></td>
+      <td class="normal" colspan="3"><h:inputText id="street-x" style="width:100%"/></td>
+    </tr>
+
+    <tr>
+      <td class="label" valign="top"><h:outputLabel for="note-x" value="Note"/></td>
+      <td class="normal" colspan="3"><h:inputTextarea id="note-x" rows="5" style="width:100%"/></td>
+    </tr>
+
+    </tbody>
+    </table>
+  </w:page>
+</f:view>

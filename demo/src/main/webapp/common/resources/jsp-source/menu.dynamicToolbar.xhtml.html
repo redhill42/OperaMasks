@@ -1,0 +1,78 @@
+<html>
+<head>
+<style type="text/css">
+html, body {
+      font-size: 10px;
+      margin:0;
+      padding:0;
+      border:0 none;
+      overflow:auto;
+      height:100%;
+  }
+  
+</style>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<script class="javascript" src="../js/highlight.js"></script>
+</head>
+<body>
+<textarea id="code" class="xml" style="display:none;">
+<?xml version="1.0" encoding="UTF-8"?>
+<f:view xmlns:f="http://java.sun.com/jsf/core"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:w="http://www.apusic.com/jsf/widget"
+        xmlns:ajax="http://www.apusic.com/jsf/ajax"
+        renderKitId="AJAX">
+<w:head>
+<w:stylesheet src="/common/resources/examples.css"/>
+</w:head>
+<w:page title="Toolbar Demo">
+<div class="examDesc">
+<p>本例演示如何动态维护toolbar</p>
+</div>
+	<w:form>
+	<div style="width:600px;height:300px;border:3px solid #c3daf9">
+		<w:toolBar id="toolBar1" jsvar="toolBar1Jsvar" binding="#{DynamicToolBar.toolbar}" style="width:400">
+		</w:toolBar>
+		<br/>
+		<h:panelGrid columns="6">
+			<w:button action="#{DynamicToolBar.addMenu}" value="Add Menu" />
+			<w:button action="#{DynamicToolBar.addButton}" value="Add Button" />
+			<w:button action="#{DynamicToolBar.addCombo}" value="Add Combo" />
+			<w:button action="#{DynamicToolBar.addSeparator}" value="Add Separator" />
+		</h:panelGrid>
+		
+		<br/>
+
+		<h:outputText value="#{DynamicToolBar.response}" />
+		</div>
+	</w:form>
+</w:page>
+</f:view>
+
+</textarea>
+<script class="javascript">
+var text = document.getElementById('code').value ;
+var html = highlightCode( "xml" , "xml" , true , text ) ;
+window.setTimeout(function() {
+    var css = "<link href='../styles/highlight.css' rel='stylesheet' type='text/css'>" ;
+    document.open('text/html');
+    if(document.implementation && document.implementation.createDocument) {
+        var htmlStr = css + html.xml ;
+        document.write(htmlStr);
+        document.close();
+    }
+    else {
+        var h = window.onerror;
+        window.onerror = function(){return true;}
+        html = css + html ;
+        document.write(html);
+        window.onerror = h;
+        document.close();
+        window.location.reload(false);
+    }
+}, 50);
+
+</script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<f:view xmlns:f="http://java.sun.com/jsf/core"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:w="http://www.apusic.com/jsf/widget"
+        xmlns:g="http://www.apusic.com/jsf/graph">
+  <w:dataGrid jsvar="timeSeriesDataGrid" value="#{TimeSeriesData}" var="ts" loadMask="false">
+    <w:outputColumn id="time" header="Time" value="#{ts.time}">
+      <f:convertDateTime pattern="yyyy-MM-dd"/>
+    </w:outputColumn>
+    <w:outputColumn id="value" header="Value" value="#{ts.value}" align="right">
+      <f:convertNumber pattern="#.00"/>
+    </w:outputColumn>
+  </w:dataGrid>
+
+</f:view>

@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/*
+ * $Id: graph-config.xml,v 1.7 2007/07/02 07:38:08 jacky Exp $
+ *
+ * Copyright (C) 2006 Operamasks Community.
+ * Copyright (C) 2000-2006 Apusic Systems, Inc.
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see http://www.gnu.org/licenses.
+ */
+-->
+
+<faces-config xmlns="http://java.sun.com/xml/ns/javaee"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://java.sun.com/xml/ns/javaee/web-facesconfig_1_2.xsd"
+  version="1.2">
+
+  <component>
+    <component-type>org.operamasks.faces.graph.Chart</component-type>
+    <component-class>org.operamasks.faces.component.graph.UIChart</component-class>
+  </component>
+  <component>
+    <component-type>org.operamasks.faces.graph.Title</component-type>
+    <component-class>org.operamasks.faces.component.graph.UITitle</component-class>
+  </component>
+  <component>
+    <component-type>org.operamasks.faces.graph.Legend</component-type>
+    <component-class>org.operamasks.faces.component.graph.UILegend</component-class>
+  </component>
+  <component>
+    <component-type>org.operamasks.faces.graph.Axis</component-type>
+    <component-class>org.operamasks.faces.component.graph.UIAxis</component-class>
+  </component>
+  <component>
+    <component-type>org.operamasks.faces.graph.DataSeries</component-type>
+    <component-class>org.operamasks.faces.component.graph.UIDataSeries</component-class>
+  </component>
+  <component>
+    <component-type>org.operamasks.faces.graph.DataLabel</component-type>
+    <component-class>org.operamasks.faces.component.graph.UIDataLabel</component-class>
+  </component>
+  <component>
+    <component-type>org.operamasks.faces.graph.DataItem</component-type>
+    <component-class>org.operamasks.faces.component.graph.UIDataItem</component-class>
+  </component>
+  <component>
+    <component-type>org.operamasks.faces.graph.XYDataSeries</component-type>
+    <component-class>org.operamasks.faces.component.graph.UIXYDataSeries</component-class>
+  </component>
+  <component>
+    <component-type>org.operamasks.faces.graph.XYDataItem</component-type>
+    <component-class>org.operamasks.faces.component.graph.UIXYDataItem</component-class>
+  </component>
+  <component>
+    <component-type>org.operamasks.faces.graph.TimeSeries</component-type>
+    <component-class>org.operamasks.faces.component.graph.UITimeSeries</component-class>
+  </component>
+  <component>
+    <component-type>org.operamasks.faces.graph.TimeDataItem</component-type>
+    <component-class>org.operamasks.faces.component.graph.UITimeDataItem</component-class>
+  </component>
+  <component>
+    <component-type>org.operamasks.faces.graph.HistogramDataSeries</component-type>
+    <component-class>org.operamasks.faces.component.graph.UIHistogramDataSeries</component-class>
+  </component>
+  <component>
+    <component-type>org.operamasks.faces.graph.HistogramDataItem</component-type>
+    <component-class>org.operamasks.faces.component.graph.UIHistogramDataItem</component-class>
+  </component>
+  <component>
+    <component-type>org.operamasks.faces.graph.FunctionSeries</component-type>
+    <component-class>org.operamasks.faces.component.graph.UIFunctionSeries</component-class>
+  </component>
+  <component>
+    <component-type>org.operamasks.faces.graph.FunctionItem</component-type>
+    <component-class>org.operamasks.faces.component.graph.UIFunctionItem</component-class>
+  </component>
+  <component>
+    <component-type>org.operamasks.faces.graph.RegressionLine</component-type>
+    <component-class>org.operamasks.faces.component.graph.UIRegressionLine</component-class>
+  </component>
+  <component>
+    <component-type>org.operamasks.faces.graph.AverageLine</component-type>
+    <component-class>org.operamasks.faces.component.graph.UIAverageLine</component-class>
+  </component>
+  <component>
+    <component-type>org.operamasks.faces.graph.Spline</component-type>
+    <component-class>org.operamasks.faces.component.graph.UISpline</component-class>
+  </component>
+  <component>
+    <component-type>org.operamasks.faces.graph.TextAnnotation</component-type>
+    <component-class>org.operamasks.faces.component.graph.UITextAnnotation</component-class>
+  </component>
+
+  <render-kit>
+    <renderer>
+      <component-family>org.operamasks.faces.graph.Chart</component-family>
+      <renderer-type>org.operamasks.faces.graph.AreaChart</renderer-type>
+      <renderer-class>org.operamasks.faces.render.graph.AreaChartRenderer</renderer-class>
+    </renderer>
+    <renderer>
+      <component-family>org.operamasks.faces.graph.Chart</component-family>
+      <renderer-type>org.operamasks.faces.graph.BarChart</renderer-type>
+      <renderer-class>org.operamasks.faces.render.graph.BarChartRenderer</renderer-class>
+    </renderer>
+    <renderer>
+      <component-family>org.operamasks.faces.graph.Chart</component-family>
+      <renderer-type>org.operamasks.faces.graph.CompositeChart</renderer-type>
+      <renderer-class>org.operamasks.faces.render.graph.CompositeChartRenderer</renderer-class>
+    </renderer>
+    <renderer>
+      <component-family>org.operamasks.faces.graph.Chart</component-family>
+      <renderer-type>org.operamasks.faces.graph.CurveChart</renderer-type>
+      <renderer-class>org.operamasks.faces.render.graph.CurveChartRenderer</renderer-class>
+    </renderer>
+    <renderer>
+      <component-family>org.operamasks.faces.graph.Chart</component-family>
+      <renderer-type>org.operamasks.faces.graph.CurveAreaChart</renderer-type>
+      <renderer-class>org.operamasks.faces.render.graph.CurveAreaChartRenderer</renderer-class>
+    </renderer>
+    <renderer>
+      <component-family>org.operamasks.faces.graph.Chart</component-family>
+      <renderer-type>org.operamasks.faces.graph.LineChart</renderer-type>
+      <renderer-class>org.operamasks.faces.render.graph.LineChartRenderer</renderer-class>
+    </renderer>
+    <renderer>
+      <component-family>org.operamasks.faces.graph.Chart</component-family>
+      <renderer-type>org.operamasks.faces.graph.PieChart</renderer-type>
+      <renderer-class>org.operamasks.faces.render.graph.PieChartRenderer</renderer-class>
+    </renderer>
+    <renderer>
+      <component-family>org.operamasks.faces.graph.Chart</component-family>
+      <renderer-type>org.operamasks.faces.graph.RadarChart</renderer-type>
+      <renderer-class>org.operamasks.faces.render.graph.RadarChartRenderer</renderer-class>
+    </renderer>
+    <renderer>
+      <component-family>org.operamasks.faces.graph.Chart</component-family>
+      <renderer-type>org.operamasks.faces.graph.ScatterChart</renderer-type>
+      <renderer-class>org.operamasks.faces.render.graph.ScatterChartRenderer</renderer-class>
+    </renderer>
+  </render-kit>
+</faces-config>

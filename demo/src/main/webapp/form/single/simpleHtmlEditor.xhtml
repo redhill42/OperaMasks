@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<f:view xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html" xmlns:w="http://www.apusic.com/jsf/widget"
+    xmlns:ajax="http://www.apusic.com/jsf/ajax" renderKitId="AJAX">
+    <w:head>
+        <w:stylesheet src="/common/resources/examples.css"/>
+    </w:head>
+    <w:page title="Html Editor">
+        <div class="examDesc">
+            <p>本例演示了simpleHtmlEditor组件的用法，这个组件是一个html编辑器，提供比较丰富的文本编辑功能</p>
+        </div>
+        <w:form>
+            <w:simpleHtmlEditor id="message" width="600" height="100" />
+            <w:button id="click" value="Button" />
+            <h:outputText id="response" escape="false"></h:outputText>
+        </w:form>
+    </w:page>
+</f:view>
