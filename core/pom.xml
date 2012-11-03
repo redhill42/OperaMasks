@@ -4,7 +4,7 @@
   <parent>
     <groupId>org.operamasks</groupId>
     <artifactId>operamasks</artifactId>
-    <version>1.0</version>
+    <version>1.0.1-SNAPSHOT</version>
   </parent>
   <name>OperaMasks Core</name>
   <artifactId>operamasks-core</artifactId>
