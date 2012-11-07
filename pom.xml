@@ -96,16 +96,6 @@
         <groupId>elite</groupId>
         <artifactId>elite</artifactId>
         <version>0.5.0</version>
-        <exclusions>
-          <exclusion>
-            <groupId>jline</groupId>
-            <artifactId>jline</artifactId>
-          </exclusion>
-          <exclusion>
-            <groupId>org.javolution</groupId>
-            <artifactId>javolution</artifactId>
-          </exclusion>
-        </exclusions>
       </dependency>
     </dependencies>
   </dependencyManagement>
