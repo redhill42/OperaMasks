@@ -95,7 +95,7 @@
       <dependency>
         <groupId>elite</groupId>
         <artifactId>elite</artifactId>
-        <version>0.5.0</version>
+        <version>1.0</version>
       </dependency>
     </dependencies>
   </dependencyManagement>
